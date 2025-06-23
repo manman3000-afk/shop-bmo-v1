@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout | Shop BMO</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
+  <style>
+    body {
+      background: #111;
+      color: #ffd700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .lux-header {
+      background: linear-gradient(90deg, #2d2d2d, #111);
+      padding: 2rem 0;
+      text-align: center;
+      color: #ffd700;
+      letter-spacing: 0.15em;
+      box-shadow: 0 4px 24px 0 #ffd70044;
+    }
+    .checkout-container {
+      max-width: 490px;
+      margin: 2rem auto;
+      background: #181818;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #ffd70033;
+      padding: 2.5rem 2rem;
+      color: #ffd700;
+    }
+    h2, h3 {
+      color: #ffd700;
+      text-align: center;
+    }
+    .checkout-summary {
+      margin-bottom: 2rem;
+    }
+    .checkout-summary ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .checkout-summary li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+      border-bottom: 1px solid #ffd70022;
+      padding-bottom: 0.4rem;
+    }
+    .checkout-total {
+      margin: 1.5rem 0 1rem 0;
+      text-align: right;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .lux-btn {
+      width: 100%;
+      margin-top: 1.6rem;
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 25px;
+      padding: 0.85rem 2rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      letter-spacing: 0.03em;
+    }
+    .lux-btn:disabled,
+    .lux-btn[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .success-message {
+      background: #ffd700;
+      color: #111;
+      padding: 1.2rem 1rem;
+      border-radius: 12px;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 2px 12px #ffd70055;
+      margin: 2rem auto 0 auto;
+      max-width: 420px;
+      display: none;
+    }
+    .back-link {
+      display: inline-block;
+      margin: 2rem auto 0 auto;
+      color: #ffd700bb;
+      text-align: center;
+      width: 100%;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .venmo-section {
+      background: #222;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px #ffd70022;
+      padding: 1.5rem 1rem;
+      margin-top: 1.7rem;
+      text-align: center;
+      display: none;
+    }
+    .venmo-section img {
+      width: 180px;
+      height: 180px;
+      margin: 0.7rem 0;
+      border-radius: 14px;
+      background: #fff;
+      padding: 7px;
+      box-shadow: 0 1px 6px #0005;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .venmo-section p {
+      color: #ffd700cc;
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+    .venmo-link {
+      display:inline-block;
+      background:#3d95ce;
+      color:#fff;
+      font-weight:600;
+      border-radius:8px;
+      padding:0.6rem 1.4rem;
+      text-decoration:none;
+      margin-top:0.7rem;
+      transition:background 0.2s;
+      box-shadow: 0 2px 12px #3d95ce66;
+      font-size: 1.08rem;
+    }
+    .venmo-link:hover {
+      background:#357cb8;
+    }
+    .checkout-form-section {
+      margin-bottom: 2.2rem;
+      background: #232323;
+      padding: 1.5rem 1rem 1.2rem 1rem;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px #ffd70022;
+    }
+    .checkout-form-section label {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #ffd700;
+      font-weight: 500;
+    }
+    .checkout-form-section input {
+      width: 100%;
+      border-radius: 7px;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1.2rem;
+      border: none;
+      background: #181818;
+      color: #ffd700;
+      border: 1px solid #ffd70044;
+      font-size: 1.05rem;
+    }
+    .checkout-form-section input:disabled {
+      opacity:.7;
+    }
+    .form-row {
+      display: flex;
+      gap: 0.7em;
+      align-items: flex-end;
+    }
+    .form-row .form-group {
+      flex: 1 1 0;
+    }
+    .form-group label {
+      margin-bottom: 0.2em;
+    }
+    .form-group input {
+      margin-bottom: 0;
+    }
+    .form-error {
+      color: #ff3e3e;
+      font-size: 0.97rem;
+      margin-bottom: 0.7rem;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .checkout-container { padding: 1rem; }
+      .venmo-section img { width:120px; height:120px;}
+      .form-row { flex-direction: column; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="lux-header">
+    <h1>SHOP BMO</h1>
+    <p>Checkout</p>
+  </header>
+
+  <div class="checkout-container">
+    <h2>Order Summary</h2>
+    <div class="checkout-summary">
+      <ul id="checkout-items">
+        <!-- JS renders cart items here -->
+      </ul>
+      <div class="checkout-total">
+        Total: $<span id="checkout-total">0.00</span>
+      </div>
+    </div>
+    <!-- Customer Info Form (Formspree) with address broken out -->
+    <form class="checkout-form-section" id="customer-info-form" autocomplete="on">
+      <h3 style="margin-top:-0.2rem;margin-bottom:1.1rem;">Your Info (required before payment)</h3>
+      <div class="form-error" id="customer-form-error" style="display:none"></div>
+      <label for="ci-email">Email Address</label>
+      <input type="email" id="ci-email" name="email" required placeholder="e.g. you@email.com" autocomplete="email">
+
+      <label for="ci-name">Full Name</label>
+      <input type="text" id="ci-name" name="name" required placeholder="Your name" autocomplete="name">
+
+      <label for="ci-address">Street Address</label>
+      <input type="text" id="ci-address" name="address" required placeholder="123 Main St, Apt 4B" autocomplete="street-address">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ci-city">City</label>
+          <input type="text" id="ci-city" name="city" required placeholder="City" autocomplete="address-level2">
+        </div>
+        <div class="form-group">
+          <label for="ci-state">State</label>
+          <input type="text" id="ci-state" name="state" required placeholder="State" maxlength="2" autocomplete="address-level1">
+        </div>
+        <div class="form-group">
+          <label for="ci-zip">ZIP Code</label>
+          <input type="text" id="ci-zip" name="zip" required placeholder="ZIP" maxlength="10" autocomplete="postal-code">
+        </div>
+      </div>
+
+      <button type="submit" class="lux-btn" id="submit-customer-info">Continue to Venmo Payment</button>
+    </form>
+    <!-- END customer info form -->
+    
+    <div class="venmo-section" id="venmo-section">
+      <h3 style="margin-bottom:0.7rem;">Pay with Venmo</h3>
+      <img id="venmo-qr" src="" alt="Venmo QR Code">
+      <p>Scan QR with your Venmo app<br>or tap the button below to pay.</p>
+      <a id="venmo-link" href="#" target="_blank" class="venmo-link">Pay with Venmo</a>
+      <p id="venmo-message" style="font-size:.97rem;margin-top:.8rem;color:#ffd700bb;"></p>
+      <p style="color:#ffd70099;font-size:.93rem;">After payment, screenshot/record your Venmo and send to seller for confirmation.</p>
+    </div>
+    <div class="success-message" id="success-message"></div>
+    <div class="back-link" onclick="window.location='index.html'">← Back to Shop</div>
+  </div>
+
+  <footer style="text-align:center;padding:2rem 0;color:#ffd70088;">
+    © 2025 BMO.LLC.CO All rights reserved.
+  </footer>
+
+  <script>
+    // VENMO CONSTANTS -- CHANGE TO YOUR VENMO INFO:
+    const VENMO_USERNAME = "manmandoit";
+    const VENMO_NAME = "BMO Shop";
+    // Formspree endpoint (change to your own Formspree form endpoint):
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdkzdgyy";
+
+    // Load cart from localStorage
+    let cart = [];
+    try {
+      cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (!Array.isArray(cart)) cart = [];
+    } catch (e) { cart = []; }
+
+    function renderCheckoutCart() {
+      const ul = document.getElementById('checkout-items');
+      if (!cart.length) {
+        ul.innerHTML = '<li>Your cart is empty. <a href="index.html" style="color:#ffd700;text-decoration:underline;">Shop now</a></li>';
+        document.getElementById('checkout-total').textContent = '0.00';
+        document.getElementById('customer-info-form').style.display = "none";
+        return;
+      }
+      let html = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        html += `<li>
+          <span>${item.name} x${item.qty}</span>
+          <span>$${(item.price * item.qty).toFixed(2)}</span>
+        </li>`;
+      });
+      ul.innerHTML = html;
+      document.getElementById('checkout-total').textContent = total.toFixed(2);
+      document.getElementById('customer-info-form').style.display = "block";
+    }
+
+    function getVenmoPayUrl(amount, note) {
+      return `https://venmo.com/?txn=pay&recipients=${encodeURIComponent(VENMO_USERNAME)}&amount=${encodeURIComponent(amount)}&note=${encodeURIComponent(note)}`;
+    }
+
+    function getVenmoQrUrl() {
+      return `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent('https://venmo.com/u/' + VENMO_USERNAME)}`;
+    }
+
+    function showVenmoSection() {
+      let total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+      let itemsSummary = cart.map(i => `${i.name} x${i.qty}`).join(', ');
+      let note = `[SHOP BMO] ${itemsSummary} | Total: $${total.toFixed(2)}`;
+      document.getElementById('venmo-section').style.display = 'block';
+      document.getElementById('venmo-qr').src = getVenmoQrUrl();
+      document.getElementById('venmo-link').href = getVenmoPayUrl(total.toFixed(2), note);
+      document.getElementById('venmo-message').textContent = `Venmo Username: @${VENMO_USERNAME}`;
+      setTimeout(() => {
+        document.getElementById('venmo-section').scrollIntoView({behavior:"smooth"});
+      }, 80);
+    }
+
+    // Handle customer info form submission
+    document.getElementById('customer-info-form').onsubmit = async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('ci-email').value.trim();
+      const name = document.getElementById('ci-name').value.trim();
+      const address = document.getElementById('ci-address').value.trim();
+      const city = document.getElementById('ci-city').value.trim();
+      const state = document.getElementById('ci-state').value.trim();
+      const zip = document.getElementById('ci-zip').value.trim();
+      const errorDiv = document.getElementById('customer-form-error');
+      errorDiv.style.display = "none";
+      errorDiv.textContent = "";
+
+      // Basic validation
+      if (!email || !name || !address || !city || !state || !zip) {
+        errorDiv.textContent = "Please fill out all fields.";
+        errorDiv.style.display = "block";
+        return;
+      }
+      // Disable form button
+      document.getElementById('submit-customer-info').disabled = true;
+      document.getElementById('submit-customer-info').textContent = "Submitting...";
+
+      // Send to Formspree
+      try {
+        const response = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ 
+            email, 
+            name, 
+            address, 
+            city, 
+            state, 
+            zip 
+          }),
+        });
+        if (!response.ok) {
+          throw new Error("Formspree submission failed.");
+        }
+        // Hide form, show Venmo UI
+        document.getElementById('customer-info-form').style.display = "none";
+        showVenmoSection();
+      } catch (err) {
+        errorDiv.textContent = "There was an error submitting your info. Please try again.";
+        errorDiv.style.display = "block";
+        document.getElementById('submit-customer-info').disabled = false;
+        document.getElementById('submit-customer-info').textContent = "Continue to Venmo Payment";
+      }
+    };
+
+    renderCheckoutCart();
+  </script>
+</body>
+</html>

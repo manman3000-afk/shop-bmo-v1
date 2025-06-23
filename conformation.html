@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Processing | Shop BMO</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
+  <style>
+    body {
+      background: #111;
+      color: #ffd700;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .lux-header {
+      background: linear-gradient(90deg, #2d2d2d, #111);
+      padding: 2rem 0 1rem 0;
+      text-align: center;
+      color: #ffd700;
+      letter-spacing: 0.15em;
+      box-shadow: 0 4px 24px 0 #ffd70044;
+    }
+    .confirmation-container {
+      max-width: 480px;
+      margin: 4rem auto 0 auto;
+      background: #181818;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #ffd70033;
+      padding: 2.8rem 2rem 2rem 2rem;
+      color: #ffd700;
+      text-align: center;
+    }
+    .confirmation-container h2 {
+      color: #ffd700;
+      margin-bottom: 1.2rem;
+    }
+    .confirmation-container p {
+      font-size: 1.17rem;
+      margin-bottom: 1.7rem;
+      color: #ffd700bb;
+    }
+    .confirmation-emoji {
+      font-size: 3.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .back-link {
+      display: inline-block;
+      margin: 2rem auto 0 auto;
+      color: #ffd700bb;
+      text-align: center;
+      width: 100%;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="lux-header">
+    <h1>SHOP BMO</h1>
+    <p>Order Confirmation</p>
+  </header>
+  <div class="confirmation-container">
+    <div class="confirmation-emoji">🛒</div>
+    <h2>Your order is being processed!</h2>
+    <p>You will be emailed shortly with a confirmation and next steps.<br>
+    Thank you for shopping with us.</p>
+    <div class="back-link" onclick="window.location='index.html'">← Back to Shop</div>
+  </div>
+</body>
+</html>
