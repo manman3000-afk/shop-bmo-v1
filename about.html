@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>About | Shop BMO</title>
+  <style>
+    :root {
+      --gold: #c9b037;
+      --gold-dark: #b49c29;
+      --black: #000;
+      --white: #fff;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--black);
+      color: var(--gold);
+    }
+    header {
+      background: var(--black);
+      color: var(--gold);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      letter-spacing: 2px;
+      border-bottom: 2px solid var(--gold);
+    }
+    nav {
+      background: var(--black);
+      border-bottom: 1px solid var(--gold);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+    }
+    nav a:hover, nav a:focus {
+      color: var(--white);
+      border-bottom: 2px solid var(--gold);
+    }
+    .about-section {
+      max-width: 750px;
+      margin: 3rem auto 2rem auto;
+      background: #111;
+      box-shadow: 0 2px 16px #000b;
+      border-radius: 16px;
+      border: 1px solid var(--gold-dark);
+      padding: 2.5rem 2.5rem 2rem 2.5rem;
+    }
+    .about-section h1 {
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 1.2rem;
+      letter-spacing: 2px;
+      text-shadow: 1px 2px 12px #000, 0 0 5px var(--gold-dark);
+    }
+    .about-section h2 {
+      color: var(--gold);
+      margin-top: 2.5rem;
+      margin-bottom: 0.7rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 6px #000, 0 0 2px var(--gold-dark);
+    }
+    .about-section p {
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+      text-shadow: 0 1px 6px #000;
+    }
+    .about-section ul {
+      color: var(--gold);
+      font-size: 1.07rem;
+      margin-left: 1.5rem;
+      margin-bottom: 1.7rem;
+      text-shadow: 0 1px 6px #000;
+    }
+    .about-section li {
+      margin-bottom: 0.5rem;
+    }
+    .about-mission {
+      background: #151109;
+      border-left: 4px solid var(--gold);
+      padding: 1.1rem 1.3rem;
+      border-radius: 8px;
+      margin: 1.5rem 0 2rem 0;
+      color: var(--gold);
+      font-style: italic;
+      font-size: 1.08rem;
+      text-shadow: 0 1px 8px #000;
+    }
+    footer {
+      text-align: center;
+      color: var(--gold);
+      padding: 2rem 1rem 1rem 1rem;
+      font-size: 1rem;
+      background: var(--black);
+      margin-top: 2rem;
+      border-top: 1px solid var(--gold-dark);
+      letter-spacing: 1px;
+    }
+    @media (max-width: 800px) {
+      .about-section {
+        margin: 2rem 1rem 1rem 1rem;
+        padding: 1.1rem 0.5rem 1.5rem 0.5rem;
+      }
+      header, nav {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Shop BMO</h2>
+    <div style="font-size:1rem;font-weight:400;letter-spacing:1px;margin-top:0.5rem;">Authentic Luxury Products Under Retail Prices</div>
+  </header>
+
+  <nav>
+    <a href="home-page.html">Home</a>
+    <a href="index.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="about-section">
+    <h1>About Shop BMO</h1>
+    <div class="about-mission">
+      Our mission is to make authentic luxury accessible to everyone—offering genuine designer products at prices that delight.
+    </div>
+    <p>
+      Shop BMO is your trusted destination for authentic luxury goods at unbeatable prices. Founded by passionate collectors and style enthusiasts, we believe everyone deserves a taste of luxury—without the retail markup.
+    </p>
+    <h2>What Makes Us Different?</h2>
+    <ul>
+      <li><b>Authenticity Guaranteed:</b> Every product is inspected and verified to ensure you’re always shopping the real deal.</li>
+      <li><b>Exclusive Savings:</b> We source directly, passing the savings to you so luxury is never out of reach.</li>
+      <li><b>Curated Selection:</b> Our team handpicks the finest designer handbags, accessories, and more.</li>
+      <li><b>Customer-First Approach:</b> Fast shipping, responsive support, and a seamless shopping experience.</li>
+    </ul>
+    <h2>Our Story</h2>
+    <p>
+      Born from a love of high fashion and a desire to democratize luxury, Shop BMO began as a small collective of collectors and quickly grew into a thriving online boutique. We’ve helped thousands of customers find their dream pieces—always authentic, always under retail.
+    </p>
+    <h2>Our Promise</h2>
+    <p>
+      When you shop with us, you’re not just buying a product—you’re joining a community that values trust, style, and value above all. Thank you for making us your go-to for luxury shopping.
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Shop BMO. All rights reserved.
+  </footer>
+</body>
+</html>
