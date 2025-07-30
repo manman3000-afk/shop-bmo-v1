@@ -64,6 +64,30 @@
       letter-spacing: 0.15em;
       box-shadow: 0 4px 24px 0 #ffd70044;
     }
+    /* Navigation Bar Styles */
+    .lux-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      background: #181818;
+      border-bottom: 2px solid #ffd70033;
+      padding: 1rem 0 0.6rem 0;
+      margin-bottom: 1.5rem;
+    }
+    .lux-nav a {
+      color: #ffd700;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      padding-bottom: 0.2rem;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-bottom 0.2s;
+    }
+    .lux-nav a:hover, .lux-nav a.active {
+      color: #fffad1;
+      border-bottom: 2px solid #ffd700;
+    }
     #cart-modal {
       display:none;
       position:fixed;
@@ -147,6 +171,16 @@
     <h1>SHOP BMO</h1>
     <p>Exclusive sourced products, premium experience</p>
   </header>
+
+  <!-- Navigation Bar -->
+  <nav class="lux-nav">
+    <a href="index.html" class="active">Shop</a>
+    <a href="home-page.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="checkout.html">Checkout</a>
+  </nav>
+
   <div style="text-align:right; padding: 1rem;">
     <button class="lux-btn" onclick="toggleCart()" style="position: relative;">
       🛒 Cart (<span id="cart-count">0</span>)
