@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>About | Shop BMO</title>
+  <style>
+    :root {
+      --gold: #c9b037;
+      --gold-dark: #b49c29;
+      --white: #fff;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--white);
+      color: var(--gold);
+    }
+    .lux-header, header {
+      background: linear-gradient(90deg, #f9f9f9, #fff);
+      color: var(--gold);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      letter-spacing: 2px;
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 4px 24px 0 #ffd70044;
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 210px;
+      background: #f9f9f9;
+      border-right: 2px solid #ffd70033;
+      box-shadow: 2px 0 16px #ffd70011;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      z-index: 100;
+      padding-top: 3rem;
+    }
+    .side-menu h2 {
+      font-size: 1.2rem;
+      color: var(--gold-dark);
+      font-weight: bold;
+      margin-left: 24px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.08em;
+    }
+    .side-menu a {
+      display: block;
+      width: 50%;
+      padding: 0.9rem 2rem;
+      color: var(--gold-dark);
+      font-size: 1.07rem;
+      text-decoration: none;
+      font-weight: 600;
+      border-left: 2px solid transparent;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .side-menu a:hover, .side-menu a.active {
+      background: #fffbe9;
+      color: var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+    .main-content {
+      margin-left: 210px;
+    }
+    .about-section {
+      max-width: 750px;
+      margin: 3rem auto 2rem auto;
+      background: #f8f8f8;
+      box-shadow: 0 2px 16px #0001;
+      border-radius: 16px;
+      border: 1px solid var(--gold-dark);
+      padding: 2.5rem 2.5rem 2rem 2.5rem;
+      color: var(--gold);
+    }
+    .about-section h1 {
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 1.2rem;
+      letter-spacing: 2px;
+      text-shadow: 1px 2px 12px #fff, 0 0 5px var(--gold-dark);
+    }
+    .about-section h2 {
+      color: var(--gold);
+      margin-top: 2.5rem;
+      margin-bottom: 0.7rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 6px #fff, 0 0 2px var(--gold-dark);
+    }
+    .about-section p {
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+      text-shadow: 0 1px 6px #fff;
+    }
+    .about-section ul {
+      color: var(--gold);
+      font-size: 1.07rem;
+      margin-left: 1.5rem;
+      margin-bottom: 1.7rem;
+      text-shadow: 0 1px 6px #fff;
+    }
+    .about-section li {
+      margin-bottom: 0.5rem;
+    }
+    .about-mission {
+      background: #fffbe9;
+      border-left: 4px solid var(--gold);
+      padding: 1.1rem 1.3rem;
+      border-radius: 8px;
+      margin: 1.5rem 0 2rem 0;
+      color: var(--gold);
+      font-style: italic;
+      font-size: 1.08rem;
+      text-shadow: 0 1px 8px #fff;
+    }
+    footer {
+      text-align: center;
+      color: var(--gold-dark);
+      padding: 2rem 1rem 1rem 1rem;
+      font-size: 1rem;
+      background: var(--white);
+      margin-top: 2rem;
+      border-top: 1px solid var(--gold-dark);
+      letter-spacing: 1px;
+    }
+    @media (max-width: 800px) {
+      .about-section {
+        margin: 2rem 1rem 1rem 1rem;
+        padding: 1.1rem 0.5rem 1.5rem 0.5rem;
+      }
+      header, .lux-header {
+        padding: 1rem;
+      }
+      .side-menu {
+        position: static;
+        width: 50%;
+        height: auto;
+        flex-direction: row;
+        padding-top: 0;
+        border-right: none;
+        box-shadow: none;
+      }
+      .side-menu h2 {
+        display: none;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="lux-header">
+    <h2>Shop BMO</h2>
+    <div style="font-size:1rem;font-weight:400;letter-spacing:1px;margin-top:0.5rem;">Authentic Luxury Products Under Retail Prices</div>
+  </header>
+
+  <!-- Side Navigation Menu -->
+  <nav class="side-menu">
+    <h2>Browse</h2>
+    <a href="home-page.html">Home</a>
+    <a href="index.html">Shop</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="shop-mens.html">Men's Fragrances</a>
+    <a href="shop-womens.html">Women's Fragrances</a>
+    <a href="shop-unisex.html">Unisex Fragrances</a>
+    <a href="snacks.html">Snacks</a>
+    <a href="checkout.html">Checkout</a>
+  </nav>
+
+  <div class="main-content">
+    <section class="about-section">
+      <h1>About Shop BMO</h1>
+      <div class="about-mission">
+        Our mission is to make authentic luxury accessible to everyone—offering genuine designer products at prices that delight.
+      </div>
+      <p>
+        Shop BMO is your trusted destination for authentic luxury goods at unbeatable prices. Founded by passionate collectors and style enthusiasts, we believe everyone deserves a taste of luxury—without the retail markup.
+      </p>
+      <h2>What Makes Us Different?</h2>
+      <ul>
+        <li><b>Authenticity Guaranteed:</b> Every product is inspected and verified to ensure you’re always shopping the real deal.</li>
+        <li><b>Exclusive Savings:</b> We source directly, passing the savings to you so luxury is never out of reach.</li>
+        <li><b>Curated Selection:</b> Our team handpicks the finest designer handbags, accessories, and more.</li>
+        <li><b>Customer-First Approach:</b> Fast shipping, responsive support, and a seamless shopping experience.</li>
+      </ul>
+      <h2>Our Story</h2>
+      <p>
+        Born from a love of high fashion and a desire to democratize luxury, Shop BMO began as a small collective of collectors and quickly grew into a thriving online boutique. We’ve helped thousands of customers find their dream pieces—always authentic, always under retail.
+      </p>
+      <h2>Our Promise</h2>
+      <p>
+        When you shop with us, you’re not just buying a product—you’re joining a community that values trust, style, and value above all. Thank you for making us your go-to for luxury shopping.
+      </p>
+    </section>
+
+    <footer>
+      &copy; 2025 Shop BMO. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
