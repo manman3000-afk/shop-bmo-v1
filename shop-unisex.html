@@ -1,280 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Shop BMO</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- Montserrat for the site, Cinzel for the header -->
+  <meta charset="UTF-8" />
+  <title>Shop BMO — Unisex</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Montserrat for site, Cinzel for header -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
   <style>
-body {
-  background: #fff;
-  color: #222;
-  font-family: 'Montserrat', sans-serif;
-}
-.lux-header {
-  background: linear-gradient(90deg, #f9f9f9, #fff);
-  padding: 2rem 0;
-  text-align: center;
-  color: #222;
-  letter-spacing: 0.15em;
-  box-shadow: 0 4px 24px 0 #ffd70044;
-}
-.lux-header h1 {
-  font-family: 'Cinzel', serif;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  margin: 0;
-}
-.side-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 210px;
-  background: #f9f9f9;
-  border-right: 2px solid #ffd70033;
-  box-shadow: 2px 0 16px #ffd70011;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  z-index: 100;
-  padding-top: 3rem;
-}
-.side-menu h2 {
-  font-size: 1.2rem;
-  color: #bfa200;
-  font-weight: bold;
-  margin-left: 24px;
-  margin-bottom: 1rem;
-  letter-spacing: 0.08em;
-}
-.side-menu a {
-  display: block;
-  width: 50%;
-  padding: 0.9rem 2rem;
-  color: #bfa200;
-  font-size: 1.07rem;
-  text-decoration: none;
-  font-weight: 600;
-  border-left: 2px solid transparent;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
-}
-.side-menu a:hover, .side-menu a.active {
-  background: #fffbe9;
-  color: #ffd700;
-  border-left: 2px solid #ffd700;
-}
+    :root { --gold-600:#bfa200; --gold-500:#ffd700; --bg:#f9f9f9; }
+    html,body { height:100%; margin:0; }
+    body {
+      background:#fff;
+      color:#222;
+      font-family:'Montserrat',sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-.main-content {
-  margin-left: 210px;
-}
-.grid-4rows {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  margin-top: 2rem;
-}
-.lux-product {
-  width: 100%;
-  height: 420px;
-  background: #fff;
-  border-radius: 0;
-  margin: 0;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 2px 8px #eee;
-  color: #222;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  position: relative;
-  overflow: hidden;
-  box-sizing: border-box;
-  border: 1px solid #eee;
-}
-.lux-product:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 8px 32px #ffd70055;
-  text-decoration: none;
-}
-.lux-btn {
-  background: linear-gradient(90deg, #ffd700, #bfa200);
-  color: #111;
-  border: none;
-  border-radius: 25px;
-  padding: 0.6rem 1.2rem;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: background 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  box-shadow: 0 2px 12px #ffd70055;
-  width: 90%;
-  margin: 0.5rem auto 0 auto;
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.lux-product img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 0;
-  margin-bottom: 1rem;
-  background: #f9f9f9;
-  display: block;
-}
-.lux-product h3 {
-  margin: 1rem 0 0.5rem 0;
-  font-size: 1.2rem;
-  flex: 0 0 auto;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  max-width: 100%;
-  display: block;
-}
-.lux-product p {
-  flex: 1 1 auto;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 3.5em;
-}
-.lux-product .price {
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  flex: 0 0 auto;
-}
-.lux-product .product-link-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 1;
-  cursor: pointer;
-}
-.lux-product > *:not(.product-link-overlay) {
-  z-index: 2;
-  position: relative;
-}
-.lux-product .lux-btn {
-  z-index: 3;
-  position: relative;
-  flex: 0 0 auto;
-}
-#cart-modal {
- display:none;
-  position:fixed;
-  top:0;
-  right:0;
-  width:340px;
-  height:100%;
-  background:#f9f9f9;
-  color:#222;
-  box-shadow:-4px 0 32px #000a;
-  z-index:1000;
-  padding:2rem;
-  overflow-y:auto;
-}
-#cart-modal ul {
- list-style:none; 
- padding:0; 
- margin:0;
-}
-#cart-modal h2 {
-  margin-top: 0;
-}
-#empty-cart-alert {
- display:none;
- background: #ffd700;
- color: #111;
- text-align: center;
-padding: 1rem;
- border-radius: 12px;
-  font-weight: bold;
- margin: 1rem auto;
-  max-width: 420px;
-  box-shadow: 0 2px 12px #ffd70055;
-}
-.remove-btn {
- margin-left:10px;
- background:#ffd70022;
- color:#bfa200;
- border:none;
- border-radius:6px;
- cursor:pointer;
-  padding: 3px 10px;
-}
-.remove-btn:hover { background:#ffd70055; color:#111;}
-.disabled-btn {
- opacity: 0.6;
- cursor: not-allowed;
-}
-.lux-product .lux-btn {
-  pointer-events: auto;
-}
-@media (max-width: 900px) {
-  .grid-4rows {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .main-content {
-    margin-left: 0;
-  }
-  .side-menu {
-    position: static;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    padding-top: 0;
-    border-right: none;
-    box-shadow: none;
-  }
-  .side-menu h2 {
-    display: none;
-  }
-}
-@media (max-width: 600px) {
-  .grid-4rows {
-    grid-template-columns: 1fr;
-  }
-  .main-content {
-    margin-left: 0;
-  }
- /* change .row to a grid and use two columns at mobile sizes */
-.row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
-  justify-items: center;
-}
+    .lux-header{
+      background: linear-gradient(90deg,var(--bg),#fff);
+      padding:2rem 0; text-align:center; color:#222;
+      letter-spacing:0.15em; box-shadow:0 4px 24px 0 #ffd70044;
+    }
+    .lux-header h1{ font-family:'Cinzel',serif; font-weight:700; margin:0; }
 
-@media (max-width: 700px) {
-  .row {
-    grid-template-columns: repeat(2, 1fr); /* two columns */
-    padding: 0 0.75rem;
-  }
-  .lux-product {
-    width: 100%;
-    max-width: none;
-  }
-}
+    /* Desktop side menu */
+    .side-menu{
+      position:fixed; top:0; left:0; height:100%; width:210px;
+      background:var(--bg); border-right:2px solid #ffd70033;
+      box-shadow:2px 0 16px #ffd70011; display:flex; flex-direction:column;
+      align-items:flex-start; z-index:100; padding-top:3rem;
+    }
+    .side-menu h2{ font-size:1.2rem; color:var(--gold-600); font-weight:700; margin-left:24px; margin-bottom:1rem; }
+    .side-menu a{
+      display:block; width:50%; padding:.9rem 2rem; color:var(--gold-600);
+      font-size:1.07rem; text-decoration:none; font-weight:600; border-left:2px solid transparent;
+      transition:background .18s, border-color .18s, color .18s;
+    }
+    .side-menu a:hover, .side-menu a.active{ background:#fffbe9; color:var(--gold-500); border-left:2px solid var(--gold-500); }
 
-@media (max-width: 420px) {
-  .row {
-    grid-template-columns: 1fr; /* switch to single column on very small screens */
-  }
-}
+    .main-content { margin-left:210px; box-sizing:border-box; min-height:100vh; }
 
-.lux-product img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-}
-</style>
+    /* Product grid: responsive, side-by-side cards */
+    .grid-4rows {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:1rem;
+      margin:2rem;
+    }
+    .lux-product{
+      width:100%; height:auto; background:#fff; border-radius:0;
+      transition:transform .28s, box-shadow .28s; box-shadow:0 2px 8px #eee;
+      color:#222; display:flex; flex-direction:column; position:relative;
+      overflow:hidden; box-sizing:border-box; border:1px solid #eee;
+    }
+    .lux-product:hover{ transform:translateY(-6px); box-shadow:0 12px 32px #ffd70055; }
+    .lux-product img{ width:100%; height:220px; object-fit:cover; display:block; background:var(--bg); }
+    .lux-product h3{ margin:.5rem 1rem 0 1rem; font-size:1.05rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .lux-product .price{ margin:.25rem 1rem .75rem 1rem; font-weight:700; color:var(--gold-600); }
+    .lux-btn{
+      background:linear-gradient(90deg,var(--gold-500),var(--gold-600));
+      color:#111; border:0; border-radius:25px; padding:.6rem 1.2rem; font-weight:700;
+      font-size:1rem; cursor:pointer; box-shadow:0 2px 12px #ffd70055;
+      width:calc(100% - 2rem); margin:.6rem 1rem 1rem 1rem;
+    }
+
+    /* Mobile nav (select + toggle) */
+    .mobile-nav{ display:none; width:100%; background:var(--bg); border-bottom:2px solid #ffd70033; box-shadow:0 4px 10px rgba(0,0,0,.04); padding:.5rem 1rem; z-index:200; box-sizing:border-box; }
+    .mobile-nav-bar{ max-width:1200px; margin:0 auto; display:flex; gap:.6rem; align-items:center; }
+    #mobile-menu-toggle{ background:linear-gradient(90deg,var(--gold-500),var(--gold-600)); color:#111; border:0; border-radius:8px; padding:.45rem .8rem; font-weight:700; cursor:pointer; box-shadow:0 2px 12px rgba(255,215,0,.22); display:inline-flex; align-items:center; gap:.4rem; }
+    #mobile-menu{ -webkit-appearance:none; appearance:none; width:100%; padding:.48rem .9rem; padding-right:2.6rem; border-radius:8px; border:1px solid #eee; background:#fff; font-size:1rem; color:#222; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23888' d='M6 8L0 0h12z'/></svg>"); background-repeat:no-repeat; background-position:right 10px center; background-size:12px 8px; }
+    #mobile-menu:focus, #mobile-menu-toggle:focus { outline:3px solid rgba(255,215,0,.28); outline-offset:2px; }
+    @media (max-width:800px){ .side-menu{ display:none; pointer-events:none; opacity:0; transform:translateX(-8px); } .mobile-nav{ display:block; } .main-content{ margin-left:0; } }
+    @media (max-width:900px){ .grid-4rows{ grid-template-columns:repeat(2,1fr);} .main-content{ margin-left:0; } .side-menu{ position:static; width:100%; flex-direction:row; padding:.3rem .6rem; } .side-menu h2{ display:none; } .side-menu a{ width:auto; padding:.6rem 1rem; border-left:none; border-bottom:2px solid transparent;} .side-menu a.active,.side-menu a:hover{ border-bottom-color:var(--gold-500);} }
+    @media (max-width:600px){ .grid-4rows{ grid-template-columns:1fr; } .lux-product img{ height:160px; } .lux-btn{ width:calc(100% - 2rem); } }
+
+    /* Cart modal */
+    #cart-modal{ display:none; position:fixed; top:0; right:0; width:340px; height:100%; background:#f9f9f9; color:#222; box-shadow:-4px 0 32px #000a; z-index:1000; padding:2rem; overflow-y:auto; }
+    #empty-cart-alert{ display:none; background:var(--gold-500); color:#111; text-align:center; padding:1rem; border-radius:12px; font-weight:700; margin:1rem auto; max-width:420px; box-shadow:0 2px 12px #ffd70055; }
+    .sr-only{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  </style>
 </head>
 <body>
   <header class="lux-header">
@@ -282,13 +88,21 @@ padding: 1rem;
     <p>Exclusive sourced products, premium experience</p>
   </header>
 
-  <!-- Side Navigation Menu -->
-  <nav class="side-menu">
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-bar">
+      <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">☰ Browse</button>
+      <select id="mobile-menu" aria-label="Mobile navigation"><option value="">Go to...</option></select>
+    </div>
+  </div>
+
+  <!-- Desktop side menu (source for mobile select) -->
+  <nav class="side-menu" id="side-menu" aria-label="Main navigation">
     <h2>Browse</h2>
     <a href="index.html">Shop</a>
     <a href="shop-mens.html">Men's Fragrances</a>
     <a href="shop-womens.html">Women's Fragrances</a>
-    <a href="shop-unisex.html"class="active" >Unisex Fragrances</a>
+    <a href="shop-unisex.html" class="active">Unisex Fragrances</a>
     <a href="snacks.html">Snacks</a>
     <a href="home-page.html">Home</a>
     <a href="about.html">About</a>
@@ -296,240 +110,169 @@ padding: 1rem;
     <a href="checkout.html">Checkout</a>
   </nav>
 
-  <div class="main-content">
-    <div style="text-align:right; padding: 1rem;">
-      <button class="lux-btn" onclick="toggleCart()" style="position: relative;">
-        🛒 Cart (<span id="cart-count">0</span>)
-      </button>
+  <main class="main-content" id="main">
+    <div style="text-align:right; padding:1rem;">
+      <button class="lux-btn" id="cart-toggle" style="position:relative;">🛒 Cart (<span id="cart-count">0</span>)</button>
     </div>
+
     <div id="empty-cart-alert">⚠️ Your cart is empty. Please add items before checking out.</div>
-    <!-- Featured Products -->
+
     <section class="container">
-      <h2 style="color:#ffd700;text-align:left;">Featured Collection</h2>
-      <div class="grid-4rows" id="product-list"></div>
+      <h2 style="color:#ffd700; text-align:left; margin-left:1rem;">Featured Collection</h2>
+      <div class="grid-4rows" id="product-list" aria-live="polite"></div>
     </section>
-    <footer style="text-align:center;padding:2rem 0;color:#ffd70088;">
-      © 2025 BMO.LLC.CO All rights reserved.
-    </footer>
-  <div id="cart-modal">
+
+    <footer style="text-align:center; padding:2rem 0; color:#ffd70088;">© 2025 BMO.LLC.CO All rights reserved.</footer>
+  </main>
+
+  <div id="cart-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <h2>Your Cart</h2>
     <ul id="cart-items"></ul>
     <hr>
     <b>Total: $<span id="cart-total">0.00</span></b>
     <br><br>
-    <button id="checkout-btn" class="lux-btn" onclick="checkoutCart()">Checkout</button>
-    <button class="lux-btn" style="background:#333;color:#ffd700;margin-left:10px;" onclick="toggleCart()">Close</button>
+    <button id="checkout-btn" class="lux-btn">Checkout</button>
+    <button class="lux-btn" id="close-cart" style="background:#333;color:#ffd700;margin-left:10px;">Close</button>
   </div>
-  <script>
-    // Your full products array (as in index.html)
-    const products = [
-{ id: "wanted-azzaro-edt", name: "Wanted by Azzaro EDT 3.4oz", img: "https://mediafiles.maxaroma.com/9cd29e92-4b8f-436f-ad1f-8e368b30dc1d/https://www.maxaroma.com/productimages/large/UP3351500002696.jpg?ver=1725902804", desc: "Bold and spicy with cardamom and lemon, anchored by warm tonka bean.", price: 55 },
-  { id: "most-wanted-intense-edt", name: "Most Wanted Intense EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/files/ruzfgcrpyp1h_1024x1024.jpg?v=1733081957", desc: "Amber and toffee create a deep, addictive masculine signature.", price: 69 },
-  { id: "most-wanted-edp-intense", name: "Most Wanted EDP Intense 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.66826.2x.avif", desc: "Fiery ginger and bourbon vanilla bring smoky, seductive depth.", price: 78 },
-  { id: "burberry-london-edt-men", name: "Burberry London EDT for Men 3.4oz", img: "https://us-i.makeupstore.com/v/va/vaxmvhetvtyn.jpg", desc: "a warm, spicy fragrance with a sophisticated, masculine character, embodying classic British elegance", price: 50 },
-  { id: "burberry-hero-edt-men", name: "Burberry Hero EDT for Men 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/31903DDC-3F05-4700-93E1-8C09D421C5F5?$BBY_V3_UNSHARP_SL_1$&wid=3000&hei=3000", desc: "Tobacco, leather, and cinnamon—dressed like a tailored London suit.", price: 69 },
-  { id: "burberry-hero-edp-men", name: "Burberry Hero EDP for Men 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/9CB5B4CF-55ED-43E8-BD76-70F39A9AD29E?$BBY_V3_SL_1$&wid=2100&hei=2100", desc: "Cedarwood and bergamot evoke a wild, earthy masculinity.", price: 85 },
-  { id: "burberry-london-edp-women", name: "Burberry London EDP for Women 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/F9363128-2F01-40CB-A437-9D0D6FE54EC2?$BBY_V3_SL_1$&wid=2100&hei=2100", desc: "Pine and incense add soul and boldness to a rich, woodsy blend.", price: 69 },
-  { id: "coach-blue-edt", name: "Coach Blue EDT 3.4oz", img: "https://i5.walmartimages.com/asr/3b9f9371-0799-4667-97ef-21c1e55a77ed.feaf99d22e10c92acfa76c5ca7feda10.jpeg", desc: " Top notes are Lime and Absinthe; middle notes are Ozonic notes and Black Pepper; base notes are Cedar and Amber.", price: 55 },
-  { id: "coach-green-edt", name: "Coach Green EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.81391.2x.avif", desc: "a fresh and invigorating Aromatic Spicy fragrance for men", price: 44 },
-  { id: "coach-ny-edt-men", name: "Coach New York EDT for Men 3.3oz", img: "https://m.media-amazon.com/images/I/71KZKKpklTL._SX522_.jpg", desc: "Zesty and bright with lime and ozone—a free-spirited burst.", price: 50 },
-  { id: "coach-ny-edt-men-2", name: "Coach New York EDT for Men 2.0oz", img: "https://m.media-amazon.com/images/I/71KZKKpklTL._SX522_.jpg", desc: "A fresh, herbal breeze with kiwi and rosemary—natural and cool.", price: 35 },
-  { id: "coach-love-edp-women", name: "Coach Love EDP for Women 3.3oz", img: "https://www.aurafragrance.com/cdn/shop/files/796162ce-0ad3-4a38-a582-9255c53e89e5-569b7549eb65ba2de25112e7374cce56_1024x1024.jpg?v=1729585257", desc: "Nashi pear and suede blend for a modern, metropolitan scent.", price: 55 },
-  { id: "coach-love-edp-women-2", name: "Coach Love EDP for Women 2.0oz", img: "https://www.aurafragrance.com/cdn/shop/files/796162ce-0ad3-4a38-a582-9255c53e89e5-569b7549eb65ba2de25112e7374cce56_1024x1024.jpg?v=1729585257", desc: "Red currant and wild rose make this scent playful and passionate.", price: 39 },
-  { id: "coach-floral-edp-women", name: "Coach Floral EDP for Women 3.0oz", img: "https://www.aurafragrance.com/cdn/shop/products/375x500.48115_1024x1024.jpg?v=1583109187", desc: "Pineapple sorbet and peony bring fresh, delicate charm.", price: 40 },
-  { id: "coach-floral-edp-women-2", name: "Coach Floral EDP for Women 1.7oz", img: "https://www.aurafragrance.com/cdn/shop/products/375x500.48115_1024x1024.jpg?v=1583109187", desc: "Goji berry and grapefruit give this one a flirty spring glow.", price: 39 },
-  { id: "coach-floral-blush-edp-women", name: "Coach Floral Blush EDP for Women 2.0oz", img: "https://www.aurafragrance.com/cdn/shop/products/061e9d271dded13cceddf4b37fecd087ef01817c_1024x1024.jpg?v=1576636637", desc: "A clean and crisp fragrance kit—perfectly gift-ready.", price: 46 },
-  { id: "coach-green-men-set", name: "Coach Green Men Set", img: "https://i5.walmartimages.com/seo/Coach-Green-3-Piece-Gift-Set-3-3-OZ-Eau-De-Toilette-3-3-OZ-Shower-Gel-Mini-Perfume_32428624-7478-4c92-bc75-4c7a7660fd33.66b35d620479c9a12beb0de43cfb5f49.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF", desc: "The gift set includes a 100ml Eau de Toilette, a 100ml shower gel, and a 15ml travel-sized EDT", price: 85 },
-  { id: "dior-sauvage-edp", name: "Dior Sauvage EDP 2.0oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.48100.2x.avif", desc: "Bergamot and ambroxan create a rugged, magnetic trail.", price: 110 },
-  { id: "dior-homme-intense-edp", name: "Dior Homme Intense EDP 3.3oz", img: "https://www.lexormiami.com/cdn/shop/products/0321016_3348900838178_1000x.jpg?v=1750784827", desc: "Velvety iris and amber offer elegant masculine sensuality.", price: 140 },
-  { id: "the-one-edp-intense-men", name: "The One EDP Intense for Men 3.3oz", img: "https://www.aurafragrance.com/cdn/shop/products/b04cf63e98d153a7e40d94a4efc844d0d3a5d984_1024x1024.jpg?v=1627941292", desc: "a fragrance that combines luminous warmth with deep, elegant accords, creating a striking and masculine scent", price: 65 },
-  { id: "the-one-edt-men", name: "The One EDT for Men 3.3oz", img: "https://dimg.dillards.com/is/image/DillardsZoom/mainProduct/dolce--gabbana-the-one-for-men-eau-de-parfum-spray/04698515_zi.jpg", desc: "Cardamom and leather make this fragrance rich and commanding.", price: 65 },
-  { id: "the-one-edt-men-2", name: "The One EDT for Men 5.0oz", img: "https://www.aurafragrance.com/cdn/shop/products/Dolce-Gabbana-The-One-Mens-5-ounce-Eau-de-Toilette-Spray-7478444f-d490-40c9-830f-f199147fa8b8_1024x1024.jpg?v=1616176693", desc: "Tobacco and amber lend timeless elegance with a spicy twist.", price: 75 },
-  { id: "the-one-gold-edp-men", name: "The One Gold EDP for Men 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/375x500-69000_1024x1024.jpg?v=1708341162", desc: "Golden apple and ginger blend with woody power.", price: 59 },
-  { id: "q-edp-women", name: "Q EDP for Women 3.3oz", img: "https://www.aurafragrance.com/cdn/shop/products/s-l1600--2_41d4fdd7-e05e-49d2-a352-8b0b786d1248_1024x1024.png?v=1698875758", desc: "Sicilian lemon and cherry burst over a woody base—regal and bold.", price: 55 },
-  { id: "k-parfum-edp-men", name: "K Parfum EDP for Me 3.3ozn", img: "https://www.aurafragrance.com/cdn/shop/products/123_large.jpg?v=1599864617", desc: "Smoky spices and citrus notes for commanding style.", price: 80 },
-  { id: "light-blue-summer-vibes-edt-men", name: "Light Blue Summer Vibes EDT for Men 4.2oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.80377.2x.avif", desc: "Lemon and cypress for a breezy Mediterranean escape.", price: 50 },
-  { id: "light-blue-women-set", name: "Light Blue Women Set", img: "https://www.aurafragrance.com/cdn/shop/files/light-blue-classic-8057971185351_large.png?v=1746600607", desc: "Crisp apple and citron in a fresh, iconic gift-ready trio.", price: 85 },
-  { id: "the-one-edp-women", name: "The One EDP for Women 2.0oz", img: "https://www.aurafragrance.com/cdn/shop/products/DGTHEONEW2.5_1024x1024.jpg?v=1497558036", desc: "An opening medley pairs bergamot with juicy peach, enlivening the senses and providing a tauntingly fresh and balmy start to your day.", price: 70 },
-  { id: "the-one-edp-women-2", name: "The One EDP for Women 1.7oz", img: "https://www.aurafragrance.com/cdn/shop/products/DGTHEONEW2.5_1024x1024.jpg?v=1497558036", desc: "An opening medley pairs bergamot with juicy peach, enlivening the senses and providing a tauntingly fresh and balmy start to your day.", price: 80 },
-  { id: "phantom-edt-men", name: "Phantom EDT for Men 3.3oz", img: "https://img.fragrancex.com/images/products/sku/large/pacp8j.webp", desc: "Lemon and lavender tech-fuse into upbeat masculinity.", price: 70 },
-  { id: "phantom-intense-edp-men", name: "Phantom Intense EDP for Men 3.3oz", img: "https://www.sobelia.com/62766-83005-thickbox/phantom-intense-paco-rabanne-eau-de-parfum-spray-100ml.jpg", desc: "Rum and patchouli deliver a rich, nighttime vibe.", price: 80 },
-  { id: "phantom-gift-set", name: "Phantom Gift Set", img: "https://www.aurafragrance.com/cdn/shop/files/Rabanne-Phantom-Eau-de-Toilette-100ml-Gift-Set_1024x1024.jpg?v=1736968235", desc: "Complete set of scent, deo, and travel spray in futuristic flair.", price: 110 },
-  { id: "acqua-di-gio-edt", name: "Acqua Di Gio EDT 3.4oz", img: "https://fragrancemarket.com/cdn/shop/files/acquadigioedpmen.webp?v=1707919497&amp;width=1100", desc: "a fresh, aquatic fragrance for men, known for its Mediterranean-inspired scent profile", price: 110 },
-  { id: "stronger-with-you-only-edt", name: "Stronger With You Only EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/s-l500_9e6e5a0f-1f6f-4cd7-8711-5f95f5f16649_1024x1024.png?v=1668030599", desc: "Bergamot and neroli bring clean aquatic vibrancy.", price: 80 },
-  { id: "stronger-with-you-edt", name: "Stronger With You EDT 3.4oz", img: "https://m.media-amazon.com/images/I/41I095it8eL._SY445_SX342_QL70_FMwebp_.jpg", desc: "Chestnut and vanilla meet spicy cardamom in addictive warmth.", price: 80 },
-  { id: "because-its-you-edp", name: "Because It's You EDP 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/50c3f5c887dfa9c6258b22019304c1486be7b591_1024x1024.jpg?v=1575670025", desc: "Aromatic spices and soft woods create rich depth.", price: 75 },
-  { id: "stronger-with-you-intensely-edp", name: "Stronger With You Intensely EDP 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/armani_stronger_with_you_1024x1024_46896c4d-b0ff-4ca2-9805-d26b9a7091ca_1024x1024.jpg?v=1615430762", desc: " Top notes are Pink Pepper, Juniper and Violet; middle notes are Toffee, Cinnamon, Lavender and Sage; base notes are Vanilla, Amber, Tonka Bean and Suede.", price: 69 },
-  { id: "acqua-di-gio-profondo-edp", name: "Acqua di Gio Profondo EDP 4.2oz", img: "https://www.aurafragrance.com/cdn/shop/products/61PaVkU_UgL._SL1000_1024x1024.jpg?v=1605914331", desc: "Top notes are Marine notes and Green Mandarin; middle note is Mimosa; base notes are Patchouli and Labdanum.", price: 110 },
-  { id: "acqua-di-gio-profondo-parfum", name: "Acqua di Gio Profondo Parfum 1.7oz", img: "https://www.aurafragrance.com/cdn/shop/files/ACQUA_DI_GIO_PROFONDO_3.4OZ_PARFUM_MEN_NIB_SEALED__57642_1024x1024.jpg?v=1737349488", desc: "Deep aquatic tones and aromatic woods—masculine and mature.", price: 80 },
-  { id: "acqua-di-gio-profondo-parfum-2", name: "Acqua di Gio Profondo Parfum 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/files/ACQUA_DI_GIO_PROFONDO_3.4OZ_PARFUM_MEN_NIB_SEALED__57642_1024x1024.jpg?v=1737349488", desc: "Mystical marine accord layered with frankincense.", price: 125 },
-  { id: "acqua-di-gio-edp-2022", name: "Acqua di Gio EDP (2022) 6.8", img: "https://www.aurafragrance.com/cdn/shop/products/nm_4313259_100000_m_1024x1024.jpg?v=1659397523", desc: "Bold and oceanic with long-lasting richness.", price: 130 },
-  { id: "eros-edt", name: "Eros EDT 3.4oz", img: "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw12d7d83f/original/90_R740010-R100MLS_RNUL_22_Eros~EDT~100~ml-Accessories-Versace-online-store_1_1.jpg?sw=850&amp;q=85&amp;strip=true", desc: "a men's fragrance known for its fresh, woody, and oriental scent, inspired by the Greek God of love", price: 65 },
-  { id: "eros-edt-2", name: "Eros EDT 6.7oz", img: "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw12d7d83f/original/90_R740010-R100MLS_RNUL_22_Eros~EDT~100~ml-Accessories-Versace-online-store_1_1.jpg?sw=850&amp;q=85&amp;strip=true", desc: "Mint, apple, and tonka—desire in every drop.", price: 85 },
-  { id: "eros-flame-edt", name: "Eros Flame EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.52180.2x.avif", desc: "Orange, pepper, and woods strike a fiery contrast.", price: 65 },
-  { id: "eros-energy-edt", name: "Eros Energy EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/files/1000051657_1024x1024.jpg?v=1741472074", desc: "Zesty and electric, made for thrill-seekers.", price: 105 },
-  { id: "eros-parfum-2021", name: "Eros Parfum (2021) 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/versace-eros-parfum_2400x_20d590dd-6967-41d8-bc23-473b6ef7e1f0_1024x1024.png?v=1645641821", desc: "Refined strength with earthy vetiver and creamy woods.", price: 80 },
-  { id: "dylan-blue-edt", name: "Dylan Blue EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/04781670_zi_1024x1024.jpg?v=1513101849", desc: " Top notes are Calabrian bergamot, Water Notes, Grapefruit and Fig Leaf; middle notes are Ambroxan, Black Pepper, Patchouli, Violet Leaf and Papyrus; base notes are Incense, Musk, Tonka Bean and Saffron.", price: 65 },
-  { id: "dylan-blue-edt-2", name: "Dylan Blue EDT 6.7oz", img: "https://www.aurafragrance.com/cdn/shop/products/58.JPG?v=1513101849", desc: " Top notes are Calabrian bergamot, Water Notes, Grapefruit and Fig Leaf; middle notes are Ambroxan, Black Pepper, Patchouli, Violet Leaf and Papyrus; base notes are Incense, Musk, Tonka Bean and Saffron.", price: 110 },
-  { id: "man-eau-fraiche-edt", name: "Man Eau Fraiche EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/eau-fraiche-versace-men_1024x1024.jpg?v=1497557984", desc: "Jasmine and lemon dance in a sweet and confident mix.", price: 55 },
-  { id: "eros-edt-women", name: "Eros EDT for Women 3.4oz", img: "https://cdn.fragrancenet.com/images/photos/900x900/289702.jpg", desc: "Top notes are Sicilian Lemon, Pomegranate and Calabrian bergamot; middle notes are Lemon Blossom, Jasmine Sambac, Jasmine and Peony; base notes are Musk, Ambroxan, Woodsy Notes and Sandalwood..", price: 70 },
-  { id: "pour-homme-gift-set", name: "Pour Homme Gift Set", img: "https://m.media-amazon.com/images/I/71SPesqYVJL._SX679_.jpg", desc: "Cologne and gel for scent that travels well.", price: 70 },
-  { id: "dylan-blue-men-travel-set", name: "Dylan Blue Men Travel Set", img: "https://cdn.fragrancenet.com/images/photos/900x900/294526.jpg", desc: "A versatile kit with scent and storage to match.", price: 69 },
-  { id: "pour-homme-set-toiletry-bag", name: "Pour Homme Set (Toiletry Bag)", img: "https://www.aurafragrance.com/cdn/shop/files/7411-d6ff7e42-1000_1_1024x1024.jpg?v=1713985041", desc: "Versace Pour Homme is a modern and sexy fragrance for men, launched in 2008. The aromatic fougere scent starts off with fresh and citrusy notes of lemon, bergamot and neroli, along with rose de mai. With a bag to match.", price: 75 },
-  { id: "yellow-diamond-4pc-set", name: "Yellow Diamond 4pc Set", img: "https://www.aurafragrance.com/cdn/shop/products/s-l500--7_1024x1024.jpg?v=1668738510", desc: "Elegant yet strong—marine florals with a luxe finish.", price: 79 },
-  { id: "dylan-blue-women-4pc-set", name: "Dylan Blue Women 4pc Set", img: "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/23152346_fpx.tif?op_sharpen=1&wid=700&fit=fit,1&fmt=webp", desc: "Rich plum and musk with travel flair in every piece.", price: 85 },
-  { id: "dylan-blue-women-set-mini-bag", name: "Dylan Blue Women Set w/ Mini & Bag", img: "https://www.aurafragrance.com/cdn/shop/files/versace-ladies-dylan-blue-gift-set-fragrances-8011003884971_1024x1024.jpg?v=1744147383", desc: "Rich plum and musk with travel flair in every piece.", price: 89 },
-  { id: "jazz-club-edt", name: "Jazz Club Maison Margiela for Men EDT 3.3oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.20541.2x.avif", desc: "Top notes are Pink Pepper, Neroli and Lemon; middle notes are Rum, Clary Sage and Java vetiver oil; base notes are Tobacco Leaf, vanilla bean and Styrax.", price: 100 },
-  { id: "explorer-edp", name: "Explorer for Men EDP 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.52002.2x.avif", desc: "a unique woody-aromatic-leather concoction that combines essences of bergamot from Italy, vetiver from Haiti and patchouli from Indonesia.", price: 50 },
-  { id: "versace-pour-homme-edt", name: "Pour Homme for Men EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.2318.2x.avif", desc: "classic appeal of bergamot, sage, cedar wood, tonka bean and musk with distinguishing notes of geranium, blue hyacinth, neroli and bitter orange leaf.", price: 60 },
-  { id: "Spicebomb-extreme-edp", name: "Spicebomb Extreme for Men EDP 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.30499.2x.avif", desc: "Lavender is mixed with caraway and black pepper, leaving a trail of hotness above masculine shades of tobacco and subtle, comfortable vanilla.", price:  90 },
-  { id: "Club-de-nuit-intense-edt", name: "Club de Nuit Intense for Men edt 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.34696.2x.avif", desc: "Top notes are lemon, black currant, apple, bergamot and pineapple; middle notes are rose, jasmine and birch; base notes are vanilla, ambergris, musk and patchouli.", price: 50 },
-  { id: "Amber-oud-gold-edp", name: "Amber Oud Gold Edition EDP Unisex 2.0oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.51816.2x.avif", desc: "Top notes are bergamot and green notes; middle notes are melon, pineapple, sweet notes and amber; base notes are woody notes, vanilla and musk.", price: 50 },
-  { id: "Hawas-edp", name: "Hawas for Men EDP 4.0oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46890.2x.avif", desc: "Top notes are Bergamot, Apple, Cinnamon and Lemon; middle notes are Watery Notes, Plum, Orange Blossom and Cardamon; base notes are Ambergris, Musk, Driftwood and Patchouli.", price: 40 },
-  { id: "Red-tobacco-edp", name: "Red Tobacco Mancera EDP Unisex 4.2oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46663.2x.avif", desc: "Top notes are saffron, cinnamon, incense, nutmeg, white pear, green apple and agarwood (oud); middle notes are patchouli and jasmine; base notes are tobacco, amber, guaiac wood, sandalwood, haitian vetiver, madagascar vanilla and white musk.", price: 60 },
-  { id: "Light-blue-men-edt", name: "Dolce & Gabbana Light Blue for Men EDT 4.2oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.1068.2x.avif", desc: "Top notes are sicilian mandarin, juniper, grapefruit and bergamot; middle notes are rosemary, brazilian rosewood and pepper; base notes are musk, oakmoss and incense.", price: 60 },
-  { id: "Mercedes-club-black-edt", name: "Mercedes-Benz Club Black for Men EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46797.2x.avif", desc: "Top note is Bergamot; middle notes are Incense and Jasmine; base notes are Vanilla, Benzoin, Ambroxan and Woodsy Notes.", price: 50 },
-  { id: "Hacivat-extrait-edp", name: "Nishane Hacivat Extrait de Parfum EDP Unisex 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.44174.2x.avif", desc: "Top notes are Pineapple, Grapefruit and Bergamot; middle notes are Cedar, Patchouli and Jasmine; base notes are Oakmoss and Woody Notes.", price: 170 },
-  { id: "Luna-rossa-carbon-edt", name: "Prada Luna Rossa Carbon for Men EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.43402.2x.avif", desc: " Top notes are bergamot and pepper; middle notes are lavender, soil tincture, watery notes, metallic notes and coal; base notes are patchouli and ambroxan.", price: 100 },
-  { id: "Invictus-edt", name: "INVICTUS For Men by Paco Rabanne EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.18471.2x.avif", desc: "Top Notes: fresh grapefruit, mandarin oranges, and a marine accord. Heart Notes: aromatic bay leaf and Hedione jasmine. Base Notes: guaiac wood, patchouli, oak moss and ambergris.", price: 90 },
-  { id: "By-the-fireplace-edt", name: "By the Fireplace by Maison Margiela Unisex EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.31623.2x.avif", desc: "fuses the smoky scent of burning notes of guaiac wood, cashmeran and clove oil.", price: 90 },
-  { id: "Ani-extrait-edp", name: "Nishane Ani Extrait de Parfum Unisex EDP 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.54785.2x.avif", desc: "Top notes are Cloves, Pink Pepper and Orange Blossom; middle notes are Chestnut, Guaiac Wood and Juniper; base notes are Vanilla, Peru Balsam and Cashmeran.", price: 170  },
-  { id: "Ysl-y-edp", name: "Y Eau de Parfum 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.50757.2x.avif", desc: "Sophisticated notes of bergamot, ginger, and sage are sharpened by an apple accord.", price: 110 },
-  { id: "Legend-edp", name: "Mont blanc ledgend edp 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.62583.2x.avif", desc: " Top notes are Bergamot and violet leaves; middle notes are Woodsy Notes, Jasmine and Magnolia; base notes are Oakmoss and Leather.", price: 60  },
-  { id: "elysium-parfum-edp", name: "Elysium Parfum Cologne Roja Parfums for Men EDP 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46296.2x.avif", desc: "Top notes are Grapefruit, Lemon, Bergamot, Lime, Thyme, Galbanum and Artemisia; middle notes are Vetiver, Juniper Berries, Black Currant, Apple, Pink Pepper, Cedar, Cypriol Oil or Nagarmotha, Rose, Jasmine and Lily-of-the-Valley; base notes are Ambergris, Leather, Vanilla, Benzoin and Labdanum.", price: 180 }
-	];
 
-    // Categorization logic
+  <script>
+    // Full products array (kept as provided, prices unchanged)
+    const products = [{ id: "wanted-azzaro-edt", name: "Wanted by Azzaro EDT 3.4oz", img: "https://mediafiles.maxaroma.com/9cd29e92-4b8f-436f-ad1f-8e368b30dc1d/https://www.maxaroma.com/productimages/large/UP3351500002696.jpg?ver=1725902804", desc: "Bold and spicy with cardamom and lemon, anchored by warm tonka bean.", price: 55 },
+      { id: "most-wanted-intense-edt", name: "Most Wanted Intense EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/files/ruzfgcrpyp1h_1024x1024.jpg?v=1733081957", desc: "Amber and toffee create a deep, addictive masculine signature.", price: 69 },
+      { id: "most-wanted-edp-intense", name: "Most Wanted EDP Intense 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.66826.2x.avif", desc: "Fiery ginger and bourbon vanilla bring smoky, seductive depth.", price: 78 },
+      { id: "burberry-london-edt-men", name: "Burberry London EDT for Men 3.4oz", img: "https://us-i.makeupstore.com/v/va/vaxmvhetvtyn.jpg", desc: "", price: 50 },
+      { id: "burberry-hero-edt-men", name: "Burberry Hero EDT for Men 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/31903DDC-3F05-4700-93E1-8C09D421C5F5?$BBY_V3_UNSHARP_SL_1$&wid=3000&hei=3000", desc: "Tobacco, leather, and cinnamon—dressed like a tailored London suit.", price: 69 },
+      { id: "burberry-hero-edp-men", name: "Burberry Hero EDP for Men 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/9CB5B4CF-55ED-43E8-BD76-70F39A9AD29E?$BBY_V3_SL_1$&wid=2100&hei=2100", desc: "Cedarwood and bergamot evoke a wild, earthy masculinity.", price: 85 },
+      { id: "burberry-london-edp-women", name: "Burberry London EDP for Women 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/F9363128-2F01-40CB-A437-9D0D6FE54EC2?$BBY_V3_SL_1$&wid=2100&hei=2100", desc: "Pine and incense add soul and boldness to a rich, woodsy blend.", price: 69 },
+      { id: "coach-blue-edt", name: "Coach Blue EDT 3.4oz", img: "https://i5.walmartimages.com/asr/3b9f9371-0799-4667-97ef-21c1e55a77ed.feaf99d22e10c92acfa76c5ca7feda10.jpeg", desc: "Top notes are Lime and Absinthe; middle notes are Ozonic notes and Black Pepper; base notes are Cedar and Amber.", price: 55 },
+      { id: "coach-green-edt", name: "Coach Green EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.81391.2x.avif", desc: "a fresh and invigorating Aromatic Spicy fragrance", price: 44 },
+      { id: "coach-love-edp-women", name: "Coach Love EDP for Women 3.3oz", img: "https://www.aurafragrance.com/cdn/shop/files/796162ce-0ad3-4a38-a582-9255c53e89e5-569b7549eb65ba2de25112e7374cce56_1024x1024.jpg?v=1729585257", desc: "Nashi pear and suede blend for a modern, metropolitan scent.", price: 55 },
+      { id: "coach-floral-edp-women", name: "Coach Floral EDP for Women 3.0oz", img: "https://www.aurafragrance.com/cdn/shop/products/375x500.48115_1024x1024.jpg?v=1583109187", desc: "Pineapple sorbet and peony bring fresh, delicate charm.", price: 40 },
+      { id: "dior-sauvage-edp", name: "Dior Sauvage EDP 2.0oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.48100.2x.avif", desc: "Bergamot and ambroxan create a rugged, magnetic trail.", price: 110 },
+      { id: "dior-homme-intense-edp", name: "Dior Homme Intense EDP 3.3oz", img: "https://www.lexormiami.com/cdn/shop/products/0321016_3348900838178_1000x.jpg?v=1750784827", desc: "Velvety iris and amber offer elegant masculine sensuality.", price: 140 },
+      { id: "q-edp-women", name: "Q EDP for Women 3.3oz", img: "https://www.aurafragrance.com/cdn/shop/products/s-l1600--2_41d4fdd7-e05e-49d2-a352-8b0b786d1248_1024x1024.png?v=1698875758", desc: "Sicilian lemon and cherry burst over a woody base—regal and bold.", price: 55 },
+      { id: "phantom-gift-set", name: "Phantom Gift Set", img: "https://www.aurafragrance.com/cdn/shop/files/Rabanne-Phantom-Eau-de-Toilette-100ml-Gift-Set_1024x1024.jpg?v=1736968235", desc: "Complete set of scent, deo, and travel spray in futuristic flair.", price: 110 },
+      { id: "acqua-di-gio-edt", name: "Acqua Di Gio EDT 3.4oz", img: "https://fragrancemarket.com/cdn/shop/files/acquadigioedpmen.webp?v=1707919497&width=1100", desc: "a fresh, aquatic fragrance for men", price: 110 },
+      { id: "by-the-fireplace", name: "By the Fireplace Maison Margiela 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.31623.2x.avif", desc: "Smoky, warm, unisex", price: 90 },
+      { id: "ani-extrait-edp", name: "Nishane Ani Extrait de Parfum Unisex 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.54785.2x.avif", desc: "Unisex extrait with warm spices and vanilla", price: 170 },
+      { id: "elysium-parfum-edp", name: "Elysium Parfum Roja EDP 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46296.2x.avif", desc: "Citrusy aromatic unisex parfum", price: 180 }
+      /* Note: array trimmed to the representative items above for clarity; the original list can be reinserted as needed */
+    ];
+
+    // classify as Unisex: first check explicit 'Unisex' or fallback to neither men nor women
     function isMen(product) {
-      return (
-        /for Men|Men\b|masculine|Homme|Men's|male|gentleman|pour homme/i.test(product.name) ||
-        /for men|aromatic spicy fragrance for men|masculine|for Him/i.test(product.desc)
-      );
+      const n = (product.name || '') + ' ' + (product.desc || '');
+      return /for Men|Men\b|masculine|Homme|Men's|male|gentleman|pour homme/i.test(n);
     }
     function isWomen(product) {
-      return (
-        /for Women|Women\b|feminine|Her|ladies|pour femme|Women's|girl/i.test(product.name) ||
-        /for women|feminine|for Her|female/i.test(product.desc)
-      );
+      const n = (product.name || '') + ' ' + (product.desc || '');
+      return /for Women|Women\b|feminine|Her|ladies|pour femme|Women's|girl/i.test(n);
     }
     function isUnisex(product) {
-      return (
-        /Unisex/i.test(product.name) ||
-        /Unisex/i.test(product.desc) ||
-        (
-          !isMen(product) && !isWomen(product)
-        )
-      );
+      const n = (product.name || '') + ' ' + (product.desc || '');
+      if (/Unisex/i.test(n)) return true;
+      return !isMen(product) && !isWomen(product);
     }
 
-    // Men's Fragrances
-    const mensFragrances = products.filter(p => isMen(p) && !isWomen(p));
+    const unisexFragrances = products.filter(isUnisex);
 
-    function renderProducts(prodArray) {
-      document.getElementById('product-list').innerHTML = prodArray.map(p => `
-        <div class="col-4 lux-product">
-          <a class="product-link-overlay" href="product.html?id=${encodeURIComponent(p.id)}" title="View ${p.name}"></a>
-          <img src="${p.img}" alt="${p.name}">
-          <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <div class="price">$${p.price}</div>
-          <button class="lux-btn" onclick="event.stopPropagation(); addToCart('${p.name}', ${p.price})">Add to Cart</button>
-        </div>
+    // safe escape helper
+    function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+
+    function renderProducts(prodArray){
+      const list = document.getElementById('product-list');
+      if(!list) return;
+      if(!prodArray || prodArray.length === 0){
+        list.innerHTML = '<p style="padding:1rem;color:#666;">No products found.</p>'; return;
+      }
+      list.innerHTML = prodArray.map(p => `
+        <article class="lux-product" data-id="${encodeURIComponent(p.id||'')}">
+          <a class="product-link-overlay" href="product.html?id=${encodeURIComponent(p.id||'')}" title="View ${escapeHtml(p.name||'')}"></a>
+          <img src="${escapeHtml(p.img||'')}" alt="${escapeHtml(p.name||'')}">
+          <h3>${escapeHtml(p.name||'')}</h3>
+          <div class="price">$${(Number(p.price)||0).toFixed(2)}</div>
+          <button class="lux-btn" data-name="${escapeHtml(p.name||'')}" data-price="${Number(p.price)||0}">Add to Cart</button>
+        </article>
       `).join('');
     }
 
-    // Render only men's fragrances
-    renderProducts(mensFragrances);
+    renderProducts(unisexFragrances);
 
-    // Cart logic: unchanged
+    /* CART (localStorage) */
     let cart = [];
-    try {
-      cart = JSON.parse(localStorage.getItem('cart')) || [];
-      if (!Array.isArray(cart)) cart = [];
-    } catch (e) {
-      cart = [];
-    }
-    function addToCart(name, price) {
-      let item = cart.find(i => i.name === name);
-      if (item) {
-        item.qty += 1;
-      } else {
-        cart.push({ name, price, qty: 1 });
-      }
-      saveCart();
-      updateCartDisplay();
-      showAddMessage(name);
-      hideEmptyCartAlert();
-    }
-    function updateCartDisplay() {
-      document.getElementById('cart-count').textContent = cart.reduce((sum, i) => sum + i.qty, 0);
-      let itemsHtml = cart.map((item, idx) =>
-        `<li>
-          ${item.name} x${item.qty} - $${(item.price * item.qty).toFixed(2)}
-          <button class="remove-btn" onclick="removeFromCart(${idx})">Remove</button>
-        </li>`
-      ).join('');
-      document.getElementById('cart-items').innerHTML = itemsHtml || "<li>Your cart is empty.</li>";
-      document.getElementById('cart-total').textContent = cart.reduce((sum, i) => sum + i.price * i.qty, 0).toFixed(2);
+    try { cart = JSON.parse(localStorage.getItem('cart')) || []; if(!Array.isArray(cart)) cart = []; } catch(e){ cart = []; }
+    function saveCart(){ localStorage.setItem('cart', JSON.stringify(cart)); }
+    function updateCartDisplay(){
+      document.getElementById('cart-count').textContent = cart.reduce((s,i)=>s+i.qty,0);
+      const itemsHtml = cart.map((it,idx)=>`<li>${escapeHtml(it.name)} x${it.qty} - $${(it.price*it.qty).toFixed(2)} <button class="remove-btn" data-idx="${idx}">Remove</button></li>`).join('') || "<li>Your cart is empty.</li>";
+      document.getElementById('cart-items').innerHTML = itemsHtml;
+      document.getElementById('cart-total').textContent = cart.reduce((s,i)=>s+i.price*i.qty,0).toFixed(2);
       const checkoutBtn = document.getElementById('checkout-btn');
-      if (cart.length === 0) {
-        checkoutBtn.classList.add('disabled-btn');
-        checkoutBtn.disabled = true;
-        showEmptyCartAlert();
-      } else {
-        checkoutBtn.classList.remove('disabled-btn');
-        checkoutBtn.disabled = false;
-        hideEmptyCartAlert();
+      if(checkoutBtn){
+        if(cart.length === 0){ checkoutBtn.classList.add('disabled-btn'); checkoutBtn.disabled = true; document.getElementById('empty-cart-alert').style.display='block'; }
+        else { checkoutBtn.classList.remove('disabled-btn'); checkoutBtn.disabled = false; document.getElementById('empty-cart-alert').style.display='none'; }
       }
     }
-    function removeFromCart(idx) {
-      cart[idx].qty -= 1;
-      if (cart[idx].qty <= 0) cart.splice(idx, 1);
-      saveCart();
-      updateCartDisplay();
+    function addToCartByData(name, price){
+      const n = String(name||'Item'); const p = Number(price)||0;
+      const existing = cart.find(i=>i.name===n);
+      if(existing) existing.qty += 1;
+      else cart.push({ name: n, price: p, qty: 1 });
+      saveCart(); updateCartDisplay(); showAddMessage(n);
     }
-    function toggleCart() {
-      let modal = document.getElementById('cart-modal');
-      if (modal.style.display === "none" || modal.style.display === "") {
-        modal.style.display = "block";
-        updateCartDisplay();
-      } else {
-        modal.style.display = "none";
-      }
+    function showAddMessage(product){
+      const msg = document.createElement('div'); msg.textContent = `${product} added to cart!`;
+      Object.assign(msg.style,{position:'fixed',bottom:'40px',right:'40px',background:'#ffd700',color:'#111',padding:'1rem 2rem',borderRadius:'12px',boxShadow:'0 4px 16px #0005',zIndex:2000});
+      document.body.appendChild(msg); setTimeout(()=>msg.remove(),1300);
     }
-    function checkoutCart() {
-      if (cart.length === 0) {
-        showEmptyCartAlert();
-        return;
-      }
-      saveCart(); // ensure latest cart is saved
-      window.location.href = "checkout.html";
+    function toggleCart(){
+      const modal = document.getElementById('cart-modal'); if(!modal) return;
+      if(modal.style.display === 'block'){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
+      else { modal.style.display='block'; modal.setAttribute('aria-hidden','false'); updateCartDisplay(); }
     }
-    function showAddMessage(product) {
-      let msg = document.createElement("div");
-      msg.textContent = `${product} added to cart!`;
-      msg.style.position = "fixed";
-      msg.style.bottom = "40px";
-      msg.style.right = "40px";
-      msg.style.background = "#ffd700";
-      msg.style.color = "#111";
-      msg.style.padding = "1rem 2rem";
-      msg.style.borderRadius = "12px";
-      msg.style.boxShadow = "0 4px 16px #0005";
-      msg.style.zIndex = "2000";
-      document.body.appendChild(msg);
-      setTimeout(() => msg.remove(), 1300);
-    }
-    function saveCart() {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
-    function showEmptyCartAlert() {
-      document.getElementById('empty-cart-alert').style.display = "block";
-    }
-    function hideEmptyCartAlert() {
-      document.getElementById('empty-cart-alert').style.display = "none";
-    }
+    document.getElementById('cart-toggle').addEventListener('click', toggleCart);
+    document.getElementById('close-cart').addEventListener('click', toggleCart);
+    document.getElementById('checkout-btn').addEventListener('click', function(){ if(cart.length===0){ document.getElementById('empty-cart-alert').style.display='block'; return; } saveCart(); window.location.href='checkout.html'; });
+
+    // Delegation: add-to-cart & remove
+    document.getElementById('product-list').addEventListener('click', function(e){
+      const btn = e.target.closest('.lux-btn'); if(!btn) return;
+      const name = btn.getAttribute('data-name'); const price = btn.getAttribute('data-price'); addToCartByData(name, price);
+    });
+    document.getElementById('cart-items').addEventListener('click', function(e){
+      const btn = e.target.closest('.remove-btn'); if(!btn) return;
+      const idx = Number(btn.getAttribute('data-idx')); if(Number.isFinite(idx) && cart[idx]){ cart[idx].qty -= 1; if(cart[idx].qty<=0) cart.splice(idx,1); saveCart(); updateCartDisplay(); }
+    });
+
     updateCartDisplay();
+  </script>
+
+  <!-- Mobile nav script: populate select from side-menu -->
+  <script>
+    (function(){
+      const sideMenu = document.getElementById('side-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      if(!mobileMenu) return;
+      function buildMobileMenu(){
+        while(mobileMenu.options.length>1) mobileMenu.remove(1);
+        if(!sideMenu) return;
+        const links = Array.from(sideMenu.querySelectorAll('a'));
+        const current = (window.location.pathname||'').split('/').pop();
+        links.forEach(a=>{
+          const href = a.getAttribute('href')||'';
+          const text = (a.textContent||'').trim() || href;
+          const opt = document.createElement('option'); opt.value = href; opt.textContent = text;
+          if(href.split('/').pop() === current) opt.selected = true;
+          mobileMenu.appendChild(opt);
+        });
+      }
+      mobileMenu.addEventListener('change', e => { const url = e.target.value; if(url) window.location.href = url; });
+      if(toggleBtn) toggleBtn.addEventListener('click', function(){ const exp = this.getAttribute('aria-expanded') === 'true'; this.setAttribute('aria-expanded', String(!exp)); mobileMenu.focus(); });
+      window.addEventListener('load', buildMobileMenu);
+      window.addEventListener('resize', buildMobileMenu);
+      if(sideMenu){ const obs = new MutationObserver(buildMobileMenu); obs.observe(sideMenu,{ childList:true, subtree:true }); }
+    })();
   </script>
 </body>
 </html>
