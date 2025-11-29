@@ -5,77 +5,62 @@
   <title>Shop BMO</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <!-- Montserrat font for site, Cinzel font for SHOP BMO -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
   <style>
     body {
       background: #fff;
       color: #222;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
       margin: 0;
       padding: 0;
     }
     .banner-header {
-      background: linear-gradient(90deg, #f9f9f9, #fff);
-      padding: 2rem 0;
-      text-align: center;
-      color: #222;
-      letter-spacing: 0.15em;
-      box-shadow: 0 4px 24px 0 #ffd70044;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center; /* use space-between if you want logo left and title centered */
+  gap: 1rem;
+  padding: 1rem 1rem;
+  background: linear-gradient(90deg, #f9f9f9, #fff);
+  box-shadow: 0 4px 24px 0 #ffd70044;
+}
+
+/* logo image */
+.site-logo {
+  height: 56px;       /* tune this to taste */
+  width: auto;
+  display: block;
+}
+
+/* small screens: reduce logo size and stack if needed */
+@media (max-width: 600px) {
+  .banner-header {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 0.75rem;
+  }
+  .site-logo {
+    height: 44px;
+    margin-bottom: 0.25rem;
+  }
+}
     .banner-header h1 {
       margin: 0;
       font-size: 2.2rem;
       font-weight: 700;
-      font-family: 'Cinzel', serif;
+      font-family: 'Inconsolata', serif;
       letter-spacing: 0.08em;
     }
     .banner-header p {
       margin: 0.5rem 0 0 0;
       font-size: 1.1rem;
       font-weight: 400;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
     }
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 210px;
-      background: #f9f9f9;
-      border-right: 2px solid #ffd70033;
-      box-shadow: 2px 0 16px #ffd70011;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      z-index: 10;
-      padding-top: 3rem;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .side-menu h2 {
-      font-size: 1.2rem;
-      color: #bfa200;
-      font-weight: bold;
-      margin-left: 24px;
-      margin-bottom: 1rem;
-      letter-spacing: 0.08em;
-    }
-    .side-menu a {
-      display: block;
-      width: 50%;
-      padding: 0.9rem 2rem;
-      color: #bfa200;
-      font-size: 1.07rem;
-      text-decoration: none;
-      font-weight: 600;
-      border-left: 4px solid transparent;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .side-menu a:hover, .side-menu a.active {
-      background: #fffbe9;
-      color: #ffd700;
-      border-left: 3px solid #ffd700;
-    }
+    .side-menu { position: sticky; top: 0; / will stick to the top when scrolling / left: 0; right: 0; display: flex; flex-direction: row; / horizontal layout */ align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Montserrat', sans-serif; }
+    .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
+    .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent; / underline highlight for active */ transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
+    .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
 
     /* Mobile dropdown nav */
     .mobile-nav {
@@ -119,18 +104,18 @@
 
     .main-content {
       margin-left: 210px;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
     }
     .row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: stretch;
+      align-items: center;
       gap: 0;
       margin-top: 2rem;
     }
     .lux-product {
-      width: 260px;
+      width: 300px;
       height: 420px;
       background: #fff;
       border-radius: 0;
@@ -141,12 +126,12 @@
       text-decoration: none;
       display: flex;
       flex-direction: column;
-      align-items: stretch;
+      align-items: center;
       position: relative;
       overflow: hidden;
       box-sizing: border-box;
       border: 1px solid #eee;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
     }
     .lux-product:hover {
       transform: translateY(-8px) scale(1.02);
@@ -170,12 +155,12 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
     }
     .lux-product img {
       width: 100%;
       height: 260px;
-      object-fit: cover;
+      object-fit: center;
       border-radius: 0;
       margin-bottom: 1rem;
       background: #f9f9f9;
@@ -183,7 +168,7 @@
     }
     .lux-product h3 {
       margin: 1rem 0 0.5rem 0;
-      font-size: 1.2rem;
+      font-size: 1rem;
       flex: 0 0 auto;
       white-space: nowrap;
       overflow: hidden;
@@ -191,14 +176,14 @@
       width: 100%;
       max-width: 100%;
       display: block;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
     }
     .lux-product .price {
       margin-bottom: 0.5rem;
       font-weight: bold;
       flex: 0 0 auto;
       color: #bfa200;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
     }
     .lux-product .product-link-overlay {
       position: absolute;
@@ -228,7 +213,7 @@
       z-index:1000;
       padding:2rem;
       overflow-y:auto;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
     }
     #cart-modal ul {
       list-style:none;
@@ -237,7 +222,7 @@
     }
     #cart-modal h2 {
       margin-top: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
     }
     #empty-cart-alert {
       display:none;
@@ -250,7 +235,7 @@
       margin: 1rem auto;
       max-width: 420px;
       box-shadow: 0 2px 12px #ffd70055;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
     }
     .remove-btn {
       margin-left:10px;
@@ -260,7 +245,7 @@
       border-radius:6px;
       cursor:pointer;
       padding: 3px 10px;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
     }
     .remove-btn:hover { background:#ffd70055; color:#111;}
     .disabled-btn {
@@ -283,33 +268,23 @@
       .banner-header {
         padding-top: 1rem;
       }
-      .main-content {
-        margin-left: 0;
-      }
+
     }
     @media (max-width: 600px) {
       .banner-header {
         padding-left: 1rem;
         padding-right: 1rem;
       }
-      /* fluid responsive grid for product cards */
+     /* fluid responsive grid for product cards */
 /* change .row to a grid and use two columns at mobile sizes */
-.row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
-  justify-items: center;
-}
+.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; /* centers the grid area inside the container / justify-items: center; / centers each card within its grid cell */ margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
 
 @media (max-width: 700px) {
   .row {
     grid-template-columns: repeat(2, 1fr); /* two columns */
     padding: 0 0.75rem;
   }
-  .lux-product {
-    width: 100%;
-    max-width: none;
-  }
+  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
 }
 
 @media (max-width: 420px) {
@@ -318,20 +293,19 @@
   }
 }
 
-.lux-product img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-}
+.lux-product img  { width: 100%; text-align: center; }
   </style>
 </head>
 <body>
   <!-- Banner is centered and at the top again -->
-  <div class="banner-header">
+ <div class="banner-header">
+  
+  </a>
+  <div class="banner-text">
     <h1>SHOP BMO</h1>
     <p>Exclusive sourced products, premium experience</p>
   </div>
+</div>
 
   <!-- Desktop Side Navigation Menu -->
   <nav class="side-menu" id="side-menu">
@@ -357,11 +331,7 @@
     </div>
   </div>
 
-  <div class="main-content">
-    <div style="text-align:right; padding: 1rem;">
-      <button class="lux-btn" onclick="toggleCart()" style="position: relative;">
-        🛒 Cart (<span id="cart-count">0</span>)
-      </button>
+
     </div>
     <div id="empty-cart-alert">⚠️ Your cart is empty. Please add items before checking out.</div>
     <!-- Featured Products -->
@@ -386,10 +356,10 @@
     // Populate product list and cart code (unchanged)
     // NOTE: The products array in the source may be large. For brevity in this file,
     // we keep the script block structure and assume the products array is present as before.
-    const products = [ { id: "wanted-azzaro-edt", name: "Wanted by Azzaro EDT 3.4oz", img: "https://mediafiles.maxaroma.com/9cd29e92-4b8f-436f-ad1f-8e368b30dc1d/https://www.maxaroma.com/productimages/large/UP3351500002696.jpg?ver=1725902804", desc: "Bold and spicy with cardamom and lemon, anchored by warm tonka bean.", price: 55 },
+    const products = [{ id: "wanted-azzaro-edt", name: "Wanted by Azzaro EDT 3.4oz", img: "https://mediafiles.maxaroma.com/9cd29e92-4b8f-436f-ad1f-8e368b30dc1d/https://www.maxaroma.com/productimages/large/UP3351500002696.jpg?ver=1725902804", desc: "Bold and spicy with cardamom and lemon, anchored by warm tonka bean.", price: 55 },
   { id: "most-wanted-intense-edt", name: "Most Wanted Intense EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/files/ruzfgcrpyp1h_1024x1024.jpg?v=1733081957", desc: "Amber and toffee create a deep, addictive masculine signature.", price: 69 },
   { id: "most-wanted-edp-intense", name: "Most Wanted EDP Intense 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.66826.2x.avif", desc: "Fiery ginger and bourbon vanilla bring smoky, seductive depth.", price: 78 },
-  { id: "burberry-london-edt-men", name: "Burberry London EDT for Men 3.4oz", img: "https://us-i.makeupstore.com/v/va/vaxmvhetvtyn.jpg", desc: "a warm, spicy fragrance with a sophisticated, masculine character, embodying classic British elegance", price: 50 },
+  { id: "burberry-london-edt-men", name: "Burberry London EDT for Men 3.4oz", img: "https://us-i.makeupstore.com/v/va/vaxmvhetvtyn.jpg", desc: "", price: 50 },
   { id: "burberry-hero-edt-men", name: "Burberry Hero EDT for Men 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/31903DDC-3F05-4700-93E1-8C09D421C5F5?$BBY_V3_UNSHARP_SL_1$&wid=3000&hei=3000", desc: "Tobacco, leather, and cinnamon—dressed like a tailored London suit.", price: 69 },
   { id: "burberry-hero-edp-men", name: "Burberry Hero EDP for Men 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/9CB5B4CF-55ED-43E8-BD76-70F39A9AD29E?$BBY_V3_SL_1$&wid=2100&hei=2100", desc: "Cedarwood and bergamot evoke a wild, earthy masculinity.", price: 85 },
   { id: "burberry-london-edp-women", name: "Burberry London EDP for Women 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/F9363128-2F01-40CB-A437-9D0D6FE54EC2?$BBY_V3_SL_1$&wid=2100&hei=2100", desc: "Pine and incense add soul and boldness to a rich, woodsy blend.", price: 69 },
@@ -424,7 +394,7 @@
   { id: "because-its-you-edp", name: "Because It's You EDP 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/50c3f5c887dfa9c6258b22019304c1486be7b591_1024x1024.jpg?v=1575670025", desc: "Aromatic spices and soft woods create rich depth.", price: 75 },
   { id: "stronger-with-you-intensely-edp", name: "Stronger With You Intensely EDP 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/armani_stronger_with_you_1024x1024_46896c4d-b0ff-4ca2-9805-d26b9a7091ca_1024x1024.jpg?v=1615430762", desc: " Top notes are Pink Pepper, Juniper and Violet; middle notes are Toffee, Cinnamon, Lavender and Sage; base notes are Vanilla, Amber, Tonka Bean and Suede.", price: 69 },
   { id: "acqua-di-gio-profondo-edp", name: "Acqua di Gio Profondo EDP 4.2oz", img: "https://www.aurafragrance.com/cdn/shop/products/61PaVkU_UgL._SL1000_1024x1024.jpg?v=1605914331", desc: "Top notes are Marine notes and Green Mandarin; middle note is Mimosa; base notes are Patchouli and Labdanum.", price: 110 },
-  { id: "acqua-di-gio-profondo-parfum", name: "Acqua di Gio Profondo Parfum 1.7oz", img: "https://www.aurafragrance.com/cdn/shop/files/ACQUA_DI_GIO_PROFONDO_3.4OZ_PARFUM_MEN_NIB_SEALED__57642_1024x1024.jpg?v=1737349488", desc: "Deep aquatic tones and aromatic woods—masculine and mature.", price: 80 },
+  { id: "acqua-di-gio-profondo-parfum", name: "Acqua di Gio Profondo Parfum 1.7oz", img: "https://www.aurafragrance.com/cdn/shop/files/ACQUA_DI_GIO_PROFONDO_3.4OZ_PARFUM_MEN_NIB_SEALED__57642_1024x1024.jpg?v=1737349488", desc: "", price: 80 },
   { id: "acqua-di-gio-profondo-parfum-2", name: "Acqua di Gio Profondo Parfum 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/files/ACQUA_DI_GIO_PROFONDO_3.4OZ_PARFUM_MEN_NIB_SEALED__57642_1024x1024.jpg?v=1737349488", desc: "Mystical marine accord layered with frankincense.", price: 125 },
   { id: "acqua-di-gio-edp-2022", name: "Acqua di Gio EDP (2022) 6.8", img: "https://www.aurafragrance.com/cdn/shop/products/nm_4313259_100000_m_1024x1024.jpg?v=1659397523", desc: "Bold and oceanic with long-lasting richness.", price: 130 },
   { id: "eros-edt", name: "Eros EDT 3.4oz", img: "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw12d7d83f/original/90_R740010-R100MLS_RNUL_22_Eros~EDT~100~ml-Accessories-Versace-online-store_1_1.jpg?sw=850&amp;q=85&amp;strip=true", desc: "a men's fragrance known for its fresh, woody, and oriental scent, inspired by the Greek God of love", price: 65 },
@@ -438,7 +408,7 @@
   { id: "eros-edt-women", name: "Eros EDT for Women 3.4oz", img: "https://cdn.fragrancenet.com/images/photos/900x900/289702.jpg", desc: "Top notes are Sicilian Lemon, Pomegranate and Calabrian bergamot; middle notes are Lemon Blossom, Jasmine Sambac, Jasmine and Peony; base notes are Musk, Ambroxan, Woodsy Notes and Sandalwood..", price: 70 },
   { id: "pour-homme-gift-set", name: "Pour Homme Gift Set", img: "https://m.media-amazon.com/images/I/71SPesqYVJL._SX679_.jpg", desc: "Cologne and gel for scent that travels well.", price: 70 },
   { id: "dylan-blue-men-travel-set", name: "Dylan Blue Men Travel Set", img: "https://cdn.fragrancenet.com/images/photos/900x900/294526.jpg", desc: "A versatile kit with scent and storage to match.", price: 69 },
-  { id: "pour-homme-set-toiletry-bag", name: "Pour Homme Set (Toiletry Bag)", img: "https://www.aurafragrance.com/cdn/shop/files/7411-d6ff7e42-1000_1_1024x1024.jpg?v=1713985041", desc: "Versace Pour Homme is a modern and sexy fragrance for men, launched in 2008. The aromatic fougere scent starts off with fresh and citrusy notes of lemon, bergamot and neroli, along with rose de mai. With a bag to match.", price: 75 },
+  { id: "pour-homme-set-toiletry-bag", name: "Pour Homme Set (Toiletry Bag)", img: "https://www.aurafragrance.com/cdn/shop/files/7411-d6ff7e42-1000_1_1024x1024.jpg?v=1713985041", desc: " ", price: 75 },
   { id: "yellow-diamond-4pc-set", name: "Yellow Diamond 4pc Set", img: "https://www.aurafragrance.com/cdn/shop/products/s-l500--7_1024x1024.jpg?v=1668738510", desc: "Elegant yet strong—marine florals with a luxe finish.", price: 79 },
   { id: "dylan-blue-women-4pc-set", name: "Dylan Blue Women 4pc Set", img: "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/23152346_fpx.tif?op_sharpen=1&wid=700&fit=fit,1&fmt=webp", desc: "Rich plum and musk with travel flair in every piece.", price: 85 },
   { id: "dylan-blue-women-set-mini-bag", name: "Dylan Blue Women Set w/ Mini & Bag", img: "https://www.aurafragrance.com/cdn/shop/files/versace-ladies-dylan-blue-gift-set-fragrances-8011003884971_1024x1024.jpg?v=1744147383", desc: "Rich plum and musk with travel flair in every piece.", price: 89 },
@@ -708,5 +678,3 @@
   </script>
 </body>
 </html>
-
-
