@@ -4,17 +4,101 @@
   <meta charset="UTF-8">
   <title>Checkout | Shop BMO</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Inconsolata for the site, Cinzel for the header -->
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
-  <style>
+ <style>
     :root {
-      --gold: #c9b037;
+      --gold: #000000
       --gold-dark: #b49c29;
       --white: #fff;
     }
     body {
       background: var(--white);
       color: var(--gold);
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inconsolata', sans-serif;
+    }
+/* small screens: reduce logo size and stack if needed */
+@media (max-width: 600px) {
+  .banner-header {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 0.75rem;
+  }
+  .site-logo {
+    height: 44px;
+    margin-bottom: 0.25rem;
+  }
+}
+    .banner-header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Inconsolata', serif;
+      letter-spacing: 0.08em;
+    }
+    .banner-header p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .side-menu { position: sticky; top: 0; / will stick to the top when scrolling / left: 0; right: 0; display: flex; flex-direction: row; / horizontal layout */ align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Inconsolata', sans-serif; }
+    .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
+    .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent; / underline highlight for active */ transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
+    .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
+
+    /* Mobile dropdown nav */
+    .mobile-nav {
+      display: none; /* hidden on desktop */
+      background: #f9f9f9;
+      border-bottom: 2px solid #ffd70033;
+      box-shadow: 0 4px 12px #ffd70011;
+      padding: 0.5rem 1rem;
+      z-index: 20;
+    }
+    .mobile-nav-bar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #mobile-menu-toggle {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #mobile-menu {
+      flex: 1;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      font-size: 1rem;
+      background: white;
+    }
+
+    .main-content {
+      margin-left: 210px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-top: 2rem;
     }
     .lux-header {
       background: linear-gradient(90deg, #f9f9f9, #fff);
@@ -24,45 +108,7 @@
       letter-spacing: 0.15em;
       box-shadow: 0 4px 24px 0 #ffd70044;
     }
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 210px;
-      background: #f9f9f9;
-      border-right: 2px solid #ffd70033;
-      box-shadow: 2px 0 16px #ffd70011;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      z-index: 100;
-      padding-top: 3rem;
-    }
-    .side-menu h2 {
-      font-size: 1.2rem;
-      color: var(--gold-dark);
-      font-weight: bold;
-      margin-left: 24px;
-      margin-bottom: 1rem;
-      letter-spacing: 0.08em;
-    }
-    .side-menu a {
-      display: block;
-      width: 50%;
-      padding: 0.9rem 2rem;
-      color: var(--gold-dark);
-      font-size: 1.07rem;
-      text-decoration: none;
-      font-weight: 600;
-      border-left: 2px solid transparent;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .side-menu a:hover, .side-menu a.active {
-      background: #fffbe9;
-      color: var(--gold);
-      border-left: 2px solid var(--gold);
-    }
+    
     .main-content {
       margin-left: 210px;
     }
@@ -250,6 +296,44 @@
         display: none;
       }
     }
+ /* Responsive adjustments */
+    @media (max-width: 800px) {
+      /* Hide the desktop side menu on mobile and show the dropdown mobile nav */
+      .side-menu {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+      }
+      .banner-header {
+        padding-top: 1rem;
+      }
+
+    }
+    @media (max-width: 600px) {
+      .banner-header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+     /* fluid responsive grid for product cards */
+/* change .row to a grid and use two columns at mobile sizes */
+.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; /* centers the grid area inside the container / justify-items: center; / centers each card within its grid cell */ margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr); /* two columns */
+    padding: 0 0.75rem;
+  }
+  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
+}
+
+@media (max-width: 420px) {
+  .row {
+    grid-template-columns: 1fr; /* switch to single column on very small screens */
+  }
+}
+
+.lux-product img  { width: 100%; text-align: center; }
   </style>
 </head>
 <body>
@@ -272,7 +356,7 @@
     <a href="checkout.html" class="active">Checkout</a>
   </nav>
 
-  <div class="main-content">
+ 
     <div class="checkout-container">
       <h2>Order Summary</h2>
       <div class="checkout-summary">
