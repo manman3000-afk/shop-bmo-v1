@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
+  <style>
+
+
+/* logo image */
+.small-image {
+    width: 1025px;
+    height: auto;
+  }
+.small-image1 {
+    width: 25px;
+    height: auto;
+  }
+ .container {
+    display: flex;
+    justify-content: center;  /* centers horizontally */
+    align-items: center;      /* centers vertically */
+  }
+    
+    body {
+      background: #fff;
+      color: #222;
+      font-family: 'Inconsolata', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .banner-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* use space-between if you want logo left and title centered */
+  gap: 1rem;
+  padding: 1rem 1rem;
+  background: linear-gradient(90deg, #f9f9f9, #fff);
+  box-shadow: 0 4px 24px 0 #ffd70044;
+}
+
+/* logo image */
+.site-logo {
+  height: 56px;       /* tune this to taste */
+  width: auto;
+  display: block;
+}
+
+/* small screens: reduce logo size and stack if needed */
+@media (max-width: 600px) {
+  .banner-header {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 0.75rem;
+  }
+  .site-logo {
+    height: 44px;
+    margin-bottom: 0.25rem;
+  }
+}
+    .banner-header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Inconsolata', serif;
+      letter-spacing: 0.08em;
+    }
+    .banner-header p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .side-menu { position: sticky; top: 0;  left: 0; right: 0; display: flex; flex-direction: row;  align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Montserrat', sans-serif; }
+    .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
+    .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent;  transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
+    .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
+
+    /* Mobile dropdown nav */
+    .mobile-nav {
+      display: none; /* hidden on desktop */
+      background: #f9f9f9;
+      border-bottom: 2px solid #ffd70033;
+      box-shadow: 0 4px 12px #ffd70011;
+      padding: 0.5rem 1rem;
+      z-index: 20;
+    }
+    .mobile-nav-bar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #mobile-menu-toggle {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #mobile-menu {
+      flex: 1;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      font-size: 1rem;
+      background: white;
+    }
+
+    .main-content {
+      margin-left: 210px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-top: 2rem;
+    }
+    .lux-product {
+      width: 300px;
+      height: 420px;
+      background: #fff;
+      border-radius: 0;
+      margin: 0;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px #eee;
+      color: #222;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 1px solid #eee;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 8px 32px #ffd70055;
+      text-decoration: none;
+    }
+    .lux-btn {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 25px;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      width: 90%;
+      margin: 0.5rem auto 0 auto;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product img {
+      width: 100%;
+      height: 260px;
+      object-fit: center;
+      border-radius: 0;
+      margin-bottom: 1rem;
+      background: #f9f9f9;
+      display: block;
+    }
+    .lux-product h3 {
+      margin: 1rem 0 0.5rem 0;
+      font-size: 1rem;
+      flex: 0 0 auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product .price {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      flex: 0 0 auto;
+      color: #bfa200;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product .product-link-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .lux-product > *:not(.product-link-overlay) {
+      z-index: 2;
+      position: relative;
+    }
+    .lux-product .lux-btn {
+      z-index: 3;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    #cart-modal {
+      display:none;
+      position:fixed;
+      top:0;
+      right:0;
+      width:340px;
+      height:100%;
+      background:#f9f9f9;
+      color:#222;
+      box-shadow:-4px 0 32px #000a;
+      z-index:1000;
+      padding:2rem;
+      overflow-y:auto;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    #cart-modal ul {
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    #cart-modal h2 {
+      margin-top: 0;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    #empty-cart-alert {
+      display:none;
+      background: #ffd700;
+      color: #111;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: bold;
+      margin: 1rem auto;
+      max-width: 420px;
+      box-shadow: 0 2px 12px #ffd70055;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .remove-btn {
+      margin-left:10px;
+      background:#ffd70022;
+      color:#bfa200;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      padding: 3px 10px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .remove-btn:hover { background:#ffd70055; color:#111;}
+    .disabled-btn {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .lux-product .lux-btn {
+      pointer-events: auto;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 800px) {
+      /* Hide the desktop side menu on mobile and show the dropdown mobile nav */
+      .side-menu {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+      }
+      .banner-header {
+        padding-top: 1rem;
+      }
+
+    }
+    @media (max-width: 600px) {
+      .banner-header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+     /* fluid responsive grid for product cards */
+/* change .row to a grid and use two columns at mobile sizes */
+.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; /* centers the grid area inside the container / justify-items: center; / centers each card within its grid cell */ margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr); /* two columns */
+    padding: 0 0.75rem;
+  }
+  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
+}
+
+@media (max-width: 420px) {
+  .row {
+    grid-template-columns: 1fr; /* switch to single column on very small screens */
+  }
+}
+
+.lux-product img  { width: 100%; text-align: center; }
+  </style><style>
+    body {
+      background: #fff;
+      color: #222;
+      font-family: 'Inconsolata', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .banner-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* use space-between if you want logo left and title centered */
+  gap: 1rem;
+  padding: 1rem 1rem;
+  background: linear-gradient(90deg, #f9f9f9, #fff);
+  box-shadow: 0 4px 24px 0 #ffd70044;
+}
+
+/* logo image */
+.site-logo {
+  height: 56px;       /* tune this to taste */
+  width: auto;
+  display: block;
+}
+
+/* small screens: reduce logo size and stack if needed */
+@media (max-width: 600px) {
+  .banner-header {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 0.75rem;
+  }
+  .site-logo {
+    height: 44px;
+    margin-bottom: 0.25rem;
+  }
+}
+    .banner-header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Inconsolata', serif;
+      letter-spacing: 0.08em;
+    }
+    .banner-header p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .side-menu { position: sticky; top: 0;  left: 0; right: 0; display: flex; flex-direction: row;  align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Montserrat', sans-serif; }
+    .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
+    .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent;  transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
+    .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
+
+    /* Mobile dropdown nav */
+    .mobile-nav {
+      display: none; /* hidden on desktop */
+      background: #f9f9f9;
+      border-bottom: 2px solid #ffd70033;
+      box-shadow: 0 4px 12px #ffd70011;
+      padding: 0.5rem 1rem;
+      z-index: 20;
+    }
+    .mobile-nav-bar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #mobile-menu-toggle {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #mobile-menu {
+      flex: 1;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      font-size: 1rem;
+      background: white;
+    }
+
+    .main-content {
+      margin-left: 210px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-top: 2rem;
+    }
+    .lux-product {
+      width: 300px;
+      height: 420px;
+      background: #fff;
+      border-radius: 0;
+      margin: 0;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px #eee;
+      color: #222;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 1px solid #eee;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 8px 32px #ffd70055;
+      text-decoration: none;
+    }
+    .lux-btn {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 25px;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      width: 90%;
+      margin: 0.5rem auto 0 auto;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product img {
+      width: 100%;
+      height: 260px;
+      object-fit: center;
+      border-radius: 0;
+      margin-bottom: 1rem;
+      background: #f9f9f9;
+      display: block;
+    }
+    .lux-product h3 {
+      margin: 1rem 0 0.5rem 0;
+      font-size: 1rem;
+      flex: 0 0 auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product .price {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      flex: 0 0 auto;
+      color: #bfa200;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product .product-link-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .lux-product > *:not(.product-link-overlay) {
+      z-index: 2;
+      position: relative;
+    }
+    .lux-product .lux-btn {
+      z-index: 3;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    #cart-modal {
+      display:none;
+      position:fixed;
+      top:0;
+      right:0;
+      width:340px;
+      height:100%;
+      background:#f9f9f9;
+      color:#222;
+      box-shadow:-4px 0 32px #000a;
+      z-index:1000;
+      padding:2rem;
+      overflow-y:auto;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    #cart-modal ul {
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    #cart-modal h2 {
+      margin-top: 0;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    #empty-cart-alert {
+      display:none;
+      background: #ffd700;
+      color: #111;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: bold;
+      margin: 1rem auto;
+      max-width: 420px;
+      box-shadow: 0 2px 12px #ffd70055;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .remove-btn {
+      margin-left:10px;
+      background:#ffd70022;
+      color:#bfa200;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      padding: 3px 10px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .remove-btn:hover { background:#ffd70055; color:#111;}
+    .disabled-btn {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .lux-product .lux-btn {
+      pointer-events: auto;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 800px) {
+      /* Hide the desktop side menu on mobile and show the dropdown mobile nav */
+      .side-menu {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+      }
+      .banner-header {
+        padding-top: 1rem;
+      }
+
+    }
+    @media (max-width: 600px) {
+      .banner-header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+     /* fluid responsive grid for product cards */
+/* change .row to a grid and use two columns at mobile sizes */
+.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; /* centers the grid area inside the container / justify-items: center; / centers each card within its grid cell */ margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr); /* two columns */
+    padding: 0 0.75rem;
+  }
+  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
+}
+
+@media (max-width: 420px) {
+  .row {
+    grid-template-columns: 1fr; /* switch to single column on very small screens */
+  }
+}
+
+.lux-product img  { width: 100%; text-align: center; }
+  </style><style>
+    body {
+      background: #fff;
+      color: #222;
+      font-family: 'Inconsolata', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .banner-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* use space-between if you want logo left and title centered */
+  gap: 1rem;
+  padding: 1rem 1rem;
+  background: linear-gradient(90deg, #f9f9f9, #fff);
+  box-shadow: 0 4px 24px 0 #ffd70044;
+}
+
+/* logo image */
+.site-logo {
+  height: 56px;       /* tune this to taste */
+  width: auto;
+  display: block;
+}
+
+/* small screens: reduce logo size and stack if needed */
+@media (max-width: 600px) {
+  .banner-header {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 0.75rem;
+  }
+  .site-logo {
+    height: 44px;
+    margin-bottom: 0.25rem;
+  }
+}
+    .banner-header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Inconsolata', serif;
+      letter-spacing: 0.08em;
+    }
+    .banner-header p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .side-menu { position: sticky; top: 0;  left: 0; right: 0; display: flex; flex-direction: row;  align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Montserrat', sans-serif; }
+    .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
+    .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent;  transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
+    .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
+
+    /* Mobile dropdown nav */
+    .mobile-nav {
+      display: none; /* hidden on desktop */
+      background: #f9f9f9;
+      border-bottom: 2px solid #ffd70033;
+      box-shadow: 0 4px 12px #ffd70011;
+      padding: 0.5rem 1rem;
+      z-index: 20;
+    }
+    .mobile-nav-bar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #mobile-menu-toggle {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #mobile-menu {
+      flex: 1;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      font-size: 1rem;
+      background: white;
+    }
+
+    .main-content {
+      margin-left: 210px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-top: 2rem;
+    }
+    .lux-product {
+      width: 300px;
+      height: 420px;
+      background: #fff;
+      border-radius: 0;
+      margin: 0;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px #eee;
+      color: #222;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 1px solid #eee;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 8px 32px #ffd70055;
+      text-decoration: none;
+    }
+    .lux-btn {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 25px;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      width: 90%;
+      margin: 0.5rem auto 0 auto;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product img {
+      width: 100%;
+      height: 260px;
+      object-fit: center;
+      border-radius: 0;
+      margin-bottom: 1rem;
+      background: #f9f9f9;
+      display: block;
+    }
+    .lux-product h3 {
+      margin: 1rem 0 0.5rem 0;
+      font-size: 1rem;
+      flex: 0 0 auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product .price {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      flex: 0 0 auto;
+      color: #bfa200;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product .product-link-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .lux-product > *:not(.product-link-overlay) {
+      z-index: 2;
+      position: relative;
+    }
+    .lux-product .lux-btn {
+      z-index: 3;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    #cart-modal {
+      display:none;
+      position:fixed;
+      top:0;
+      right:0;
+      width:340px;
+      height:100%;
+      background:#f9f9f9;
+      color:#222;
+      box-shadow:-4px 0 32px #000a;
+      z-index:1000;
+      padding:2rem;
+      overflow-y:auto;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    #cart-modal ul {
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    #cart-modal h2 {
+      margin-top: 0;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    #empty-cart-alert {
+      display:none;
+      background: #ffd700;
+      color: #111;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: bold;
+      margin: 1rem auto;
+      max-width: 420px;
+      box-shadow: 0 2px 12px #ffd70055;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .remove-btn {
+      margin-left:10px;
+      background:#ffd70022;
+      color:#bfa200;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      padding: 3px 10px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .remove-btn:hover { background:#ffd70055; color:#111;}
+    .disabled-btn {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .lux-product .lux-btn {
+      pointer-events: auto;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 800px) {
+      /* Hide the desktop side menu on mobile and show the dropdown mobile nav */
+      .side-menu {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+      }
+      .banner-header {
+        padding-top: 1rem;
+      }
+
+    }
+    @media (max-width: 600px) {
+      .banner-header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+     /* fluid responsive grid for product cards */
+/* change .row to a grid and use two columns at mobile sizes */
+.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; /* centers the grid area inside the container / justify-items: center; / centers each card within its grid cell */ margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr); /* two columns */
+    padding: 0 0.75rem;
+  }
+  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
+}
+
+@media (max-width: 420px) {
+  .row {
+    grid-template-columns: 1fr; /* switch to single column on very small screens */
+  }
+}
+
+body {
+            background-image: url("https://i.pinimg.com/736x/96/1b/3f/961b3f592077047183df59289f01418e.jpg");
+            background-repeat: no-repeat; /* Prevents the image from tiling */
+            background-size: cover;      /* Makes the image cover the entire screen */
+            background-attachment: fixed; /* Keeps the background in place when scrolling */
+        }
+.lux-product img  { width: 100%; text-align: center; }
+  </style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Contact | Shop BMO</title>
+  <section class="container">
+      
+      <div class="row" id="product-list"></div>
+    </section>
+</head>
+<body>
+  <header class="lux-header">
+    <h2>Shop BMO</h2>
+    <div style="font-size:1rem;font-weight:400;letter-spacing:1px;margin-top:0.5rem;">Authentic Luxury Products Under Retail Prices</div>
+
+<a href="home-page.html">
+    <img src="https://i.pinimg.com/736x/98/a8/ab/98a8ab8f800abb9ccb65a9688c438d8f.jpg" alt="Description of the link" style=" width: 70px ;"> 
+</a>
+
+ 
+  </header>
+
+  <!-- Side Navigation Menu -->
+  <nav class="side-menu">
+    <h2>Browse</h2>
+    <a href="home-page.html">Home</a>
+    <a href="index.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="shop-mens.html">Men's Fragrances</a>
+    <a href="shop-womens.html">Women's Fragrances</a>
+    <a href="shop-unisex.html">Unisex Fragrances</a>
+    <a href="snacks.html">Snacks</a>
+    <a href="checkout.html">Checkout</a>
+  </nav>
+
+
+  
+    <section class="contact-section">
+      <h1>Contact Us</h1>
+<body style="background-image: url('https://i.pinimg.com/736x/96/1b/3f/961b3f592077047183df59289f01418e.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+      <p>We’d love to hear from you! For questions, support, or feedback, please fill out the form below and our team will get back to you soon.</p>
+      <form>
+        <div>
+          <label for="name">Name</label><br>
+          <input id="name" name="name" type="text" required placeholder="Your name">
+        </div>
+        <div>
+          <label for="email">Email</label><br>
+          <input id="email" name="email" type="email" required placeholder="shopping4bmo@gmail.com">
+        </div>
+        <div>
+          <label for="message">Message</label><br>
+          <textarea id="message" name="message" required placeholder="Type your message..."></textarea>
+        </div>
+        <button type="submit" class="contact-btn">Send Message</button>
+      </form>
+      <div class="contact-info">
+        Or email us directly at <a href="mailto:shopping4bmo@gmail.com">shopping4bmo@gmail.com</a>
+      </div>
+    </section> 
+        
+    <footer>
+      &copy; 2025 Shop BMO. All rights reserved.
+    </footer>      
