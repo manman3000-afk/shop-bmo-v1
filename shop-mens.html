@@ -350,7 +350,10 @@
   cursor: pointer;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='https://i.pinimg.com/736x/32/8f/16/328f16c964616abecff78cebda511ea0.jpg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23888' d='M6 8L0 0h12z'/></svg>");
   background-repeat: no-repeat;
-   .side-menu { display: none; pointer-events: none; opacity: 0; transform: translateX(-8px); }
+}
+  #mobile-menu:focus, #mobile-menu-toggle:focus { outline: 3px solid rgba(255,215,0,0.28); outline-offset: 2px; }
+@media (max-width: 800px) {
+  .side-menu { display: none; pointer-events: none; opacity: 0; transform: translateX(-8px); }
   .mobile-nav { display: block; }
   .main-content { margin-left: 0; }
 }
