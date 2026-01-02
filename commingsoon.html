@@ -1,113 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>About | Shop BMO</title>
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
- <style>
-
-    /* Responsive adjustments */
+  <style>
+    /* ---------- Existing responsive rules ---------- */
     @media (max-width: 800px) {
-      /* Hide the desktop side menu on mobile and show the dropdown mobile nav */
-      .side-menu {
-        display: none;
-      }
-      .mobile-nav {
-        display: block;
-      }
-      .banner-header {
-        padding-top: 1rem;
-      }
-      .lux-header h2 { color: #ffffff; }
-    .lux-header div { color: rgba(255,255,255,0.9); }
-      .about-section {
-      background: rgba(0,0,0,0.35);   /* optional: improve readability */
-      padding: 1.5rem;
-      border-radius: 6px;
-      color: #f2f2f2;                 /* fallback for section */
-    }
+      .side-menu { display: none; }
+      .mobile-nav { display: block; }
+      .banner-header { padding-top: 1rem; }
     }
     @media (max-width: 600px) {
-      .banner-header {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      .lux-header h2 { color: #ffffff; }
+      .banner-header { padding-left: 1rem; padding-right: 1rem; }
+    }
+
+    .row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
+    @media (max-width: 700px) {
+      .row { grid-template-columns: repeat(2, 1fr); padding: 0 0.75rem; }
+      .lux-product { width: 100%; height: auto; object-fit: cover; margin: 0; }
+    }
+    @media (max-width: 420px) {
+      .row { grid-template-columns: 1fr; }
+    }
+
+    body {
+      background-image: url("https://i.pinimg.com/736x/57/c4/f6/57c4f64383cce10367ac57a9d3fbb4d6.jpg");
+      background-repeat: repeat;
+      background-size: auto 100vh;
+      background-attachment: fixed;
+      color: #ffffff;                /* <-- global text color */
+      font-family: "Inconsolata", monospace;
+    }
+
+    /* Specific text colors */
+    .lux-header h2 { color: #ffffff; }
     .lux-header div { color: rgba(255,255,255,0.9); }
-      .about-section {
+
+    .about-section {
       background: rgba(0,0,0,0.35);   /* optional: improve readability */
       padding: 1.5rem;
       border-radius: 6px;
       color: #f2f2f2;                 /* fallback for section */
     }
-     /* fluid responsive grid for product cards */
-/* change .row to a grid and use two columns at mobile sizes */
-.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; /* centers the grid area inside the container / justify-items: center; / centers each card within its grid cell */ margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
 
-@media (max-width: 700px) {
-  .row {
-    grid-template-columns: repeat(2, 1fr); /* two columns */
-    padding: 0 0.75rem;
-  }
-  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
-}
+    .about-section h1, .about-section h2 {
+      color: #ffffff;
+      margin-top: 0.5rem;
+    }
 
-@media (max-width: 420px) {
-  .row {
-    grid-template-columns: 1fr; /* switch to single column on very small screens */
-  }
-}
+    .about-section p, .about-section li {
+      color: #e9e9e9;
+      line-height: 1.6;
+    }
 
-body {
-            background-image: url("https://i.pinimg.com/736x/57/c4/f6/57c4f64383cce10367ac57a9d3fbb4d6.jpg");
-            background-repeat: no-repeat; /* Prevents the image from tiling */
-            background-size: cover;      /* Makes the image cover the entire screen */
-            background-attachment: fixed; /* Keeps the background in place when scrolling */
-        }
-.lux-product img  { width: 100%; text-align: center; }
+    .side-menu a {
+      color: #ffffff;
+      display: block;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+    }
+    .side-menu a:hover { color: #ffd700; }
+    .side-menu a.active { color: #ffd700; font-weight: 700; }
+
+    /* Optional: small utility class for accent text */
+    .text-accent { color: #ff6b6b; }
+
+    /* Avoid using !important unless necessary */
   </style>
 </head>
 <body>
   <header class="lux-header">
     <h2>Shop BMO</h2>
-   
-
+    <audio id="myAudio" loop>
+      <source src="LOST IN LA.mp3" type="audio/mpeg">
+      <source src="LOST IN LA.ogg" type="audio/ogg">
+    </audio>
     
     <div style="font-size:1rem;font-weight:400;letter-spacing:1px;margin-top:0.5rem;">Authentic Luxury Products Under Retail Prices</div>
   </header>
 
-  <!-- Side Navigation Menu -->
-  <nav class="side-menu">
-    
-    <a href="home-page.html">Home</a>
-    <a href="index.html">Shop</a>
-    <a href="about.html" class="active">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="shop-mens.html">Men's Fragrances</a>
-    <a href="shop-womens.html">Women's Fragrances</a>
-    <a href="shop-unisex.html">Unisex Fragrances</a>
-    <a href="snacks.html">Snacks</a>
-    <a href="checkout.html">Checkout</a>
-  </nav>
+
 
   <a href="home-page.html">
-    <img src="https://i.pinimg.com/736x/98/a8/ab/98a8ab8f800abb9ccb65a9688c438d8f.jpg" alt="Description of the link" style=" width: 70px ;"> 
-</a>
-    <section class="about-section">
-      <h1>Comming Soon</h1>
-<body style="background-image: url('https://i.pinimg.com/736x/57/c4/f6/57c4f64383cce10367ac57a9d3fbb4d6.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-      <div class="about-mission">
-        
-      </div>
+    <img src="https://i.pinimg.com/736x/98/a8/ab/98a8ab8f800abb9ccb65a9688c438d8f.jpg" alt="Logo" style="width:70px;">
+  </a>
+
+ <div>
+
       <p>
         Shop BMO is the trusted destination for authentic luxury goods at unbeatable prices. We believe everyone deserves a taste of luxury without retail markup.
       </p>
       <h2>What is arriving?</h2>
       <ul>
         <li><b>🤷‍♂️🤫</b<?li>
-        <li><b>our Only promise is: Authenticity Guaranteed, Exclusive Savings, Curated Selection, Customer-First Approach.</b> </li>
+        <li><b>Our only promise is: Authenticity Guaranteed, Exclusive Savings, Curated Selection, Customer-First Approach.</b> </li>
       
         
       </ul>
@@ -116,17 +105,14 @@ body {
       <p>
    Mediocrity is not an option.
       </p>
- <p>
-   made by Bravo-Breaker on youtube https://youtube.com/@breaker-bravo?si=0zfCe-ca1944tCKf
-      </p>
-  
+
+  </div>
     </section>
 
     <footer>
       &copy; 2025 Shop BMO. All rights reserved. 
     </footer>
-  </div>
-  <!-- Mobile-nav logic (populate select from side-menu links) -->
+
   <script>
     (function () {
       const sideMenu = document.getElementById('side-menu');
@@ -157,8 +143,6 @@ body {
         window.location.href = url;
       });
 
-      
-
       if (toggleBtn) {
         toggleBtn.addEventListener('click', function () {
           const expanded = this.getAttribute('aria-expanded') === 'true';
@@ -173,24 +157,21 @@ body {
         const obs = new MutationObserver(buildMobileMenu);
         obs.observe(sideMenu, { childList: true, subtree: true });
       }
-// Get the audio element and buttons
-        const audio = document.getElementById('myAudio');
-        const playBtn = document.getElementById('playButton');
-        const pauseBtn = document.getElementById('pauseButton');
 
-       // Play function
+      // Audio controls
+      const audio = document.getElementById('myAudio');
+      const playBtn = document.getElementById('playButton');
+      const pauseBtn = document.getElementById('pauseButton');
+
+      if (playBtn) {
         playBtn.addEventListener('click', function() {
-            audio.play().catch(error => {
-                // This catch handles situations where play() is interrupted
-                console.error("Playback failed:", error);
-            });
+          audio.play().catch(error => console.error("Playback failed:", error));
         });
-
-        // Pause function
-        pauseBtn.addEventListener('click', function() {
-            audio.pause();
-        });
-
-    })(); 
-
-
+      }
+      if (pauseBtn) {
+        pauseBtn.addEventListener('click', function() { audio.pause(); });
+      }
+    })();
+  </script>
+</body>
+</html>
