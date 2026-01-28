@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
  <style>
     :root {
-      --gold: #000000
+      --gold: #000000;
       --gold-dark: #b49c29;
       --white: #fff;
     }
@@ -43,7 +43,7 @@
       font-weight: 400;
       font-family: 'Inconsolata', sans-serif;
     }
-    .side-menu { position: sticky; top: 0;  left: 0; right: 0; display: flex; flex-direction: row; / horizontal layout */ align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Inconsolata', sans-serif; }
+    .side-menu { position: sticky; top: 0;  left: 0; right: 0; display: flex; flex-direction: row; /* horizontal layout */ align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Inconsolata', sans-serif; }
     .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
     .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent; transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
     .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
@@ -228,6 +228,25 @@
     .venmo-link:hover {
       background:#357cb8;
     }
+
+    .square-link {
+      display:inline-block;
+      background: linear-gradient(90deg,#2b2b2b,#444);
+      color:#fff;
+      font-weight:600;
+      border-radius:8px;
+      padding:0.6rem 1.4rem;
+      text-decoration:none;
+      margin-top:0.7rem;
+      transition:background 0.2s;
+      box-shadow: 0 2px 12px #44444466;
+      font-size: 1.08rem;
+      margin-left: 0.6rem;
+    }
+    .square-link:hover {
+      background: linear-gradient(90deg,#1b1b1b,#333);
+    }
+
     .checkout-form-section {
       margin-bottom: 2.2rem;
       background: #fffbe9;
@@ -278,7 +297,7 @@
     }
     @media (max-width: 600px) {
       .checkout-container { padding: 1rem; }
-      .venmo-section img { width:120px; height:120px;}
+      .venmo-section img { width:120px;height:120px;}
       .form-row { flex-direction: column; gap: 0; }
       .main-content { margin-left: 0; }
       .side-menu {
@@ -314,28 +333,27 @@
         padding-right: 1rem;
       }
      /* fluid responsive grid for product cards */
-/* change .row to a grid and use two columns at mobile sizes */
-.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; /* centers the grid area inside the container / justify-items: center; / centers each card within its grid cell */ margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
+.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
 
 @media (max-width: 700px) {
   .row {
     grid-template-columns: repeat(2, 1fr); /* two columns */
     padding: 0 0.75rem;
   }
-  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
+  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; }
 }
 
 @media (max-width: 420px) {
   .row {
-    grid-template-columns: 1fr; /* switch to single column on very small screens */
+    grid-template-columns: 1fr;
   }
 }
 
 body {
             background-image: url("https://i.pinimg.com/1200x/b1/5b/c1/b15bc1de24d7b9ddad73b9764a7344f1.jpg");
-            background-repeat: no-repeat; /* Prevents the image from tiling */
-            background-size: cover;      /* Makes the image cover the entire screen */
-            background-attachment: fixed; /* Keeps the background in place when scrolling */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
         }
 .lux-product img  { width: 100%; text-align: center; }
   </style>
@@ -344,86 +362,106 @@ body {
   <header class="lux-header">
     <h1>SHOP BMO</h1>
     <p>Checkout</p>
-   <body style="background-image: url('https://i.pinimg.com/1200x/b1/5b/c1/b15bc1de24d7b9ddad73b9764a7344f1.jpg'); background-size: cover; background-position: center; background-attachment: fixed;"></body> 
+     <body style="background-image: url('https://i.pinimg.com/1200x/b1/5b/c1/b15bc1de24d7b9ddad73b9764a7344f1.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+</div>
   </header>
 
   <!-- Side Navigation Menu -->
   <nav class="side-menu">
-    <h2>Browse</h2>
-    <a href="home-page.html">Home</a>
-    <a href="index.html">Shop</a>
+    <a href="shop.html" >Shop</a>
+   <a href="Accesories.html">Accesories</a> 
+    <a href="MENS-PRODUCT.html">Men's</a>
+    <a href="WOMENS-PRODUCTS.html" class="active">Women's</a>
+   <a href="Clothe.html"> Clothing</a>
+   <a href = "Jewlery.html">PURE YOU Jewlery</a>
+    <a href="OOF-wear.html">OOF-WEAR</a>
+    <a href="27 Miles Malibu.html">27 MILES MALIBU</a>
+    <a href="snacks.html">Snacks</a>
+    <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="shop-mens.html">Men's Fragrances</a>
-    <a href="shop-womens.html">Women's Fragrances</a>
-    <a href="shop-unisex.html">Unisex Fragrances</a>
-    <a href="snacks.html">Snacks</a>
-    <a href="checkout.html" class="active">Checkout</a>
   </nav>
 
- 
-    <div class="checkout-container">
-      <h2>Order Summary</h2>
-      <div class="checkout-summary">
-        <ul id="checkout-items">
-          <!-- JS renders cart items here -->
-        </ul>
-        <div class="checkout-total">
-          Total: $<span id="checkout-total">0.00</span>
-        </div>
+  <div class="checkout-container">
+    <h2>Order Summary</h2>
+    <div class="checkout-summary">
+      <ul id="checkout-items">
+        <!-- JS renders cart items here -->
+      </ul>
+      <div class="checkout-total">
+        Total: $<span id="checkout-total">0.00</span>
       </div>
-      <!-- Customer Info Form (Formspree) with address broken out -->
-      <form class="checkout-form-section" id="customer-info-form" autocomplete="on">
-        <h3 style="margin-top:-0.2rem;margin-bottom:1.1rem;">Your Info (required before payment)</h3>
-        <div class="form-error" id="customer-form-error" style="display:none"></div>
-        <label for="ci-email">Email Address</label>
-        <input type="email" id="ci-email" name="email" required placeholder="e.g. you@email.com" autocomplete="email">
-
-        <label for="ci-name">Full Name</label>
-        <input type="text" id="ci-name" name="name" required placeholder="Your name" autocomplete="name">
-
-        <label for="ci-address">Street Address</label>
-        <input type="text" id="ci-address" name="address" required placeholder="123 Main St, Apt 4B" autocomplete="street-address">
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="ci-city">City</label>
-            <input type="text" id="ci-city" name="city" required placeholder="City" autocomplete="address-level2">
-          </div>
-          <div class="form-group">
-            <label for="ci-state">State</label>
-            <input type="text" id="ci-state" name="state" required placeholder="State" maxlength="2" autocomplete="address-level1">
-          </div>
-          <div class="form-group">
-            <label for="ci-zip">ZIP Code</label>
-            <input type="text" id="ci-zip" name="zip" required placeholder="ZIP" maxlength="10" autocomplete="postal-code">
-          </div>
-        </div>
-
-        <button type="submit" class="lux-btn" id="submit-customer-info">Continue to Venmo Payment</button>
-      </form>
-      <!-- END customer info form -->
-      
-      <div class="venmo-section" id="venmo-section">
-        <h3 style="margin-bottom:0.7rem;">Pay with Venmo</h3>
-        <img id="venmo-qr" src="" alt="Venmo QR Code">
-        <p>Scan QR with your Venmo app<br>or tap the button below to pay.</p>
-        <a id="venmo-link" href="#" target="_blank" class="venmo-link">Pay with Venmo</a>
-        <p id="venmo-message" style="font-size:.97rem;margin-top:.8rem;color:#ffd700bb;"></p>
-        <p style="color:#ffd70099;font-size:.93rem;">After payment, screenshot/record your Venmo and send to seller for confirmation.</p>
-      </div>
-      <div class="success-message" id="success-message"></div>
-      <div class="back-link" onclick="window.location='index.html'">← Back to Shop</div>
     </div>
 
-    <footer style="text-align:center;padding:2rem 0;color:#ffd70088;">
-      © 2025 BMO.LLC.CO All rights reserved.
-    </footer>
+    <!-- Single customer info form -->
+    <form class="checkout-form-section" id="customer-info-form" autocomplete="on" novalidate>
+      <h3 style="margin-top:-0.2rem;margin-bottom:1.1rem;">Your Info (required before payment)</h3>
+      <div class="form-error" id="customer-form-error" style="display:none"></div>
+
+      <label for="ci-email">Email Address</label>
+      <input type="email" id="ci-email" name="email" required placeholder="e.g. you@email.com" autocomplete="email">
+
+      <label for="ci-name">Full Name</label>
+      <input type="text" id="ci-name" name="name" required placeholder="Your name" autocomplete="name">
+
+      <label for="ci-address">Street Address</label>
+      <input type="text" id="ci-address" name="address" required placeholder="123 Main St, Apt 4B" autocomplete="street-address">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ci-city">City</label>
+          <input type="text" id="ci-city" name="city" required placeholder="City" autocomplete="address-level2">
+        </div>
+        <div class="form-group">
+          <label for="ci-state">State</label>
+          <input type="text" id="ci-state" name="state" required placeholder="State" maxlength="2" autocomplete="address-level1">
+        </div>
+        <div class="form-group">
+          <label for="ci-zip">ZIP Code</label>
+          <input type="text" id="ci-zip" name="zip" required placeholder="ZIP" maxlength="10" autocomplete="postal-code">
+        </div>
+      </div>
+
+      <!-- Two buttons: both validate & submit customer info; paymentType decides which primary link to highlight -->
+      <div style="display:flex; gap:0.6rem; align-items:center;">
+        <button type="button" class="lux-btn" id="continue-venmo">Continue to Venmo Payment</button>
+        <button type="button" class="lux-btn" id="continue-square" style="background:linear-gradient(90deg,#2b2b2b,#444); box-shadow:0 2px 12px #44444466;">Continue to Card Payment</button>
+      </div>
+    </form>
+    <!-- END customer info form -->
+
+    <div class="venmo-section" id="venmo-section" aria-hidden="true">
+      <h3 style="margin-bottom:0.7rem;">Pay with Venmo or Square</h3>
+      <img id="venmo-qr" src="" alt="Venmo QR Code">
+      <p>Scan QR with your Venmo app<br>or tap the button below to pay.</p>
+      <div style="display:flex; justify-content:center; gap:0.6rem; align-items:center; flex-wrap:wrap;">
+        <a id="venmo-link" href="#" target="_blank" class="venmo-link" rel="noopener">Pay with Venmo</a>
+        <a id="square-link" href="#" target="_blank" class="square-link" rel="noopener">Pay with Square</a>
+      </div>
+
+      <div style="margin-top:0.9rem;">
+        <img id="square-qr" src="" alt="Square QR Code" style="width:140px;height:140px;border-radius:12px;margin:0.6rem auto;display:inline-block;">
+      </div>
+
+      <p id="venmo-message" style="font-size:.97rem;margin-top:.8rem;color:#ffd700bb;"></p>
+      <p id="square-message" style="font-size:.97rem;margin-top:.2rem;color:#ffd700bb;"></p>
+      <p style="color:#ffd70099;font-size:.93rem;">After payment, screenshot/record your payment and send to seller for confirmation and future discount.</p>
+    </div>
+
+    <div class="success-message" id="success-message"></div>
+    <div class="back-link" onclick="window.location='shop.html'">← Back to Shop</div>
   </div>
+
+  <footer style="text-align:center;padding:2rem 0;color:#ffd70088;">
+    © 2025 BMO.LLC.CO All rights reserved.
+  </footer>
+
   <script>
     // VENMO CONSTANTS -- CHANGE TO YOUR VENMO INFO:
     const VENMO_USERNAME = "manmandoit";
     const VENMO_NAME = "BMO Shop";
+    // Square link provided by user:
+    const SQUARE_LINK = "https://square.link/u/Vwdc9KER";
     // Formspree endpoint (change to your own Formspree form endpoint):
     const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdkzdgyy";
 
@@ -464,21 +502,42 @@ body {
       return `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent('https://venmo.com/u/' + VENMO_USERNAME)}`;
     }
 
-    function showVenmoSection() {
-      let total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-      let note = "Shopped with BMO";
-      document.getElementById('venmo-section').style.display = 'block';
+    // Square helpers
+    function getSquarePayUrl() {
+      return SQUARE_LINK;
+    }
+    function getSquareQrUrl() {
+      return `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(SQUARE_LINK)}`;
+    }
+
+    function showPaymentSection(preferred) {
+      // preferred: 'venmo' | 'square' | undefined
+      const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+      const note = "Shopped with BMO";
+      const venmoSection = document.getElementById('venmo-section');
+
       document.getElementById('venmo-qr').src = getVenmoQrUrl();
       document.getElementById('venmo-link').href = getVenmoPayUrl(total.toFixed(2), note);
       document.getElementById('venmo-message').textContent = `Venmo Username: @${VENMO_USERNAME}`;
+
+      document.getElementById('square-link').href = getSquarePayUrl();
+      document.getElementById('square-qr').src = getSquareQrUrl();
+      document.getElementById('square-message').textContent = `Square quick-pay link copy total for next page`;
+
+      venmoSection.style.display = 'block';
+      venmoSection.setAttribute('aria-hidden', 'false');
+
+      // Optionally open the preferred link in a new tab (commented out for safety)
+      // if (preferred === 'venmo') window.open(document.getElementById('venmo-link').href, '_blank', 'noopener');
+      // if (preferred === 'square') window.open(document.getElementById('square-link').href, '_blank', 'noopener');
+
       setTimeout(() => {
-        document.getElementById('venmo-section').scrollIntoView({behavior:"smooth"});
+        venmoSection.scrollIntoView({behavior: "smooth"});
       }, 80);
     }
 
-    // Handle customer info form submission
-    document.getElementById('customer-info-form').onsubmit = async function(e) {
-      e.preventDefault();
+    // Validate customer form returns object or null
+    function validateCustomerForm() {
       const email = document.getElementById('ci-email').value.trim();
       const name = document.getElementById('ci-name').value.trim();
       const address = document.getElementById('ci-address').value.trim();
@@ -489,43 +548,58 @@ body {
       errorDiv.style.display = "none";
       errorDiv.textContent = "";
 
-      // Basic validation
       if (!email || !name || !address || !city || !state || !zip) {
         errorDiv.textContent = "Please fill out all fields.";
         errorDiv.style.display = "block";
-        return;
+        return null;
       }
-      // Disable form button
-      document.getElementById('submit-customer-info').disabled = true;
-      document.getElementById('submit-customer-info').textContent = "Submitting...";
+      return { email, name, address, city, state, zip };
+    }
 
-      // Send to Formspree
+    async function submitCustomerInfoAndShow(paymentPref) {
+      // paymentPref: 'venmo' or 'square' or undefined
+      const data = validateCustomerForm();
+      if (!data) return;
+
+      const btnVenmo = document.getElementById('continue-venmo');
+      const btnSquare = document.getElementById('continue-square');
+
+      // disable both during submit
+      btnVenmo.disabled = true;
+      btnSquare.disabled = true;
+      const prevVenmoText = btnVenmo.textContent;
+      const prevSquareText = btnSquare.textContent;
+      if (paymentPref === 'venmo') btnVenmo.textContent = 'Submitting...';
+      else btnSquare.textContent = 'Submitting...';
+
       try {
         const response = await fetch(FORMSPREE_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ 
-            email, 
-            name, 
-            address, 
-            city, 
-            state, 
-            zip 
-          }),
+          body: JSON.stringify(data),
         });
-        if (!response.ok) {
-          throw new Error("Formspree submission failed.");
-        }
-        // Hide form, show Venmo UI
-        document.getElementById('customer-info-form').style.display = "none";
-        showVenmoSection();
+        if (!response.ok) throw new Error("Formspree submission failed.");
+        // success: hide form and show payment options
+        document.getElementById('customer-info-form').style.display = 'none';
+        showPaymentSection(paymentPref);
       } catch (err) {
+        const errorDiv = document.getElementById('customer-form-error');
         errorDiv.textContent = "There was an error submitting your info. Please try again.";
         errorDiv.style.display = "block";
-        document.getElementById('submit-customer-info').disabled = false;
-        document.getElementById('submit-customer-info').textContent = "Continue to Venmo Payment";
+        btnVenmo.disabled = false;
+        btnSquare.disabled = false;
+        btnVenmo.textContent = prevVenmoText;
+        btnSquare.textContent = prevSquareText;
       }
-    };
+    }
+
+    // Wire up button clicks
+    document.getElementById('continue-venmo').addEventListener('click', () => {
+      submitCustomerInfoAndShow('venmo');
+    });
+    document.getElementById('continue-square').addEventListener('click', () => {
+      submitCustomerInfoAndShow('square');
+    });
 
     renderCheckoutCart();
   </script>
