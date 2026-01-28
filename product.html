@@ -6,25 +6,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
   <style>body {
-  background: #fff;
+  background: #ffffff;
   color: #222;
   font-family: 'Montserrat', sans-serif;
 }
 .lux-header {
-  background: linear-gradient(90deg, #f9f9f9, #fff);
+  background: linear-gradient(90deg, #ffd90038, #8e8b8b);
   padding: 2rem 0;
   text-align: center;
-  color: #222;
+  color: #000000;
   letter-spacing: 0.15em;
-  box-shadow: 0 4px 24px 0 #ffd70044;
 }
 .product-detail-container {
   max-width: 480px;
   margin: 3rem auto 2rem auto;
-  background: #fff;
-  border: 2px solid #eee;
+  background: #ffffff;
+  border: 0px solid #eee;
   border-radius: 0;
-  box-shadow: 0 2px 8px #eee;
+  box-shadow: 0 2px 8px #474746;
   padding: 2.5rem 2rem 2rem 2rem;
   text-align: center;
 }
@@ -33,7 +32,7 @@
   max-width: 350px;
   border-radius: 0;
   margin-bottom: 1.5rem;
-  background: #f9f9f9;
+  background: #ffffff;
 }
 .lux-btn {
   background: linear-gradient(90deg, #ffd700, #bfa200);
@@ -50,21 +49,152 @@
 }
 .back-link {
   display: inline-block;
-  color: #bfa200;
+  color: #000000;
   font-size: 1.1rem;
   margin: 2rem 0 0.7rem 0;
   text-decoration: none;
-  border-bottom: 1px dotted #ffd70088;
+  border-bottom: 1px dotted #e3f111;
 }
 .back-link:hover { color: #ffd700; border-bottom: 1px solid #ffd700cc; }
 .price {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 1rem 0;
-  color: #bfa200;
+  color: #000000;
   letter-spacing: 0.05em;
   text-shadow: 0 2px 10px #ffd70022;
 }
+/* Gallery-specific */
+.gallery {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+.thumbs {
+  width: 72px;
+  max-height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+.thumbs img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.thumbs img.active {
+  border-color: #ffd700;
+  transform: scale(1.03);
+}
+.main-img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.main-img img {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  border-radius: 6px;
+  touch-action: none; /* allow JS touch handling */
+  user-select: none;
+}
+
+/* Small screens: move thumbs above main image as a horizontal row */
+@media (max-width: 420px) {
+  .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+  .thumbs {
+    width: 100%;
+    max-height: none;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0.5rem;
+  }
+  .thumbs img {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 auto;
+  }
+}
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.swatch.active {
+  border: 3px solid #000;
+}
+.option-group {
+  margin-bottom: 1.5rem;
+}
+
+.swatches {
+  display: flex;
+  gap: 10px;
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+
+.swatch.active {
+  border-color: #000;
+}
+
+.sizes {
+  display: flex;
+  gap: 8px;
+}
+
+.size-btn {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.size-btn.active {
+  background: black;
+  color: rgb(115, 75, 59);
+}
+
+/* SIZE & COLOR UI */
+.size-select { width: 100%; padding: 0.45rem 0.6rem; border-radius: 8px; border: 1px solid #eee; font-size: 0.95rem; font-family: 'Inconsolata'; background: #fff; }
+.color-options { display:flex; gap:0.4rem; align-items:center; margin-top:0.5rem; flex-wrap:wrap; }
+.color-swatch {
+  width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 1px 3px #0002; cursor: pointer; display:inline-block; position:relative;
+  flex:0 0 auto;
+}
+.color-swatch input { position:absolute; opacity:0; pointer-events:none; width:0; height:0; }
+.color-label { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.9rem; color:#333; cursor:pointer; }
+.color-swatch.selected { outline: 2px solid #ffd700; transform: scale(1.08); }
+.color-name { font-size:0.8rem; padding-left:0.25rem; color:#666; }
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr); /* two columns */
+    padding: 0 0.75rem;
+  }
+  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
+}
+
   </style>
 </head>
 <body>
@@ -74,149 +204,584 @@
   </header>
   <a href="index.html" class="back-link">&larr; Back to All Products</a>
   <div class="product-detail-container" id="product-detail"></div>
+<div id="product-scroller" class="scroll-container"></div>
+<!-- inside each .lux-product card, added this block -->
+<div class="product-options">
+  <!-- size select (only rendered if product.sizes exists) -->
+  <select id="size-select" class="size-select" aria-label="Choose size for PRODUCT_NAME">
+    <option value="">Select size</option>
+    <!-- <option> elements generated from product.sizes -->
+  </select>
+
+  <!-- color swatches (only rendered if product.colors exists) -->
+  <div class="color-options" role="list">
+    <!-- each swatch is a label wrapping .color-swatch and an invisible radio input -->
+    <label class="color-label" title="COLOR_NAME" for="color-PRODUCTID-IDX">
+      <span class="color-swatch" style="background:COLOR_VALUE" data-color-name="COLOR_NAME">
+        <input type="radio" name="color-PRODUCTID" id="color-PRODUCTID-IDX" value="COLOR_NAME">
+      </span>
+    </label>
+    <!-- repeat for each color -->
+  </div>
+</div>
+
   <script>
     const products = [
-{ id: "wanted-azzaro-edt", name: "Wanted by Azzaro EDT 3.4oz", img: "https://mediafiles.maxaroma.com/9cd29e92-4b8f-436f-ad1f-8e368b30dc1d/https://www.maxaroma.com/productimages/large/UP3351500002696.jpg?ver=1725902804", desc: "Bold and spicy with cardamom and lemon, anchored by warm tonka bean.", price: 55 },
-  { id: "most-wanted-intense-edt", name: "Most Wanted Intense EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/files/ruzfgcrpyp1h_1024x1024.jpg?v=1733081957", desc: "Amber and toffee create a deep, addictive masculine signature.", price: 69 },
-  { id: "most-wanted-edp-intense", name: "Most Wanted EDP Intense 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.66826.2x.avif", desc: "Fiery ginger and bourbon vanilla bring smoky, seductive depth.", price: 78 },
-  { id: "burberry-london-edt-men", name: "Burberry London EDT for Men 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/burberry-london-by-burberry-3-3-oz-eau-de-toilette-spray-for-men-new-54_1024x1024.jpg?v=1592184214", desc: "a warm, spicy fragrance with a sophisticated, masculine character, embodying classic British elegance", price: 50 },
-  { id: "burberry-hero-edt-men", name: "Burberry Hero EDT for Men 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/31903DDC-3F05-4700-93E1-8C09D421C5F5?$BBY_V3_UNSHARP_SL_1$&wid=3000&hei=3000", desc: "Tobacco, leather, and cinnamon—dressed like a tailored London suit.", price: 69 },
-  { id: "burberry-hero-edp-men", name: "Burberry Hero EDP for Men 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/9CB5B4CF-55ED-43E8-BD76-70F39A9AD29E?$BBY_V3_SL_1$&wid=2100&hei=2100", desc: "Cedarwood and bergamot evoke a wild, earthy masculinity.", price: 85 },
-  { id: "burberry-london-edp-women", name: "Burberry London EDP for Women 3.4oz", img: "https://assets.burberry.com/is/image/Burberryltd/F9363128-2F01-40CB-A437-9D0D6FE54EC2?$BBY_V3_SL_1$&wid=2100&hei=2100", desc: "Pine and incense add soul and boldness to a rich, woodsy blend.", price: 69 },
-  { id: "coach-blue-edt", name: "Coach Blue EDT 3.4oz", img: "https://i5.walmartimages.com/asr/3b9f9371-0799-4667-97ef-21c1e55a77ed.feaf99d22e10c92acfa76c5ca7feda10.jpeg", desc: " Top notes are Lime and Absinthe; middle notes are Ozonic notes and Black Pepper; base notes are Cedar and Amber.", price: 55 },
-  { id: "coach-green-edt", name: "Coach Green EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.81391.2x.avif", desc: "a fresh and invigorating Aromatic Spicy fragrance for men", price: 44 },
-  { id: "coach-ny-edt-men", name: "Coach New York EDT for Men 3.3oz", img: "https://m.media-amazon.com/images/I/71KZKKpklTL._SX522_.jpg", desc: "Zesty and bright with lime and ozone—a free-spirited burst.", price: 50 },
-  { id: "coach-ny-edt-men-2", name: "Coach New York EDT for Men 2.0oz", img: "https://m.media-amazon.com/images/I/71KZKKpklTL._SX522_.jpg", desc: "A fresh, herbal breeze with kiwi and rosemary—natural and cool.", price: 35 },
-  { id: "coach-love-edp-women", name: "Coach Love EDP for Women 3.3oz", img: "https://www.aurafragrance.com/cdn/shop/files/796162ce-0ad3-4a38-a582-9255c53e89e5-569b7549eb65ba2de25112e7374cce56_1024x1024.jpg?v=1729585257", desc: "Nashi pear and suede blend for a modern, metropolitan scent.", price: 55 },
-  { id: "coach-love-edp-women-2", name: "Coach Love EDP for Women 2.0oz", img: "https://www.aurafragrance.com/cdn/shop/files/796162ce-0ad3-4a38-a582-9255c53e89e5-569b7549eb65ba2de25112e7374cce56_1024x1024.jpg?v=1729585257", desc: "Red currant and wild rose make this scent playful and passionate.", price: 39 },
-  { id: "coach-floral-edp-women", name: "Coach Floral EDP for Women 3.0oz", img: "https://www.aurafragrance.com/cdn/shop/products/375x500.48115_1024x1024.jpg?v=1583109187", desc: "Pineapple sorbet and peony bring fresh, delicate charm.", price: 40 },
-  { id: "coach-floral-edp-women-2", name: "Coach Floral EDP for Women 1.7oz", img: "https://www.aurafragrance.com/cdn/shop/products/375x500.48115_1024x1024.jpg?v=1583109187", desc: "Goji berry and grapefruit give this one a flirty spring glow.", price: 39 },
-  { id: "coach-floral-blush-edp-women", name: "Coach Floral Blush EDP for Women 2.0oz", img: "https://www.aurafragrance.com/cdn/shop/products/061e9d271dded13cceddf4b37fecd087ef01817c_1024x1024.jpg?v=1576636637", desc: "A clean and crisp fragrance kit—perfectly gift-ready.", price: 46 },
-  { id: "coach-green-men-set", name: "Coach Green Men Set", img: "https://i5.walmartimages.com/seo/Coach-Green-3-Piece-Gift-Set-3-3-OZ-Eau-De-Toilette-3-3-OZ-Shower-Gel-Mini-Perfume_32428624-7478-4c92-bc75-4c7a7660fd33.66b35d620479c9a12beb0de43cfb5f49.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF", desc: "The gift set includes a 100ml Eau de Toilette, a 100ml shower gel, and a 15ml travel-sized EDT", price: 85 },
-  { id: "dior-sauvage-edp", name: "Dior Sauvage EDP 2.0oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.48100.2x.avif", desc: "Bergamot and ambroxan create a rugged, magnetic trail.", price: 110 },
-  { id: "dior-homme-intense-edp", name: "Dior Homme Intense EDP 3.3oz", img: "https://www.lexormiami.com/cdn/shop/products/0321016_3348900838178_1000x.jpg?v=1750784827", desc: "Velvety iris and amber offer elegant masculine sensuality.", price: 140 },
-  { id: "the-one-edp-intense-men", name: "The One EDP Intense for Men 3.3oz", img: "https://www.aurafragrance.com/cdn/shop/products/b04cf63e98d153a7e40d94a4efc844d0d3a5d984_1024x1024.jpg?v=1627941292", desc: "a fragrance that combines luminous warmth with deep, elegant accords, creating a striking and masculine scent", price: 65 },
-  { id: "the-one-edt-men", name: "The One EDT for Men 3.3oz", img: "https://dimg.dillards.com/is/image/DillardsZoom/mainProduct/dolce--gabbana-the-one-for-men-eau-de-parfum-spray/04698515_zi.jpg", desc: "Cardamom and leather make this fragrance rich and commanding.", price: 65 },
-  { id: "the-one-edt-men-2", name: "The One EDT for Men 5.0oz", img: "https://www.aurafragrance.com/cdn/shop/products/Dolce-Gabbana-The-One-Mens-5-ounce-Eau-de-Toilette-Spray-7478444f-d490-40c9-830f-f199147fa8b8_1024x1024.jpg?v=1616176693", desc: "Tobacco and amber lend timeless elegance with a spicy twist.", price: 75 },
-  { id: "the-one-gold-edp-men", name: "The One Gold EDP for Men 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/375x500-69000_1024x1024.jpg?v=1708341162", desc: "Golden apple and ginger blend with woody power.", price: 59 },
-  { id: "q-edp-women", name: "Q EDP for Women 3.3oz", img: "https://www.aurafragrance.com/cdn/shop/products/s-l1600--2_41d4fdd7-e05e-49d2-a352-8b0b786d1248_1024x1024.png?v=1698875758", desc: "Sicilian lemon and cherry burst over a woody base—regal and bold.", price: 55 },
-  { id: "k-parfum-edp-men", name: "K Parfum EDP for Me 3.3ozn", img: "https://www.aurafragrance.com/cdn/shop/products/123_large.jpg?v=1599864617", desc: "Smoky spices and citrus notes for commanding style.", price: 80 },
-  { id: "light-blue-summer-vibes-edt-men", name: "Light Blue Summer Vibes EDT for Men 4.2oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.80377.2x.avif", desc: "Lemon and cypress for a breezy Mediterranean escape.", price: 50 },
-  { id: "light-blue-women-set", name: "Light Blue Women Set", img: "https://www.aurafragrance.com/cdn/shop/files/light-blue-classic-8057971185351_large.png?v=1746600607", desc: "Crisp apple and citron in a fresh, iconic gift-ready trio.", price: 85 },
-  { id: "the-one-edp-women", name: "The One EDP for Women 2.0oz", img: "https://www.aurafragrance.com/cdn/shop/products/DGTHEONEW2.5_1024x1024.jpg?v=1497558036", desc: "An opening medley pairs bergamot with juicy peach, enlivening the senses and providing a tauntingly fresh and balmy start to your day.", price: 70 },
-  { id: "the-one-edp-women-2", name: "The One EDP for Women 1.7oz", img: "https://www.aurafragrance.com/cdn/shop/products/DGTHEONEW2.5_1024x1024.jpg?v=1497558036", desc: "An opening medley pairs bergamot with juicy peach, enlivening the senses and providing a tauntingly fresh and balmy start to your day.", price: 80 },
-  { id: "phantom-edt-men", name: "Phantom EDT for Men 3.3oz", img: "https://img.fragrancex.com/images/products/sku/large/pacp8j.webp", desc: "Lemon and lavender tech-fuse into upbeat masculinity.", price: 70 },
-  { id: "phantom-intense-edp-men", name: "Phantom Intense EDP for Men 3.3oz", img: "https://www.sobelia.com/62766-83005-thickbox/phantom-intense-paco-rabanne-eau-de-parfum-spray-100ml.jpg", desc: "Rum and patchouli deliver a rich, nighttime vibe.", price: 80 },
-  { id: "phantom-gift-set", name: "Phantom Gift Set", img: "https://www.aurafragrance.com/cdn/shop/files/Rabanne-Phantom-Eau-de-Toilette-100ml-Gift-Set_1024x1024.jpg?v=1736968235", desc: "Complete set of scent, deo, and travel spray in futuristic flair.", price: 110 },
-  { id: "acqua-di-gio-edt", name: "Acqua Di Gio EDT 3.4oz", img: "https://fragrancemarket.com/cdn/shop/files/acquadigioedpmen.webp?v=1707919497&amp;width=1100", desc: "a fresh, aquatic fragrance for men, known for its Mediterranean-inspired scent profile", price: 110 },
-  { id: "stronger-with-you-only-edt", name: "Stronger With You Only EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/s-l500_9e6e5a0f-1f6f-4cd7-8711-5f95f5f16649_1024x1024.png?v=1668030599", desc: "Bergamot and neroli bring clean aquatic vibrancy.", price: 80 },
-  { id: "stronger-with-you-edt", name: "Stronger With You EDT 3.4oz", img: "https://m.media-amazon.com/images/I/41I095it8eL._SY445_SX342_QL70_FMwebp_.jpg", desc: "Chestnut and vanilla meet spicy cardamom in addictive warmth.", price: 80 },
-  { id: "because-its-you-edp", name: "Because It's You EDP 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/50c3f5c887dfa9c6258b22019304c1486be7b591_1024x1024.jpg?v=1575670025", desc: "Aromatic spices and soft woods create rich depth.", price: 75 },
-  { id: "stronger-with-you-intensely-edp", name: "Stronger With You Intensely EDP 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/armani_stronger_with_you_1024x1024_46896c4d-b0ff-4ca2-9805-d26b9a7091ca_1024x1024.jpg?v=1615430762", desc: " Top notes are Pink Pepper, Juniper and Violet; middle notes are Toffee, Cinnamon, Lavender and Sage; base notes are Vanilla, Amber, Tonka Bean and Suede.", price: 69 },
-  { id: "acqua-di-gio-profondo-edp", name: "Acqua di Gio Profondo EDP 4.2oz", img: "https://www.aurafragrance.com/cdn/shop/products/61PaVkU_UgL._SL1000_1024x1024.jpg?v=1605914331", desc: "Top notes are Marine notes and Green Mandarin; middle note is Mimosa; base notes are Patchouli and Labdanum.", price: 110 },
-  { id: "acqua-di-gio-profondo-parfum", name: "Acqua di Gio Profondo Parfum 1.7oz", img: "https://www.aurafragrance.com/cdn/shop/files/ACQUA_DI_GIO_PROFONDO_3.4OZ_PARFUM_MEN_NIB_SEALED__57642_1024x1024.jpg?v=1737349488", desc: "Deep aquatic tones and aromatic woods—masculine and mature.", price: 80 },
-  { id: "acqua-di-gio-profondo-parfum-2", name: "Acqua di Gio Profondo Parfum 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/files/ACQUA_DI_GIO_PROFONDO_3.4OZ_PARFUM_MEN_NIB_SEALED__57642_1024x1024.jpg?v=1737349488", desc: "Mystical marine accord layered with frankincense.", price: 125 },
-  { id: "acqua-di-gio-edp-2022", name: "Acqua di Gio EDP (2022) 6.8", img: "https://www.aurafragrance.com/cdn/shop/products/nm_4313259_100000_m_1024x1024.jpg?v=1659397523", desc: "Bold and oceanic with long-lasting richness.", price: 130 },
-  { id: "eros-edt", name: "Eros EDT 3.4oz", img: "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw12d7d83f/original/90_R740010-R100MLS_RNUL_22_Eros~EDT~100~ml-Accessories-Versace-online-store_1_1.jpg?sw=850&amp;q=85&amp;strip=true", desc: "a men's fragrance known for its fresh, woody, and oriental scent, inspired by the Greek God of love", price: 65 },
-  { id: "eros-edt-2", name: "Eros EDT 6.7oz", img: "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw12d7d83f/original/90_R740010-R100MLS_RNUL_22_Eros~EDT~100~ml-Accessories-Versace-online-store_1_1.jpg?sw=850&amp;q=85&amp;strip=true", desc: "Mint, apple, and tonka—desire in every drop.", price: 85 },
-  { id: "eros-flame-edt", name: "Eros Flame EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.52180.2x.avif", desc: "Orange, pepper, and woods strike a fiery contrast.", price: 65 },
-  { id: "eros-energy-edt", name: "Eros Energy EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/files/1000051657_1024x1024.jpg?v=1741472074", desc: "Zesty and electric, made for thrill-seekers.", price: 105 },
-  { id: "eros-parfum-2021", name: "Eros Parfum (2021) 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/versace-eros-parfum_2400x_20d590dd-6967-41d8-bc23-473b6ef7e1f0_1024x1024.png?v=1645641821", desc: "Refined strength with earthy vetiver and creamy woods.", price: 80 },
-  { id: "dylan-blue-edt", name: "Dylan Blue EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/04781670_zi_1024x1024.jpg?v=1513101849", desc: " Top notes are Calabrian bergamot, Water Notes, Grapefruit and Fig Leaf; middle notes are Ambroxan, Black Pepper, Patchouli, Violet Leaf and Papyrus; base notes are Incense, Musk, Tonka Bean and Saffron.", price: 65 },
-  { id: "dylan-blue-edt-2", name: "Dylan Blue EDT 6.7oz", img: "https://www.aurafragrance.com/cdn/shop/products/58.JPG?v=1513101849", desc: " Top notes are Calabrian bergamot, Water Notes, Grapefruit and Fig Leaf; middle notes are Ambroxan, Black Pepper, Patchouli, Violet Leaf and Papyrus; base notes are Incense, Musk, Tonka Bean and Saffron.", price: 110 },
-  { id: "man-eau-fraiche-edt", name: "Man Eau Fraiche EDT 3.4oz", img: "https://www.aurafragrance.com/cdn/shop/products/eau-fraiche-versace-men_1024x1024.jpg?v=1497557984", desc: "Jasmine and lemon dance in a sweet and confident mix.", price: 55 },
-  { id: "eros-edt-women", name: "Eros EDT for Women 3.4oz", img: "https://cdn.fragrancenet.com/images/photos/900x900/289702.jpg", desc: "Top notes are Sicilian Lemon, Pomegranate and Calabrian bergamot; middle notes are Lemon Blossom, Jasmine Sambac, Jasmine and Peony; base notes are Musk, Ambroxan, Woodsy Notes and Sandalwood..", price: 70 },
-  { id: "pour-homme-gift-set", name: "Pour Homme Gift Set", img: "https://m.media-amazon.com/images/I/71SPesqYVJL._SX679_.jpg", desc: "Cologne and gel for scent that travels well.", price: 70 },
-  { id: "dylan-blue-men-travel-set", name: "Dylan Blue Men Travel Set", img: "https://cdn.fragrancenet.com/images/photos/900x900/294526.jpg", desc: "A versatile kit with scent and storage to match.", price: 69 },
-  { id: "pour-homme-set-toiletry-bag", name: "Pour Homme Set (Toiletry Bag)", img: "https://www.aurafragrance.com/cdn/shop/files/7411-d6ff7e42-1000_1_1024x1024.jpg?v=1713985041", desc: "Versace Pour Homme is a modern and sexy fragrance for men, launched in 2008. The aromatic fougere scent starts off with fresh and citrusy notes of lemon, bergamot and neroli, along with rose de mai. With a bag to match.", price: 75 },
-  { id: "yellow-diamond-4pc-set", name: "Yellow Diamond 4pc Set", img: "https://www.aurafragrance.com/cdn/shop/products/s-l500--7_1024x1024.jpg?v=1668738510", desc: "Elegant yet strong—marine florals with a luxe finish.", price: 79 },
-  { id: "dylan-blue-women-4pc-set", name: "Dylan Blue Women 4pc Set", img: "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/23152346_fpx.tif?op_sharpen=1&wid=700&fit=fit,1&fmt=webp", desc: "Rich plum and musk with travel flair in every piece.", price: 85 },
-  { id: "dylan-blue-women-set-mini-bag", name: "Dylan Blue Women Set w/ Mini & Bag", img: "https://www.aurafragrance.com/cdn/shop/files/versace-ladies-dylan-blue-gift-set-fragrances-8011003884971_1024x1024.jpg?v=1744147383", desc: "Rich plum and musk with travel flair in every piece.", price: 89 },
-  { id: "jazz-club-edt", name: "Jazz Club Maison Margiela for Men EDT 3.3oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.20541.2x.avif", desc: "Top notes are Pink Pepper, Neroli and Lemon; middle notes are Rum, Clary Sage and Java vetiver oil; base notes are Tobacco Leaf, vanilla bean and Styrax.", price: 100 },
-  { id: "explorer-edp", name: "Explorer for Men EDP 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.52002.2x.avif", desc: "a unique woody-aromatic-leather concoction that combines essences of bergamot from Italy, vetiver from Haiti and patchouli from Indonesia.", price: 50 },
-  { id: "versace-pour-homme-edt", name: "Pour Homme for Men EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.2318.2x.avif", desc: "classic appeal of bergamot, sage, cedar wood, tonka bean and musk with distinguishing notes of geranium, blue hyacinth, neroli and bitter orange leaf.", price: 60 },
-  { id: "Spicebomb-extreme-edp", name: "Spicebomb Extreme for Men EDP 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.30499.2x.avif", desc: "Lavender is mixed with caraway and black pepper, leaving a trail of hotness above masculine shades of tobacco and subtle, comfortable vanilla.", price:  90 },
-  { id: "Club-de-nuit-intense-edt", name: "Club de Nuit Intense for Men edt 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.34696.2x.avif", desc: "Top notes are lemon, black currant, apple, bergamot and pineapple; middle notes are rose, jasmine and birch; base notes are vanilla, ambergris, musk and patchouli.", price: 50 },
-  { id: "Amber-oud-gold-edp", name: "Amber Oud Gold Edition EDP Unisex 2.0oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.51816.2x.avif", desc: "Top notes are bergamot and green notes; middle notes are melon, pineapple, sweet notes and amber; base notes are woody notes, vanilla and musk.", price: 50 },
-  { id: "Hawas-edp", name: "Hawas for Men EDP 4.0oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46890.2x.avif", desc: "Top notes are Bergamot, Apple, Cinnamon and Lemon; middle notes are Watery Notes, Plum, Orange Blossom and Cardamon; base notes are Ambergris, Musk, Driftwood and Patchouli.", price: 40 },
-  { id: "Red-tobacco-edp", name: "Red Tobacco Mancera EDP Unisex 4.2oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46663.2x.avif", desc: "Top notes are saffron, cinnamon, incense, nutmeg, white pear, green apple and agarwood (oud); middle notes are patchouli and jasmine; base notes are tobacco, amber, guaiac wood, sandalwood, haitian vetiver, madagascar vanilla and white musk.", price: 60 },
-  { id: "Light-blue-men-edt", name: "Dolce & Gabbana Light Blue for Men EDT 4.2oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.1068.2x.avif", desc: "Top notes are sicilian mandarin, juniper, grapefruit and bergamot; middle notes are rosemary, brazilian rosewood and pepper; base notes are musk, oakmoss and incense.", price: 60 },
-  { id: "Mercedes-club-black-edt", name: "Mercedes-Benz Club Black for Men EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46797.2x.avif", desc: "Top note is Bergamot; middle notes are Incense and Jasmine; base notes are Vanilla, Benzoin, Ambroxan and Woodsy Notes.", price: 50 },
-  { id: "Hacivat-extrait-edp", name: "Nishane Hacivat Extrait de Parfum EDP Unisex 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.44174.2x.avif", desc: "Top notes are Pineapple, Grapefruit and Bergamot; middle notes are Cedar, Patchouli and Jasmine; base notes are Oakmoss and Woody Notes.", price: 170 },
-  { id: "Luna-rossa-carbon-edt", name: "Prada Luna Rossa Carbon for Men EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.43402.2x.avif", desc: " Top notes are bergamot and pepper; middle notes are lavender, soil tincture, watery notes, metallic notes and coal; base notes are patchouli and ambroxan.", price: 100 },
-  { id: "Invictus-edt", name: "INVICTUS For Men by Paco Rabanne EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.18471.2x.avif", desc: "Top Notes: fresh grapefruit, mandarin oranges, and a marine accord. Heart Notes: aromatic bay leaf and Hedione jasmine. Base Notes: guaiac wood, patchouli, oak moss and ambergris.", price: 90 },
-  { id: "By-the-fireplace-edt", name: "By the Fireplace by Maison Margiela Unisex EDT 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.31623.2x.avif", desc: "fuses the smoky scent of burning notes of guaiac wood, cashmeran and clove oil.", price: 90 },
-  { id: "Ani-extrait-edp", name: "Nishane Ani Extrait de Parfum Unisex EDP 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.54785.2x.avif", desc: "Top notes are Cloves, Pink Pepper and Orange Blossom; middle notes are Chestnut, Guaiac Wood and Juniper; base notes are Vanilla, Peru Balsam and Cashmeran.", price: 170  },
-  { id: "Ysl-y-edp", name: "Y Eau de Parfum 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.50757.2x.avif", desc: "Sophisticated notes of bergamot, ginger, and sage are sharpened by an apple accord.", price: 110 },
-  { id: "Legend-edp", name: "Mont blanc ledgend edp 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.62583.2x.avif", desc: " Top notes are Bergamot and violet leaves; middle notes are Woodsy Notes, Jasmine and Magnolia; base notes are Oakmoss and Leather.", price: 60  },
-  { id: "elysium-parfum-edp", name: "Elysium Parfum Cologne Roja Parfums for Men EDP 3.4oz", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46296.2x.avif", desc: "Top notes are Grapefruit, Lemon, Bergamot, Lime, Thyme, Galbanum and Artemisia; middle notes are Vetiver, Juniper Berries, Black Currant, Apple, Pink Pepper, Cedar, Cypriol Oil or Nagarmotha, Rose, Jasmine and Lily-of-the-Valley; base notes are Ambergris, Leather, Vanilla, Benzoin and Labdanum.", price: 180 },
+ { id: "wanted-azzaro-edt", name: "Wanted by Azzaro EDT", sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/products/1199324_1024x1024.jpg?v=1599677146", images: ["https://www.aurafragrance.com/cdn/shop/products/1199324_1024x1024.jpg?v=1599677146","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_13_03a23028-e393-4ee5-94e0-619c3a2497a5.jpg?v=1749008936&width=1000","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_14_8923562b-3c45-4e48-8835-659351dfd35b.jpg?v=1749008950&width=1000","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_15_78f7b121-674d-47a5-b359-3e9c3d6bc769.jpg?v=1749008950&width=1000"], desc: "Bold and spicy with cardamom and lemon, anchored by warm tonka bean.", price: 55 },
+
+  { id: "most-wanted-intense-edt", name: "Most Wanted Intense EDT", sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/files/ruzfgcrpyp1h_1024x1024.jpg?v=1733081957", images: ["https://www.aurafragrance.com/cdn/shop/files/ruzfgcrpyp1h_1024x1024.jpg?v=1733081957","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_13_7ba0be79-d221-438d-875d-a69ed9931da7.jpg?v=1746640005&width=1000","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_14_202b4abc-4239-4663-8fa6-2395ecd66e1d.jpg?v=1746640328&width=1000","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_15_c0a93b81-db70-4ecd-a632-bea136962bc7.jpg?v=1746640328&width=1000"], desc: "Amber and toffee create a deep, addictive masculine signature.", price: 69 },
+
+  { id: "most-wanted-edp-intense", name: "Most Wanted EDP Intense ",  sizes: ["3.4oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.66826.2x.avif", images: ["https://fimgs.net/mdimg/perfume-thumbs/375x500.66826.2x.avif","https://www.perfume-empire.com/cdn/shop/files/the_most_wanted.jpg?v=1738562825&width=100",], desc: "Aromatic spices and rich woods blend for a magnetic allure.", price: 75 },
+  { id: "burberry-hero-edt-men", name: "Burberry Hero EDT for Men ",  sizes: ["3.4oz"], img: "https://assets.burberry.com/is/image/Burberryltd/31903DDC-3F05-4700-93E1-8C09D421C5F5?$BBY_V3_UNSHARP_SL_1$&wid=3000&hei=3000", desc: "Tobacco, leather, and cinnamon—dressed like a tailored London suit.", price: 69 },
+
+  { id: "burberry-hero-edp-men", name: "Burberry Hero EDP for Men ",  sizes: ["3.4oz"],img: "https://assets.burberry.com/is/image/Burberryltd/9CB5B4CF-55ED-43E8-BD76-70F39A9AD29E?$BBY_V3_SL_1$&wid=2100&hei=2100", images: ["https://assets.burberry.com/is/image/Burberryltd/9CB5B4CF-55ED-43E8-BD76-70F39A9AD29E?$BBY_V3_SL_1$&wid=2100&hei=2100","https://www.aurafragrance.com/cdn/shop/products/s-l1200--7_1024x1024.jpg?v=1699652793" ], desc: "Cedarwood and bergamot evoke a wild, earthy masculinity.", price: 85 },
+
+  { id: "burberry-london-edp-women", name: "Burberry London EDP for Women ", sizes: ["3.4oz"], img: "https://assets.burberry.com/is/image/Burberryltd/F9363128-2F01-40CB-A437-9D0D6FE54EC2?$BBY_V3_SL_1$&wid=2100&hei=2100", desc: "Pine and incense add soul and boldness to a rich, woodsy blend.", price: 69 },
+
+  { id: "coach-blue-edt", name: "Coach Blue EDT ",  sizes: ["3.4oz"],img: "https://i5.walmartimages.com/asr/3b9f9371-0799-4667-97ef-21c1e55a77ed.feaf99d22e10c92acfa76c5ca7feda10.jpeg", desc: " Top notes are Lime and Absinthe; middle notes are Ozonic notes and Black Pepper; base notes are Cedar and Amber.", price: 55 },
+
+  { id: "coach-green-edt", name: "Coach Green EDT ",  sizes: ["3.4oz"],img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.81391.2x.avif", desc: "a fresh and invigorating Aromatic Spicy fragrance for men", price: 44 },
+
+  { id: "coach-ny-edt-men", name: "Coach New York EDT for Men ",  sizes: ["3.3oz","2.0oz"], img: "https://m.media-amazon.com/images/I/71KZKKpklTL._SX522_.jpg", desc: "Zesty and bright with lime and ozone—a free-spirited burst.", price: 50 },
+
+
+  { id: "coach-love-edp-women", name: "Coach Love EDP for Women ",  sizes: ["3.3oz","2.0oz"],img: "https://www.aurafragrance.com/cdn/shop/files/796162ce-0ad3-4a38-a582-9255c53e89e5-569b7549eb65ba2de25112e7374cce56_1024x1024.jpg?v=1729585257", desc: "Nashi pear and suede blend for a modern, metropolitan scent.", price: 55 },
+
+  { id: "coach-floral-edp-women", name: "Coach Floral EDP for Women",  sizes: ["3.0oz","1.7oz"],
+img: "https://www.aurafragrance.com/cdn/shop/products/375x500.48115_1024x1024.jpg?v=1583109187", desc: "Pineapple sorbet and peony bring fresh, delicate charm.", price: 40 },
+  { id: "coach-floral-blush-edp-women", name: "Coach Floral Blush EDP for Women ", sizes: ["2.0oz"], img: "https://www.aurafragrance.com/cdn/shop/products/061e9d271dded13cceddf4b37fecd087ef01817c_1024x1024.jpg?v=1576636637", desc: "A clean and crisp fragrance kit—perfectly gift-ready.", price: 46 },
+
+  { id: "coach-green-men-set", name: "Coach Green Men Set",  sizes: ["gift set"],img: "https://i5.walmartimages.com/seo/Coach-Green-3-Piece-Gift-Set-3-3-OZ-Eau-De-Toilette-3-3-OZ-Shower-Gel-Mini-Perfume_32428624-7478-4c92-bc75-4c7a7660fd33.66b35d620479c9a12beb0de43cfb5f49.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF", desc: "The gift set includes a 100ml Eau de Toilette, a 100ml shower gel, and a 15ml travel-sized EDT", price: 85 },
+
+  { id: "dior-sauvage-edp", name: "Dior Sauvage EDP ",  sizes: ["2.0oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.48100.2x.avif", desc: "Bergamot and ambroxan create a rugged, magnetic trail.", price: 110 },
+
+  { id: "dior-homme-intense-edp", name: "Dior Homme Intense EDP ", sizes: ["3.3oz"], img: "https://www.lexormiami.com/cdn/shop/products/0321016_3348900838178_1000x.jpg?v=1750784827", desc: "Velvety iris and amber offer elegant masculine sensuality.", price: 140 },
+
+  { id: "the-one-edp-intense-men", name: "The One EDP Intense for Men ",  sizes: ["3.3oz"],img: "https://www.aurafragrance.com/cdn/shop/products/b04cf63e98d153a7e40d94a4efc844d0d3a5d984_1024x1024.jpg?v=1627941292", desc: "a fragrance that combines luminous warmth with deep, elegant accords, creating a striking and masculine scent", price: 65 },
+
+  { id: "the-one-edt-men", name: "The One EDT for Men ", sizes: ["3.3oz"], img: "https://dimg.dillards.com/is/image/DillardsZoom/mainProduct/dolce--gabbana-the-one-for-men-eau-de-parfum-spray/04698515_zi.jpg", desc: "Cardamom and leather make this fragrance rich and commanding.", price: 65 },
+
+   { id: "the-one-gold-edp-men", name: "The One Gold EDP for Men ", sizes: ["3.3oz","5.0oz"], img: "https://www.aurafragrance.com/cdn/shop/products/375x500-69000_1024x1024.jpg?v=1708341162", desc: "Golden apple and ginger blend with woody power.", price: 59 },
+  { id: "q-edp-women", name: "Q EDP for Women ",  sizes: ["3.3oz"],
+img: "https://www.aurafragrance.com/cdn/shop/products/s-l1600--2_41d4fdd7-e05e-49d2-a352-8b0b786d1248_1024x1024.png?v=1698875758", desc: "Sicilian lemon and cherry burst over a woody base—regal and bold.", price: 55 },
+
+  { id: "k-parfum-edp-men", name: "K Parfum EDP for Me n", sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/products/123_large.jpg?v=1599864617", desc: "Smoky spices and citrus notes for commanding style.", price: 80 },
+
+  { id: "light-blue-summer-vibes-edt-men", name: "Light Blue Summer Vibes EDT for Men", sizes: ["4.2oz"],
+ img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.80377.2x.avif", desc: "Lemon and cypress for a breezy Mediterranean escape.", price: 50 },
+
+  { id: "light-blue-women-set", name: "Light Blue Women Set", sizes: ["Gift set"],
+ img: "https://www.aurafragrance.com/cdn/shop/files/light-blue-classic-8057971185351_large.png?v=1746600607", desc: "Crisp apple and citron in a fresh, iconic gift-ready trio.", price: 85 },
+
+  { id: "the-one-edp-women", name: "The One EDP for Women ",  sizes: ["2.0oz","1.7oz"], img: "https://www.aurafragrance.com/cdn/shop/products/DGTHEONEW2.5_1024x1024.jpg?v=1497558036", desc: "An opening medley pairs bergamot with juicy peach, enlivening the senses and providing a tauntingly fresh and balmy start to your day.", price: 70 },
+
+  { id: "phantom-edt-men", name: "Phantom EDT for Men ", sizes: ["3.3oz"], img: "https://img.fragrancex.com/images/products/sku/large/pacp8j.webp", desc: "Lemon and lavender tech-fuse into upbeat masculinity.", price: 70 },
+  { id: "phantom-intense-edp-men", name: "Phantom Intense EDP for Men ", sizes: ["3.3oz"], img: "https://www.sobelia.com/62766-83005-thickbox/phantom-intense-paco-rabanne-eau-de-parfum-spray-100ml.jpg", desc: "Rum and patchouli deliver a rich, nighttime vibe.", price: 80 },
+
+  { id: "phantom-gift-set", name: "Phantom Gift Set",  sizes: ["Gift Set"], img: "https://www.aurafragrance.com/cdn/shop/files/Rabanne-Phantom-Eau-de-Toilette-100ml-Gift-Set_1024x1024.jpg?v=1736968235", desc: "Complete set of scent, deo, and travel spray in futuristic flair.", price: 110 },
+
+  { id: "acqua-di-gio-edt", name: "Acqua Di Gio EDT ",  sizes: ["3.4oz"],img: "https://fragrancemarket.com/cdn/shop/files/acquadigioedpmen.webp?v=1707919497&amp;width=1100", desc: "a fresh, aquatic fragrance for men, known for its Mediterranean-inspired scent profile", price: 110 },
+
+  { id: "stronger-with-you-only-edt", name: "Stronger With You Only EDT ", sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/products/s-l500_9e6e5a0f-1f6f-4cd7-8711-5f95f5f16649_1024x1024.png?v=1668030599", desc: "Bergamot and neroli bring clean aquatic vibrancy.", price: 80 }
+,
+  { id: "stronger-with-you-edt", name: "Stronger With You EDT ", sizes: ["3.4oz"], img: "https://m.media-amazon.com/images/I/41I095it8eL._SY445_SX342_QL70_FMwebp_.jpg", desc: "Chestnut and vanilla meet spicy cardamom in addictive warmth.", price: 80 },
+
+  { id: "because-its-you-edp", name: "Because It's You EDP ",  sizes: ["3.4oz"],img: "https://www.aurafragrance.com/cdn/shop/products/50c3f5c887dfa9c6258b22019304c1486be7b591_1024x1024.jpg?v=1575670025", desc: "Aromatic spices and soft woods create rich depth.", price: 75 },
+
+  { id: "stronger-with-you-intensely-edp", name: "Stronger With You Intensely EDP ",  sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/products/armani_stronger_with_you_1024x1024_46896c4d-b0ff-4ca2-9805-d26b9a7091ca_1024x1024.jpg?v=1615430762", desc: " Top notes are Pink Pepper, Juniper and Violet; middle notes are Toffee, Cinnamon, Lavender and Sage; base notes are Vanilla, Amber, Tonka Bean and Suede.", price: 69 },
+
+  { id: "acqua-di-gio-profondo-edp", name: "Acqua di Gio Profondo EDP",  sizes: [" 6.8"],img: "https://www.aurafragrance.com/cdn/shop/products/61PaVkU_UgL._SL1000_1024x1024.jpg?v=1605914331", desc: "Top notes are Marine notes and Green Mandarin; middle note is Mimosa; base notes are Patchouli and Labdanum.", price: 110 },
+
+  { id: "acqua-di-gio-profondo-parfum", name: "Acqua di Gio Profondo Parfum",  sizes: ["1.7oz","3.4oz"],
+img: "https://www.aurafragrance.com/cdn/shop/files/ACQUA_DI_GIO_PROFONDO__PARFUM_MEN_NIB_SEALED__57642_1024x1024.jpg?v=1737349488", desc: "", price: 80 },
+
+
+  { id: "acqua-di-gio-edp-2022", name: "Acqua di Gio EDP (2022) ", sizes: ["3.4oz", "6.7oz"],
+ img: "https://www.aurafragrance.com/cdn/shop/products/nm_4313259_100000_m_1024x1024.jpg?v=1659397523", desc: "Bold and oceanic with long-lasting richness.", price: 130 }
+,
+  { id: "eros-edt", name: "Eros EDT ",  sizes: ["3.4oz"],img: "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw12d7d83f/original/90_R740010-R100MLS_RNUL_22_Eros~EDT~100~ml-Accessories-Versace-online-store_1_1.jpg?sw=850&amp;q=85&amp;strip=true", desc: "a men's fragrance known for its fresh, woody, and oriental scent, inspired by the Greek God of love", price: 65 },
+
+
+  { id: "eros-flame-edt", name: "Eros Flame EDT ",  sizes: ["3.4oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.52180.2x.avif", desc: "Orange, pepper, and woods strike a fiery contrast.", price: 65 },
+
+  { id: "eros-energy-edt", name: "Eros Energy EDT ", sizes: ["3.4oz"],img: "https://www.aurafragrance.com/cdn/shop/files/1000051657_1024x1024.jpg?v=1741472074", desc: "Zesty and electric, made for thrill-seekers.", price: 105 },
+
+  { id: "eros-parfum-2021", name: "Eros Parfum (2021) ",sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/products/versace-eros-parfum_2400x_20d590dd-6967-41d8-bc23-473b6ef7e1f0_1024x1024.png?v=1645641821", desc: "Refined strength with earthy vetiver and creamy woods.", price: 80 },
+
+  { id: "dylan-blue-edt", name: "Dylan Blue EDT ", sizes: ["3.4oz", "6.7oz"],
+img: "https://www.aurafragrance.com/cdn/shop/products/04781670_zi_1024x1024.jpg?v=1513101849", desc: " Top notes are Calabrian bergamot, Water Notes, Grapefruit and Fig Leaf; middle notes are Ambroxan, Black Pepper, Patchouli, Violet Leaf and Papyrus; base notes are Incense, Musk, Tonka Bean and Saffron.", price: 65 },
+
+
+  { id: "man-eau-fraiche-edt", name: "Man Eau Fraiche EDT ",sizes: ["3.4oz"],
+ img: "https://www.aurafragrance.com/cdn/shop/products/eau-fraiche-versace-men_1024x1024.jpg?v=1497557984", desc: "Jasmine and lemon dance in a sweet and confident mix.", price: 55 },
+
+  { id: "eros-edt-women", name: "Eros EDT for Women ", sizes: ["3.4oz"],img: "https://cdn.fragrancenet.com/images/photos/900x900/289702.jpg", desc: "Top notes are Sicilian Lemon, Pomegranate and Calabrian bergamot; middle notes are Lemon Blossom, Jasmine Sambac, Jasmine and Peony; base notes are Musk, Ambroxan, Woodsy Notes and Sandalwood..", price: 70 },
+
+  { id: "pour-homme-gift-set", name: "Pour Homme Gift Set", sizes: ["Gift Set"],
+img: "https://m.media-amazon.com/images/I/71SPesqYVJL._SX679_.jpg", desc: "Cologne and gel for scent that travels well.", price: 70 },
+
+  { id: "dylan-blue-men-travel-set", name: "Dylan Blue Men Travel Set", sizes: ["Travel Set"], img: "https://cdn.fragrancenet.com/images/photos/900x900/294526.jpg", desc: "A versatile kit with scent and storage to match.", price: 69 },
+
+  { id: "pour-homme-set-toiletry-bag", name: "Pour Homme Set (Toiletry Bag)", sizes: ["Toiletry Bag"],
+img: "https://www.aurafragrance.com/cdn/shop/files/7411-d6ff7e42-1000_1_1024x1024.jpg?v=1713985041", desc: " ", price: 75 },
+
+  { id: "yellow-diamond-4pc-set", name: "Yellow Diamond 4pc Set",sizes: ["4pc Set"],
+ img: "https://www.aurafragrance.com/cdn/shop/products/s-l500--7_1024x1024.jpg?v=1668738510", desc: "Elegant yet strong—marine florals with a luxe finish.", price: 79 },
+
+  { id: "dylan-blue-women-4pc-set", name: "Dylan Blue Women 4pc Set",sizes: ["4pc Set"],
+ img: "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/23152346_fpx.tif?op_sharpen=1&wid=700&fit=fit,1&fmt=webp", desc: "Rich plum and musk with travel flair in every piece.", price: 85 },
+
+  { id: "dylan-blue-women-set-mini-bag", name: "Dylan Blue Women Set w/ Mini & Bag", sizes: ["Mini & Bag"], img: "https://www.aurafragrance.com/cdn/shop/files/versace-ladies-dylan-blue-gift-set-fragrances-8011003884971_1024x1024.jpg?v=1744147383", desc: "Rich plum and musk with travel flair in every piece.", price: 89 },
+
+  { id: "jazz-club-edt", name: "Jazz Club Maison Margiela for Men EDT ",sizes: ["3.3oz"],
+ img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.20541.2x.avif", desc: "Top notes are Pink Pepper, Neroli and Lemon; middle notes are Rum, Clary Sage and Java vetiver oil; base notes are Tobacco Leaf, vanilla bean and Styrax.", price: 100 },
+
+  { id: "explorer-edp", name: "Explorer for Men EDP ", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.52002.2x.avif", desc: "a unique woody-aromatic-leather concoction that combines essences of bergamot from Italy, vetiver from Haiti and patchouli from Indonesia.", price: 50 },
+
+  { id: "versace-pour-homme-edt", name: "Pour Homme for Men EDT ",sizes: ["3.4oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.2318.2x.avif", desc: "classic appeal of bergamot, sage, cedar wood, tonka bean and musk with distinguishing notes of geranium, blue hyacinth, neroli and bitter orange leaf.", price: 60 },
+
+  { id: "Spicebomb-extreme-edp", name: "Spicebomb Extreme for Men EDP ",sizes: ["3.4oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.30499.2x.avif", desc: "Lavender is mixed with caraway and black pepper, leaving a trail of hotness above masculine shades of tobacco and subtle, comfortable vanilla.", price:  90 },
+
+  { id: "Club-de-nuit-intense-edt", name: "Club de Nuit Intense for Men edt ",sizes: ["3.4oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.34696.2x.avif", desc: "Top notes are lemon, black currant, apple, bergamot and pineapple; middle notes are rose, jasmine and birch; base notes are vanilla, ambergris, musk and patchouli.", price: 50 },
+
+  { id: "Amber-oud-gold-edp", name: "Amber Oud Gold Edition EDP Unisex ",sizes: ["2.0oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.51816.2x.avif", desc: "Top notes are bergamot and green notes; middle notes are melon, pineapple, sweet notes and amber; base notes are woody notes, vanilla and musk.", price: 50 },
+
+  { id: "Hawas-edp", name: "Hawas for Men EDP",sizes: ["4.0oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46890.2x.avif", desc: "Top notes are Bergamot, Apple, Cinnamon and Lemon; middle notes are Watery Notes, Plum, Orange Blossom and Cardamon; base notes are Ambergris, Musk, Driftwood and Patchouli.", price: 40 },
+
+  { id: "Red-tobacco-edp", name: "Red Tobacco Mancera EDP Unisex", sizes: ["4.2oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46663.2x.avif", desc: "Top notes are saffron, cinnamon, incense, nutmeg, white pear, green apple and agarwood (oud); middle notes are patchouli and jasmine; base notes are tobacco, amber, guaiac wood, sandalwood, haitian vetiver, madagascar vanilla and white musk.", price: 60 },
+
+  { id: "Light-blue-men-edt", name: "Dolce & Gabbana Light Blue for Men EDT", sizes: ["4.2oz"],
+img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.1068.2x.avif", desc: "Top notes are sicilian mandarin, juniper, grapefruit and bergamot; middle notes are rosemary, brazilian rosewood and pepper; base notes are musk, oakmoss and incense.", price: 60 },
+
+  { id: "Mercedes-club-black-edt", name: "Mercedes-Benz Club Black for Men EDT ",sizes: ["3.4oz"],
+ img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46797.2x.avif", desc: "Top note is Bergamot; middle notes are Incense and Jasmine; base notes are Vanilla, Benzoin, Ambroxan and Woodsy Notes.", price: 50 },
+
+  { id: "Hacivat-extrait-edp", name: "Nishane Hacivat Extrait de Parfum EDP Unisex ", sizes: ["3.4oz"],
+img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.44174.2x.avif", desc: "Top notes are Pineapple, Grapefruit and Bergamot; middle notes are Cedar, Patchouli and Jasmine; base notes are Oakmoss and Woody Notes.", price: 170 },
+
+  { id: "Luna-rossa-carbon-edt", name: "Prada Luna Rossa Carbon for Men EDT ", sizes: ["3.4oz"],
+img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.43402.2x.avif", desc: " Top notes are bergamot and pepper; middle notes are lavender, soil tincture, watery notes, metallic notes and coal; base notes are patchouli and ambroxan.", price: 100 },
+
+  { id: "Invictus-edt", name: "INVICTUS For Men by Paco Rabanne EDT ",sizes: ["3.4oz"],
+ img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.18471.2x.avif", desc: "Top Notes: fresh grapefruit, mandarin oranges, and a marine accord. Heart Notes: aromatic bay leaf and Hedione jasmine. Base Notes: guaiac wood, patchouli, oak moss and ambergris.", price: 90 },
+
+  { id: "By-the-fireplace-edt", name: "By the Fireplace by Maison Margiela Unisex EDT ",sizes: ["3.4oz"],
+ img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.31623.2x.avif", desc: "fuses the smoky scent of burning notes of guaiac wood, cashmeran and clove oil.", price: 90 },
+
+  { id: "Ani-extrait-edp", name: "Nishane Ani Extrait de Parfum Unisex EDP ",sizes: ["3.4oz"],
+ img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.54785.2x.avif", desc: "Top notes are Cloves, Pink Pepper and Orange Blossom; middle notes are Chestnut, Guaiac Wood and Juniper; base notes are Vanilla, Peru Balsam and Cashmeran.", price: 170  },
+
+  { id: "Ysl-y-edp", name: "Y Eau de Parfum ",sizes: ["3.4oz"],
+ img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.50757.2x.avif", desc: "Sophisticated notes of bergamot, ginger, and sage are sharpened by an apple accord.", price: 110 },
+
+  { id: "Legend-edp", name: "Mont blanc legend edp ",sizes: ["3.4oz"],
+ img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.62583.2x.avif", desc: " Top notes are Bergamot and violet leaves; middle notes are Woodsy Notes, Jasmine and Magnolia; base notes are Oakmoss and Leather.", price: 60  },
+
+  { id: "elysium-parfum-edp", name: "Elysium Parfum Cologne Roja Parfums for Men EDP ", sizes: ["3.4oz"],
+img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46296.2x.avif", desc: "Top notes are Grapefruit, Lemon, Bergamot, Lime, Thyme, Galbanum and Artemisia; middle notes are Vetiver, Juniper Berries, Black Currant, Apple, Pink Pepper, Cedar, Cypriol Oil or Nagarmotha, Rose, Jasmine and Lily-of-the-Valley; base notes are Ambergris, Leather, Vanilla, Benzoin and Labdanum.", price: 180 },
+
   { id: "Leather-Belt-Kit", name: "Coach Leather Belt large", img: "https://product-images.therealreal.com/CCH76003_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
-  { id: "Leather-Belt-Kit-small", name: "Coach Leather Belt small", img: "https://product-images.therealreal.com/CCH76008_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
+
+  { id: "Leather-Belt-Kit-small", name: "Coach Leather Belt S", img: "https://product-images.therealreal.com/CCH76008_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
+
   { id: "Leather-Belt-Kit-XXL", name: "Coach Leather Belt XXL", img: "https://product-images.therealreal.com/CCH76082_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
+
   { id: "Leather-Belt-Kit-bl", name: "Coach Leather Belt large", img: "https://product-images.therealreal.com/CCH76000_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
+
   { id: "Leather-Belt-Kit-tn", name: "Coach Leather Belt XL", img: "https://product-images.therealreal.com/CCH76117_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
+
   { id: "Leather-Belt-Kit-bb", name: "Coach Leather Belt large", img: "https://product-images.therealreal.com/CCH76126_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
-  { id: "dior-belt", name: "Cristian Dior leather belt", img: "https://product-images.therealreal.com/CHR466189_1_enlarged.jpg?width=1500", desc: "Christian Dior Waist Belt Black Leather Silver-Tone Hardward Buckle Closure", price: 65 },
+
+  { id: "dior-belt", name: "Cristian Dior leather belt", img: "https://product-images.therealreal.com/CHR466189_1_enlarged.jpg?width=1500", desc: "Christian Dior Waist Belt Black Leather Silver-Tone Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-tn-b", name: "Coach belt M", img:"https://product-images.therealreal.com/CCH75493_1_enlarged.jpg?width=1500", desc: "Coach Belt Neutrals Gunmetal Hardware Buckle Closure", price: 65  },
+
   { id: "coach-belt-bl-L", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75502_1_enlarged.jpg?width=1500", desc: "Coach Belt Neutrals Gunmetal Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-m-2", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75504_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-L-2", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75507_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-L-3", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75510_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-br", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75511_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-M-3", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75514_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-xl", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75525_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-M-4", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75525_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-M-5", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75529_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-xl-3", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75533_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal peg in hole closure", price: 65 },
+
   { id: "coach-belt-bl-M-6", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75534_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-L-4", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75540_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-L-5", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75542_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-Xl-4", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75547_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-Xl-5", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75547_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  peg in hole Closure", price: 65 },
+
   { id: "coach-belt-bl-M-6", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75549_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  peg in hole Closure", price: 65 },
+
   { id: "coach-belt-bl-M-7", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75555_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  peg in hole Closure", price: 65 },
+
   { id: "coach-belt-bl-S", name: "coach belt S", img: "https://product-images.therealreal.com/CCH75558_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-M-8", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75569_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-S-2", name: "coach belt S", img: "https://product-images.therealreal.com/CCH75577_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  peg in hole Closure", price: 65 },
+
   { id: "coach-belt-bl-L-6", name: "coach belt l", img: "https://product-images.therealreal.com/CCH75578_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-M-9", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75582_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-M-10", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75584_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  peg in hole Closure", price: 65 },
+
   { id: "coach-belt-bl-xl-6", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75595_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-S-3", name: "coach belt S", img: "https://product-images.therealreal.com/CCH75596_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-s-4", name: "coach belt S", img: "https://product-images.therealreal.com/CCH75600_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
+
   { id: "coach-belt-bl-XL-7", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75601_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-  { id: "Heron-belt", name: "Heron Preston 4XL", img: "https://product-images.therealreal.com/WHEOP26956_1_enlarged.jpg?width=1500", desc: "Heron Preston Orange Sliver tone Hardware Claspe Clousure includes dust bag", price: 75 },
-  { id: "lucchese-belt", name: "Lucchese belt XL", img: "https://product-images.therealreal.com/LCC25875_1_enlarged.jpg?width=1500", desc: "Lucchese belt burgundy leather silver tone hardware buckel closure", price: 75 },
+
+  { id: "Heron-belt", name: "Heron Preston 4XL", img: "https://product-images.therealreal.com/WHEOP26956_1_enlarged.jpg?width=1500", desc: "Heron Preston Orange Sliver tone Hardware Clasp Closure includes dust bag", price: 75 },
+
+  { id: "lucchese-belt", name: "Lucchese belt XL", img: "https://product-images.therealreal.com/LCC25875_1_enlarged.jpg?width=1500", desc: "Lucchese belt burgundy leather silver tone hardware buckle closure", price: 75 },
+
   { id: "Emporio-Armani-Waist-Belt", name: "Emporio Armani Waist Belt", img: "https://product-images.therealreal.com/EMP61377_1_enlarged.jpg?width=1500", desc: "Emporio Armani Waist Belt black leather silver hardware silver tone hardware", price: 85 },
+
   { id: "Salvatore-Ferragamo-belt", name: "Salvatore Ferragamo M", img: "https://product-images.therealreal.com/SAL399162_1_enlarged.jpg?width=1500", desc: "Salvatore Ferragamo white leather silver hardware buckle closure", price: 90 },
+
   { id: "Salvatore-Ferragamo-belt-bl", name: "Salvatore Ferragamo M", img: "https://product-images.therealreal.com/SAL399974_1_enlarged.jpg?width=1500", desc: "Salvatore Ferragamo black leather gold hardware peg in hole closure", price: 90 },
-  { id: "gucci-belt", name: "Gucci Belt S", img: "https://product-images.therealreal.com/GUC1812271_1_enlarged.jpg?width=1500", desc: "Gucci belt black leather silver tone hardware peg in hole clousure", price: 95 },
+
+  { id: "gucci-belt", name: "Gucci Belt S", img: "https://product-images.therealreal.com/GUC1812271_1_enlarged.jpg?width=1500", desc: "Gucci belt black leather silver tone hardware peg in hole closure", price: 95 },
+
   { id: "Salvatore-Ferragamo-belt-bl", name: "Salvatore Ferragamo M", img: "https://product-images.therealreal.com/SAL405162_1_enlarged.jpg?width=1500", desc: "Salvatore Ferragamo black leather gold hardware peg in hole closure", price: 95 },
+
   { id: "Christian Louboutin-", name: "Christian Louboutin belt XXL", img: "https://product-images.therealreal.com/CHT413934_1_enlarged.jpg?width=1500", desc: "Christian Louboutin Belt Green Tonal  Hardware clasp Closure", price: 95 },
+
   { id: "Christian Louboutin-2", name: "Christian Louboutin belt XL", img: "https://product-images.therealreal.com/CHT413934_1_enlarged.jpg?width=1500", desc: "Christian Louboutin Belt Green Tonal  Hardware clasp Closure", price: 95 },
+
   { id: "D&G-belt", name: "D&G belt S", img: "https://product-images.therealreal.com/WDG101243_1_enlarged.jpg?width=1500", desc: "D&G Belt Black Gunmetal  peg in hole Closure", price: 95 },
+
   { id: "Baby-milo-bag", name: "A Bathing Ape PVC Messenger Bag", img: "https://product-images.therealreal.com/WBATP28732_1_enlarged.jpg?width=1500", desc: "A Bathing Ape Messenger Bag Orange PVC Graphic Print Tonal Hardware Single Adjustable Shoulder Strap Unlined Buckle Closure at Top", price: 50 },
+
   { id: "Jack-Spade-Bag", name: "Jack Spade Canvas Messenger Bag", img: "https://product-images.therealreal.com/JSP25451_1_enlarged.jpg?width=1500", desc: "Jack Spade Messenger Bag White Canvas Plaid Print Silver-Tone Hardware Rolled Handles & Single Shoulder Strap Canvas Lining & Three Interior Pockets Snap Closure at Front", price: 70  },
+
   { id: "Supreme-Bag", name: "Supreme Nylon Messenger Bag", img: "https://product-images.therealreal.com/WSPME81708_1_enlarged.jpg?width=1500", desc: "Supreme Messenger Bag Blue Nylon Tonal Hardware Single Adjustable Shoulder Strap Dual Exterior Pockets Nylon Lining & Single Interior Pocket Zip Closure at Top", price: 75 },
+
   { id: "Coach-bag", name: "Coach Messenger bag", img: "https://product-images.therealreal.com/CCH71175_1_enlarged.jpg?width=1500", desc: "Coach Messenger Bag Black & Neutrals Printed Silver-Tone Hardware Single Adjustable Shoulder Strap Leather Trim Embellishment & Single Exterior Pocket Grosgrain Lining Snap Closure at Front", price: 85 },
+
   { id: "Coach-bag-2", name: "Coach Messenger bag", img: "https://product-images.therealreal.com/CCH82591_1_enlarged.jpg?width=1500", desc: "Coach Messenger Bag Neutrals Leather Colorblock Pattern Gunmetal Hardware Grosgrain Lining Zip Closure at Top", price: 85 },
+
   { id: "Addias-Bag", name: "Addias x IVY PARK Nylon bag", img: "https://product-images.therealreal.com/WAIVP26635_1_enlarged.jpg?width=1500", desc: "adidas x IVY PARK Belt Bag Burgundy Nylon Silver-Tone Hardware Adjustable Waist Strap Four Exterior Pockets Nylon Lining & Single Interior Pocket Zip Closure at Top", price: 75 },
+
   { id: "Jack-Spade-Bag-tn", name: "Jack Spade Canvas Messenger Bag", img: "https://product-images.therealreal.com/JSP25313_1_enlarged.jpg?width=1500", desc: "Jack Spade Messenger Bag Neutrals Canvas Graphic Print Silver-Tone Hardware Single Adjustable Shoulder Strap Nylon Lining & Single Interior Pocket Snap Closure at Front", price: 50 },
+
   { id: "Stoney-Clover-Lane", name: "Stoney Clover Lane Travel Bag", img: "https://product-images.therealreal.com/WSCLE21547_1_enlarged.jpg?width=1500", desc: "White and pattern print travel bag with exposed zipper for closure.", price: 40 },
+
   { id: "Stella-Bag", name: "Stella McCartney for adidas Shoulder Bag", img: "https://product-images.therealreal.com/W5S56340_1_enlarged.jpg?width=1500", desc: "Stella McCartney for adidas Shoulder Bag Grey Silver-Tone Hardware Flat Handles & Single Adjustable Shoulder Strap Dual Exterior Pockets Poplin Lining & Single Interior Pocket  Zip Closure at Side", price: 50 },
+
   { id: "Saks-Fith-Bag", name: "Saks Fifth Avenue Shoulder Bag Vintage", img: "https://product-images.therealreal.com/SKS54103_2_enlarged.jpg?width=1500", desc: "Saks Fifth Avenue Shoulder Bag Vintage Neutrals Leather Antiqued Gold-Tone Hardware Single Shoulder Strap Leather Lining & Single Interior Pocket Open Top", price: 35 },
+
+  { id: "Valentino-Black-Wallet", name: "Mario Valentino Black Polyethylene Wallet", img: "https://srv.brandsgateway.com/lpVvNCsO7qfZPmM2pIFwYbOg9Pw=/trim:25/fit-in/600x/filters:q(100):format(webp)/https%3A%2F%2Fbrandsgateway-img.s3.fr-par.scw.cloud%2F7554922.jpeg", desc: " Valentino Black wallet", price: 40 },
+
+  { id: "Kappa-Tee", name: "Kappa Cotton Men T-Shirt", img: "https://srv.brandsgateway.com/Fz6zIa2tqQvJrVqOl-D674VR8Mw=/trim:25/fit-in/600x/filters:q(100):format(webp)/https%3A%2F%2Fbrandsgateway-img.s3.fr-par.scw.cloud%2F7559262.jpeg", desc: "Kappa Purple Cotton Men T-Shirt. Make sure to add your size to payment note", price: 25 },
+
+  { id: "Ramune-Soda-Strawberry", name: "Shirakiku Ramune Soda Strawberry Flavor 200 ml", img: "https://images.albertsons-media.com/is/image/ABS/960095322-ECOM?$ng-ecom-pdp-desktop$&defaultImage=Not_Available", desc: "distinctive Codd-neck bottle sealed with a marble. To open the bottle, you push down on the marble, which drops into the neck, allowing you to enjoy the refreshing, fizzy drink. The marble acts as a stopper, keeping the carbonation contained. ", price: 2 },
+
   { id: "Ramune-Soda-Lychee", name: "Shirakiku Ramune Soda Lychee Flavor 200 ml", img: "https://img06.weeecdn.com/product/image/554/904/20788FB2B56D3A6.png!c2048x0.auto", desc: "distinctive Codd-neck bottle sealed with a marble. To open the bottle, you push down on the marble, which drops into the neck, allowing you to enjoy the refreshing, fizzy drink. The marble acts as a stopper, keeping the carbonation contained. ", price: 2  },
+
   { id: "Ramune-Soda-Original", name: "Shirakiku Ramune Soda Original Flavor 200 ml", img: "https://www.kroger.com/product/images/large/front/0085890400210", desc: "distinctive Codd-neck bottle sealed with a marble. To open the bottle, you push down on the marble, which drops into the neck, allowing you to enjoy the refreshing, fizzy drink. The marble acts as a stopper, keeping the carbonation contained. ", price: 2  },
+
   { id: "Ramune-Japanese-Soda=Melon", name: "Hata Ramune Japanese Soda Melon Flavor 200 ml", img: "https://www.kroger.com/product/images/xlarge/front/0007460117608", desc: "distinctive Codd-neck bottle sealed with a marble. To open the bottle, you push down on the marble, which drops into the neck, allowing you to enjoy the refreshing, fizzy drink. The marble acts as a stopper, keeping the carbonation contained. ", price: 2.75  },
+
   { id: "Ramune-Japanese-Soda-Blueberry", name: "Hata Ramune Japanese Soda Blueberry Flavor 200 ml", img: "https://www.worldmarket.com/dw/image/v2/BJWT_PRD/on/demandware.static/-/Sites-wm-master-catalog/default/dw6dc36c84/images/large/68234_XXX_v1.jpg?sw=768&sh=768&sm=fit&sfrm=tif&q=80", desc: "distinctive Codd-neck bottle sealed with a marble. To open the bottle, you push down on the marble, which drops into the neck, allowing you to enjoy the refreshing, fizzy drink. The marble acts as a stopper, keeping the carbonation contained. ", price: 2.75  },
+
   { id: "Ramune-Yuzu-Flavor", name: "Hata Kosen Ramune, Yuzu Flavor 200 ml", img: "https://exoticpopdistribution.com/cdn/shop/files/Hata-Yuzu-Ramune-Soda-Japan.png?v=1700770289", desc: "distinctive Codd-neck bottle sealed with a marble. To open the bottle, you push down on the marble, which drops into the neck, allowing you to enjoy the refreshing, fizzy drink. The marble acts as a stopper, keeping the carbonation contained. ", price: 2.75  },
+
   { id: "Ramune-Japanese-Soda-Pineapple", name: "Hata Ramune Japanese Soda Pineapple Flavor 200 ml", img:"https://exoticpopdistribution.com/cdn/shop/files/Hata-Pineapple-Ramune-Soda-Japan.png?v=1700770268", desc: "distinctive Codd-neck bottle sealed with a marble. To open the bottle, you push down on the marble, which drops into the neck, allowing you to enjoy the refreshing, fizzy drink. The marble acts as a stopper, keeping the carbonation contained. ", price: 2.75  },
+
   { id: "Ramune-Japanese-Soda-Orange", name: "Hata Ramune Japanese Soda Orange Flavor 200 ml", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiRtgTmO03ESwY4Xz18tbQyirpVBcCiQ5ltA&s", desc: "distinctive Codd-neck bottle sealed with a marble. To open the bottle, you push down on the marble, which drops into the neck, allowing you to enjoy the refreshing, fizzy drink. The marble acts as a stopper, keeping the carbonation contained. ", price: 2.75  },
+
   { id: "Strawberry-Flavor-480-ml", name: "Sangaria Ramune Soda Strawberry Flavor 480 ml", img: "https://www.mugentoys.com/shop/image/cache/catalog/img/0X/733815006720-500x500.jpg", desc: "a naturally flavored, carbonated soft drink with a distinct strawberry flavor, imported from Japan. ", price: 3.50 },
+
   { id: "Melon-Flavor-480-ml", name: "Sangaria Ramune Soda melon Flavor 480 ml", img: "https://i0.wp.com/umefood.dk/wp-content/uploads/2025/04/Sangaria-Melon-Soda-17.6-oz_800x800.webp?fit=601%2C800&ssl=1", desc: "a naturally flavored, carbonated soft drink with a distinct melon flavor, imported from Japan. ", price: 3.50 },
+
   { id: "Grape-Flavor-480-ml", name: "Sangaria Ramune Soda Grape Flavor 480 ml", img:"https://img08.weeecdn.net/product/image/180/806/45416D8D64B87E11.png!c750x0_q80_t1.auto", desc: "a naturally flavored, carbonated soft drink with a distinct Grape flavor, imported from Japan. ", price: 3.50 },
+
   { id: "Original-Flavor-480-ml", name: "Sangaria Ramune Original Grape Flavor 480 ml", img:"https://www.mugentoys.com/shop/image/cache/catalog/img/0X/733815006669-500x500.jpg", desc: "a naturally flavored, carbonated soft drink with a distinct flavor, imported from Japan. ", price: 3.50 },
-	];
+
+  { id: "ELEANOR", name: "ELEANOR Scarf",colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "PINK", value: "#A82F7E", imageIndex: 0 },{ name: "RED", value: "#6B0707", imageIndex: 1 },{ name: "FIRE RED", value: "#F01111", imageIndex: 2 },{ name: "TAN", value: "#877F04", imageIndex: 2 },], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10ELEANOR-a2011e462fe448dfb6966f41358ebaa8.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10ELEANOR-a2011e462fe448dfb6966f41358ebaa8.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/15ELEANOR-866491f28a6347768658db32b6badda9.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/17ELEANOR-251f459d806d4917b413d70cd4cc8bbf.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ELEANOR-476cf851186c42f1860f238f0c243930.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5ELEANOR-f6d07d4120844c5aacd222e23b218d1a.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6ELEANOR-e407d66e3744480da9635acfae10512a.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10ELEANOR-ec007fe0588c42048e644d0703193a89.450x600.w.jpeg"], desc: "27 mile Scarf 100% CASHMERE", price: 50 },
+
+  { id: "SCARLETT GLOVE", name: "SCARLETT GLOVE",colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "TAN", value: "#6B6307", imageIndex: 1 },{ name: "GREY", value: "#808080", imageIndex: 2 },{ name: "BLUE", value: "#07116B", imageIndex: 3 }], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SCARLETT%20GLOVE-29e1dcbc3dd14e0b9b60ce74efc23fc0.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SCARLETT%20GLOVE-29e1dcbc3dd14e0b9b60ce74efc23fc0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8SCARLETT%20GLOVE-efd6105a2263400c98c75c0b7ef03965.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10SCARLETT%20GLOVE-f884ca16efb249108055651d6edbcfc3.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6SCARLETT%20GLOVE-5bf71876e3034b1cb6da9eb52e268aa8.450x600.w.jpeg"], desc: "27 mile Glove 100% CASHMERE", price: 75 },
+
+  { id: "SCARLETT BEANIE", name: "SCARLETT BEANIE", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "GREY", value: "#808080", imageIndex: 0 },{ name: "BLUE", value: "#0B0487", imageIndex: 1 },{ name: "TAN", value: "#877F04", imageIndex: 2 },], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6SCARLETT%20BEANIE-06874546ab9c4e6baaed0bd5aa9129c0.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6SCARLETT%20BEANIE-06874546ab9c4e6baaed0bd5aa9129c0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SCARLETT%20BEANIE-a479115a164146498c056dada1968176.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SCARLETT%20BEANIE-848fbda3d05a4c9ab7c888fb8cfbab20.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2SCARLETT%20BEANIE-bc52395f66544cb49988b3e28ecb5495.450x600.w.jpeg"], desc: "27 mile beanie 100% CASHMERE", price: 50 },
+
+  { id: "DOLCE", name: "DOLCE Beanie", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "PINK", value: "#A82F7E", imageIndex: 0 },{ name: "RED", value: "#6B0707", imageIndex: 1 },{ name: "WHITE", value: "#FFFFFF", imageIndex: 2 },{ name: "BLUE", value: "#07116B", imageIndex: 3 }], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/11DOLCE-ed248b18cc004103a7af6625b37f33b6.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/11DOLCE-ed248b18cc004103a7af6625b37f33b6.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3DOLCE-736471a725fa4e8aa1c73ea7dcb29472.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4DOLCE-39c934f5e10d4505ae24bec706dd8b06.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5DOLCE-e3907050f61e44728d9526d2b8151ac6.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6DOLCE-a4ab1a23afde4845a67aa7ea4b4f55c0.450x600.w.jpeg"], desc: "27 mile beanie 100% CASHMERE", price: 250 },
+
+  { id: "ELLA GLOVE", name: "ELLA GLOVE", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "WHITE", value: "#FFFFFF", imageIndex: 1 },{ name: "BLUE", value: "#07116B", imageIndex: 3 }], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6ELLA%20GLOVE-835636c737194fb6bcde1e46b3c57967.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6ELLA%20GLOVE-835636c737194fb6bcde1e46b3c57967.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7ELLA%20GLOVE-4c5a86cb5e784a00a4b0afed691d7e15.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2ELLA%20GLOVE-acd0f49c6e864d789fb9c7c0ccc15f7d.450x600.w.jpeg",], desc: "27 mile Glove 100% CASHMERE", price: 50 },
+
+  { id: "ELLA BEANIE", name: "ELLA BEANIE", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "WHITE", value: "#ffffff", imageIndex: 1 },], sizes: [], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8ELLA%20BEANIE-fb5f2b7a0d1d47618bfc08f8018f89a6.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8ELLA%20BEANIE-fb5f2b7a0d1d47618bfc08f8018f89a6.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9ELLA%20BEANIE-eebfe88558db4902b08612383f20a3a6.450x600.w.jpeg"], desc: "27 mile Beanie 100% CASHMERE", price: 50 },
+
+  { id: "ANTONIO", name: "ANTONIO Sweaters", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "ESPRESSO", value: "#918151", imageIndex: 1 },{ name: "FOGGY", value: "#808080", imageIndex: 2 }, {name: "NAVY", value: "#3638EB", imageIndex: 3 }],sizes: ["S", "M", "L", "X-L", "XX-L"],img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/18ANTONIO.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/18ANTONIO.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6ANTONIO-2bcee09a4a264da6b4236dbada004477.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7ANTONIO-1a714664db404c4d8971ad7e152fd004.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8ANTONIO-6ea224fed4a64f07a6eb561686700b09.450x600.w.jpeg"], desc: "27 mile Sweater 100% CASHMERE", price: 250 },
+
+  { id: "ROCCO", name: "ROCCO Sweater",colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "BALTIC", value: "#918151", imageIndex: 1 },{ name: "FOGGY", value: "#808080", imageIndex: 2 },{name: "ARMY", value: "#013220", imageIndex: 3 }, {name: "GRAVEL", value: "#000000", imageIndex: 4 }],sizes: ["S", "M", "L", "X-L", "XX-L"], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7ROCCO-6c02cb32ece444a2a6d3e4f413e87cde.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7ROCCO-6c02cb32ece444a2a6d3e4f413e87cde.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9ROCCO-8787ff748e1d4203853247f895d01763.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/17ROCCO-28cf753538ee45dfaab6e3cbb062b8b0.450x600.w.jpeg"], desc: "27 mile Sweater 100% CASHMERE", price: 275 },
+
+  { id: "NICOLA", name: "NICOLA Sweater", colors: [{ name: "NAVY", value: "#3638EB", imageIndex: 0 },{ name: "DUSTY BLUE", value: "#add8e6", imageIndex: 1 },{ name: "FOGGY", value: "#808080", imageIndex: 2 },{name: "ARMY", value: "#013220", imageIndex: 3 }, {name: "DOVE", value: "#a9a9a9", imageIndex: 4 }] ,sizes: ["S", "M", "L", "X-L", "XX-L"] , img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2NICOLA-b8d9c3ca9a994e8a8bfb0dccd1eaed2a.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2NICOLA-b8d9c3ca9a994e8a8bfb0dccd1eaed2a.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3NICOLA-d4d829ea5acd4ee78420ee2551bce519.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4NICOLA-8510f679bff04c08aab8f1333c02cd45.450x600.w.jpeg"], desc: "27 mile Sweater 100% CASHMERE", price: 255 },
+
+   { id: "RUDOLFO", name: "RUDOLFO Sweater",colors: [{ name: "BLUE", value: "#5468C4", imageIndex: 0 },{ name:  "BALTIC", value: "#918151", imageIndex: 1 },{ name: "FOGGY", value: "#808080", imageIndex: 2 },{name: "ARMY", value: "#013220", imageIndex: 3 }, {name: "GRAVEL", value: "#000000", imageIndex: 4 }],sizes: ["S", "M", "L", "X-L", "XX-L"], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10RUDOLFO-7b6909619eb54e01bef0920cfeb391a1.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10RUDOLFO-7b6909619eb54e01bef0920cfeb391a1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9RUDOLFO-71c5b0fa8b0747f09f0308035faa7078.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/16RUDOLFO-ee0eeca6ce2943ccb4cee2781cf7c890.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1RUDOLFO-cf4571276a924ca18357e54f4c9caefe.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2RUDOLFO-6453cd6071824220a67923af4fc8259b.450x600.w.jpeg"], desc: "27 mile Sweater 100% CASHMERE", price: 275 },
+  { id: "SILVIO", name: "SILVIO Zip-Up",colors: [{ name: "BLACK", value: "#000000",imageIndex: 0 },{ name:  "NAVY", value: "#3638EB", imageIndex: 1 },{ name:  "DOVE", value: "#a9a9a9", imageIndex: 2 } ],sizes: ["S", "M", "L", "X-L", "XX-L"],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2SILVIO-7f730a1610544c14b0ea0cec62543527.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2SILVIO-7f730a1610544c14b0ea0cec62543527.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3SILVIO-803afde07a6c4262a288696fd8a9bc3c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4SILVIO-78d4ec427d8143818cfe7a54f9e60c1f.450x600.w.jpeg"], desc: "27 mile Sweater 100% CASHMERE", price: 275 },
+
+  { id: "BUCA", name: "BUCA Sweaters", colors: [{ name:  "NAVY", value: "#3638EB", imageIndex: 0 },{ name:  "DOVE", value: "#a9a9a9", imageIndex: 1 },{ name:  "LAVENDER", value: "#e6e6fa", imageIndex: 2 }],sizes: ["S", "M", "L", "X-L", "XX-L"],
+img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2BUCA-133142a7c3c84f889a6f3881dc15d581.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2BUCA-133142a7c3c84f889a6f3881dc15d581.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3BUCA-f75907f1f2904b5eb015ffbca8b15a0a.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4BUCA-5627d32bdfa44ed7abf2215efd940e16.450x600.w.jpeg"], desc: "27 mile Zip-Up 100% CASHMERE", price: 275 },
+
+  { id: "ALFREDO", name: "ALFREDO Sweater Vest", colors: [{ name: "CLOUD", value: "#ffffff", imageIndex: 0 },{ name: "FOREST", value: "#556b2f", imageIndex: 1 },],sizes: ["S", "M", "L", "X-L", "XX-L"],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2ALFREDO-1ab07541bfef43c19a9782524149566f.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2ALFREDO-1ab07541bfef43c19a9782524149566f.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ALFREDO-4dfbe9f0d0734777b5f5aee367c2dc03.450x600.w.jpeg"], desc: "27 mile Sweater vest 100% CASHMERE", price: 150 },
+
+  { id: "COLT", name: "COLT Sweater", colors: [{ name: "COCONUT", value: "#ffffff", imageIndex: 0 },{ name: "ROOT", value: "#654321", imageIndex: 1 },],sizes: ["S", "M", "L",],
+img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1COLT-047ca02e348647e9ad560078d99104f8.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1COLT-047ca02e348647e9ad560078d99104f8.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3COLT-0f4bf8b4f8f94ce98f10bd7d0ccbb422.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "PELTA", name: "PELTA Sweater", colors: [{ name: "ESPRESSO", value: "#918151", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1PELTA-3fe164de4a9b40c29371ae716bd6bbd8.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1PELTA-3fe164de4a9b40c29371ae716bd6bbd8.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3PELTA-d146de98a9254194b06e475f8b7ba75a.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 240 },
+
+  { id: "ELIDIA", name: "ELIDIA Sweater",colors: [{ name: "BALLET", value: "#ffc0cb", imageIndex: 0 },{ name: "NAVY", value: "#3638EB", imageIndex: 1 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1ELIDIA-b51fcfda24a84285aa0c533a80298f3c.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1ELIDIA-b51fcfda24a84285aa0c533a80298f3c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ELIDIA-7ebf71cdbdfb49f49256a421c7eb67a9.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 255 },
+
+  { id: "BELL", name: "BELL Sweater",colors: [{ name: "SILVER", value: "#c0c0c0", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1BELL-c12bec21647247a68135ba1d9a28caf2.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1BELL-c12bec21647247a68135ba1d9a28caf2.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2BELL-c6a8bf6891c44b8e8a8f77184d3727ac.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 245 },
+
+  { id: "CRYSTAL", name: "CRYSTAL Sweater", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name:  "COCONUT", value: "#FFFFF", imageIndex: 1 },{ name: "FLAME", value: "#e25822", imageIndex: 2 },{name: "JADE", value: "#00ff00", imageIndex: 3 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1CRYSTAL-52a72bf0be4f4c499e4dffd4081ada3f.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1CRYSTAL-52a72bf0be4f4c499e4dffd4081ada3f.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CRYSTAL-c4cdb0d5a5794354ba2fb90074e37a9a.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4CRYSTAL-62095a95f84641f38e9fc0cdb1e175a6.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CRYSTAL-0d26017fef4a4c69912d102fe9e9b89f.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6CRYSTAL-91542b335ef04c338f3a883cce3e24b1.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 230 },
+
+  { id: "CHARLENE", name: "CHARLENE Sweater", colors: [  {name: "PINOT", value: "#654321", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CHARLENE-ca71831b9de64043a1d53e65fa5cfba1.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CHARLENE-ca71831b9de64043a1d53e65fa5cfba1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4CHARLENE-7e34384406674e15bf69bd5fc63e5ad0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CHARLENE-eff3e2990dd342db9adb59b08c25ae23.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6CHARLENE-72d39893871648c8a87eadc9351db4ec.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1CHARLENE-97f5a46b6c7946709265fc67933282f0.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 245 },
+
+  { id: "ALYSON", name: "ALYSON Sweater",colors: [{ name: "BALLET", value: "#ffc0cb", imageIndex: 0 },{ name: "BLACK", value: "#000000", imageIndex: 1 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1ALYSON-919a09e4876445168a32dfece7f29148.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1ALYSON-919a09e4876445168a32dfece7f29148.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10ALYSON-9b197e30b7ee4afe89b2a41b655b2ad0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ALYSON-5b391631d73641f7a35bef38d552c653.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ALYSON-51c4e5e231ab46d29fcc8594d2f28ab6.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5ALYSON-69dc11b551c949a1a8492a1499e3a395.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 220 },
+
+
+  { id: "PROCTOR", name: "PROCTOR Sweater",colors: [{ name: "AZURE", value: "#B76E79", imageIndex: 0 },{ name: "BRIAR", value: "#E5E4E2", imageIndex: 1 },{ name: "CHROME", value: "#00008b", imageIndex: 2 },{ name: "CAMEL", value: "#d2b48c", imageIndex: 3 },{ name: "COCONUT", value: "#FFFFFF", imageIndex: 4 },{ name: "GRAVEL", value: "#808080", imageIndex: 5 },{ name: "HEATHER", value: "#a9a9a9", imageIndex: 6 }],sizes:["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6PROCTOR-67d9b9fd2fc34fc7a8c8cec5291cd33c.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6PROCTOR-67d9b9fd2fc34fc7a8c8cec5291cd33c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5PROCTOR-b665f642c9dd46f6b72d56bde95aa15d.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7PROCTOR-44aecf069a7e4fb89d5a0ea8594989bc.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8PROCTOR-a75176b083e2476d9961f25a5e23799b.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9PROCTOR-c59c9a8188d246c8a3f3deeb0a888a4a.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 220 },
+
+  { id: "DEMEREE", name: "DEMEREE Sweater", colors: [{ name: "BLACK COMBO", value: "#000000", imageIndex: 0 }],sizes: ["S", "M", "L",],
+img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1DEMEREE-6db6e909713c44b2b27b4b4e3d687b37.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1DEMEREE-6db6e909713c44b2b27b4b4e3d687b37.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3DEMEREE-6486ecb23d8340beb5e2e1e79de10b49.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 220 },
+
+  { id: "SHIRLEY", name: "SHIRLEY Sweater", colors: [{ name: "CAMEL", value: "#d2b48c", imageIndex: 0 },{ name: "NAVY", value: "#3638EB", imageIndex: 1 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SHIRLEY.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SHIRLEY.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1SHIRLEY-77a00cdb5e6a491e85a02c16906cf044.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 220 },
+
+  { id: "MALIA", name: "MALIA Sweater", colors: [{ name: "FOREST", value: "#556b2f", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1MALIA-41553f9ea21340ea9c7d57715a010d2c.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1MALIA-41553f9ea21340ea9c7d57715a010d2c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3MALIA-9653ff6282f24021bc83a0ac9abbbbbd.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4MALIA-17b2e264272a475ea66fbb9b0614f848.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5MALIA-18d2c8c3bc874f85902d2e2cafbb09b5.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 180 },
+
+  { id: "VIOLETTA", name: "VIOLETTA Sweater",colors: [{ name: "DRIFTWOOD", value: "#d2b48c", imageIndex: 0 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1VIOLETTA-fee3626a414b42e0bf2e44fd5d571497.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1VIOLETTA-fee3626a414b42e0bf2e44fd5d571497.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3VIOLETTA-e4c6be34c45647a1a2b9bdc5fc8e7666.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4VIOLETTA-7c691c9af0ce4f1f994fc7d9639d9edd.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5VIOLETTA-44d91b584ff2416caf46451b1bc3698f.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 180 },
+
+  { id: "CARA", name: "CARA Sweater", colors: [{ name: "OATMEAL", value: "#d2b48c", imageIndex: 0 }],sizes: ["S", "M", "L",] , img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8CARA-3bcee8a59e1f43bbbefc0ec760126db5.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8CARA-3bcee8a59e1f43bbbefc0ec760126db5.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CARA-ffac8bbfb441401e81e62bee186c4574.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4CARA-44154f7e332e4f04861ebe118f604593.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CARA-652b803ba763459883b8b406c1d11263.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 390 },
+
+  { id: "NORIKO", name: "NORIKO Sweater", colors: [{ name: "DRIFTWOOD", value: "#d2b48c", imageIndex: 0 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2NORIKO-f343c4231189472983204b38757bbb71.450x600.w.jpeg",colors: [{ name: "PRINTED LEAPARD", value: "#ffff00", imageIndex: 0 },],sizes: ["S", "M", "L",], images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2NORIKO-f343c4231189472983204b38757bbb71.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3NORIKO-2cc459de62e94f1fa4acbb4e7127cf69.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4NORIKO-7f61af3cf0214aabbe887a785e4a0f8e.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5NORIKO-6a8bed1395004771b553c6c1260fb70c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6NORIKO-b60a552e47604d9c91423f22ef4448be.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7NORIKO-d7bdecb9842644bb94929d00aa2b205a.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 218 },
+
+  { id: "ROBBIE-LP", name: "ROBBIE-LP Sweater", colors: [{ name: "PRINTED LEAPARD", value: "#ffff00", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ROBBIE-LP-11403b30f78f452fa0170f0ffc2a4df1.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ROBBIE-LP-11403b30f78f452fa0170f0ffc2a4df1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2ROBBIE-LP-3d6bdf90131f4448afc650b4e154e0b2.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "ANISIA", name: "ANISIA Sweater", colors: [{ name: "CHALK", value: "#ffffff", imageIndex: 0 },{ name: "OCEAN", value: "#add8e6", imageIndex: 1 }],sizes:["S", "M", "L",] , img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9ANISIA-cc4a4a16883f462fb056a0421b6e8ca8.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9ANISIA-cc4a4a16883f462fb056a0421b6e8ca8.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/11ANISIA-3489aaf9f66443c5801786b1bb2e2068.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ANISIA-ff5bfc9f182d4ef4838357a282316657.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ANISIA-23d5318862b64983aec1f2b0a13e6304.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5ANISIA-68d52793c6ba48219f20f0025b16aa1c.450x600.w.jpeg"], desc: "27 mile Sweater 63% CASHMERE", price: 250 },
+
+  { id: "MAIKA", name: "MAIKA Sweater", colors: [{ name:  "OATMEAL", value: "#d2b48c", imageIndex: 0 },{ name: "ORCHID", value: "#ffc0cb", imageIndex: 1 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8MAIKA-c9741d27517d44d3b762e974f45ded17.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8MAIKA-c9741d27517d44d3b762e974f45ded17.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9MAIKA-71553d6abe3c4e2f93004c274fd3ad89.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3MAIKA-96e00d2ebb8a4ff0bccce66652971a6b.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4MAIKA-df25027f29fe46fc8a61bd50fe2c83b9.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5MAIKA-ed408c89ed3e4519848a315abfcc00ac.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "SAM", name: "SAM Sweater", colors: [{ name: "HAZEL", value: "#ffffff", imageIndex: 0 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SAM-7a27b4fc21bb47fcb9273fa04fa0dced.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SAM-7a27b4fc21bb47fcb9273fa04fa0dced.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2SAM-476f7c27611647d5a7e1bb6d7960cfe0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3SAM-7706da8fcb98462b9b1066b5b41ddec7.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4SAM-981cb7f9ec0342159fbfa2ed425c7acd.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5SAM-b980c305e27247f0b75e6d5ca5bedf86.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "AMANDA", name: "AMANDA Sweater",colors: [{ name: "HAZEL", value: "#ffffff", imageIndex: 0 },{ name: "MAUVE", value: "#ffc0cb", imageIndex: 1 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9AMANDA-336c9214e95a435396e5be988f7b7c1a.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9AMANDA-336c9214e95a435396e5be988f7b7c1a.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2AMANDA-cf9ea82813e640b59dfaa28a10eccd79.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3AMANDA-81807f5c933b4f7d849d3a31257facbf.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4AMANDA-5b1f78900c2d4d4b82df11ef5f2ef3b5.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8AMANDA-57201e4df76c4036961426f5d210a8db.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "MATY", name: "MATY Sweater", colors: [{ name:  "OATMEAL", value: "#d2b48c", imageIndex: 0 },{ name: "DOVE", value: "#ffFFFF", imageIndex: 1 }],sizes: ["S", "M", "L",],img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9MATY-58c3da19c48045fcbb3b6c23a990bd6a.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9MATY-58c3da19c48045fcbb3b6c23a990bd6a.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2MATY-cf9e87a9885741c1950fe1ac0a44c814.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3MATY-ca1fd13f099d4aa598cf2f9a167e819b.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4MATY-026da52ee3314c1cb827dc5ee2995a7c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5MATY-47343e2da7e24dac8da7ec486ade7f3c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MATY-c9f57c71cf874d24be65ea2574a32272.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7MATY-56005cb081a242a8b1a642d0dd73c980.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "CATRIONA", name: "CATRIONA Sweater", colors: [{ name: "BALCK", value: "#000000", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CATRIONA-f322627858604517952f653be98913e1.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CATRIONA-f322627858604517952f653be98913e1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CATRIONA-d799afc14dea4ae5949a32e3b9eac105.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "MORNA", name: "MORNA Sweater", colors: [{ name: "DOVE", value: "#FFFFFF", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MORNA-64e868b8ead949c8b89e04345f7da462.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MORNA-64e868b8ead949c8b89e04345f7da462.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3MORNA-bfb95a107e0044758317b609bf31d199.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4MORNA-3767883578ff4d9db5988e3fbc084f1b.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "LESLY", name: "LESLY Sweater", colors: [{ name: "BLUE", value: "#add8e6", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7LESLY-d7ae40643b60489cbfc21b18ec993cbc.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7LESLY-d7ae40643b60489cbfc21b18ec993cbc.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2LESLY-e3b114fe7c434d2587139a46ca5f41d9.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3LESLY-ada4e055575e4cbc86fc894a35e135e5.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "ADLER", name: "ADLER Sweater", colors: [{ name: "BEIGE", value: "#f5f5dc", imageIndex: 0 },],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7ADLER-11a7bf05c7e849078ea5e37984d0e1b6.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7ADLER-11a7bf05c7e849078ea5e37984d0e1b6.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2ADLER-9abbd6314ddf4bacb537086a1faa4b33.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ADLER-b45619772da8400887a5ec1b67e607fb.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ADLER-8e59ae78ce9643f2acfed1796cb311ef.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "MELLY-LP", name: "MELLY-LP Sweater",colors: [{ name: "PRINTED LEAPARD", value: "#ffff00", imageIndex: 0 },],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2MELLY-LP-cf94fa361df34f439ccc59c9cbeb1934.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2MELLY-LP-cf94fa361df34f439ccc59c9cbeb1934.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1MELLY-LP-9d44671013eb4cdfb6494215b1d44ce6.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "SAIRA", name: "SAIRA Sweater", colors: [{ name: "NAVY", value: "#B76E79", imageIndex: 0 },{ name: "FLAME", value: "#E5E4E2", imageIndex: 1 },{ name: "JADE", value: "#00008b", imageIndex: 2 },{ name: "CAMEL", value: "#d2b48c", imageIndex: 3 },{ name: "COCONUT", value: "#FFFFFF", imageIndex: 4 },{ name: "STORM ", value: "#808080", imageIndex: 5 },{ name: "HEATHER", value: "#a9a9a9", imageIndex: 6 },{ name: "ESPRESSO", value: "#000000", imageIndex: 7 }],sizes: ["S", "M", "L",],img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/21SAIRA-295db5156db643f288a984389bd9aa72.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/21SAIRA-295db5156db643f288a984389bd9aa72.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3SAIRA-e4cda82d8cb047129618e51e844cca06.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6SAIRA-1223ca65e07c41cb834d4e1ccd70346f.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SAIRA-d007e081211b4deabea712c304f2316e.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8SAIRA-1d1e7aa1489c4fc1a71623b65fdd9354.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SAIRA-45b3231933bc438eb6e9c9e9b2236284.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10SAIRA-6012007c29dc4fc098e2170e194fe981.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/11SAIRA-b0a0d8262cc64c1db8dbe4c9e927c927.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/12SAIRA-22c87f49404e4fc4858bbf9537137cfc.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "GAILLIS", name: "GAILLIS Sweater", colors: [{ name: "ESPRESSO", value: "#000000", imageIndex: 0 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8GAILLIS-b2952fce8689478587550cb474085c20.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8GAILLIS-b2952fce8689478587550cb474085c20.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3GAILLIS-cdb55e20a3054280bade80a79daf2a5c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4GAILLIS-e038ebf75531474b82bb99bcd8fe001f.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "DELMA", name: "DELMA Pants", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "PRINTED LEAPARD", value: "#FFFF00", imageIndex: 1 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6DELMA.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6DELMA.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9DELMA.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3DELMA-7bb6fae0c17741e28581faa4b6b3bb7c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4DELMA-e0f7047aa6764974baf733692afc994e.450x600.w.jpeg"], desc: "27 mile Pants 100% SILK", price: 250 },
+
+  { id: "SHAINA", name: "SHAINA Sweater",colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "CHARCOAL", value: "#808080", imageIndex: 1 }],sizes:["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6SHAINA-8adae127a6384244a574164833548fe4.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6SHAINA-8adae127a6384244a574164833548fe4.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SHAINA-10a312a8f9434bf892b35386a33b672b.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2SHAINA-a87d3d35548e4dffaec5060d7958a4ca.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+{"id":"LETITIA","name":"LETITIA Sweater",colors: [{ name: "DOVE", value: "#FFFFFF", imageIndex: 0 },{ name: "SKY", value: "#e0ffff", imageIndex: 1 }],sizes:["S", "M", "L",],img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10LETITIA-9f00010cc45b4ad184c4e30c21bfa752.450x600.w.jpeg", desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "PETRA", name: "PETRA Sweater", colors: [{ name: "CHARCOAL", value: "#808080", imageIndex: 0 },{ name: "JUNGLE", value: "#006400", imageIndex: 1 },{ name: "NAVY", value: "#00008b", imageIndex: 2 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8MELLY-558b7f44165b46eb8b31c8350a87b170.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8MELLY-558b7f44165b46eb8b31c8350a87b170.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9MELLY-2a9906dd6a2b4597b4cb8b00ff3e84a1.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "ZHENYA", name: "ZHENYA Sweater", colors: [{ name: "CHALK", value: "#FFFFFF", imageIndex: 0 },{ name: "YELLOW", value: "#FFFF00", imageIndex: 1 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8ZHENYA-e2ac8c29cf0e47e48ee14b21ac522f83.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8ZHENYA-e2ac8c29cf0e47e48ee14b21ac522f83.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9ZHENYA-6d252188a8f343f6a47a78cf7e4513e2.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ZHENYA-4327a870f1b3494386238042459cd890.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ZHENYA-a1c9524872bc403b8df490b3b1036ef7.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5ZHENYA-a39ba32b09d548d4b08412150c9b6e82.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6ZHENYA-ce4acb175e1443cc8e3a557db83961ec.450x600.w.jpeg"], desc: "27 mile Sweater 63% CASHMERE", price: 250 },
+
+  { id: "CORRY", name: "CORRY Sweater", colors: [{ name: "BLACK", value: "#B76E79", imageIndex: 0 },{ name: "COCONUT", value: "#FFFFFF", imageIndex: 1 },{ name: "FLAME", value: "#FFD700", imageIndex: 2 },{ name: "HEATHER", value: "#808080", imageIndex: 3 },{ name: "NAVY", value: "#3638EB", imageIndex: 4 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/20CORRY-a3c04c032eb4430092a9634e6720c53f.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/20CORRY-a3c04c032eb4430092a9634e6720c53f.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2CORRY-d88aadf00ea348a6a04e44368b6b4aca.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CORRY-a8f27e2f37e44d4f88737067215874ce.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CORRY-d7e0d80f6caf46d39cf120b9c0899b5e.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6CORRY-5cd9ed8a41bc4f7196629ad3b1ecbe1b.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7CORRY-6362a8e34a114f6aa114a9f8bea45774.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8CORRY-a3ccfdf65c184a33b5865d7f6f0bdad0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10CORRY-761d485f19b345f58720a0eeaa2afce9.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "AYLA", name: "AYLA Sweater", sizes: ["S", "M", "L",], colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "CHARCOAL", value: "#808080", imageIndex: 1 },{ name: "JUNGLE", value: "#006400", imageIndex: 2 },{ name: "NAVY", value: "#00008b", imageIndex: 3 },],sizes:["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/AYLABLL-1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/AYLABLL-1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2AYLA-08a75f20bf6b44fa88aade12cf16d4c1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4AYLA-a1e63990b20348dcb6c89f143c40cc42.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5AYLA-ec7d2e27736f4167b231570377eab0ca.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6AYLA-a3a2dde30426400aaab2c8cf66c62b37.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "MIRELLA", name: "MIRELLA Sweater", sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MIRELLA-c44fd88e0e654ae8bb6bcbb31d719ed1.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MIRELLA-c44fd88e0e654ae8bb6bcbb31d719ed1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7MIRELLA-5531ab6b92c240928011349e0fd871cb.450x600.w.jpeg"], desc: "27 mile Sweater 100% SILK", price: 250 },
+
+  { id: "MISIA", name: "MISIA Sweater", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "NAVY", value: "#3638EB", imageIndex: 1 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/14MISIA-27ba49f1c88b48fca041729fec873059.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/14MISIA-27ba49f1c88b48fca041729fec873059.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/17MISIA-8599ca1669074d59a890b8f27ddfe927.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2MISIA-27edcd04a6314cb8a792429cb87af960.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3MISIA-7d881c88460244589c707d9d2ab6b411.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4MISIA-62011b2d6ae54d289a31218e1ecdccee.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5MISIA-d6419fa37a99467fae856dd5200eea3d.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MISIA-ea1b3e442b6c491ba913797b8e70e71e.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/11MISIA-ecbd1c5f85eb4efb96b9b030427630e1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/12MISIA-045e75c1b3944366b15013e1ab2fe84b.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "SUZETTE", name: "SUZETTE Sweater", colors: [{ name: "JUNGLE", value: "#006400", imageIndex: 0 },{ name: "FLAME SKY", value: "#E5E4E2", imageIndex: 1 }],sizes:["S", "M", "L",],
+img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SUZETTE-6205974657ef427fa0f8f53243cf5e6d.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SUZETTE-6205974657ef427fa0f8f53243cf5e6d.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SUZETTE-ec525eecdbd349e5a70eee4926311804.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3SUZETTE-079f71e79f90458ea808fe89e47b0ed0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4SUZETTE-e0c9f6fc4d674287a583c41e8e36bc11.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "Solitaire Bracelet", name: "14K Gold Diamond Solitaire Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-rg-diamond-A%20(3).450x600.w.png",colors: [{ name: "Yellow Gold", value: "#FFD700" }],sizes: ["6.5 in", "7 in"], images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-rg-diamond-A%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-rg-diamond-B%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-rg-diamond-C%20(5).450x600.w.png"], desc: "14K Gold Diamond Solitaire Bracelet, Diamond Bracelet", price: 265  },
+
+  { id: "Solitaire Bracelet1", name: "14K Gold Diamond Solitaire Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-wg-diamond-A%20(3).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-wg-diamond-A%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-wg-diamond-B%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-wg-diamond-C%20(5).450x600.w.png"], desc: "14K Gold Diamond Solitaire Bracelet, Diamond Bracelet", price: 265  },
+
+  { id: "Solitaire Bracelet2", name: "14K Gold Diamond Solitaire Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-yg-diamond-A%20(4).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-yg-diamond-A%20(4).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-yg-diamond-B%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-yg-diamond-C%20(5).450x600.w.png"],desc: "14K Gold Diamond Solitaire Bracelet, Diamond Bracelet", price: 265  },
+
+  { id: "Heart-Cut Diamond Bangle", name: "14K Gold Heart-Cut Diamond Bangle, Gold Solitaire Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-yg-diamond-A%20(4).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-wg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-wg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-wg-diamond-C%20(3).450x600.w.png"], desc: "14K Gold Heart-Cut Diamond Bangle, Gold Solitaire Bracelet", price: 265  },
+
+  { id: "Heart-Cut Diamond Bangle1", name: "14K Gold Heart-Cut Diamond Bangle, Gold Solitaire Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-yg-diamond-A%20(3).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-yg-diamond-A%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-yg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-yg-diamond-C%20(3).450x600.w.png"], desc: "14K Gold Heart-Cut Diamond Bangle, Gold Solitaire Bracelet", price: 265  },
+
+  { id: "Heart-Cut Diamond Bangle2", name: "14K Gold Heart-Cut Diamond Bangle, Gold Solitaire Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-rg-diamond-A%20(2).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-rg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-rg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6120HT050-rg-diamond-C%20(3).450x600.w.png"], desc: "14K Gold Heart-Cut Diamond Bangle, Gold Solitaire Bracelet", price: 265  },
+
+  { id: "Diamond Chain Link", name: "14k Gold Diamond Chain Link Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-wg-diamond-A%20(5).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-wg-diamond-A%20(5).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-wg-diamond-B%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-wg-diamond-C%20(3).450x600.w.png"], desc: "14k Gold Diamond Chain Link Bracelet, Diamond Bracelett", price: 365  },
+
+  { id: "Diamond Chain Link1", name: "14k Gold Diamond Chain Link Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-rg-diamond-A%20(5).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-rg-diamond-A%20(5).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-rg-diamond-B%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-rg-diamond-C%20(3).450x600.w.png"], desc: "14k Gold Diamond Chain Link Bracelet, Diamond Bracelet", price: 365  },
+
+  { id: "Diamond Chain Link2", name: "14k Gold Diamond Chain Link Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-yg-diamond-A%20(6).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-yg-diamond-A%20(6).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-yg-diamond-B%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5574MQ070-yg-diamond-C%20(3).450x600.w.png"],desc: "14k Gold Diamond Chain Link Bracelet, Diamond Bracelet", price: 365  },
+
+  { id: " Diamond Solitaire Bracelet", name: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-yg-diamond-A%20(3).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-yg-diamond-A%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-yg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-yg-diamond-C%20(3).450x600.w.png"],desc: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", price: 365  },
+
+  { id: " Diamond Solitaire Bracelet1", name: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-wg-diamond-A%20(2).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-wg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-wg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-wg-diamond-C%20(3).450x600.w.png"], desc: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", price: 365  },
+  { id: " Diamond Solitaire Bracelet2", name: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-rg-diamond-A%20(2).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-rg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-rg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B6412MQ047-rg-diamond-C%20(3).450x600.w.png"], desc: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", price: 365  },
+
+  { id: " Diamond Solitaire Bracele3t", name: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-yg-diamond-A%20(3).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-yg-diamond-A%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-yg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-yg-diamond-C%20(3).450x600.w.png"], desc: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", price: 365  },
+
+  { id: " Diamond Solitaire Bracelet4", name: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-wg-diamond-A%20(2).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-wg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-wg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-wg-diamond-C%20(3).450x600.w.png"], desc: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", price: 365  },
+
+  { id: " Diamond Solitaire Bracelet5", name: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-rg-diamond-A%20(2).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-rg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-rg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B2878RD050-rg-diamond-C%20(3).450x600.w.png"], desc: "18K Gold Diamond Solitaire Bracelet, Diamond Bracelet", price: 365  },
+
+  { id: " Diamond Bezel Bracelet", name: "14K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-wg-diamond-A%20(1).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-wg-diamond-A%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-wg-diamond-B%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-wg-diamond-C%20(1).450x600.w.png"],desc: "14K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", price: 365  },
+
+  { id: " Diamond Bezel Bracelet1", name: "14K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-yg-diamond-A%20(2).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-yg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-yg-diamond-B%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-yg-diamond-C%20(1).450x600.w.png"],desc: "14K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", price: 365  },
+
+  { id: " Diamond Bezel Bracelet2", name: "14K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-rg-diamond-A%20(1).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-rg-diamond-A%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-rg-diamond-B%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-rg-diamond-C%20(1).450x600.w.png"],desc: "14K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", price: 365  },
+
+  { id: " Gold Moon Bracelet", name: "14K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-wg-diamond-A%20(1).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-wg-diamond-A%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-wg-diamond-B%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-wg-diamond-C%20(1).450x600.w.png"],desc: "14K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", price: 365  },
+
+  { id: " Gold Moon Bracelet1", name: "14K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-yg-diamond-A%20(2).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-yg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-yg-diamond-B%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-yg-diamond-C%20(1).450x600.w.png"],desc: "14K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", price: 365  },
+
+  { id: " Gold Moon Bracelet2", name: "14K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-rg-diamond-A%20(1).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-rg-diamond-A%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-rg-diamond-B%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-rg-diamond-C%20(1).450x600.w.png"],desc: "14K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", price: 365  },
+
+  { id: " Diamond Bezel Bracelet3", name: "18K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-yg-diamond-A%20(3).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-yg-diamond-A%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-yg-diamond-C%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-yg-diamond-B%20(2).450x600.w.png"],desc: "18K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", price: 465  },
+
+  { id: " Diamond Bezel Bracelet4", name: "18K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-wg-diamond-A%20(2).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-wg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-wg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-wg-diamond-C%20(3).450x600.w.png"],desc: "18K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", price: 465  },
+
+  { id: " Diamond Bezel Bracelet5", name: "18K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-rg-diamond-A%20(2).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-rg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-rg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B7889EM066-rg-diamond-C%20(3).450x600.w.png"],desc: "18K Gold Diamond Solitaire Bracelet, Diamond Bezel Bracelet", price: 465  },
+
+  { id: " Gold Moon Bracelet3", name: "18K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-yg-diamond-A%20(3).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-yg-diamond-A%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-yg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-yg-diamond-C%20(3).450x600.w.png"],desc: "18K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", price: 465  },
+
+  { id: " Gold Moon Bracelet4", name: "18K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-wg-diamond-A%20(2).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-wg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-wg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-wg-diamond-C%20(3).450x600.w.png"],desc: "18K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", price: 465  },
+
+  { id: " Gold Moon Bracelet5", name: "18K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-rg-diamond-A%20(2).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-rg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-rg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B4751RD007-rg-diamond-C%20(3).450x600.w.png"],desc: "18K Gold Moon Bracelet, Crescent Bracelet, Diamond Bracelet", price: 465  },
+
+  { id: " Workwear Cuff Bangle", name: "Workwear Cuff Bangle with 1/2ctw Lab Diamond in Solid Gold", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-rg-diamond-A%20(3).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-rg-diamond-A%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-rg-diamond-B%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-rg-diamond-C%20(3).450x600.w.png"],desc: "Workwear Cuff Bangle with 1/2ctw Lab Diamond in Solid Gold", price: 665  },
+
+  { id: " Workwear Cuff Bangle1", name: "Workwear Cuff Bangle with 1/2ctw Lab Diamond in Solid Gold", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-wg-diamond-A%20(3).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-wg-diamond-A%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-wg-diamond-B%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-wg-diamond-C%20(3).450x600.w.png"], desc: "Workwear Cuff Bangle with 1/2ctw Lab Diamond in Solid Gold", price: 665  },
+
+  { id: " Workwear Cuff Bangle2", name: "Workwear Cuff Bangle with 1/2ctw Lab Diamond in Solid Gold", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-yg-diamond-A%20(6).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-yg-diamond-A%20(6).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-yg-diamond-B%20(3).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5456RD042-yg-diamond-C%20(3).450x600.w.png"], desc: "Workwear Cuff Bangle with 1/2ctw Lab Diamond in Solid Gold", price: 665  },
+
+  { id: "  Gold Paperclip Chain", name: "Lab Diamond Gold Paperclip Chain Bracelet for Everyday Wear", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-wg-diamond-A%20(1).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-wg-diamond-A%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-wg-diamond-B%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-wg-diamond-C%20(1).450x600.w.png"],desc: "Lab Diamond Gold Paperclip Chain Bracelet for Everyday Wear", price: 865  },
+
+  { id: "  Gold Paperclip Chain1", name: "Lab Diamond Gold Paperclip Chain Bracelet for Everyday Wear", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-yg-diamond-A%20(2).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-yg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-yg-diamond-B%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-yg-diamond-C%20(1).450x600.w.png"], desc: "Lab Diamond Gold Paperclip Chain Bracelet for Everyday Wear", price: 865  },
+
+  { id: "  Gold Paperclip Chain2", name: "Lab Diamond Gold Paperclip Chain Bracelet for Everyday Wear", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-rg-diamond-A%20(1).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-rg-diamond-A%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-rg-diamond-B%20(1).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/B5581RD065-rg-diamond-C%20(1).450x600.w.png"], desc: "Lab Diamond Gold Paperclip Chain Bracelet for Everyday Wear", price: 865  },
+
+  { id: "  Diamond Stud Earrings", name: "10k Gold Diamond Stud Earrings, Lab GrownDiamond Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-wg-diamond-A%20(2).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-wg-diamond-A%20(4).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-wg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-wg-diamond-C%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-wg-diamond-D%20(2).450x600.w.png"], desc: "10k Gold Diamond Stud Earrings, Lab GrownDiamond Earrings", price: 155  },
+
+  { id: "  Diamond Stud Earrings1", name: "10k Gold Diamond Stud Earrings, Lab GrownDiamond Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-yg-diamond-A%20(2).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-yg-diamond-A%20(4).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-yg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-yg-diamond-C%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-yg-diamond-D%20(2).450x600.w.png"],desc: "10k Gold Diamond Stud Earrings, Lab GrownDiamond Earrings", price: 155  },
+
+  { id: "  Diamond Stud Earrings2", name: "10k Gold Diamond Stud Earrings, Lab GrownDiamond Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-rg-diamond-A%20(2).450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-rg-diamond-A%20(4).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-rg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-rg-diamond-C%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-rg-diamond-D%20(2).450x600.w.png"],desc: "10k Gold Diamond Stud Earrings, Lab GrownDiamond Earrings", price: 155  },
+
+  { id: "  Diamond Butterfly Earrings", name: "10k Gold Diamond Butterfly Earrings, Diamond Stud Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-rg-diamond-A%20(2).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-wg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-wg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-wg-diamond-C%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-wg-diamond-D%20(4).450x600.w.png"], desc: "10k Gold Diamond Stud Earrings, Lab GrownDiamond Earrings", price: 155  },
+
+  { id: "  Diamond Butterfly Earrings1", name: "10k Gold Diamond Butterfly Earrings, Diamond Stud Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-yg-diamond-A%20(4).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-yg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-yg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-yg-diamond-C%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-yg-diamond-D%20(4).450x600.w.png"], desc: "10k Gold Diamond Stud Earrings, Lab GrownDiamond Earrings", price: 155  },
+
+  { id: "  Diamond Butterfly Earrings2", name: "10k Gold Diamond Butterfly Earrings, Diamond Stud Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-rg-diamond-A%20(4).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-rg-diamond-A%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-rg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-rg-diamond-C%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E5848EM065-rg-diamond-D%20(4).450x600.w.png"], desc: "10k Gold Diamond Stud Earrings, Lab GrownDiamond Earrings", price: 155  },
+
+  { id: "  Diamond Drop Earrings", name: "14k Gold Diamond Drop Earrings, Bezel Set Diamond Earrings", img:"https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-yg-diamond-A.450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-wg-diamond-A%20(4).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-wg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-wg-diamond-C%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-wg-diamond-D%20(2).450x600.w.png"],desc: "14k Gold Diamond Drop Earrings, Bezel Set Diamond Earrings", price: 175  },
+
+  { id: "  Diamond Drop Earrings1", name: "14k Gold Diamond Drop Earrings, Bezel Set Diamond Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-wg-diamond-A.450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-yg-diamond-A%20(4).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-yg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-yg-diamond-C%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-yg-diamond-D%20(2).450x600.w.png"],desc: "14k Gold Diamond Drop Earrings, Bezel Set Diamond Earrings", price: 175  },
+
+  { id: "  Diamond Drop Earrings2", name: "14k Gold Diamond Drop Earrings, Bezel Set Diamond Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-rg-diamond-A.450x600.w.png", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-rg-diamond-A%20(4).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-rg-diamond-B%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-rg-diamond-C%20(2).450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E2212RD008-rg-diamond-D%20(2).450x600.w.png"],desc: "14k Gold Diamond Drop Earrings, Bezel Set Diamond Earrings", price: 175  },
+
+  { id: "  Diamond Stud Earrings", name: "10k Gold Diamond Stud Earrings, Lab-grown Diamond Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E9854RD024-wg-diamond-A%20(1).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-yg-diamond-A.450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-yg-diamond-B.450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-yg-diamond-C.450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-yg-diamond-D.450x600.w.png"], desc: "10k Gold Diamond Stud Earrings, Lab-grown Diamond Earrings", price: 175},
+
+  { id: "  Diamond Stud Earrings1", name: "10k Gold Diamond Stud Earrings, Lab-grown Diamond Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E9854RD024-yg-diamond-A.450x600.w.png", images: [ "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-wg-diamond-A.450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-wg-diamond-B.450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-wg-diamond-C.450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-wg-diamond-D.450x600.w.png"],desc: "10k Gold Diamond Stud Earrings, Lab-grown Diamond Earrings", price: 175},
+
+  { id: "  Diamond Stud Earrings2", name: "10k Gold Diamond Stud Earrings, Lab-grown Diamond Earrings", img: "https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E9854RD024-rg-diamond-A%20(1).450x600.w.png",images: ["https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-rg-diamond-A.450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-rg-diamond-B.450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-rg-diamond-C.450x600.w.png","https://cdn.jooraccess.com/img/uploads/accounts/1203071/images/E8145RD024-rg-diamond-D.450x600.w.png"], desc: "10k Gold Diamond Stud Earrings, Lab-grown Diamond Earrings", price: 175},
+
+  { id: "1220 SEOUL HOODIE IN JERSEY", name: "1220 SEOUL HOODIE IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12200OOOJ4027A_1b.450x600.w.jpg", colors: [{name:"MOONLIGHT",value:"#070987",imageIndex:0},{name:"SPRAY GREEN",value:"#d2b48c",imageIndex:1},{name:"WINTER TWIG",value:"#1108A",imageIndex:2},{name:"TAWNY PORT",value:"#918151",imageIndex:3},{name:"CARBON",value:"#808080",imageIndex:4}], sizes: ["S","M","L","X-L","XX-L"], images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12200OOOJ4027A_1b.450x600.w.jpg"], desc: "", price: 200 },
+ { id: "6700 KANSAI JEANS STRAIGHT FIT IN DENIM", name: "6700 KANSAI JEANS STRAIGHT FIT IN DENIM", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF67000OOOD3928A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF67000OOOD3928A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF67000OOOD3928A_2.450x600.w.jpg"], colors: [{name:"BLACK",value:"#000000",imageIndex:0},{name:"RAW INDIGO",value:"#4b0082",imageIndex:1}], sizes:["S","M","L","X-L","XX-L"], desc: "", price: 180 },
+ { id: "5800 ANTWERP BOXY-JACKET IN WAXED COTTON", name: "5800 ANTWERP BOXY JACKET IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF58000OOWC070987_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF58000OOWC3864A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF58000OOWC3864A_2.450x600.w.jpg"], colors: [{name:"BLACK",value:"#000000",imageIndex:0},{name:"MAZARINE BLUE",value:"#070987",imageIndex:1},{name:"DUSKY GREEN",value:"#515408",imageIndex:2},{name:"CADMIUM YELLOW",value:"#ffff00",imageIndex:3}], sizes:["S","M","L","X-L","XX-L"], desc: "", price: 200 },
+
+{ id: "4500 YORK CROPPED JACKET IN PADDED WOOL", name: "4500 YORK CROPPED JACKET IN PADDED WOOL", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF45000OPWO0840A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF45000OPWO0840A_2b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF45000OPWO0840A_1.450x600.w.jpg"], colors: [{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex: 0 }, {name: "PURED PUMPKIN  ", value: "#ff0000", imageIndex: 1}, {name: "NAVY BLAZER  ", value: "#a9a9a9", imageIndex: 2  },{name: "BLACK  ", value: "#000000", imageIndex: 3 }, {name: "BARBADOS CHERRY  ", value: "#ff0000", imageIndex: 4  }],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260 },
+{ id: "4900 BRERA RAINCOAT IN MEMORY RE-NYLON", name: "4900 BRERA RAINCOAT IN MEMORY RE-NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF49000MERN1140B_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF49000MERN1140B_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF49000MERN1140B_2.450x600.w.jpg" ], colors: [{name: "BRINDLE + SPRAY GREEN  ", value: "#d2b48c", imageIndex: 0 },{name: "MAGNET + PURE PUMPKIN  ", value: "#ff0000", imageIndex: 1  },{name: "BRINDLE E NAVY PEONY   ", value: "#1140B ", imageIndex: 2 }], sizes: ["S", "M", "L", "X-L", "XX-L"],  desc: "", price: 260 },
+{ id: "1210 SEOUL JACKET IN JERSEY", name: "1210 SEOUL JACKET IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12100OOOJ4012A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12100OOOJ4012A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12100OOOJ4012A_2.450x600.w.jpg"], colors: [{name: "CARBON ", value: "#808080", imageIndex:0 }, {name: "SPRAY GREEN", value: "#d2b48c", imageIndex: 1 },{name: "WINTER TWIG", value: "#918151", imageIndex: 2}, {name: "TAWNY PORT", value: "#722f37", imageIndex: 3 }, {name: "MOONLIGHT", value: "#070987", imageIndex: 4},], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260 },
+{ id: "6000 KREUZBERG JACKET IN WAXED COTTON", name: "6000 KREUZBERG JACKET IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF60000OOWC0517A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF60000OOWC0517A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF60000OOWC0517A_2.450x600.w.jpg"],colors: [{name: "BLACK  ", value: "#000000", imageIndex: 0}, {name: "MAZARINE BLUE   ", value: "#070987", imageIndex: 1 }, {name: "CADMIUM YELLOW  ", value: "#ffa500", imageIndex: 2  }, {name: "TARMAC  ", value: "#0822A ", imageIndex: 3 },{name: "dusky green  ", value: "#9f8170 ", imageIndex: 4 },], sizes: ["S", "M", "L", "X-L", "XX-L"],  desc: "", price: 260 },
+{ id: "4800 BRERA TRENCH COAT IN MEMORY RE-NYLO", name: "4800 BRERA TRENCH COAT IN MEMORY RE-NYLO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF48000MERN3917B_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF48000MERN3917B_1b.450x600.w.jpg"," https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF48000MERN3917B_2.450x600.w.jpg"],colors: [{name: "NAVY BLAZER E BARBADOS CHERRY   ", value: "#3917B ", imageIndex: 0},{name: "BRINDLE + SPRAY GREEN  ", value: "#d2b48c", imageIndex:  1},{name: "MAGNET + PURE PUMPKIN  ", value: "#ff0000", imageIndex: 2 },{name: "BRINDLE E NAVY PEONY   ", value: "#1140B ", imageIndex:3  }] ,sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260 },
+{ id: "4100 BASEL SHORT JACKET IN DUCHESSE COTT", name: "4100 BASEL SHORT JACKET IN DUCHESSE COTT", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF41000OODC0840A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF41000OODC0840A_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF41000OODC0840A_2.450x600.w.jpg"], colors: [{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex:0 },{name: "MOLE  ", value: "#3638EB ", imageIndex: 1 },{name: "MOON ROCK  ", value: "#f8f8ff ", imageIndex: 2},{name: "CARBON ", value: "#808080", imageIndex: 3},{name: "BLACK  ", value: "#000000", imageIndex:4 } , ],sizes: ["S", "M", "L", "X-L", "XX-L"],desc: "", price: 260 },
+{ id: "4000 BASEL LONG JACKET IN DUCHESSE COTTO", name: "4000 BASEL LONG JACKET IN DUCHESSE COTTO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF40000OODC000000_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF40000OODC000000_1b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF40000OODC000000_2.450x600.w.jpg"], colors: [{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex:0 },{name: "MOLE  ", value: "#3638EB ", imageIndex: 1 },{name: "MOON ROCK  ", value: "#f8f8ff ", imageIndex: 2},{name: "CARBON ", value: "#808080", imageIndex: 3},{name: "BLACK  ", value: "#000000", imageIndex:4 } , ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 270 },
+{ id: "5900 ANTWERP COAT IN WAXED COTTON", name: "5900 ANTWERP COAT IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF59000OOWC0822A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF59000OOWC0822A_1b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF59000OOWC0822A_2b.450x600.w.jpg"], colors: [{name: "DUSKY GREEN   ", value: "#515408", imageIndex: 0 },{name: "TARMAC  ", value: "#0822A ", imageIndex: 1  },{name: "CADMIUM YELLOW  ", value: "#ffa500", imageIndex: 2 },{name: "BLACK  ", value: "#000000", imageIndex: 3 },], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 280 },
+{ id: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R", name: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_3.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_3.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_4b.450x600.w.jpg"], colors: [{name: "NAVY BLAZER E BARBADOS CHERRY   ", value: "#3917B ", imageIndex: 0},{name: "BRINDLE + SPRAY GREEN  ", value: "#d2b48c", imageIndex:  1},{name: "MAGNET + PURE PUMPKIN  ", value: "#ff0000", imageIndex: 2 },{name: "BRINDLE E NAVY PEONY   ", value: "#1140B ", imageIndex:3  },{name: "BLACK + CADMIUM YELLOW    ", value: "#ffa500 ", imageIndex: 4},], sizes: ["S", "M", "L", "X-L", "XX-L"],  desc: "", price: 300 },
+{ id: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N", name: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51000MERN6010R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51000MERN6010R_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51000MERN6010R_2.450x600.w.jpg"], colors: [{name: "BLACK + CADMIUM YELLOW    ", value: "#ffa500 ", imageIndex: 0 },{name: "BRINDLE + SPRAY GREEN  ", value: "#d2b48c", imageIndex:1  },{name: "MAGNET + PURE PUMPKIN  ", value: "#ff0000", imageIndex: 2 },],sizes: ["S", "M", "L", "X-L", "XX-L"],desc: "", price: 290 },
+{ id: "3300 HACKNEY FIELD JACKET IN DUCHESSE CO", name: "3300 HACKNEY FIELD JACKET IN DUCHESSE CO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF33000OODC1106A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF33000OODC1106A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF33000OODC1106A_2.450x600.w.jpg"], colors: [{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex:0 },{name: "MOLE  ", value: "#3638EB ", imageIndex:1 },{name: "MOON ROCK  ", value: "#f8f8ff ", imageIndex:2 },{name: "CARBON ", value: "#808080", imageIndex:3 },{name: "BLACK  ", value: "#000000", imageIndex: 4},], sizes: ["S", "M", "L", "X-L", "XX-L"],desc: "", price: 290 },
+{ id: "5300 YORK COAT IN MEMORY RE-NYLON", name: "5300 YORK COAT IN MEMORY RE-NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF53000MERN1103R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF53000MERN1103R_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF53000MERN1103R_2.450x600.w.jpg"], colors: [{name: "BARBADOS CHERRY  ", value: "#ff0000", imageIndex:0  }, {name: "BRINDLE + SPRAY GREEN  ", value: "#d2b48c", imageIndex:  1},{name: "MAGNET + PURE PUMPKIN  ", value: "#ff0000", imageIndex: 2 },{name: "BRINDLE E NAVY PEONY   ", value: "#1140B ", imageIndex: 3 },{name: "NAVY BLAZER E BARBADOS CHERRY   ", value: "#3917B ", imageIndex:4 },{name: "BLACK + CADMIUM YELLOW    ", value: "#ffa500 ", imageIndex:5 },], sizes: ["S", "M", "L", "X-L", "XX-L"],desc: "", price: 300 },
+{ id: "2500 OSLO BOMBER IN NYLON BOMBER", name: "2500 OSLO BOMBER IN NYLON BOMBER", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF25000OONB0627A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF25000OONB0627A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF25000OONB0627A_2b.450x600.w.jpg"], colors: [{name: "FIR GREEN   ", value: "#e9d66b ", imageIndex:0},{name: "NAVY BLAZER  ", value: "#a9a9a9", imageIndex: 1 },{name: "CARBON ", value: "#808080", imageIndex: 2},{name: "BARBADOS CHERRY  ", value: "#ff0000", imageIndex: 3 },], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 320 },
+{ id: "4100 BASEL SHORT JACKET IN DUCHESSE COTT2", name: "4100 BASEL SHORT JACKET IN DUCHESSE COTT", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/8.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/8.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/3.450x600.w.jpg" ], colors: [{name: "GREY PINK POIS PRINT", value: "#ffc0cb", indeximage: 0}], sizes: ["S", "M", "L", "X-L", "XX-L"],desc: "", price: 320 },
+{ id: "7900 SEOUL BOMBER ZIP UP IN LIGHT NYLON", name: "7900 SEOUL BOMBER ZIP UP IN LIGHT NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2025.11.21---OOF_JOOR_67_210526.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2025.11.21---OOF_JOOR_67_210526.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2025.11.21---OOF_JOOR_67_210532.450x600.w.jpg", ],colors: [{name: "WHISPER WHITE  ", value: "#f8f8ff ", imageIndex: 0}, {name: "BRINDLE  ", value: "#a0785a ", imageIndex:1 },{name: "RUMBA RED  ", value: "#0822A ", imageIndex: 2 },{name: "BLUE DEPTHS   ", value: "#4b0082", imageIndex:3 },], sizes: ["S", "M", "L", "X-L", "XX-L"] , desc: "", price: 330 },
+{ id: "3900 YORK MAXI COAT IN DUCHESSE COTTON", name: "3900 YORK MAXI COAT IN DUCHESSE COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF39000OODC1210A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF39000OODC1210A_2b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF39000OODC1210A_1b.450x600.w.jpg", ], colors: [{name: "MOON ROCK  ", value: "#f8f8ff ", imageIndex:0 },{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex: 1},{name: "MOLE  ", value: "#3638EB ", imageIndex: 2 },{name: "CARBON ", value: "#808080", imageIndex: 3},{name: "BLACK  ", value: "#000000", imageIndex:4 },], sizes: ["S", "M", "L", "X-L", "XX-L"] , desc: "", price: 340 },
+{ id: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N2", name: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51100MERN5260R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51100MERN5260R_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51100MERN5260R_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/4.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/5.450x600.w.jpg"   ], colors:[{name: "Tartan + Black", value: "808080", imageindex: 0} , {name: "TARTAN PRINT + ANTIQUE MOSS" , value: " #ff0000 ", imageIndex: 1} , {name: "TARTAN PRINT + PURE PUMPKIN", value: "#ffa500", imageIndex:2},],   sizes: ["S", "M", "L", "X-L", "XX-L"] , desc: "", price: 350 },
+{ id: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R2", name: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_2.450x600.w.jpg",   ], colors: [{name: "ANIMALIER PRINT +NAVY BLAZER  ", value: "#663399", imageIndex: 0 },{name: "ANIMALIER PRINT +FIR GREEN   ", value: "#556b2f ", imageIndex: 1},{name: "ANIMALIER PRINT +BLACK  ", value: "#00000", imageIndex: 3 },],  sizes: ["S", "M", "L", "X-L", "XX-L"] , desc: "", price: 350 },
+{ id: "1000 SEOUL KAFTAN IN ECO-SHEARLING", name: "1000 SEOUL KAFTAN IN ECO-SHEARLING", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF10000OBOA4027A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF10000OBOA4027A_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF10000OBOA4027A_2.450x600.w.jpg",   ], colors: [{name: "MOONLIGHT", value: "#070987", imageIndex: 0 },{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex: 1 },{name: "WHITE ALYSSUM  ", value: "#f8f8ff ", imageIndex: 2},{name: "ROSE DUST   ", value: "#ffb7c5 ", imageIndex:3 },{name: "CHOCOLATE TORTE   ", value: "#3638EB ", imageIndex: 4  },{name: "BLACK  ", value: "#000000", imageIndex: 5},], sizes: ["S", "M", "L", "X-L", "XX-L"] ,desc: "", price: 350 },
+{ id: "5000 SOHO REVERSIBLE SHORT JACKET IN ME", name: "5000 SOHO REVERSIBLE SHORT JACKET IN ME", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF50000MERN1003R_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF50000MERN1003R_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF50000MERN1003R_4.450x600.w.jpg",   ],colors: [{name: "OTTER + SPRAY GRAY   ", value: "#98817b ", imageIndex:0 },{name: "GOLDEN PALM + FIR GREEN    ", value: "#fad6a5 ", imageIndex:1 },{name: "BRINDLE + NAVY BLAZER  ", value: "#1140B ", imageIndex:2  },{name: "MAGNET + BLACK    ", value: "#00000 ", imageIndex: 3},] , sizes: ["S", "M", "L", "X-L", "XX-L"] ,  desc: "", price: 350 },
+{ id: "2400 SEOUL HOODIE IN NYLON BOMBER", name: "2400 SEOUL HOODIE IN NYLON BOMBER", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF24000OONB4012A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF24000OONB4012A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF24000OONB4012A_2.450x600.w.jpg",   ], colors: [{name: "NAVY BLAZER  ", value: "#a9a9a9", imageIndex: 0 },{name: "FIR GREEN   ", value: "#e9d66b ", imageIndex: 1},{name: "CARBON ", value: "#808080", imageIndex:2 },{name: "BARBADOS CHERRY  ", value: "#ff0000", imageIndex: 3  },] , sizes: ["S", "M", "L", "X-L", "XX-L"] , desc: "", price: 350 },
+{ id: "6600 ANTWERP FIELD JACKET IN DENIM", name: "6600 ANTWERP FIELD JACKET IN DENIM", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF66000OOOD3928A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF66000OOOD3928A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF66000OOOD3928A_2b.450x600.w.jpg",   ], colors: [{name: "RAW INDIGO   ", value: "#4b0082", imageIndex: 0},{name: "BLACK  ", value: "#000000", imageIndex: 1},], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 350 },
+{ id: "7900 SEOUL BOMBER ZIP UP IN LIGHT N", name: "7900 SEOUL BOMBER ZIP UP IN LIGHT N", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF79100OLNP6016C_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF79100OLNP6016C_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF79100OLNP6016C_2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/6%20(1).450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/7%20(1).450x600.w.jpg"  , ],sizes: ["S", "M", "L", "X-L", "XX-L"],desc: "", price: 380 },
+{ id: "5400 SEOUL COCOON COAT IN ECO-SHEARLING", name: "5400 SEOUL COCOON COAT IN ECO-SHEARLING", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF54000OBOA1109A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF54000OBOA1109A_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF54000OBOA1109A_2b.450x600.w.jpg",   ], colors:[{name: "MOLE  ", value: "#3638EB ", imageIndex: 0 },{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex: 1},{name: "WHITE ALYSSUM ", value: "#f8f8ff ", imageIndex: 2},{name: "ROSE DUST   ", value: "#ffb7c5 ", imageIndex: 3},{name: " MOONLIGHT BLUE   ", value: "#4b0082", imageIndex: 4},{name: "BLACK  ", value: "#000000", imageIndex:5 }, ], sizes: ["S", "M", "L", "X-L", "XX-L"],   desc: "", price: 410 },
+{ id: "3200 YORK SHORT JACKET IN DUCHESSE COTTO", name: "3200 YORK SHORT JACKET IN DUCHESSE COTTO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF32000OODC1106A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF32000OODC1106A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF32000OODC1106A_2.450x600.w.jpg",   ], colors:[{name: "CARBON ", value: "#808080", imageIndex:0 },{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex: 1 }, {name: "MOON ROCK  ", value: "#f8f8ff ", imageIndex: 2 },{name: "BLACK  ", value: "#000000", imageIndex:3 },], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260 },
+{ id: "1240 HEATHROW HOODIE IN JERSEY", name: "1240 HEATHROW HOODIE IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12400OOOJ1725A_1bb.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12400OOOJ1725A_1bb.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12400OOOJ1725A_1bb.450x600.w.jpg",   ], colors: [{name: "SPRAY GREEN", value: "#d2b48c", imageIndex: 0 }, {name: "WINTER TWIG", value: "#918151", imageIndex: 1 },{name: "CARBON ", value: "#808080", imageIndex: 2},{name: "MOONLIGHT", value: "#070987", imageIndex: 3},], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260 },
+{ id: "1230 TIVOLI HOODIE JACKET IN JERSEY", name: "1230 TIVOLI HOODIE JACKET IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12300OOOJ1725A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12300OOOJ1725A_2b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12300OOOJ1725A_1.450x600.w.jpg" ,   ], colors:[ {name: "SPRAY GREEN", value: "#d2b48c", imageIndex: 0 }, {name: "WINTER TWIG", value: "#918151", imageIndex: 1 },{name: "CARBON ", value: "#808080", imageIndex: 2},{name: "MOONLIGHT", value: "#070987", imageIndex: 3},{name: "TAWNY PORT", value: "#722f37", imageIndex: 4 },], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260 },
+{ id: "6400 YORK QUILTED COAT IN TWO LAYERS", name: "6400 YORK QUILTED COAT IN TWO LAYERS", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF64000OOTL1757A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF64000OOTL1757A_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF64000OOTL1757A_2b.450x600.w.jpg",   ], colors: [{name: "NAVY BLAZER  ", value: "#a9a9a9", imageIndex: 0 },{name: "FIR GREEN   ", value: "#e9d66b ", imageIndex:1 },{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex: 2},{name: "BLACK  ", value: "#000000", imageIndex: 3},], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 300 },
+{ id: "3100 OSLO BOMBER IN DUCHESSE COTTON", name: "3100 OSLO BOMBER IN DUCHESSE COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF31000OODC0840A_2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF31000OODC0840A_2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF31000OODC0840A_1.450x600.w.jpg",   ], colors: [{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex: 0},{name: "MOLE  ", value: "#3638EB ", imageIndex: 1 },{name: "MOON ROCK  ", value: "#f8f8ff ", imageIndex: 2},{name: "CARBON ", value: "#808080", imageIndex: 3},{name: "BLACK  ", value: "#000000", imageIndex: 4},],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 300 },
+{ id: "6300 HEATHROW HOODED BOMBER IN TWO LAYER", name: "6300 HEATHROW HOODED BOMBER IN TWO LAYER", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF63000OOTL0840A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF63000OOTL0840A_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF63000OOTL0840A_2.450x600.w.jpg",   ], colors: [{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex: 0},{name: "FIR GREEN   ", value: "#e9d66b ", imageIndex: 1 }, {name: "NAVY BLAZER  ", value: "#a9a9a9", imageIndex: 2}, {name: "BLACK  ", value: "#000000", imageIndex: 3},],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 300 },
+{ id: "3400 ANTWERP FIELD JACKET IN DUCHESSE CO", name: "3400 ANTWERP FIELD JACKET IN DUCHESSE CO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF34000OODC1210A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF34000OODC1210A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF34000OODC1210A_2.450x600.w.jpg",   ], colors: [{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex: 0},{name: "MOLE  ", value: "#3638EB ", imageIndex: 1 },{name: "MOON ROCK  ", value: "#f8f8ff ", imageIndex: 2},{name: "CARBON ", value: "#808080", imageIndex: 3},{name: "BLACK  ", value: "#000000", imageIndex: 4},],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 300 },
+{ id: "4200 OSLO BOMBER IN PADDED WOOL", name: "4200 OSLO BOMBER IN PADDED WOOL", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF42000OPWO1757A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF42000OPWO1757A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF42000OPWO1757A_2.450x600.w.jpg",   ], colors: [{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex:0 },{name: "PURED PUMPKIN  ", value: "#ff0000", imageIndex: 1},{name: "TAWNY PORT", value: "#722f37", imageIndex:2 },{name: "BLACK  ", value: "#000000", imageIndex: 3},], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 300 },
+{ id: "5600 TROMSO COAT IN WAXED COTTON", name: "5600 TROMSO COAT IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF56000OOWC0517A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF56000OOWC0517A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF56000OOWC0517A_2b.450x600.w.jpg",   ], colors: [{name: "DUSKY GREEN   ", value: "#515408", imageIndex: 0 },{name: "CADMIUM YELLOW  ", value: "#ffa500", imageIndex: 1  },{name: "MAZARINE BLUE   ", value: "#070987", imageIndex: 2 },{name: "BLACK  ", value: "#000000", imageIndex: 3 }, ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 300 },
+{ id: "3500 YORK LONG COAT IN DUCHESSE COTTON", name: "3500 YORK LONG COAT IN DUCHESSE COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_2.450x600.w.jpg",   ], colors: [{name: "CARBON ", value: "#808080", imageIndex: 0 },{name: "ANTIQUE MOSS  ", value: "#ffff00", imageIndex: 1 },{name: "MOLE  ", value: "#3638EB ", imageIndex: 2 },{name: "MOON ROCK  ", value: "#f8f8ff ", imageIndex: 3 }, {name: "BLACK  ", value: "#000000", imageIndex:4 },], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 300 },
+{ id: "3000 OSLO ZIP POCKET BOMBER IN NYLON", name: "3000 OSLO ZIP POCKET BOMBER IN NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF30000OONB0627A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF30000OONB0627A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF30000OONB0627A_2.450x600.w.jpg"],   colors: [{name: "FIR GREEN   ", value: "#e9d66b ", imageIndex:0 }, {name: "NAVY BLAZER  ", value: "#a9a9a9", imageIndex: 1 },{name: "CARBON ", value: "#808080", imageIndex: 2 },], sizes: ["S", "M", "L", "X-L", "XX-L"],  desc: "", price: 360 },
+{ id: "84000 HEATHROW BOMBER IN LIGHT NYLON PAD", name: "84000 HEATHROW BOMBER IN LIGHT NYLON PAD", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF84000OLNP3901A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF84000OLNP3901A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF84000OLNP3901A_2.450x600.w.jpg",   ], colors: [{name: "MAGNET  ", value: "#808080 ", imageIndex: 0 },{name: "WHISPER WHITE  ", value: "#f8f8ff ", imageIndex: 1},{name: "RUMBA RED  ", value: "#0822A ", imageIndex:  2}, {name: "BLUE DEPTHS   ", value: "#4b0082", imageIndex: 3 }, ],sizes: ["S", "M", "L", "X-L", "XX-L"],   desc: "", price: 360},
+{ id: "2100 OSLO DOUBLE ZIP BOMBER IN MEMORY RE", name: "2100 OSLO DOUBLE ZIP BOMBER IN MEMORY RE", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF21000MERN0827B_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF21000MERN0827B_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF21000MERN0827B_2b%20(1).450x600.w.jpg",   ], colors: [{name: "GOLDEN PALM + FIR GREEN    ", value: "#fad6a5 ", imageIndex:0 }, {name: "OTTER + SPRAY GRAY   ", value: "#98817b ", imageIndex: 1},{name: "BRINDLE E NAVY PEONY   ", value: "#1140B ", imageIndex: 2 },{name: "MAGNET + BLACK    ", value: "#00000 ", imageIndex: 3},], sizes: ["S", "M", "L", "X-L", "XX-L"],desc: "", price: 360},
+{ id: "PANT TWO LAYERS", name: "PANT TWO LAYERS", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-2.450x600.w.jpg"  ], colors: [{name: "Vapor Blue    ", value: "#808080 ", imageIndex:0 },], sizes: ["S", "M", "L", "X-L", "XX-L"],  desc: "", price: 300},
+{ id: "PANT COTTON TECH", name: "PANT COTTON TECH", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-4.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-2.450x600.w.jpg " ], colors: [{name: "Oxford Tan  ", value: "#fad6a5 ", imageIndex:0 },], sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 300},
+{ id: "HOODIE MEMORY", name: "HOODIE MEMORY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF08000OOME1316A_Dusty%20Pink-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF08000OOME1316A_Dusty%20Pink-2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF08000OOME1316A_Dusty%20Pink-3.450x600.w.jpg " ],colors: [{name: "Dusty Pink   ", value: "#ffbcd9 ", imageIndex:0 },{name: "Bone White  ", value: "#ffffff ", imageIndex:1 },{name: "Total Eclipse  ", value: "#91a3b0 ", imageIndex: 2},{name: "Burnt Olive  ", value: "#78866b ", imageIndex:3 },{name: "Ceylon Yellow  ", value: "#e4d00a ", imageIndex:4 },{name: "Molten Lava  ", value: "#de3163 ", imageIndex:5 },],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 300},
+{ id: "PANT WAXED COTTON", name: "PANT WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-4.450x600.w.jpg " ], color:[{name: "Bone White  ", value: "#ffffff ", imageIndex:0 }, ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "PANT COTONE SMERIGLIATO", name: "PANT COTONE SMERIGLIATO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-4.450x600.w.jpg" ], color:[{name: "Bone White  ", value: "#ffffff ", imageIndex:0 }, ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "PUFFER PANT SHINY NYLON", name: "PUFFER PANT SHINY NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-3.450x600.w.jpg"  ], colors: [{name: "Total Eclipse  ", value: "#91a3b0 ", imageindex: 0}, ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "CARCOAT MEMORY", name: "CARCOAT MEMORY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0400OOME4010A_Total%20Eclipse-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0400OOME4010A_Total%20Eclipse-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0400OOME4010A_Total%20Eclipse-2.450x600.w.jpg"  ], colors: [{name: "Total Eclipse  ", value: "#91a3b0 ", imageindex: 0},{name: "Bone white  ", value: "#ffffff ", imageindex: 1},{name: "Bitter Chocolate  ", value: "#3638EB ", imageindex: 0} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "OVERSHIRT WAXED COTTON", name: "OVERSHIRT WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM1300OOWC1317A_Bitter%20Chocolate-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM1300OOWC1317A_Bitter%20Chocolate-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM1300OOWC1317A_Bitter%20Chocolate-3.450x600.w.jpg"  ], colors: [{name: "Chipmunk  ", value: "#5b4332 ", imageindex: 0},{name: "Bitter Chocolate  ", value: "#3638EB ", imageindex: 1} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "BARRACUDA MEMORY", name: "BARRACUDA MEMORY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0200OOME0737A_Burnished%20Gold-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0200OOME0737A_Burnished%20Gold-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0200OOME0737A_Burnished%20Gold-3.450x600.w.jpg"  ], colors: [{name: "Total Eclipse  ", value: "#91a3b0 ", imageindex: 0},{name: "Bone white  ", value: "#ffffff ", imageindex: 1},{name: "Burnished Gold  ", value: "#dcf93711 ", imageindex: 0} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "1200 ANTWERP UTILITY BOMBER IN JERSEY", name: "1200 ANTWERP UTILITY BOMBER IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12000OOOJ1108A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12000OOOJ1108A_2b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12000OOOJ1108A_1.450x600.w.jpg"  ], colors: [{name: "SPRAY GREEN  ", value: "#ADA645 ", imageindex: 0},{name: "TAWNY PORT ", value: "#7A2412", imageindex: 1},{name: "CARBON   ", value: "#525252 ", imageindex: 2},{name: "MOONLIGHT BLUE  ", value: "#38477A ", imageindex: 3} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "5700 ANTWERP UTILITY BOMBER IN WAXED COT", name: "5700 ANTWERP UTILITY BOMBER IN WAXED COT", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF57000OOWC1054A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF57000OOWC1054A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF57000OOWC1054A_2.450x600.w.jpg"  ], colors: [{name: "CADMIUM YELLOW  ", value: "#E8B90C ", imageindex: 0},{name: "DUSKY GREEN ", value: "#666045", imageindex: 1},{name: "MAZARINE BLUE   ", value: "#2186C2 ", imageindex: 2},{name: "BLACK   ", value: "#000000 ", imageindex: 3} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "3500 YORK LONG COAT IN DUCHESSE COTTON", name: "3500 YORK LONG COAT IN DUCHESSE COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_2.450x600.w.jpg"  ], colors: [{name: "CARBON  ", value: "#4A4A4A", imageindex: 0},{name: "ANTIQUE MOSS ", value: "#D1CA73", imageindex: 1},{name: "MOLE   ", value: "#4A260D ", imageindex: 2},{name: "MOON ROCK   ", value: "#7A6900 ", imageindex: 3}, {name: "BLACK   ", value: "#000000 ", imageindex: 4}  ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+
+
+];
 
     function getParam(key) {
       const url = new URL(window.location.href);
@@ -229,6 +794,21 @@
       detailDiv.innerHTML = `
         <img src="${product.img}" alt="${product.name}">
         <h2>${product.name}</h2>
+        <!-- COLORS -->
+  ${product.colors ? `
+    <div class="option-group">
+      <p>Color</p>
+      <div class="swatches" id="color-swatches"></div>
+    </div>
+  ` : ''}
+
+  <!-- SIZES -->
+  ${product.sizes ? `
+    <div class="option-group">
+      <p>Size</p>
+      <div class="sizes" id="size-options"></div>
+    </div>
+  ` : ''}
         <div class="price">$${product.price}</div>
         <p style="margin-bottom:2rem;">${product.desc}</p>
         <button class="lux-btn" onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
@@ -254,6 +834,7 @@
       saveCart();
       showAddMessage(name);
     }
+    
     function saveCart() {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
@@ -272,6 +853,358 @@
       document.body.appendChild(msg);
       setTimeout(() => msg.remove(), 1300);
     }
+
+// small helpers used by the render template
+function escapeHtml(str) {
+  if (!str && str !== 0) return '';
+  return String(str).replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+}
+function escapeAttr(str) {
+  return escapeHtml(str).replace(/'/g, '&#39;');
+}
+
+// renderProducts now builds sizeOptions & colorOptions per product
+function renderProducts(prodArray) {
+  const html = prodArray.map(p => {
+    const sizeOptions = (p.sizes && p.sizes.length) ?
+      `<div class="size-options">
+         <label for="size-select-${p.id}">Size:</label>
+         <select id="size-select-${p.id}" class="size-select" name="size-${p.id}">
+           <option value="" disabled selected>Select size</option>
+           ${p.sizes.map(s => `<option value="${escapeAttr(s)}">${escapeHtml(s)}</option>`).join('')}
+         </select>
+       </div>` : '';
+
+    const colorOptions = (p.colors && p.colors.length) ?
+      `<div class="color-options" role="list">
+         ${p.colors.map((c, idx) => `
+           <label class="color-label" title="${escapeHtml(c.name)}" for="color-${p.id}-${idx}">
+             <span class="color-swatch" style="background:${escapeAttr(c.value)}" data-color-name="${escapeAttr(c.name)}">
+               <input type="radio" name="color-${p.id}" id="color-${p.id}-${idx}" value="${escapeAttr(c.name)}">
+             </span>
+           </label>
+         `).join('')}
+       </div>` : '';
+
+    return `
+      <div class="lux-product" data-product-id="${escapeAttr(p.id)}" data-product-name="${escapeAttr(p.name)}" data-product-price="${p.price}">
+        <a class="product-link-overlay" href="product.html?id=${encodeURIComponent(p.id)}" title="View ${escapeAttr(p.name)}"></a>
+        <img src="${escapeAttr(p.img)}" alt="${escapeAttr(p.name)}">
+        <h3 title="${escapeAttr(p.name)}">${escapeHtml(p.name)}</h3>
+        <div class="price">$${p.price}</div>
+        <div class="product-options">
+          ${sizeOptions}
+          ${colorOptions}
+        </div>
+        <button class="lux-btn" onclick="event.stopPropagation(); addToCart('${escapeAttr(p.id)}', ${p.price}, this)">Add to Cart</button>
+      </div>
+    `;
+  }).join('');
+  document.getElementById('product-list').innerHTML = html;
+
+  // make swatches clickable and toggle selected class
+  document.querySelectorAll('.color-swatch').forEach(swatch => {
+    swatch.addEventListener('click', (e) => {
+      const input = swatch.querySelector('input[type=radio]');
+      if (input) {
+        input.checked = true;
+        const parent = swatch.closest('.color-options');
+        if (parent) parent.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+        swatch.classList.add('selected');
+      }
+      e.preventDefault();
+    });
+  });
+}
+
+// addToCart now reads size & color, validates if required, and stores them in cart items
+function addToCart(productId, price, btnEl) {
+  const card = btnEl.closest('.lux-product');
+  if (!card) return;
+  const name = card.dataset.productName || productId;
+  const sizeSelect = card.querySelector('.size-select');
+  const selectedSize = sizeSelect ? sizeSelect.value : '';
+  const colorRadio = card.querySelector(`input[name="color-${productId}"]:checked`);
+  const selectedColor = colorRadio ? colorRadio.value : '';
+
+  // validate when product.sizes/colors exist
+  const product = products.find(p => p.id === productId);
+  if (product) {
+    if (product.sizes && product.sizes.length && !selectedSize) {
+      showAddMessage('Please select a size');
+      if (sizeSelect) { sizeSelect.style.outline = '2px solid #ff7a7a'; setTimeout(()=> sizeSelect.style.outline = '', 1200); }
+      return;
+    }
+    if (product.colors && product.colors.length && !selectedColor) {
+      showAddMessage('Please select a color');
+      const firstSwatch = card.querySelector('.color-swatch');
+      if (firstSwatch) { firstSwatch.style.outline = '2px solid #ff7a7a'; setTimeout(()=> firstSwatch.style.outline = '', 1200); }
+      return;
+    }
+  }
+
+  // combine id+options so different option combinations are separate lines
+  const existingIdx = cart.findIndex(i => i.id === productId && i.size === selectedSize && i.color === selectedColor);
+  if (existingIdx > -1) {
+    cart[existingIdx].qty += 1;
+  } else {
+    cart.push({ id: productId, name, price, qty: 1, size: selectedSize, color: selectedColor });
+  }
+  saveCart();
+  updateCartDisplay();
+  showAddMessage(`${name}${selectedSize ? ' — ' + selectedSize : ''}${selectedColor ? ' — ' + selectedColor : ''} added`);
+  hideEmptyCartAlert();
+}
+
+// updateCartDisplay was updated to show size & color in each cart line
+function updateCartDisplay() {
+  document.getElementById('cart-count').textContent = cart.reduce((sum, i) => sum + i.qty, 0);
+  let itemsHtml = cart.map((item, idx) =>
+    `<li>
+      ${escapeHtml(item.name)}${item.size ? ` — <small>${escapeHtml(item.size)}</small>` : ''}${item.color ? ` — <small>${escapeHtml(item.color)}</small>` : '' }
+      x${item.qty} - $${(item.price * item.qty).toFixed(2)}
+      <button class="remove-btn" onclick="removeFromCart(${idx})">Remove</button>
+    </li>`
+  ).join('');
+  document.getElementById('cart-items').innerHTML = itemsHtml || "<li>Your cart is empty.</li>";
+  document.getElementById('cart-total').textContent = cart.reduce((sum, i) => sum + i.price * i.qty, 0).toFixed(2);
+  // ... rest unchanged (checkout button enabling, empty-cart alert)
+}
+
+
+       // Render product and gallery
+    if (product) {
+      // images: prefer product.images (array), fallback to product.img
+      const images = Array.isArray(product.images) && product.images.length ? product.images.slice() : (product.img ? [product.img] : []);
+      let currentIndex = 0;
+
+      // Build gallery HTML
+      detailDiv.innerHTML = `
+  <div class="gallery" id="gallery-root">
+    <div class="thumbs" id="thumbs"></div>
+    <div class="main-img" id="main-img"></div>
+  </div>
+
+  <h2 id="prod-name">${product.name}</h2>
+
+  <!-- COLORS -->
+  ${product.colors ? `
+      <div class="option-group">
+        <div class="swatches" id="color-swatches"></div>
+      </div>
+  ` : ''}
+
+  <!-- SIZES -->
+  ${product.sizes ? `
+    <div class="option-group">
+      <p>Size</p>
+      <div class="sizes" id="size-options"></div>
+    </div>
+  ` : ''}
+
+  <div class="price" id="prod-price">${product.price ? ('$' + product.price) : ''}</div>
+  <p style="margin-bottom:2rem;" id="prod-desc">${product.desc ? product.desc : ''}</p>
+  <button class="lux-btn" id="add-btn">Add to Cart</button>
+`;
+
+      const thumbsEl = document.getElementById('thumbs');
+      const mainEl = document.getElementById('main-img');
+      const addBtn = document.getElementById('add-btn');
+
+      function renderThumbnails() {
+        thumbsEl.innerHTML = '';
+        images.forEach((src, idx) => {
+          const t = document.createElement('img');
+          t.src = src;
+          t.alt = product.name + ' thumb ' + (idx + 1);
+          t.dataset.index = idx;
+          if (idx === currentIndex) t.classList.add('active');
+          t.addEventListener('click', () => {
+            setCurrent(idx);
+          });
+          thumbsEl.appendChild(t);
+        });
+      }
+
+      function renderMain() {
+        mainEl.innerHTML = '';
+        if (images.length === 0) {
+          mainEl.innerHTML = `<div style="padding:2rem">No image available</div>`;
+          return;
+        }
+        const img = document.createElement('img');
+        img.src = images[currentIndex];
+        img.alt = product.name + ' image ' + (currentIndex + 1);
+        img.draggable = false;
+        mainEl.appendChild(img);
+
+        // update active class on thumbs
+        const thumbImgs = thumbsEl.querySelectorAll('img');
+        thumbImgs.forEach(t => t.classList.toggle('active', Number(t.dataset.index) === currentIndex));
+        // ensure thumbnail in view
+        const activeThumb = thumbsEl.querySelector('img.active');
+        if (activeThumb) {
+          // scroll to center active thumb
+          if (thumbsEl.scrollHeight > thumbsEl.clientHeight) {
+            const offset = activeThumb.offsetTop - (thumbsEl.clientHeight / 2) + (activeThumb.clientHeight / 2);
+            thumbsEl.scrollTo({ top: offset, behavior: 'smooth' });
+          } else if (thumbsEl.scrollWidth > thumbsEl.clientWidth) {
+            const offx = activeThumb.offsetLeft - (thumbsEl.clientWidth / 2) + (activeThumb.clientWidth / 2);
+            thumbsEl.scrollTo({ left: offx, behavior: 'smooth' });
+          }
+        }
+      }
+
+      function setCurrent(idx) {
+        if (idx < 0) idx = 0;
+        if (idx >= images.length) idx = images.length - 1;
+        if (idx === currentIndex) return;
+        currentIndex = idx;
+        renderMain();
+      }
+
+      // Touch swipe handling on main image (vertical swipe)
+      let startY = null;
+      let startTime = null;
+      function onTouchStart(e) {
+        const t = e.touches ? e.touches[0] : e;
+        startY = t.clientY;
+        startTime = Date.now();
+      }
+      function onTouchEnd(e) {
+        if (startY === null) return;
+        const t = (e.changedTouches && e.changedTouches[0]) || e;
+        const dy = startY - t.clientY; // positive = swipe up
+        const dt = Date.now() - startTime;
+        const threshold = 30; // px
+        const speedThreshold = 300; // ms
+        if (Math.abs(dy) > threshold) {
+          if (dy > 0) {
+            // swipe up -> next
+            if (currentIndex < images.length - 1) setCurrent(currentIndex + 1);
+          } else {
+            // swipe down -> prev
+            if (currentIndex > 0) setCurrent(currentIndex - 1);
+          }
+        }
+        startY = null;
+        startTime = null;
+      }
+
+      // Add pointer/touch listeners to the main image container (delegating to child img)
+      mainEl.addEventListener('touchstart', onTouchStart, { passive: true });
+      mainEl.addEventListener('touchend', onTouchEnd, { passive: true });
+      // Also support mouse drag for desktop
+      let isMouseDown = false;
+      mainEl.addEventListener('mousedown', (e) => { isMouseDown = true; onTouchStart(e); });
+      window.addEventListener('mouseup', (e) => { if (isMouseDown) { isMouseDown = false; onTouchEnd(e); } });
+
+      // Keyboard support (Up/Down arrows)
+      window.addEventListener('keydown', (e) => {
+        if (!product) return;
+        if (e.key === 'ArrowUp') {
+          setCurrent(currentIndex > 0 ? currentIndex - 1 : currentIndex);
+        } else if (e.key === 'ArrowDown') {
+          setCurrent(currentIndex < images.length - 1 ? currentIndex + 1 : currentIndex);
+        }
+      });
+
+      // Mouse wheel to navigate (vertical wheel on main image)
+      mainEl.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) < 5) return;
+        if (e.deltaY > 0) {
+          // scroll down -> next
+          setCurrent(Math.min(images.length - 1, currentIndex + 1));
+        } else {
+          // scroll up -> prev
+          setCurrent(Math.max(0, currentIndex - 1));
+        }
+      }, { passive: true });
+
+// Click Add to Cart: use the detail-page addToCart (reads selectedSize & selectedColor)
+addBtn.addEventListener('click', () => {
+  addToCartDetail();
+});
+
+      // Initial render
+      renderThumbnails();
+      renderMain();
+
+    } else {
+      detailDiv.innerHTML = `<p>Sorry, product not found.</p>`;
+    }
+
+    let selectedColor = null;
+    let selectedSize = null;
+    const colorWrap = document.getElementById('color-swatches');
+
+if (colorWrap && product.colors) {
+  product.colors.forEach(color => {
+    const btn = document.createElement('button');
+    btn.className = 'swatch';
+    btn.style.background = color.value;
+    btn.title = color.name;
+
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      selectedColor = color.name;
+    });
+
+    colorWrap.appendChild(btn);
+  });
+}
+const sizeWrap = document.getElementById('size-options');
+
+if (sizeWrap && product.sizes) {
+  product.sizes.forEach(size => {
+    const btn = document.createElement('button');
+    btn.className = 'size-btn';
+    btn.textContent = size;
+
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.size-btn').forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      selectedSize = size;
+    });
+
+    sizeWrap.appendChild(btn);
+  });
+}
+function addToCartDetail() {
+  if (!product) return;
+  // validate selections if those option lists exist
+  if (product.sizes && product.sizes.length && !selectedSize) {
+    showAddMessage('Please select a size');
+    return;
+  }
+  if (product.colors && product.colors.length && !selectedColor) {
+    showAddMessage('Please select a color');
+    return;
+  }
+
+  // Use a composite key so different option combos are distinct lines
+  const itemKey = `${product.id}::${selectedSize || ''}::${selectedColor || ''}`;
+  const existing = cart.find(i => i.key === itemKey);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({
+      key: itemKey,
+      id: product.id,
+      name: product.name,
+      price: typeof product.price === 'number' ? product.price : 0,
+      size: selectedSize || '',
+      color: selectedColor || '',
+      qty: 1
+    });
+  }
+  saveCart();
+  showAddMessage(`${product.name}${selectedSize ? ' — ' + selectedSize : ''}${selectedColor ? ' — ' + selectedColor : ''} added`);
+}
+
+
+
   </script>
 </body>
 
