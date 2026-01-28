@@ -46,7 +46,7 @@
 }
 
 body {
-            background-image: url("https://i.pinimg.com/736x/9e/cf/17/9ecf175edf9c3fdf9bcae1e032a2ff4c.jpg");
+            background-image: url("https://i.pinimg.com/736x/6b/f1/3c/6bf13cc6c7635af59b94643e9c6b362e.jpg");
             background-repeat: no-repeat; /* Prevents the image from tiling */
             background-size: cover;      /* Makes the image cover the entire screen */
             background-attachment: fixed; /* Keeps the background in place when scrolling */
@@ -57,12 +57,23 @@ body {
 <body>
   <header class="lux-header">
     <h2>Shop BMO</h2>
+   
+<audio id="myAudio" loop>
+  <source src="LOST IN LA.mp3" type="audio/mpeg">
+  <source src="LOST IN LA.ogg" type="audio/ogg">
+  <!-- You can add multiple sources for different browser support -->
+  Your browser does not support the audio element.
+</audio>
+
+<button id="playButton">Play Music</button>
+    <button id="pauseButton">Pause Music</button>
+    
     <div style="font-size:1rem;font-weight:400;letter-spacing:1px;margin-top:0.5rem;">Authentic Luxury Products Under Retail Prices</div>
   </header>
 
   <!-- Side Navigation Menu -->
   <nav class="side-menu">
-    <h2>Browse</h2>
+    
     <a href="home-page.html">Home</a>
     <a href="index.html">Shop</a>
     <a href="about.html" class="active">About</a>
@@ -74,7 +85,7 @@ body {
     <a href="checkout.html">Checkout</a>
   </nav>
 
-  <a href="home-page.html">
+  <a href="index.html">
     <img src="https://i.pinimg.com/736x/98/a8/ab/98a8ab8f800abb9ccb65a9688c438d8f.jpg" alt="Description of the link" style=" width: 70px ;"> 
 </a>
     <section class="about-section">
@@ -92,23 +103,22 @@ body {
         <li><b>Exclusive Savings:</b> We source directly, passing the savings to you so luxury is never out of reach.</li>
         <li><b>Curated Selection:</b> Our team handpicks the finest designer handbags, accessories, and more.</li>
         <li><b>Customer-First Approach:</b> Fast shipping, responsive support, and a seamless shopping experience.</li>
-        <li><b>Story Building</b>:</b> Each product has a story from conseption and will continue to make stories with you.</li>
+        <li><b>Story Building</b>:</b> Each product has a story from conception and will continue to make stories with you.</li>
       </ul>
       <h2>Our Story</h2>
       <p>
-        Born from a love of fashion and a desire to democratize luxury, Shop BMO began as a small collection of cologne and quickly grew into a thriving online boutique. We help customers find their dream pieces—always authentic, always under retail. We also work closely not only with reconigzed distrubutors but artist, innovators and other boutiques. 
+        Born from a love of fashion and a desire to democratize luxury, Shop BMO began as a small collection of cologne and quickly grew into a thriving online boutique. We help customers find their dream pieces—always authentic, always under retail.
       </p>
       <h2>Our Promise</h2>
       <p>
    Mediocrity is not an option.
       </p>
-   
 
+  
     </section>
 
     <footer>
-      &copy; 2025 Shop BMO. All rights reserved. backgrounds can be taken down if asked
-   Your image can be a future background @shopping4bmo@gmail.com or contact page 
+      &copy; 2025 Shop BMO. All rights reserved. 
     </footer>
   </div>
   <!-- Mobile-nav logic (populate select from side-menu links) -->
@@ -158,9 +168,21 @@ body {
         const obs = new MutationObserver(buildMobileMenu);
         obs.observe(sideMenu, { childList: true, subtree: true });
       }
-    })();
-  </script>
-</body>
-</html>
+// Get the audio element and buttons
+        const audio = document.getElementById('myAudio');
+        const playBtn = document.getElementById('playButton');
+        const pauseBtn = document.getElementById('pauseButton');
 
+       // Play function
+        playBtn.addEventListener('click', function() {
+            audio.play().catch(error => {
+                // This catch handles situations where play() is interrupted
+                console.error("Playback failed:", error);
+            });
+        });
 
+        // Pause function
+        pauseBtn.addEventListener('click', function() {
+            audio.pause();
+        });
+    })(); 
