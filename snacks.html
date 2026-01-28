@@ -383,16 +383,18 @@ body {
   <!-- Desktop Side Navigation Menu -->
   <nav class="side-menu" id="side-menu" aria-label="Main navigation">
    
-    <a href="index.html">Shop</a>
-    <a href="shop-mens.html">Men's Fragrances</a>
-    <a href="shop-womens.html">Women's Fragrances</a>
-    <a href="shop-unisex.html">Unisex Fragrances</a>
-    <a href="snacks.html"class="active" >Snacks</a>
-    <a href="home-page.html">Home</a>
+    <a href="shop.html" >Shop</a>
+   <a href="Accesories.html">Accesories</a> 
+    <a href="MENS-PRODUCT.html">Men's</a>
+    <a href="WOMANS-PRODUCTS.html">Women's</a>
+   <a href="Clothe.html"> Clothing</a>
+   <a href = "Jewlery.html">PURE YOU Jewlery</a>
+    <a href="OOF-wear.html">OOF-WEAR</a>
+    <a href="27 Miles Malibu.html" >27 MILES MALIBU</a>
+    <a href="snacks.html" class="active">Snacks</a>
+    <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="checkout.html">Checkout</a>
-    <a href="commingsoon.html">comming soon</a>
   </nav>
 
   
@@ -433,166 +435,180 @@ body {
   { id: "Grape-Flavor-480-ml", name: "Sangaria Ramune Soda Grape Flavor 480 ml", img:"https://img08.weeecdn.net/product/image/180/806/45416D8D64B87E11.png!c750x0_q80_t1.auto", desc: "a naturally flavored, carbonated soft drink with a distinct Grape flavor, imported from Japan. ", price: 3.50 },
   { id: "Original-Flavor-480-ml", name: "Sangaria Ramune Original Grape Flavor 480 ml", img:"https://www.mugentoys.com/shop/image/cache/catalog/img/0X/733815006669-500x500.jpg", desc: "a naturally flavored, carbonated soft drink with a distinct flavor, imported from Japan. ", price: 3.50 },];
 
-    // Render products (snacks). Descriptions not shown in card to keep layout compact.
-    function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+  // ... rest of products array (kept as in original file)
+    function isMen(product) {
+      return (
+        /for Men|Men\b|masculine|Homme|Men's|male|gentleman|pour homme/i.test(product.name) ||
+        /for men|aromatic spicy fragrance for men|masculine|for Him/i.test(product.desc)
+      );
+    }
+    function isWomen(product) {
+      return (
+        /for Women|Women\b|feminine|Her|ladies|pour femme|Women's|girl/i.test(product.name) ||
+        /for women|feminine|for Her|female/i.test(product.desc)
+      );
+    }
+    function isUnisex(product) {
+      return (
+        /Unisex/i.test(product.name) ||
+        /Unisex/i.test(product.desc) ||
+        (
+          !isMen(product) && !isWomen(product)
+        )
+      );
+    }
 
-    function renderProducts(prodArray){
-      const container = document.getElementById('product-list');
-      if(!container) return;
-      if(!prodArray || prodArray.length===0){ container.innerHTML = '<p style="padding:1rem;color:#666;">No products found.</p>'; return; }
-      container.innerHTML = prodArray.map(p => {
-        const name = escapeHtml(p.name);
-        const img = escapeHtml(p.img);
-        const price = (Number(p.price)||0).toFixed(2);
-        return `
-          <article class="lux-product" data-id="${encodeURIComponent(p.id||'')}">
-            <a class="product-link-overlay" href="product.html?id=${encodeURIComponent(p.id||'')}" title="View ${name}" aria-hidden="true"></a>
-            <img src="${img}" alt="${name}">
-            <h3>${name}</h3>
-            <div class="price">$${price}</div>
-            <button class="lux-btn" data-name="${name}" data-price="${price}">Add to Cart</button>
-          </article>
-        `;
-      }).join('');
+    // Categorized arrays
+    const mensFragrances = products.filter(p => isMen(p) && !isWomen(p));
+    const womensFragrances = products.filter(p => isWomen(p) && !isMen(p));
+    const unisexFragrances = products.filter(p => isUnisex(p));
+
+    function renderProducts(prodArray) {
+      document.getElementById('product-list').innerHTML = prodArray.map(p => `
+        <div class="lux-product">
+          <a class="product-link-overlay" href="product.html?id=${encodeURIComponent(p.id)}" title="View ${p.name}"></a>
+          <img src="${p.img}" alt="${p.name}">
+          <h3 title="${p.name}">${p.name}</h3>
+          <div class="price">$${p.price}</div>
+          <button class="lux-btn" onclick="event.stopPropagation(); addToCart('${p.name}', ${p.price})">Add to Cart</button>
+        </div>
+      `).join('');
     }
 
     renderProducts(products);
 
-    renderProducts(mensFragrances);
-
-    // Cart (unchanged)
     let cart = [];
     try {
       cart = JSON.parse(localStorage.getItem('cart')) || [];
       if (!Array.isArray(cart)) cart = [];
-    } catch (e) { cart = []; }
-
-    function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); }
-
-    function addToCartByData(name, price) {
-      const itemName = String(name || 'Item');
-      const itemPrice = Number(price) || 0;
-      let item = cart.find(i => i.name === itemName);
-      if (item) item.qty += 1;
-      else cart.push({ name: itemName, price: itemPrice, qty: 1 });
-      saveCart(); updateCartDisplay(); showAddMessage(itemName); hideEmptyCartAlert();
+    } catch (e) {
+      cart = [];
     }
-
-    // event delegation for add-to-cart
-    document.getElementById('product-list').addEventListener('click', (e) => {
-      const btn = e.target.closest('.lux-btn');
-      if (!btn) return;
-      const name = btn.getAttribute('data-name');
-      const price = btn.getAttribute('data-price');
-      addToCartByData(name, price);
-    });
-
+    function addToCart(name, price) {
+      let item = cart.find(i => i.name === name);
+      if (item) {
+        item.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      saveCart();
+      updateCartDisplay();
+      showAddMessage(name);
+      hideEmptyCartAlert();
+    }
     function updateCartDisplay() {
       document.getElementById('cart-count').textContent = cart.reduce((sum, i) => sum + i.qty, 0);
-      const itemsHtml = cart.map((item, idx) => `
-        <li>
-          ${escapeHtml(item.name)} x${item.qty} - $${(item.price * item.qty).toFixed(2)}
-          <button class="remove-btn" data-idx="${idx}">Remove</button>
-        </li>
-      `).join('') || "<li>Your cart is empty.</li>";
-      document.getElementById('cart-items').innerHTML = itemsHtml;
+      let itemsHtml = cart.map((item, idx) =>
+        `<li>
+          ${item.name} x${item.qty} - $${(item.price * item.qty).toFixed(2)}
+          <button class="remove-btn" onclick="removeFromCart(${idx})">Remove</button>
+        </li>`
+      ).join('');
+      document.getElementById('cart-items').innerHTML = itemsHtml || "<li>Your cart is empty.</li>";
       document.getElementById('cart-total').textContent = cart.reduce((sum, i) => sum + i.price * i.qty, 0).toFixed(2);
       const checkoutBtn = document.getElementById('checkout-btn');
-      if (checkoutBtn) {
-        if (cart.length === 0) { checkoutBtn.classList.add('disabled-btn'); checkoutBtn.disabled = true; showEmptyCartAlert(); }
-        else { checkoutBtn.classList.remove('disabled-btn'); checkoutBtn.disabled = false; hideEmptyCartAlert(); }
+      if (cart.length === 0) {
+        checkoutBtn.classList.add('disabled-btn');
+        checkoutBtn.disabled = true;
+        showEmptyCartAlert();
+      } else {
+        checkoutBtn.classList.remove('disabled-btn');
+        checkoutBtn.disabled = false;
+        hideEmptyCartAlert();
       }
     }
-
-    // remove button delegation
-    document.getElementById('cart-items').addEventListener('click', (e) => {
-      const btn = e.target.closest('.remove-btn');
-      if (!btn) return;
-      const idx = Number(btn.getAttribute('data-idx'));
-      if (!Number.isNaN(idx)) {
-        cart[idx].qty -= 1;
-        if (cart[idx].qty <= 0) cart.splice(idx, 1);
-        saveCart(); updateCartDisplay();
-      }
-    });
-
+    function removeFromCart(idx) {
+      cart[idx].qty -= 1;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      saveCart();
+      updateCartDisplay();
+    }
     function toggleCart() {
-      const modal = document.getElementById('cart-modal');
-      if (!modal) return;
-      if (modal.style.display === "block") { modal.style.display = "none"; modal.setAttribute('aria-hidden','true'); }
-      else { modal.style.display = "block"; modal.setAttribute('aria-hidden','false'); updateCartDisplay(); }
+      let modal = document.getElementById('cart-modal');
+      if (modal.style.display === "none" || modal.style.display === "") {
+        modal.style.display = "block";
+        updateCartDisplay();
+      } else {
+        modal.style.display = "none";
+      }
     }
     function checkoutCart() {
-      if (cart.length === 0) { showEmptyCartAlert(); return; }
+      if (cart.length === 0) {
+        showEmptyCartAlert();
+        return;
+      }
       saveCart();
       window.location.href = "checkout.html";
     }
     function showAddMessage(product) {
-      const msg = document.createElement("div");
+      let msg = document.createElement("div");
       msg.textContent = `${product} added to cart!`;
-      Object.assign(msg.style, { position: 'fixed', bottom: '40px', right: '40px', background: '#ffd700', color: '#111', padding: '1rem 2rem', borderRadius: '12px', boxShadow: '0 4px 16px #0005', zIndex: 2000 });
+      msg.style.position = "fixed";
+      msg.style.bottom = "40px";
+      msg.style.right = "40px";
+      msg.style.background = "#ffd700";
+      msg.style.color = "#111";
+      msg.style.padding = "1rem 2rem";
+      msg.style.borderRadius = "12px";
+      msg.style.boxShadow = "0 4px 16px #0005";
+      msg.style.zIndex = "2000";
       document.body.appendChild(msg);
       setTimeout(() => msg.remove(), 1300);
     }
-    function showEmptyCartAlert() { document.getElementById('empty-cart-alert').style.display = "block"; }
-    function hideEmptyCartAlert() { document.getElementById('empty-cart-alert').style.display = "none"; }
-
-    // wire cart UI buttons
-    document.querySelectorAll('.lux-btn').forEach(() => {}); // no-op (delegation above)
-    document.querySelector('.lux-btn') && document.querySelector('.lux-btn').addEventListener; // noop guard
-    document.addEventListener('click', (e) => {
-      // allow keyboard / enter on product cards also handled by delegation
-    });
-
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    function showEmptyCartAlert() {
+      document.getElementById('empty-cart-alert').style.display = "block";
+    }
+    function hideEmptyCartAlert() {
+      document.getElementById('empty-cart-alert').style.display = "none";
+    }
     updateCartDisplay();
-  </script>
 
-  <!-- Mobile-nav logic (populate select from side-menu links) -->
-  <script>
+    /* --- Dynamic mobile dropdown navigation logic --- */
     (function () {
       const sideMenu = document.getElementById('side-menu');
       const mobileMenu = document.getElementById('mobile-menu');
       const toggleBtn = document.getElementById('mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
 
-      if (!mobileMenu) return;
-
+      // Build mobile select options from the side-menu links
       function buildMobileMenu() {
+        // Clear existing options except the first
         while (mobileMenu.options.length > 1) mobileMenu.remove(1);
         if (!sideMenu) return;
         const links = Array.from(sideMenu.querySelectorAll('a'));
-        const current = (window.location.pathname || '').split('/').pop();
         links.forEach(a => {
-          const href = a.getAttribute('href') || '';
-          const text = (a.textContent || '').trim() || href;
           const opt = document.createElement('option');
-          opt.value = href;
-          opt.textContent = text;
-          if (href.split('/').pop() === current) opt.selected = true;
+          opt.value = a.getAttribute('href') || '#';
+          opt.textContent = a.textContent.trim();
+          // mark current page
+          if (a.classList.contains('active')) opt.selected = true;
           mobileMenu.appendChild(opt);
         });
       }
 
-      mobileMenu.addEventListener('change', function (e) {
-        const url = e.target.value;
-        if (!url) return;
-        window.location.href = url;
+      // Toggle button behavior: focus/expand mobile menu
+      toggleBtn.addEventListener('click', () => {
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        toggleBtn.setAttribute('aria-expanded', String(!expanded));
+        if (!expanded) {
+          mobileMenu.focus();
+        } else {
+          toggleBtn.blur();
+        }
       });
 
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', function () {
-          const expanded = this.getAttribute('aria-expanded') === 'true';
-          this.setAttribute('aria-expanded', String(!expanded));
-          mobileMenu.focus();
-        });
-      }
+      // When selecting from dropdown, navigate
+      mobileMenu.addEventListener('change', (e) => {
+        const url = e.target.value;
+        if (url) window.location.href = url;
+      });
 
+      // Rebuild on load and when side-menu might change
       window.addEventListener('load', buildMobileMenu);
+      // Also rebuild on resize in case links change or for SPA behavior
       window.addEventListener('resize', buildMobileMenu);
-      if (sideMenu) {
-        const obs = new MutationObserver(buildMobileMenu);
-        obs.observe(sideMenu, { childList: true, subtree: true });
-      }
     })();
   </script>
-
-
