@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop BMO</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Montserrat font for site, Cinzel font for SHOP BMO -->
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
+ <style>
+    body {
+      background: #fff;
+      color: #222;
+      font-family: 'Inconsolata', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .banner-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* use space-between if you want logo left and title centered */
+  gap: 1rem;
+  padding: 1rem 1rem;
+  background: linear-gradient(90deg, #f9f9f9, #fff);
+  box-shadow: 0 4px 24px 0 #ffd70044;
+}
+
+/* logo image */
+.site-logo {
+  height: 56px;       /* tune this to taste */
+  width: auto;
+  display: block;
+}
+
+
+/* small screens: reduce logo size and stack if needed */
+@media (max-width: 600px) {
+  .banner-header {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 0.75rem;
+  }
+  .site-logo {
+    height: 44px;
+    margin-bottom: 0.25rem;
+  }
+}
+    .banner-header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Inconsolata', serif;
+      letter-spacing: 0.08em;
+    }
+    .banner-header p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .side-menu  {position: sticky; top: 0; left: 0; right: 0; display: flex; flex-direction: row;  align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Montserrat', sans-serif; } 
+    .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
+    .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent;  transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
+    .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
+
+    /* Mobile dropdown nav */
+    .mobile-nav {
+      display: none; /* hidden on desktop */
+      background: #f9f9f9;
+      border-bottom: 2px solid #ffd70033;
+      box-shadow: 0 4px 12px #ffd70011;
+      padding: 0.5rem 1rem;
+      z-index: 20;
+    }
+    .mobile-nav-bar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #mobile-menu-toggle {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #mobile-menu {
+      flex: 1;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      font-size: 1rem;
+      background: white;
+    }
+
+    .main-content {
+      margin-left: 210px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-top: 2rem;
+    }
+    .lux-product {
+      width: 300px;
+      height: 420px;
+      background: #fff;
+      border-radius: 0;
+      margin: 0;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px #eee;
+      color: #222;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 1px solid #eee;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 8px 32px #ffd70055;
+      text-decoration: none;
+    }
+    .lux-btn {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 25px;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      width: 90%;
+      margin: 0.5rem auto 0 auto;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product img {
+      width: 100%;
+      height: 260px;
+      object-fit: center;
+      border-radius: 0;
+      margin-bottom: 1rem;
+      background: #f9f9f9;
+      display: block;
+    }
+    .lux-product h3 {
+      margin: 1rem 0 0.5rem 0;
+      font-size: 1rem;
+      flex: 0 0 auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product .price {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      flex: 0 0 auto;
+      color: #bfa200;
+      font-family: 'Inconsolata', sans-serif;
+      font-size: 0.9rem; 
+    }
+    .lux-product .product-link-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .lux-product > *:not(.product-link-overlay) {
+      z-index: 2;
+      position: relative;
+    }
+    .lux-product .lux-btn {
+      z-index: 3;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    #cart-modal {
+      display:none;
+      position:fixed;
+      top:0;
+      right:0;
+      width:340px;
+      height:100%;
+      background:#f9f9f9;
+      color:#222;
+      box-shadow:-4px 0 32px #000a;
+      z-index:1000;
+      padding:2rem;
+      overflow-y:auto;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    #cart-modal ul {
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    #cart-modal h2 {
+      margin-top: 0;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    #empty-cart-alert {
+      display:none;
+      background: #ffd700;
+      color: #111;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: bold;
+      margin: 1rem auto;
+      max-width: 420px;
+      box-shadow: 0 2px 12px #ffd70055;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .remove-btn {
+      margin-left:10px;
+      background:#ffd70022;
+      color:#bfa200;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      padding: 3px 10px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .remove-btn:hover { background:#ffd70055; color:#111;}
+    .disabled-btn {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .lux-product .lux-btn {
+      pointer-events: auto;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 800px) {
+      /* Hide the desktop side menu on mobile and show the dropdown mobile nav */
+      .side-menu {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+      }
+      .banner-header {
+        padding-top: 1rem;
+      }
+
+    }
+    @media (max-width: 600px) {
+      .banner-header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+     /* fluid responsive grid for product cards */
+/* change .row to a grid and use two columns at mobile sizes */
+.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; /* centers the grid area inside the container / justify-items: center; / centers each card within its grid cell */ margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr); /* two columns */
+    padding: 0 0.75rem;
+  }
+  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
+}
+
+
+
+body {
+            background-image: url("https://i.pinimg.com/1200x/32/bf/aa/32bfaac0a09290ccdc25dec1664ffc6c.jpg");
+            background-repeat: no-repeat; /* Prevents the image from tiling */
+            background-size: cover;      /* Makes the image cover the entire screen */
+            background-attachment: fixed; /* Keeps the background in place when scrolling */
+        }
+.lux-product img  { width: 100%; text-align: center; }
+
+  
+  </style>
+</head>
+</body>
+<h1> SHOP BMO </h1>
+
+  <body style="background-image: url('https://i.pinimg.com/736x/c1/ab/ed/c1abed7d5a425432e5b17cadd5874416.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+</div>
+<button onclick="toggleCart()" class="lux-btn" style="position: right: 1rem; top: 1rem;">
+    🛒 Cart (<span id="cart-count">0</span>)
+  </button>
+</div>
+
+  <!-- Desktop Side Navigation Menu -->
+  <nav class="side-menu" id="side-menu">
+
+    <a href="shop.html" >Shop</a>
+   <a href="Accesories.html">Accesories</a> 
+    <a href="MENS-PRODUCT.html">Men's</a>
+    <a href="WOMENS-PRODUCTS.html" class="active">Women's</a>
+   <a href="Clothe.html"> Clothing</a>
+   <a href = "Jewlery.html">PURE YOU Jewlery</a>
+    <a href="OOF-wear.html">OOF-WEAR</a>
+    <a href="27 Miles Malibu.html">27 MILES MALIBU</a>
+    <a href="snacks.html">Snacks</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+
+  <!-- Mobile Navigation: dropdown/select + toggle button -->
+  <!-- Mobile Navigation: dropdown/select + toggle button -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <div class="mobile-nav-bar">
+    <button id="mobile-menu-toggle" aria-expanded="false">
+      Menu ☰
+    </button>
+    <select id="mobile-menu" aria-label="Mobile navigation">
+      <option value="">Go to...</option>
+    </select>
+  </div>
+</div>
+
+
+    </div>
+    <div id="empty-cart-alert">⚠️ Your cart is empty. Please add items before checking out.</div>
+    <!-- Featured Products -->
+    <section class="container">
+     
+      <div class="row" id="product-list"></div>
+    </section>
+    <footer style="text-align:center;padding:2rem 0;color:#ffd70088;">
+      © 2025 BMO.LLC.CO All rights reserved.
+    </footer>
+  </div>
+  <div id="cart-modal">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <hr>
+    <b>Total: $<span id="cart-total">0.00</span></b>
+    <br><br>
+    <button id="checkout-btn" class="lux-btn" onclick="checkoutCart()">Checkout</button>
+    <button class="lux-btn" style="background:#333;color:#ffd700;margin-left:10px;" onclick="toggleCart()">Close</button>
+  </div>
+  <script>
+    // Populate product list and cart code (unchanged)
+    // NOTE: The products array in the source may be large. For brevity in this file,
+    // we keep the script block structure and assume the products array is present as before.
+    const products = [
+  { id: "COLT", name: "COLT Sweater", colors: [{ name: "COCONUT", value: "#ffffff", imageIndex: 0 },{ name: "ROOT", value: "#654321", imageIndex: 1 },],sizes: ["S", "M", "L",],
+img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1COLT-047ca02e348647e9ad560078d99104f8.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1COLT-047ca02e348647e9ad560078d99104f8.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3COLT-0f4bf8b4f8f94ce98f10bd7d0ccbb422.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "PELTA", name: "PELTA Sweater", colors: [{ name: "ESPRESSO", value: "#918151", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1PELTA-3fe164de4a9b40c29371ae716bd6bbd8.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1PELTA-3fe164de4a9b40c29371ae716bd6bbd8.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3PELTA-d146de98a9254194b06e475f8b7ba75a.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 240 },
+
+  { id: "ELIDIA", name: "ELIDIA Sweater",colors: [{ name: "BALLET", value: "#ffc0cb", imageIndex: 0 },{ name: "NAVY", value: "#000080", imageIndex: 1 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1ELIDIA-b51fcfda24a84285aa0c533a80298f3c.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1ELIDIA-b51fcfda24a84285aa0c533a80298f3c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ELIDIA-7ebf71cdbdfb49f49256a421c7eb67a9.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 255 },
+
+  { id: "BELL", name: "BELL Sweater",colors: [{ name: "SILVER", value: "#c0c0c0", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1BELL-c12bec21647247a68135ba1d9a28caf2.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1BELL-c12bec21647247a68135ba1d9a28caf2.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2BELL-c6a8bf6891c44b8e8a8f77184d3727ac.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 245 },
+
+  { id: "CRYSTAL", name: "CRYSTAL Sweater", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name:  "COCONUT", value: "#FFFFF", imageIndex: 1 },{ name: "FLAME", value: "#e25822", imageIndex: 2 },{name: "JADE", value: "#00ff00", imageIndex: 3 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1CRYSTAL-52a72bf0be4f4c499e4dffd4081ada3f.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1CRYSTAL-52a72bf0be4f4c499e4dffd4081ada3f.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CRYSTAL-c4cdb0d5a5794354ba2fb90074e37a9a.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4CRYSTAL-62095a95f84641f38e9fc0cdb1e175a6.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CRYSTAL-0d26017fef4a4c69912d102fe9e9b89f.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6CRYSTAL-91542b335ef04c338f3a883cce3e24b1.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 230 },
+
+  { id: "CHARLENE", name: "CHARLENE Sweater", colors: [  {name: "PINOT", value: "#654321", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CHARLENE-ca71831b9de64043a1d53e65fa5cfba1.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CHARLENE-ca71831b9de64043a1d53e65fa5cfba1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4CHARLENE-7e34384406674e15bf69bd5fc63e5ad0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CHARLENE-eff3e2990dd342db9adb59b08c25ae23.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6CHARLENE-72d39893871648c8a87eadc9351db4ec.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1CHARLENE-97f5a46b6c7946709265fc67933282f0.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 245 },
+
+  { id: "ALYSON", name: "ALYSON Sweater",colors: [{ name: "BALLET", value: "#ffc0cb", imageIndex: 0 },{ name: "BLACK", value: "#000000", imageIndex: 1 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1ALYSON-919a09e4876445168a32dfece7f29148.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1ALYSON-919a09e4876445168a32dfece7f29148.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10ALYSON-9b197e30b7ee4afe89b2a41b655b2ad0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ALYSON-5b391631d73641f7a35bef38d552c653.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ALYSON-51c4e5e231ab46d29fcc8594d2f28ab6.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5ALYSON-69dc11b551c949a1a8492a1499e3a395.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 220 },
+
+
+  { id: "PROCTOR", name: "PROCTOR Sweater",colors: [{ name: "AZURE", value: "#B76E79", imageIndex: 0 },{ name: "BRIAR", value: "#E5E4E2", imageIndex: 1 },{ name: "CHROME", value: "#00008b", imageIndex: 2 },{ name: "CAMEL", value: "#d2b48c", imageIndex: 3 },{ name: "COCONUT", value: "#FFFFFF", imageIndex: 4 },{ name: "GRAVEL", value: "#808080", imageIndex: 5 },{ name: "HEATHER", value: "#a9a9a9", imageIndex: 6 }],sizes:["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6PROCTOR-67d9b9fd2fc34fc7a8c8cec5291cd33c.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6PROCTOR-67d9b9fd2fc34fc7a8c8cec5291cd33c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5PROCTOR-b665f642c9dd46f6b72d56bde95aa15d.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7PROCTOR-44aecf069a7e4fb89d5a0ea8594989bc.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8PROCTOR-a75176b083e2476d9961f25a5e23799b.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9PROCTOR-c59c9a8188d246c8a3f3deeb0a888a4a.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 220 },
+
+  { id: "DEMEREE", name: "DEMEREE Sweater", colors: [{ name: "BLACK COMBO", value: "#000000", imageIndex: 0 }],sizes: ["S", "M", "L",],
+img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1DEMEREE-6db6e909713c44b2b27b4b4e3d687b37.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1DEMEREE-6db6e909713c44b2b27b4b4e3d687b37.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3DEMEREE-6486ecb23d8340beb5e2e1e79de10b49.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 220 },
+
+  { id: "SHIRLEY", name: "SHIRLEY Sweater", colors: [{ name: "CAMEL", value: "#d2b48c", imageIndex: 0 },{ name: "NAVY", value: "#000080", imageIndex: 1 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SHIRLEY.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SHIRLEY.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1SHIRLEY-77a00cdb5e6a491e85a02c16906cf044.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 220 },
+
+  { id: "MALIA", name: "MALIA Sweater", colors: [{ name: "FOREST", value: "#556b2f", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1MALIA-41553f9ea21340ea9c7d57715a010d2c.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1MALIA-41553f9ea21340ea9c7d57715a010d2c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3MALIA-9653ff6282f24021bc83a0ac9abbbbbd.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4MALIA-17b2e264272a475ea66fbb9b0614f848.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5MALIA-18d2c8c3bc874f85902d2e2cafbb09b5.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 180 },
+
+  { id: "VIOLETTA", name: "VIOLETTA Sweater",colors: [{ name: "DRIFTWOOD", value: "#d2b48c", imageIndex: 0 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1VIOLETTA-fee3626a414b42e0bf2e44fd5d571497.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1VIOLETTA-fee3626a414b42e0bf2e44fd5d571497.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3VIOLETTA-e4c6be34c45647a1a2b9bdc5fc8e7666.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4VIOLETTA-7c691c9af0ce4f1f994fc7d9639d9edd.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5VIOLETTA-44d91b584ff2416caf46451b1bc3698f.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 180 },
+
+  { id: "CARA", name: "CARA Sweater", colors: [{ name: "OATMEAL", value: "#d2b48c", imageIndex: 0 }],sizes: ["S", "M", "L",] , img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8CARA-3bcee8a59e1f43bbbefc0ec760126db5.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8CARA-3bcee8a59e1f43bbbefc0ec760126db5.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CARA-ffac8bbfb441401e81e62bee186c4574.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4CARA-44154f7e332e4f04861ebe118f604593.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CARA-652b803ba763459883b8b406c1d11263.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 390 },
+
+  { id: "NORIKO", name: "NORIKO Sweater", colors: [{ name: "DRIFTWOOD", value: "#d2b48c", imageIndex: 0 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2NORIKO-f343c4231189472983204b38757bbb71.450x600.w.jpeg",colors: [{ name: "PRINTED LEAPARD", value: "#ffff00", imageIndex: 0 },],sizes: ["S", "M", "L",], images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2NORIKO-f343c4231189472983204b38757bbb71.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3NORIKO-2cc459de62e94f1fa4acbb4e7127cf69.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4NORIKO-7f61af3cf0214aabbe887a785e4a0f8e.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5NORIKO-6a8bed1395004771b553c6c1260fb70c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6NORIKO-b60a552e47604d9c91423f22ef4448be.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7NORIKO-d7bdecb9842644bb94929d00aa2b205a.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 218 },
+
+  { id: "ROBBIE-LP", name: "ROBBIE-LP Sweater", colors: [{ name: "PRINTED LEAPARD", value: "#ffff00", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ROBBIE-LP-11403b30f78f452fa0170f0ffc2a4df1.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ROBBIE-LP-11403b30f78f452fa0170f0ffc2a4df1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2ROBBIE-LP-3d6bdf90131f4448afc650b4e154e0b2.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "ANISIA", name: "ANISIA Sweater", colors: [{ name: "CHALK", value: "#ffffff", imageIndex: 0 },{ name: "OCEAN", value: "#add8e6", imageIndex: 1 }],sizes:["S", "M", "L",] , img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9ANISIA-cc4a4a16883f462fb056a0421b6e8ca8.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9ANISIA-cc4a4a16883f462fb056a0421b6e8ca8.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/11ANISIA-3489aaf9f66443c5801786b1bb2e2068.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ANISIA-ff5bfc9f182d4ef4838357a282316657.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ANISIA-23d5318862b64983aec1f2b0a13e6304.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5ANISIA-68d52793c6ba48219f20f0025b16aa1c.450x600.w.jpeg"], desc: "27 mile Sweater 63% CASHMERE", price: 250 },
+
+  { id: "MAIKA", name: "MAIKA Sweater", colors: [{ name:  "OATMEAL", value: "#d2b48c", imageIndex: 0 },{ name: "ORCHID", value: "#ffc0cb", imageIndex: 1 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8MAIKA-c9741d27517d44d3b762e974f45ded17.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8MAIKA-c9741d27517d44d3b762e974f45ded17.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9MAIKA-71553d6abe3c4e2f93004c274fd3ad89.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3MAIKA-96e00d2ebb8a4ff0bccce66652971a6b.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4MAIKA-df25027f29fe46fc8a61bd50fe2c83b9.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5MAIKA-ed408c89ed3e4519848a315abfcc00ac.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "SAM", name: "SAM Sweater", colors: [{ name: "HAZEL", value: "#ffffff", imageIndex: 0 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SAM-7a27b4fc21bb47fcb9273fa04fa0dced.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SAM-7a27b4fc21bb47fcb9273fa04fa0dced.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2SAM-476f7c27611647d5a7e1bb6d7960cfe0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3SAM-7706da8fcb98462b9b1066b5b41ddec7.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4SAM-981cb7f9ec0342159fbfa2ed425c7acd.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5SAM-b980c305e27247f0b75e6d5ca5bedf86.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "AMANDA", name: "AMANDA Sweater",colors: [{ name: "HAZEL", value: "#ffffff", imageIndex: 0 },{ name: "MAUVE", value: "#ffc0cb", imageIndex: 1 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9AMANDA-336c9214e95a435396e5be988f7b7c1a.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9AMANDA-336c9214e95a435396e5be988f7b7c1a.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2AMANDA-cf9ea82813e640b59dfaa28a10eccd79.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3AMANDA-81807f5c933b4f7d849d3a31257facbf.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4AMANDA-5b1f78900c2d4d4b82df11ef5f2ef3b5.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8AMANDA-57201e4df76c4036961426f5d210a8db.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "MATY", name: "MATY Sweater", colors: [{ name:  "OATMEAL", value: "#d2b48c", imageIndex: 0 },{ name: "DOVE", value: "#ffFFFF", imageIndex: 1 }],sizes: ["S", "M", "L",],img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9MATY-58c3da19c48045fcbb3b6c23a990bd6a.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9MATY-58c3da19c48045fcbb3b6c23a990bd6a.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2MATY-cf9e87a9885741c1950fe1ac0a44c814.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3MATY-ca1fd13f099d4aa598cf2f9a167e819b.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4MATY-026da52ee3314c1cb827dc5ee2995a7c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5MATY-47343e2da7e24dac8da7ec486ade7f3c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MATY-c9f57c71cf874d24be65ea2574a32272.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7MATY-56005cb081a242a8b1a642d0dd73c980.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "CATRIONA", name: "CATRIONA Sweater", colors: [{ name: "BALCK", value: "#000000", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CATRIONA-f322627858604517952f653be98913e1.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CATRIONA-f322627858604517952f653be98913e1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CATRIONA-d799afc14dea4ae5949a32e3b9eac105.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "MORNA", name: "MORNA Sweater", colors: [{ name: "DOVE", value: "#FFFFFF", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MORNA-64e868b8ead949c8b89e04345f7da462.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MORNA-64e868b8ead949c8b89e04345f7da462.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3MORNA-bfb95a107e0044758317b609bf31d199.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4MORNA-3767883578ff4d9db5988e3fbc084f1b.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "LESLY", name: "LESLY Sweater", colors: [{ name: "BLUE", value: "#add8e6", imageIndex: 0 },],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7LESLY-d7ae40643b60489cbfc21b18ec993cbc.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7LESLY-d7ae40643b60489cbfc21b18ec993cbc.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2LESLY-e3b114fe7c434d2587139a46ca5f41d9.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3LESLY-ada4e055575e4cbc86fc894a35e135e5.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "ADLER", name: "ADLER Sweater", colors: [{ name: "BEIGE", value: "#f5f5dc", imageIndex: 0 },],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7ADLER-11a7bf05c7e849078ea5e37984d0e1b6.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7ADLER-11a7bf05c7e849078ea5e37984d0e1b6.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2ADLER-9abbd6314ddf4bacb537086a1faa4b33.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ADLER-b45619772da8400887a5ec1b67e607fb.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ADLER-8e59ae78ce9643f2acfed1796cb311ef.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "MELLY-LP", name: "MELLY-LP Sweater",colors: [{ name: "PRINTED LEAPARD", value: "#ffff00", imageIndex: 0 },],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2MELLY-LP-cf94fa361df34f439ccc59c9cbeb1934.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2MELLY-LP-cf94fa361df34f439ccc59c9cbeb1934.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/1MELLY-LP-9d44671013eb4cdfb6494215b1d44ce6.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "SAIRA", name: "SAIRA Sweater", colors: [{ name: "NAVY", value: "#B76E79", imageIndex: 0 },{ name: "FLAME", value: "#E5E4E2", imageIndex: 1 },{ name: "JADE", value: "#00008b", imageIndex: 2 },{ name: "CAMEL", value: "#d2b48c", imageIndex: 3 },{ name: "COCONUT", value: "#FFFFFF", imageIndex: 4 },{ name: "STORM ", value: "#808080", imageIndex: 5 },{ name: "HEATHER", value: "#a9a9a9", imageIndex: 6 },{ name: "ESPRESSO", value: "#000000", imageIndex: 7 }],sizes: ["S", "M", "L",],img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/21SAIRA-295db5156db643f288a984389bd9aa72.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/21SAIRA-295db5156db643f288a984389bd9aa72.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3SAIRA-e4cda82d8cb047129618e51e844cca06.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6SAIRA-1223ca65e07c41cb834d4e1ccd70346f.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SAIRA-d007e081211b4deabea712c304f2316e.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8SAIRA-1d1e7aa1489c4fc1a71623b65fdd9354.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SAIRA-45b3231933bc438eb6e9c9e9b2236284.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10SAIRA-6012007c29dc4fc098e2170e194fe981.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/11SAIRA-b0a0d8262cc64c1db8dbe4c9e927c927.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/12SAIRA-22c87f49404e4fc4858bbf9537137cfc.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "GAILLIS", name: "GAILLIS Sweater", colors: [{ name: "ESPRESSO", value: "#000000", imageIndex: 0 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8GAILLIS-b2952fce8689478587550cb474085c20.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8GAILLIS-b2952fce8689478587550cb474085c20.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3GAILLIS-cdb55e20a3054280bade80a79daf2a5c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4GAILLIS-e038ebf75531474b82bb99bcd8fe001f.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "DELMA", name: "DELMA Pants", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "PRINTED LEAPARD", value: "#FFFF00", imageIndex: 1 }],sizes: ["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6DELMA.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6DELMA.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9DELMA.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3DELMA-7bb6fae0c17741e28581faa4b6b3bb7c.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4DELMA-e0f7047aa6764974baf733692afc994e.450x600.w.jpeg"], desc: "27 mile Pants 100% SILK", price: 250 },
+
+  { id: "SHAINA", name: "SHAINA Sweater",colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "CHARCOAL", value: "#808080", imageIndex: 1 }],sizes:["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6SHAINA-8adae127a6384244a574164833548fe4.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6SHAINA-8adae127a6384244a574164833548fe4.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SHAINA-10a312a8f9434bf892b35386a33b672b.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2SHAINA-a87d3d35548e4dffaec5060d7958a4ca.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+{"id":"LETITIA","name":"LETITIA Sweater",colors: [{ name: "DOVE", value: "#FFFFFF", imageIndex: 0 },{ name: "SKY", value: "#e0ffff", imageIndex: 1 }],sizes:["S", "M", "L",],img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10LETITIA-9f00010cc45b4ad184c4e30c21bfa752.450x600.w.jpeg", desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "PETRA", name: "PETRA Sweater", colors: [{ name: "CHARCOAL", value: "#808080", imageIndex: 0 },{ name: "JUNGLE", value: "#006400", imageIndex: 1 },{ name: "NAVY", value: "#00008b", imageIndex: 2 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8MELLY-558b7f44165b46eb8b31c8350a87b170.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8MELLY-558b7f44165b46eb8b31c8350a87b170.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9MELLY-2a9906dd6a2b4597b4cb8b00ff3e84a1.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "ZHENYA", name: "ZHENYA Sweater", colors: [{ name: "CHALK", value: "#FFFFFF", imageIndex: 0 },{ name: "YELLOW", value: "#FFFF00", imageIndex: 1 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8ZHENYA-e2ac8c29cf0e47e48ee14b21ac522f83.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8ZHENYA-e2ac8c29cf0e47e48ee14b21ac522f83.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9ZHENYA-6d252188a8f343f6a47a78cf7e4513e2.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3ZHENYA-4327a870f1b3494386238042459cd890.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4ZHENYA-a1c9524872bc403b8df490b3b1036ef7.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5ZHENYA-a39ba32b09d548d4b08412150c9b6e82.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6ZHENYA-ce4acb175e1443cc8e3a557db83961ec.450x600.w.jpeg"], desc: "27 mile Sweater 63% CASHMERE", price: 250 },
+
+  { id: "CORRY", name: "CORRY Sweater", colors: [{ name: "BLACK", value: "#B76E79", imageIndex: 0 },{ name: "COCONUT", value: "#FFFFFF", imageIndex: 1 },{ name: "FLAME", value: "#FFD700", imageIndex: 2 },{ name: "HEATHER", value: "#808080", imageIndex: 3 },{ name: "NAVY", value: "#000080", imageIndex: 4 }],sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/20CORRY-a3c04c032eb4430092a9634e6720c53f.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/20CORRY-a3c04c032eb4430092a9634e6720c53f.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2CORRY-d88aadf00ea348a6a04e44368b6b4aca.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3CORRY-a8f27e2f37e44d4f88737067215874ce.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5CORRY-d7e0d80f6caf46d39cf120b9c0899b5e.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6CORRY-5cd9ed8a41bc4f7196629ad3b1ecbe1b.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7CORRY-6362a8e34a114f6aa114a9f8bea45774.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/8CORRY-a3ccfdf65c184a33b5865d7f6f0bdad0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/10CORRY-761d485f19b345f58720a0eeaa2afce9.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "AYLA", name: "AYLA Sweater", sizes: ["S", "M", "L",], colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "CHARCOAL", value: "#808080", imageIndex: 1 },{ name: "JUNGLE", value: "#006400", imageIndex: 2 },{ name: "NAVY", value: "#00008b", imageIndex: 3 },],sizes:["S", "M", "L",],
+ img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/AYLABLL-1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/AYLABLL-1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2AYLA-08a75f20bf6b44fa88aade12cf16d4c1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4AYLA-a1e63990b20348dcb6c89f143c40cc42.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5AYLA-ec7d2e27736f4167b231570377eab0ca.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6AYLA-a3a2dde30426400aaab2c8cf66c62b37.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "MIRELLA", name: "MIRELLA Sweater", sizes: ["S", "M", "L",], img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MIRELLA-c44fd88e0e654ae8bb6bcbb31d719ed1.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MIRELLA-c44fd88e0e654ae8bb6bcbb31d719ed1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7MIRELLA-5531ab6b92c240928011349e0fd871cb.450x600.w.jpeg"], desc: "27 mile Sweater 100% SILK", price: 250 },
+
+  { id: "MISIA", name: "MISIA Sweater", colors: [{ name: "BLACK", value: "#000000", imageIndex: 0 },{ name: "NAVY", value: "#000080", imageIndex: 1 }],sizes: ["S", "M", "L",],img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/14MISIA-27ba49f1c88b48fca041729fec873059.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/14MISIA-27ba49f1c88b48fca041729fec873059.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/17MISIA-8599ca1669074d59a890b8f27ddfe927.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/2MISIA-27edcd04a6314cb8a792429cb87af960.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3MISIA-7d881c88460244589c707d9d2ab6b411.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4MISIA-62011b2d6ae54d289a31218e1ecdccee.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/5MISIA-d6419fa37a99467fae856dd5200eea3d.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/6MISIA-ea1b3e442b6c491ba913797b8e70e71e.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/11MISIA-ecbd1c5f85eb4efb96b9b030427630e1.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/12MISIA-045e75c1b3944366b15013e1ab2fe84b.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+
+  { id: "SUZETTE", name: "SUZETTE Sweater", colors: [{ name: "JUNGLE", value: "#006400", imageIndex: 0 },{ name: "FLAME SKY", value: "#E5E4E2", imageIndex: 1 }],sizes:["S", "M", "L",],
+img: "https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SUZETTE-6205974657ef427fa0f8f53243cf5e6d.450x600.w.jpeg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/414158/images/9SUZETTE-6205974657ef427fa0f8f53243cf5e6d.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/7SUZETTE-ec525eecdbd349e5a70eee4926311804.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/3SUZETTE-079f71e79f90458ea808fe89e47b0ed0.450x600.w.jpeg","https://cdn.jooraccess.com/img/uploads/accounts/414158/images/4SUZETTE-e0c9f6fc4d674287a583c41e8e36bc11.450x600.w.jpeg"], desc: "27 mile Sweater CASHMERE", price: 250 },
+{ id: "1220 SEOUL HOODIE IN JERSEY", name: "1220 SEOUL HOODIE IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12200OOOJ4027A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12200OOOJ4027A_1b.450x600.w.jpg"], desc: "", price: 200  },
+{ id: "6700 KANSAI JEANS STRAIGHT FIT IN DENIM", name: "6700 KANSAI JEANS STRAIGHT FIT IN DENIM", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF67000OOOD3928A_1.450x600.w.jpg", images: [ "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF67000OOOD3928A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF67000OOOD3928A_2.450x600.w.jpg" ] , desc: "", price: 180 },
+{ id: "5800 ANTWERP BOXY JACKET IN WAXED COTTON", name: "5800 ANTWERP BOXY JACKET IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF58000OOWC3864A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF58000OOWC3864A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF58000OOWC3864A_2.450x600.w.jpg"], desc: "", price: 200 },
+{ id: "4500 YORK CROPPED JACKET IN PADDED WOOL", name: "4500 YORK CROPPED JACKET IN PADDED WOOL", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF45000OPWO0840A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF45000OPWO0840A_2b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF45000OPWO0840A_1.450x600.w.jpg"], desc: "", price: 260 },
+{ id: "4900 BRERA RAINCOAT IN MEMORY RE-NYLON", name: "4900 BRERA RAINCOAT IN MEMORY RE-NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF49000MERN1140B_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF49000MERN1140B_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF49000MERN1140B_2.450x600.w.jpg" ], desc: "", price: 260 },
+{ id: "1210 SEOUL JACKET IN JERSEY", name: "1210 SEOUL JACKET IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12100OOOJ4012A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12100OOOJ4012A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12100OOOJ4012A_2.450x600.w.jpg"], desc: "", price: 260 },
+{ id: "6000 KREUZBERG JACKET IN WAXED COTTON", name: "6000 KREUZBERG JACKET IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF60000OOWC0517A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF60000OOWC0517A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF60000OOWC0517A_2.450x600.w.jpg"], desc: "", price: 260 },
+{ id: "4800 BRERA TRENCH COAT IN MEMORY RE-NYLO", name: "4800 BRERA TRENCH COAT IN MEMORY RE-NYLO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF48000MERN3917B_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF48000MERN3917B_1b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF48000MERN3917B_1b.450x600.w.jpg"], desc: "", price: 260 },
+{ id: "4100 BASEL SHORT JACKET IN DUCHESSE COTT", name: "4100 BASEL SHORT JACKET IN DUCHESSE COTT", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF41000OODC0840A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF41000OODC0840A_1.450x600.w.jpg"," “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF41000OODC0840A_2.450x600.w.jpg"], desc: "", price: 260 },
+{ id: "4000 BASEL LONG JACKET IN DUCHESSE COTTO", name: "4000 BASEL LONG JACKET IN DUCHESSE COTTO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF40000OODC6000A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF40000OODC6000A_1b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF40000OODC6000A_2.450x600.w.jpg"], desc: "", price: 270 },
+{ id: "5900 ANTWERP COAT IN WAXED COTTON", name: "5900 ANTWERP COAT IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF59000OOWC0822A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF59000OOWC0822A_1b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF59000OOWC0822A_2b.450x600.w.jpg"], desc: "", price: 280 },
+{ id: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R", name: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_3.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_3.450x600.w.jpg","“https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_4b.450x600.w.jpg"], desc: "", price: 300 },
+{ id: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N", name: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51000MERN6010R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51000MERN6010R_1.450x600.w.jpg","“https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51000MERN6010R_2.450x600.w.jpg"], desc: "", price: 290 },
+{ id: "3300 HACKNEY FIELD JACKET IN DUCHESSE CO", name: "3300 HACKNEY FIELD JACKET IN DUCHESSE CO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF33000OODC1106A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF33000OODC1106A_1.450x600.w.jpg","“https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF33000OODC1106A_2.450x600.w.jpg"], desc: "", price: 290 },
+{ id: "5300 YORK COAT IN MEMORY RE-NYLON", name: "5300 YORK COAT IN MEMORY RE-NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF53000MERN1103R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF53000MERN1103R_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF53000MERN1103R_2.450x600.w.jpg"], desc: "", price: 300 },
+{ id: "2500 OSLO BOMBER IN NYLON BOMBER", name: "2500 OSLO BOMBER IN NYLON BOMBER", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF25000OONB0627A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF25000OONB0627A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF25000OONB0627A_2b.450x600.w.jpg"], desc: "", price: 320 },
+{ id: "4100 BASEL SHORT JACKET IN DUCHESSE COTT2", name: "4100 BASEL SHORT JACKET IN DUCHESSE COTT", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/8.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/8.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/3.450x600.w.jpg" ], desc: "", price: 320 },
+{ id: "7900 SEOUL BOMBER ZIP UP IN LIGHT NYLON", name: "7900 SEOUL BOMBER ZIP UP IN LIGHT NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2025.11.21---OOF_JOOR_67_210526.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2025.11.21---OOF_JOOR_67_210526.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2025.11.21---OOF_JOOR_67_210532.450x600.w.jpg", ], desc: "", price: 330 },
+{ id: "3900 YORK MAXI COAT IN DUCHESSE COTTON", name: "3900 YORK MAXI COAT IN DUCHESSE COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF39000OODC1210A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF39000OODC1210A_2b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF39000OODC1210A_1b.450x600.w.jpg", ], desc: "", price: 340 },
+{ id: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N2", name: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51100MERN5260R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51100MERN5260R_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51100MERN5260R_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/4.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/5.450x600.w.jpg"   ], desc: "", price: 350 },
+{ id: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R2", name: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_2.450x600.w.jpg",   ], desc: "", price: 350 },
+{ id: "1000 SEOUL KAFTAN IN ECO-SHEARLING", name: "1000 SEOUL KAFTAN IN ECO-SHEARLING", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF10000OBOA4027A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF10000OBOA4027A_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF10000OBOA4027A_2.450x600.w.jpg",   ], desc: "", price: 350 },
+{ id: "5000 SOHO REVERSIBLE SHORT JACKET IN ME", name: "5000 SOHO REVERSIBLE SHORT JACKET IN ME", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF50000MERN1003R_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF50000MERN1003R_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF50000MERN1003R_4.450x600.w.jpg",   ], desc: "", price: 350 },
+{ id: "2400 SEOUL HOODIE IN NYLON BOMBER", name: "2400 SEOUL HOODIE IN NYLON BOMBER", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF24000OONB4012A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF24000OONB4012A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF24000OONB4012A_2.450x600.w.jpg",   ], desc: "", price: 350 },
+{ id: "6600 ANTWERP FIELD JACKET IN DENIM", name: "6600 ANTWERP FIELD JACKET IN DENIM", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF66000OOOD3928A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF66000OOOD3928A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF66000OOOD3928A_2b.450x600.w.jpg",   ], desc: "", price: 350 },
+{ id: "7900 SEOUL BOMBER ZIP UP IN LIGHT N", name: "7900 SEOUL BOMBER ZIP UP IN LIGHT N", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF79100OLNP6016C_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF79100OLNP6016C_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF79100OLNP6016C_2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/6%20(1).450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/7%20(1).450x600.w.jpg"  ], desc: "", price: 380 },
+{ id: "5400 SEOUL COCOON COAT IN ECO-SHEARLING", name: "5400 SEOUL COCOON COAT IN ECO-SHEARLING", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF54000OBOA1109A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF54000OBOA1109A_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF54000OBOA1109A_2b.450x600.w.jpg",   ], desc: "", price: 410 },
+{ id: "1240 HEATHROW HOODIE IN JERSEY", name: "1240 HEATHROW HOODIE IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12400OOOJ1725A_1bb.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12400OOOJ1725A_1bb.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12400OOOJ1725A_1bb.450x600.w.jpg",   ], desc: "", price: 260 },
+ {id: "PANT TWO LAYERS", name: "PANT TWO LAYERS", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-2.450x600.w.jpg"  ], desc: "", price: 300},
+{ id: "PANT COTTON TECH", name: "PANT COTTON TECH", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-4.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-2.450x600.w.jpg " ], desc: "", price: 300},
+{ id: "HOODIE MEMORY", name: "HOODIE MEMORY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF08000OOME1316A_Dusty%20Pink-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF08000OOME1316A_Dusty%20Pink-2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF08000OOME1316A_Dusty%20Pink-3.450x600.w.jpg " ], desc: "", price: 300},
+{ id: "PANT WAXED COTTON", name: "PANT WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-4.450x600.w.jpg " ], desc: "", price: 260},
+
+];
+  // ... rest of products array (kept as in original file)
+    function isMen(product) {
+      return (
+        /for Men|Men\b|masculine|Homme|Men's|male|gentleman|pour homme/i.test(product.name) ||
+        /for men|aromatic spicy fragrance for men|masculine|for Him/i.test(product.desc)
+      );
+    }
+    function isWomen(product) {
+      return (
+        /for Women|Women\b|feminine|Her|ladies|pour femme|Women's|girl/i.test(product.name) ||
+        /for women|feminine|for Her|female/i.test(product.desc)
+      );
+    }
+    function isUnisex(product) {
+      return (
+        /Unisex/i.test(product.name) ||
+        /Unisex/i.test(product.desc) ||
+        (
+          !isMen(product) && !isWomen(product)
+        )
+      );
+    }
+
+    // Categorized arrays
+    const mensFragrances = products.filter(p => isMen(p) && !isWomen(p));
+    const womensFragrances = products.filter(p => isWomen(p) && !isMen(p));
+    const unisexFragrances = products.filter(p => isUnisex(p));
+
+    function renderProducts(prodArray) {
+      document.getElementById('product-list').innerHTML = prodArray.map(p => `
+        <div class="lux-product">
+          <a class="product-link-overlay" href="product.html?id=${encodeURIComponent(p.id)}" title="View ${p.name}"></a>
+          <img src="${p.img}" alt="${p.name}">
+          <h3 title="${p.name}">${p.name}</h3>
+          <div class="price">$${p.price}</div>
+          <button class="lux-btn" onclick="event.stopPropagation(); addToCart('${p.name}', ${p.price})">Add to Cart</button>
+        </div>
+      `).join('');
+    }
+
+    renderProducts(products);
+
+    let cart = [];
+    try {
+      cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (!Array.isArray(cart)) cart = [];
+    } catch (e) {
+      cart = [];
+    }
+    function addToCart(name, price) {
+      let item = cart.find(i => i.name === name);
+      if (item) {
+        item.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      saveCart();
+      updateCartDisplay();
+      showAddMessage(name);
+      hideEmptyCartAlert();
+    }
+    function updateCartDisplay() {
+      document.getElementById('cart-count').textContent = cart.reduce((sum, i) => sum + i.qty, 0);
+      let itemsHtml = cart.map((item, idx) =>
+        `<li>
+          ${item.name} x${item.qty} - $${(item.price * item.qty).toFixed(2)}
+          <button class="remove-btn" onclick="removeFromCart(${idx})">Remove</button>
+        </li>`
+      ).join('');
+      document.getElementById('cart-items').innerHTML = itemsHtml || "<li>Your cart is empty.</li>";
+      document.getElementById('cart-total').textContent = cart.reduce((sum, i) => sum + i.price * i.qty, 0).toFixed(2);
+      const checkoutBtn = document.getElementById('checkout-btn');
+      if (cart.length === 0) {
+        checkoutBtn.classList.add('disabled-btn');
+        checkoutBtn.disabled = true;
+        showEmptyCartAlert();
+      } else {
+        checkoutBtn.classList.remove('disabled-btn');
+        checkoutBtn.disabled = false;
+        hideEmptyCartAlert();
+      }
+    }
+    function removeFromCart(idx) {
+      cart[idx].qty -= 1;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      saveCart();
+      updateCartDisplay();
+    }
+    function toggleCart() {
+      let modal = document.getElementById('cart-modal');
+      if (modal.style.display === "none" || modal.style.display === "") {
+        modal.style.display = "block";
+        updateCartDisplay();
+      } else {
+        modal.style.display = "none";
+      }
+    }
+    function checkoutCart() {
+      if (cart.length === 0) {
+        showEmptyCartAlert();
+        return;
+      }
+      saveCart();
+      window.location.href = "checkout.html";
+    }
+    function showAddMessage(product) {
+      let msg = document.createElement("div");
+      msg.textContent = `${product} added to cart!`;
+      msg.style.position = "fixed";
+      msg.style.bottom = "40px";
+      msg.style.right = "40px";
+      msg.style.background = "#ffd700";
+      msg.style.color = "#111";
+      msg.style.padding = "1rem 2rem";
+      msg.style.borderRadius = "12px";
+      msg.style.boxShadow = "0 4px 16px #0005";
+      msg.style.zIndex = "2000";
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 1300);
+    }
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    function showEmptyCartAlert() {
+      document.getElementById('empty-cart-alert').style.display = "block";
+    }
+    function hideEmptyCartAlert() {
+      document.getElementById('empty-cart-alert').style.display = "none";
+    }
+    updateCartDisplay();
+
+    /* --- Dynamic mobile dropdown navigation logic --- */
+    (function () {
+      const sideMenu = document.getElementById('side-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+
+      // Build mobile select options from the side-menu links
+      function buildMobileMenu() {
+        // Clear existing options except the first
+        while (mobileMenu.options.length > 1) mobileMenu.remove(1);
+        if (!sideMenu) return;
+        const links = Array.from(sideMenu.querySelectorAll('a'));
+        links.forEach(a => {
+          const opt = document.createElement('option');
+          opt.value = a.getAttribute('href') || '#';
+          opt.textContent = a.textContent.trim();
+          // mark current page
+          if (a.classList.contains('active')) opt.selected = true;
+          mobileMenu.appendChild(opt);
+        });
+      }
+
+      // Toggle button behavior: focus/expand mobile menu
+      toggleBtn.addEventListener('click', () => {
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        toggleBtn.setAttribute('aria-expanded', String(!expanded));
+        if (!expanded) {
+          mobileMenu.focus();
+        } else {
+          toggleBtn.blur();
+        }
+      });
+
+      // When selecting from dropdown, navigate
+      mobileMenu.addEventListener('change', (e) => {
+        const url = e.target.value;
+        if (url) window.location.href = url;
+      });
+
+      // Rebuild on load and when side-menu might change
+      window.addEventListener('load', buildMobileMenu);
+      // Also rebuild on resize in case links change or for SPA behavior
+      window.addEventListener('resize', buildMobileMenu);
+    })();
+    
+  </script>
+</body>
+</html>
