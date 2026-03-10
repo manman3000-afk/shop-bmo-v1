@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop BMO</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Montserrat font for site, Cinzel font for SHOP BMO -->
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
+ <style>
+    body {
+      background: #fff;
+      color: #222;
+      font-family: 'Inconsolata', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .banner-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* use space-between if you want logo left and title centered */
+  gap: 1rem;
+  padding: 1rem 1rem;
+  background: linear-gradient(90deg, #f9f9f9, #fff);
+  box-shadow: 0 4px 24px 0 #ffd70044;
+}
+
+/* logo image */
+.site-logo {
+  height: 56px;       /* tune this to taste */
+  width: auto;
+  display: block;
+}
+
+
+/* small screens: reduce logo size and stack if needed */
+@media (max-width: 600px) {
+  .banner-header {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 0.75rem;
+  }
+  .site-logo {
+    height: 44px;
+    margin-bottom: 0.25rem;
+  }
+}
+    .banner-header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Inconsolata', serif;
+      letter-spacing: 0.08em;
+    }
+    .banner-header p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .side-menu  {position: sticky; top: 0; left: 0; right: 0; display: flex; flex-direction: row;  align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Montserrat', sans-serif; } 
+    .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
+    .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent;  transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
+    .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
+
+    /* Mobile dropdown nav */
+    .mobile-nav {
+      display: none; /* hidden on desktop */
+      background: #f9f9f9;
+      border-bottom: 2px solid #ffd70033;
+      box-shadow: 0 4px 12px #ffd70011;
+      padding: 0.5rem 1rem;
+      z-index: 20;
+    }
+    .mobile-nav-bar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #mobile-menu-toggle {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #mobile-menu {
+      flex: 1;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      font-size: 1rem;
+      background: white;
+    }
+
+    .main-content {
+      margin-left: 210px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-top: 2rem;
+    }
+    .lux-product {
+      width: 300px;
+      height: 420px;
+      background: #fff;
+      border-radius: 0;
+      margin: 0;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px #eee;
+      color: #222;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 1px solid #eee;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 8px 32px #ffd70055;
+      text-decoration: none;
+    }
+    .lux-btn {
+      background: linear-gradient(90deg, #ffd700, #bfa200);
+      color: #111;
+      border: none;
+      border-radius: 25px;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      width: 90%;
+      margin: 0.5rem auto 0 auto;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product img {
+      width: 100%;
+      height: 260px;
+      object-fit: center;
+      border-radius: 0;
+      margin-bottom: 1rem;
+      background: #f9f9f9;
+      display: block;
+    }
+    .lux-product h3 {
+      margin: 1rem 0 0.5rem 0;
+      font-size: 1rem;
+      flex: 0 0 auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .lux-product .price {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      flex: 0 0 auto;
+      color: #bfa200;
+      font-family: 'Inconsolata', sans-serif;
+      font-size: 0.9rem; 
+    }
+    .lux-product .product-link-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .lux-product > *:not(.product-link-overlay) {
+      z-index: 2;
+      position: relative;
+    }
+    .lux-product .lux-btn {
+      z-index: 3;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    #cart-modal {
+      display:none;
+      position:fixed;
+      top:0;
+      right:0;
+      width:340px;
+      height:100%;
+      background:#f9f9f9;
+      color:#222;
+      box-shadow:-4px 0 32px #000a;
+      z-index:1000;
+      padding:2rem;
+      overflow-y:auto;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    #cart-modal ul {
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    #cart-modal h2 {
+      margin-top: 0;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    #empty-cart-alert {
+      display:none;
+      background: #ffd700;
+      color: #111;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: bold;
+      margin: 1rem auto;
+      max-width: 420px;
+      box-shadow: 0 2px 12px #ffd70055;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .remove-btn {
+      margin-left:10px;
+      background:#ffd70022;
+      color:#bfa200;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      padding: 3px 10px;
+      font-family: 'Inconsolata', sans-serif;
+    }
+    .remove-btn:hover { background:#ffd70055; color:#111;}
+    .disabled-btn {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .lux-product .lux-btn {
+      pointer-events: auto;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 800px) {
+      /* Hide the desktop side menu on mobile and show the dropdown mobile nav */
+      .side-menu {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+      }
+      .banner-header {
+        padding-top: 1rem;
+      }
+
+    }
+    @media (max-width: 600px) {
+      .banner-header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+     /* fluid responsive grid for product cards */
+/* change .row to a grid and use two columns at mobile sizes */
+.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; /* centers the grid area inside the container / justify-items: center; / centers each card within its grid cell */ margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr); /* two columns */
+    padding: 0 0.75rem;
+  }
+  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
+}
+
+
+
+body {
+            background-image: url("https://i.pinimg.com/1200x/32/bf/aa/32bfaac0a09290ccdc25dec1664ffc6c.jpg");
+            background-repeat: no-repeat; /* Prevents the image from tiling */
+            background-size: cover;      /* Makes the image cover the entire screen */
+            background-attachment: fixed; /* Keeps the background in place when scrolling */
+        }
+.lux-product img  { width: 100%; text-align: center; }
+
+  
+  </style>
+</head>
+</body>
+<h1> SHOP BMO </h1>
+
+  <body style="background-image: url('https://i.pinimg.com/736x/fe/17/d5/fe17d582f918780280537055c5498942.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+</div>
+<button onclick="toggleCart()" class="lux-btn" style="position: right: 1rem; top: 1rem;">
+    🛒 Cart (<span id="cart-count">0</span>)
+  </button>
+</div>
+
+  <!-- Desktop Side Navigation Menu -->
+  <nav class="side-menu" id="side-menu">
+
+   <a href="shop.html" >Shop</a>
+   <a href="Accesories.html">Accesories</a> 
+    <a href="MENS-PRODUCT.html">Men's</a>
+    <a href="WOMANS-PRODUCTS.html" >Women's</a>
+   <a href="Clothe.html" > Clothing</a>
+   <a href = "Jewlery.html" >PURE YOU Jewlery</a>
+    <a href=" OOF-wear.html" >OOF-WEAR</a>
+    <a href="27 Miles Malibu.html">27 MILES MALIBU</a>
+     <a href="michaelgabriel.html"class="active">Micheal Gabriel</a>
+    <a href="snacks.html">Snacks</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+
+  <!-- Mobile Navigation: dropdown/select + toggle button -->
+  <!-- Mobile Navigation: dropdown/select + toggle button -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <div class="mobile-nav-bar">
+    <button id="mobile-menu-toggle" aria-expanded="false">
+      Menu ☰
+    </button>
+    <select id="mobile-menu" aria-label="Mobile navigation">
+      <option value="">Go to...</option>
+    </select>
+  </div>
+</div>
+
+
+    </div>
+    <div id="empty-cart-alert">⚠️ Your cart is empty. Please add items before checking out.</div>
+    <!-- Featured Products -->
+    <section class="container">
+     
+      <div class="row" id="product-list"></div>
+    </section>
+    <footer style="text-align:center;padding:2rem 0;color:#ffd70088;">
+      © 2025 BMO.LLC.CO All rights reserved.
+    </footer>
+  </div>
+  <div id="cart-modal">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <hr>
+    <b>Total: $<span id="cart-total">0.00</span></b>
+    <br><br>
+    <button id="checkout-btn" class="lux-btn" onclick="checkoutCart()">Checkout</button>
+    <button class="lux-btn" style="background:#333;color:#ffd700;margin-left:10px;" onclick="toggleCart()">Close</button>
+  </div>
+  <script>
+    // Populate product list and cart code (unchanged)
+    // NOTE: The products array in the source may be large. For brevity in this file,
+    // we keep the script block structure and assume the products array is present as before.
+    const products = [ 
+ 
+   { id: "NUANCE",
+  name: "NUANCE",
+  colors: [
+    { name: "Multinua", value: "#ff8c00", imageIndex: 0 },
+    { name: "Brown ", value: "#795548", imageIndex: 0 },
+    { name: "Black", value: "#000000", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/NsKSxYf6Ru60DmSSvFuI0g_PE26081_Multinua_1031_1.450x600.w.jpeg"  ,
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/NsKSxYf6Ru60DmSSvFuI0g_PE26081_Multinua_1031_1.450x600.w.jpeg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/VXWFgBO1TIimls3qsh2CvA_PE26081_Brown_920_1.450x600.w.jpeg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/bh6JwdePR26ryeUetR5Z8A_PE26081_Black_910_1.450x600.w.jpeg"],
+  desc: "80 % Leather; 10 % textile; 10% beads embroidery",
+  price: 195.00,
+},
+{
+  id: "BOBO",
+  name: "BOBO",
+  colors: [
+    { name: "Multibob", value: "#ff8c00", imageIndex: 0 },
+    { name: "Brown", value: "#795548", imageIndex: 0 },
+    { name: "Black", value: "#000000", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/LqhZWn2MTZWR1NL2K161Wg_PE26082_Multibob_1020_1.450x600.w.jpeg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/LqhZWn2MTZWR1NL2K161Wg_PE26082_Multibob_1020_1.450x600.w.jpeg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/Rf0zZSuFR46Nw9H8mEh0_A_PE26082_Brown_920_1.450x600.w.jpeg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/c4YwBb9mQUWlCgWI-Qv3dw_PE26082_Black_910_1.450x600.w.jpeg"],
+  desc: "80 % Leather; 10 % textile; 10% beads embroidery",
+  price: 179.40,
+},
+{
+  id: "FRESQUE",
+  name: "FRESQUE",
+  colors: [
+    { name: "Multifre", value: "#ff8c00", imageIndex: 0 },
+    { name: "Brown", value: "#795548", imageIndex: 0 },
+    { name: "Black", value: "#000000", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/4J953713TnyNK-h3r9BD4A_PE26078_Multifre_1027_1.450x600.w.jpeg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/4J953713TnyNK-h3r9BD4A_PE26078_Multifre_1027_1.450x600.w.jpeg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/-Dk15eyQQ-q4KnDcKREOIw_PE26078_Brown_920_1.450x600.w.jpeg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/j1plQpG_RwiR4u5Ki8A2hg_PE26078_Black_910_1.450x600.w.jpeg"],
+  desc: "80 % Leather; 10 % textile; 10% beads embroidery",
+  price: 179.40,
+},
+{
+  id: "TRIO",
+  name: "TRIO",
+  colors: [
+    { name: "Multitri", value: "#ff8c00", imageIndex: 0 },
+    { name: "Brown ", value: "#795548", imageIndex: 0 },
+    { name: "Black", value: "#000000", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/b0toBqtsQNe5gYL_ZHJQYQ_PE26079_Multitri_1036_1.450x600.w.jpeg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/b0toBqtsQNe5gYL_ZHJQYQ_PE26079_Multitri_1036_1.450x600.w.jpeg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/Bk5-zPLuRFOCGDi7nesjww_PE26079_Brown_920_1.450x600.w.jpeg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/BVBQ2igYQBKiKEkn33uCew_PE26079_Black_910_1.450x600.w.jpeg"],
+  desc: "",
+  price: 178.10,
+},
+{
+  id: "EQUIN",
+  name: "EQUIN",
+  colors: [
+    { name: "Multiequ", value: "#ff8c00", imageIndex: 0 },
+    { name: "Brown ", value: "#795548", imageIndex: 0 },
+    { name: "Black", value: "#000000", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/pE6YOld7Rl2JnWXuVtI5DA_PE26080_Multiequ_1026_1.450x600.w.jpeg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/pE6YOld7Rl2JnWXuVtI5DA_PE26080_Multiequ_1026_1.450x600.w.jpeg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/hIIu1dAxTgSiXkuSFlkMRg_PE26080_Brown_920_1.450x600.w.jpeg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/As7JAL9ITj2N5ovk56RXig_PE26080_Black_910_1.450x600.w.jpeg"],
+  desc: "",
+  price: 178.10,
+},
+{
+  id: "CELL POUCH EELSKIN",
+  name: "CELL POUCH EELSKIN",
+  colors: [
+    { name: "GARNET GENUINE EELSKIN ", value: "#cc0000", imageIndex: 0 },
+    { name: "CHESTNUT GENUINE EELSKIN ", value: "#795548", imageIndex: 0 },
+    { name: "KELP GENUINE EELSKIN ", value: "#228b22", imageIndex: 0 },
+    { name: "PEACOCK GENUINE EELSKIN", value: "#1565c0", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-CP2_CELL%20POUCH%20EELSKIN_CHESTNUT%20GENUINE%20EELSKIN.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-CP2_CELL%20POUCH%20EELSKIN_CHESTNUT%20GENUINE%20EELSKIN.450x600.w.jpg"],
+  desc: "",
+  price: 114.40,
+},
+{
+  id: "ESSENTIAL POUCH LEATHER",
+  name: "ESSENTIAL POUCH LEATHER",
+  colors: [
+    { name: "DARK NAVY EMBOSSED CROC ", value: "#000000", imageIndex: 0 },
+    { name: "COGNAC EMBOSSED GATOR", value: "#795548", imageIndex: 0 },
+    { name: "BASIL EMBOSSED GATOR & TOBACCO", value: "#228b22", imageIndex: 0 },
+    { name: "CLAY SHAGREEN", value: "#d2b48c", imageIndex: 0 },
+    { name: "BLACK EMBOSSED LIZARD", value: "#9e9e9e", imageIndex: 0 },
+    { name: "BURGUNDY PEBBLED CALF", value: "#cc00cc", imageIndex: 0 },
+    { name: "GOLD SERPENT", value: "#ffd700", imageIndex: 0 },
+    { name: "SILVER SERPENT ", value: "#a8a9ad", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/AKvlHILLTxuAgmtejgP9oQ_FW26-EP1_ESSENTIAL_POUCH_LEATHER_DARK_NAVY_EMBOSSED_CROC_1.450x600.w.jpg",
+  images:["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/AKvlHILLTxuAgmtejgP9oQ_FW26-EP1_ESSENTIAL_POUCH_LEATHER_DARK_NAVY_EMBOSSED_CROC_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/xxG6fztRSfG0tWUh7Vle-Q_FW26-EP1_ESSENTIAL_POUCH_LEATHER_BLACK_EMBOSSED_LIZARD_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/tTcxpx_hTKio5lDmjHqs2A_FW26-EP1_ESSENTIAL_POUCH_LEATHER_DARK_TAUPE_EMBOSSED_SUEDE_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/mcLe0-d9RYq0rKMQyJa5bw_FW26-EP1_ESSENTIAL_POUCH_LEATHER_BLACK_EMBOSSED_LIZARD_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/zBRiHwTuQwy0JUjx7Finlg_FW26-EP1_ESSENTIAL_POUCH_LEATHER_DARK_TAUPE_EMBOSSED_SUEDE_2.450x600.w.jpg"],
+  desc: "",
+  price: 97.50,
+},
+{
+  id: "ESSENTIAL POUCH EELSKIN",
+  name: "ESSENTIAL POUCH EELSKIN",
+  colors: [
+    { name: "GARNET GENUINE EELSKIN", value: "#cc0000", imageIndex: 0 },
+    { name: "CHESTNUT GENUINE EELSKIN", value: "#795548", imageIndex: 0 },
+    { name: "KELP GENUINE EELSKIN ", value: "#228b22", imageIndex: 0 },
+    { name: "PEACOCK GENUINE", value: "#1565c0", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-EP2_ESSENTIAL%20POUCH%20EELSKIN_%20CHESTNUT%20GENUINE%20EELSKIN_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-EP2_ESSENTIAL%20POUCH%20EELSKIN_%20CHESTNUT%20GENUINE%20EELSKIN_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-EP2_ESSENTIAL%20POUCH%20EELSKIN_%20CHESTNUT%20GENUINE%20EELSKIN_2.450x600.w.jpg"],
+  desc: "",
+  price: 97.50,
+},
+{
+  id: "STRAPPY POUCH EELSKIN",
+  name: "STRAPPY POUCH EELSKIN",
+  colors: [
+    { name: "GARNET GENUINE EELSKIN", value: "#cc0000", imageIndex: 0 },
+    { name: "CHESTNUT GENUINE EELSKIN", value: "#795548", imageIndex: 0 },
+    { name: "KELP GENUINE EELSKIN ", value: "#228b22", imageIndex: 0 },
+    { name: "PEACOCK GENUINE", value: "#1565c0", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-EP2_ESSENTIAL%20POUCH%20EELSKIN_%20CHESTNUT%20GENUINE%20EELSKIN_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-EP2_ESSENTIAL%20POUCH%20EELSKIN_%20CHESTNUT%20GENUINE%20EELSKIN_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-EP2_ESSENTIAL%20POUCH%20EELSKIN_%20CHESTNUT%20GENUINE%20EELSKIN_2.450x600.w.jpg"],
+  desc: "",
+  price: 227.50,
+},
+{
+  id: "SLIM BAGUETTE LEATHER",
+  name: "SLIM BAGUETTE LEATHER",
+  colors: [
+    { name: "black", value: "#000000", imageIndex: 0 },
+    { name: "CHESTNUT GENUINE EELSKIN", value: "#795548", imageIndex: 0 },
+    { name: "KELP GENUINE EELSKIN ", value: "#228b22", imageIndex: 0 },
+    { name: "CLAY SHAGREEN", value: "#d2b48c", imageIndex: 0 },
+    { name: "BLACK EMBOSSED LIZARD ", value: "#9e9e9e", imageIndex: 0 },
+    { name: "BURGUNDY PEBBLED CALF", value: "#cc00cc", imageIndex: 0 },
+    { name: "GOLD SERPENT", value: "#ffd700", imageIndex: 0 },
+    { name: "SILVER SERPENT", value: "#a8a9ad", imageIndex: 0 },
+    { name: "WHISKEY SUEDE & BLACK STRAPS", value: "#ff8c00", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/YYCVeTx0QtO5UeqhWGCaLA_FW26-BG1_SLIM_BAGUETTE_LEATHER_SILVER_SERPENT_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/YYCVeTx0QtO5UeqhWGCaLA_FW26-BG1_SLIM_BAGUETTE_LEATHER_SILVER_SERPENT_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/p2C1FC56Rqer4l8BwhaG8w_FW26-BG1_SLIM_BAGUETTE_LEATHER_SILVER_SERPENT_2.450x600.w.jpg"],
+  desc: "",
+  price: 211.90,
+},
+{
+  id: "SLIM BAGUETTE EELSKIN",
+  name: "SLIM BAGUETTE EELSKIN",
+  colors: [
+    { name: "GARNET GENUINE EELSKIN", value: "#600000", imageIndex: 0 },
+    { name: "CHESTNUT GENUINE EELSKIN", value: "#d2b48c", imageIndex: 0 },
+    { name: "KELP GENUINE EELSKIN", value: "#228b22", imageIndex: 0 },
+    { name: "PEACOCK GENUINE EELSKIN", value: "#1565c0", imageIndex: 0 }
+  ],
+  sizes: [],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-BG2_SLIM%20BAGUETTE%20EELSKIN_KELP%20GENUINE%20EELSKIN_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-BG2_SLIM%20BAGUETTE%20EELSKIN_KELP%20GENUINE%20EELSKIN_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/FW26-BG2_SLIM%20BAGUETTE%20EELSKIN_KELP%20GENUINE%20EELSKIN_2.450x600.w.jpg"],
+  desc: "",
+  price: 257.40,
+},
+
+
+]
+    
+  
+  // ... rest of products array (kept as in original file)
+    function isMen(product) {
+      return (
+        /for Men|Men\b|masculine|Homme|Men's|male|gentleman|pour homme/i.test(product.name) ||
+        /for men|aromatic spicy fragrance for men|masculine|for Him/i.test(product.desc)
+      );
+    }
+    function isWomen(product) {
+      return (
+        /for Women|Women\b|feminine|Her|ladies|pour femme|Women's|girl/i.test(product.name) ||
+        /for women|feminine|for Her|female/i.test(product.desc)
+      );
+    }
+    function isUnisex(product) {
+      return (
+        /Unisex/i.test(product.name) ||
+        /Unisex/i.test(product.desc) ||
+        (
+          !isMen(product) && !isWomen(product)
+        )
+      );
+    }
+
+    // Categorized arrays
+    const mensFragrances = products.filter(p => isMen(p) && !isWomen(p));
+    const womensFragrances = products.filter(p => isWomen(p) && !isMen(p));
+    const unisexFragrances = products.filter(p => isUnisex(p));
+
+    function renderProducts(prodArray) {
+      document.getElementById('product-list').innerHTML = prodArray.map(p => `
+        <div class="lux-product">
+          <a class="product-link-overlay" href="product.html?id=${encodeURIComponent(p.id)}" title="View ${p.name}"></a>
+          <img src="${p.img}" alt="${p.name}">
+          <h3 title="${p.name}">${p.name}</h3>
+          <div class="price">$${p.price}</div>
+          <button class="lux-btn" onclick="event.stopPropagation(); addToCart('${p.name}', ${p.price})">Add to Cart</button>
+        </div>
+      `).join('');
+    }
+
+    renderProducts(products);
+
+    let cart = [];
+    try {
+      cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (!Array.isArray(cart)) cart = [];
+    } catch (e) {
+      cart = [];
+    }
+    function addToCart(name, price) {
+      let item = cart.find(i => i.name === name);
+      if (item) {
+        item.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      saveCart();
+      updateCartDisplay();
+      showAddMessage(name);
+      hideEmptyCartAlert();
+    }
+    function updateCartDisplay() {
+      document.getElementById('cart-count').textContent = cart.reduce((sum, i) => sum + i.qty, 0);
+      let itemsHtml = cart.map((item, idx) =>
+        `<li>
+          ${item.name} x${item.qty} - $${(item.price * item.qty).toFixed(2)}
+          <button class="remove-btn" onclick="removeFromCart(${idx})">Remove</button>
+        </li>`
+      ).join('');
+      document.getElementById('cart-items').innerHTML = itemsHtml || "<li>Your cart is empty.</li>";
+      document.getElementById('cart-total').textContent = cart.reduce((sum, i) => sum + i.price * i.qty, 0).toFixed(2);
+      const checkoutBtn = document.getElementById('checkout-btn');
+      if (cart.length === 0) {
+        checkoutBtn.classList.add('disabled-btn');
+        checkoutBtn.disabled = true;
+        showEmptyCartAlert();
+      } else {
+        checkoutBtn.classList.remove('disabled-btn');
+        checkoutBtn.disabled = false;
+        hideEmptyCartAlert();
+      }
+    }
+    function removeFromCart(idx) {
+      cart[idx].qty -= 1;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      saveCart();
+      updateCartDisplay();
+    }
+    function toggleCart() {
+      let modal = document.getElementById('cart-modal');
+      if (modal.style.display === "none" || modal.style.display === "") {
+        modal.style.display = "block";
+        updateCartDisplay();
+      } else {
+        modal.style.display = "none";
+      }
+    }
+    function checkoutCart() {
+      if (cart.length === 0) {
+        showEmptyCartAlert();
+        return;
+      }
+      saveCart();
+      window.location.href = "checkout.html";
+    }
+    function showAddMessage(product) {
+      let msg = document.createElement("div");
+      msg.textContent = `${product} added to cart!`;
+      msg.style.position = "fixed";
+      msg.style.bottom = "40px";
+      msg.style.right = "40px";
+      msg.style.background = "#ffd700";
+      msg.style.color = "#111";
+      msg.style.padding = "1rem 2rem";
+      msg.style.borderRadius = "12px";
+      msg.style.boxShadow = "0 4px 16px #0005";
+      msg.style.zIndex = "2000";
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 1300);
+    }
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    function showEmptyCartAlert() {
+      document.getElementById('empty-cart-alert').style.display = "block";
+    }
+    function hideEmptyCartAlert() {
+      document.getElementById('empty-cart-alert').style.display = "none";
+    }
+    updateCartDisplay();
+
+    /* --- Dynamic mobile dropdown navigation logic --- */
+    (function () {
+      const sideMenu = document.getElementById('side-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+
+      // Build mobile select options from the side-menu links
+      function buildMobileMenu() {
+        // Clear existing options except the first
+        while (mobileMenu.options.length > 1) mobileMenu.remove(1);
+        if (!sideMenu) return;
+        const links = Array.from(sideMenu.querySelectorAll('a'));
+        links.forEach(a => {
+          const opt = document.createElement('option');
+          opt.value = a.getAttribute('href') || '#';
+          opt.textContent = a.textContent.trim();
+          // mark current page
+          if (a.classList.contains('active')) opt.selected = true;
+          mobileMenu.appendChild(opt);
+        });
+      }
+
+      // Toggle button behavior: focus/expand mobile menu
+      toggleBtn.addEventListener('click', () => {
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        toggleBtn.setAttribute('aria-expanded', String(!expanded));
+        if (!expanded) {
+          mobileMenu.focus();
+        } else {
+          toggleBtn.blur();
+        }
+      });
+
+      // When selecting from dropdown, navigate
+      mobileMenu.addEventListener('change', (e) => {
+        const url = e.target.value;
+        if (url) window.location.href = url;
+      });
+
+      // Rebuild on load and when side-menu might change
+      window.addEventListener('load', buildMobileMenu);
+      // Also rebuild on resize in case links change or for SPA behavior
+      window.addEventListener('resize', buildMobileMenu);
+    })();
+    
+  </script>
+</body>
+</html>
