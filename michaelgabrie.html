@@ -61,8 +61,69 @@
     .side-menu  {position: sticky; top: 0; left: 0; right: 0; display: flex; flex-direction: row;  align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Montserrat', sans-serif; } 
     .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
     .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent;  transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
-    .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
+    .side-menu a:hover, .side-menu a.active { background: hsl(49, 100%, 96%); color: #ffd700; border-bottom-color: #ffd700; }
 
+    body {
+  font-family: 'Inconsolata', sans-serif;
+  margin: 0;
+}
+    .navbar {
+  overflow: hidden;
+  background-color: #333; 
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size:1.1rem;  
+  border: none;
+  outline: none;
+  color: #bfa200;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: hsl(49, 100%, 96%);
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: hsl(49, 100%, 96%);
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: #bfa200;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
     /* Mobile dropdown nav */
     .mobile-nav {
       display: none; /* hidden on desktop */
@@ -292,7 +353,7 @@
 
 
 body {
-            background-image: url("https://i.pinimg.com/1200x/32/bf/aa/32bfaac0a09290ccdc25dec1664ffc6c.jpg");
+            background-image: url("https://i.pinimg.com/736x/1e/98/02/1e98021c6c36a0b13da60c161eba01e0.jpg");
             background-repeat: no-repeat; /* Prevents the image from tiling */
             background-size: cover;      /* Makes the image cover the entire screen */
             background-attachment: fixed; /* Keeps the background in place when scrolling */
@@ -305,29 +366,54 @@ body {
 </body>
 <h1> SHOP BMO </h1>
 
-  <body style="background-image: url('https://i.pinimg.com/736x/fe/17/d5/fe17d582f918780280537055c5498942.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+  <body style="background-image: url('https://i.pinimg.com/736x/1e/98/02/1e98021c6c36a0b13da60c161eba01e0.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
 </div>
 <button onclick="toggleCart()" class="lux-btn" style="position: right: 1rem; top: 1rem;">
     🛒 Cart (<span id="cart-count">0</span>)
   </button>
 </div>
 
-  <!-- Desktop Side Navigation Menu -->
+  
+ <!-- Desktop Side Navigation Menu -->
   <nav class="side-menu" id="side-menu">
-
-   <a href="shop.html" >Shop</a>
-   <a href="Accesories.html">Accesories</a> 
-    <a href="MENS-PRODUCT.html">Men's</a>
-    <a href="WOMANS-PRODUCTS.html" >Women's</a>
-   <a href="Clothe.html" > Clothing</a>
+  <a href="shop.html">Shop</a>
+  <div class="subnav">
+    <button class="subnavbtn">Brands <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="michaelgabrie.html"class="active">Michael Gabriel</a>
    <a href = "Jewlery.html" >PURE YOU Jewlery</a>
     <a href=" OOF-wear.html" >OOF-WEAR</a>
     <a href="27 Miles Malibu.html">27 MILES MALIBU</a>
-     <a href="michaelgabriel.html"class="active">Micheal Gabriel</a>
-    <a href="snacks.html">Snacks</a>
+    </div>
+  </div> 
+  <div class="subnav">
+<button class="subnavbtn">Accessories <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="Jewlery.html">Jewelry</a>
+      <a href="Hats.html">Hats/Gloves</a>
+      <a href="Fragrances.html" >Fragrance</a>
+     <a href="Bags,Wallets.html" >Bags & Wallets</a>
+     <a href="Accesories.html" >All Accesories</a>
+    </div>
+    </div> 
+<div class="subnav">
+<button class="subnavbtn">Clothing <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="MENS-PRODUCT.html">Men's</a>
+    <a href="WOMENS-PRODUCTS.html" >Women's</a>
+    <a href="sweaters.html" >Sweaters</a>
+    <a href=""Coats.html" >Coats</a>
+    <a href="Pants.html" >Pants</a>
+    <a href="Clothe.html" >All Clothing</a>
+    </div>
+    </div>
+     <a href="snacks.html">Snacks</a>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
+    </div>
+    
+<div style="padding:0 16px">
   </nav>
 
 
@@ -541,6 +627,110 @@ body {
 },
 
 
+{
+  id: "Bermuda pants without lining",
+  name: "Bermuda pants without lining",
+  colors: [
+    { name: "white", value: "#ffffff", imageIndex: 0 },
+    { name: "gold", value: "#ffd700", imageIndex: 0 },
+    { name: "green", value: "#228b22", imageIndex: 0 },
+    { name: "blue", value: "#1565c0", imageIndex: 0 },
+    { name: "black", value: "#000000", imageIndex: 0 }
+  ],
+  sizes: ["s", "m", "l", "xl"],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/SA2611-lcs_Blue-SCL04_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/SA2611-lcs_Blue-SCL04_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/SA2611-lcs_Blue-SCL04_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/SA2611-lcs_Blue-SCL04_3.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/SA2611-lcs_Blue-SCL04_4.450x600.w.jpg"],
+  desc: "",
+  price: 182.00,
+},
+{
+  id: "Pants without lining - silk",
+  name: "Pants without lining - silk",
+  colors: [
+    { name: "blue", value: "#1565c0", imageIndex: 0 },
+    { name: "blue", value: "#1565c0", imageIndex: 0 },
+    { name: "black", value: "#000000", imageIndex: 0 }
+  ],
+  sizes: ["s", "m", "l", "xl"],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/pRetBwu2Tfiiw_s_UeXcLw_SA2614-s_Blue-S07_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/pRetBwu2Tfiiw_s_UeXcLw_SA2614-s_Blue-S07_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/4L3TVXhCQ0Wa0szdmWA3cA_SA2614-s_Blue-S07_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/VnSScC6vQbGHYQNblFngeA_SA2614-s_Blue-S07_3.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/Vk8YvWhzQyuCWMfz2LpNoQ_SA2614-s_Blue-S07_4.450x600.w.jpg"],
+  desc: "",
+  price: 218.40,
+},
+{
+  id: "Pants without lining - linen-cotton-silk",
+  name: "Pants without lining - linen-cotton-silk",
+  colors: [
+    { name: "green", value: "#228b22", imageIndex: 0 },
+    { name: "blue", value: "#1565c0", imageIndex: 0 },
+    { name: "black", value: "#000000", imageIndex: 0 },
+    { name: "white", value: "#ffffff", imageIndex: 0 },
+    { name: "gold", value: "#ffd700", imageIndex: 0 }
+  ],
+  sizes: ["s", "m", "l", "xl"],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/fofYz_EgQRCe3peksmOz_g_SA2614-lcs_White-SCL01_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/fofYz_EgQRCe3peksmOz_g_SA2614-lcs_White-SCL01_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/8pLdkDc3ROmV_E8OdyaaAQ_SA2614-lcs_White-SCL01_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/1_43HeszRK2b_a8UihOGHA_SA2614-lcs_White-SCL01_3.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/sDcrVK0zRByaX4L2zkWTzw_SA2614-lcs_White-SCL01_4.450x600.w.jpg"],
+  desc: "",
+  price: 221.00,
+},
+{
+  id: "Pants with unpadded lining - linen-cotton-silk",
+  name: "Pants with unpadded lining - linen-cotton-silk",
+  colors: [
+    { name: "blue", value: "#1565c0", imageIndex: 0 },
+    { name: "black", value: "#000000", imageIndex: 0 },
+    { name: "white", value: "#ffffff", imageIndex: 0 },
+    { name: "gold", value: "#ffd700", imageIndex: 0 }
+  ],
+  sizes: ["s", "m", "l", "xl"],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/922o6yAUQjSl2SzQZLi0NA_SA2614L-lcs_Blue-SCL04_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/922o6yAUQjSl2SzQZLi0NA_SA2614L-lcs_Blue-SCL04_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/xShTurrrSBWLAy2iWogzsw_SA2614L-lcs_Blue-SCL04_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/z-5A7IGXRd2p6qshMogX4Q_SA2614L-lcs_Blue-SCL04_3.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/eUBM1QDkToWLwP612boTeA_SA2614L-lcs_Blue-SCL04_4.450x600.w.jpg"],
+  desc: "",
+  price: 234.00,
+},
+{
+  id: "Pants without lining - silk water",
+  name: "Graphic Pants without lining - silk",
+  colors: [
+    { name: "blue", value: "#1565c0", imageIndex: 0 },
+    { name: "Grey(gradient)", value: "#9e9e9e", imageIndex: 0 }
+  ],
+  sizes: ["s", "m", "l", "xl"],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/QriwzjkIR1CI9UmbEvOFXQ_SA2614-xs_Gradient-DA04_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/QriwzjkIR1CI9UmbEvOFXQ_SA2614-xs_Gradient-DA04_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/fTnIZC0rQLyNINZQ6XccLw_SA2614-xs_Gradient-DA04_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/Di5RUFOmQaG1UX1DLjso1Q_SA2614-xs_Gradient-DA04_3.450x600.w.jpg"],
+  desc: "",
+  price: 234.00,
+},
+{
+  id: "Jacket without lining - silk",
+  name: "Jacket without lining - silk",
+  colors: [
+    { name: "blue", value: "#1565c0", imageIndex: 0 },
+    { name: "Grey(gradient)", value: "#9e9e9e", imageIndex: 0 }
+  ],
+  sizes: ["s", "m", "l", "xl"],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/REqy2wwzQXWhdiFqXjX-NA_SA2514-xs_Gradient-DA04_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/REqy2wwzQXWhdiFqXjX-NA_SA2514-xs_Gradient-DA04_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/-6ciW6n1RTmInPSt8NnP2w_SA2514-xs_Gradient-DA04_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/73Yj3hONSm-fJzSiS-ut0g_SA2514-xs_Gradient-DA04_3.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/HWiJZx4xTdyYp3RekK1LCw_SA2514-xs_Gradient-DA04_4.450x600.w.jpg"],
+  desc: "",
+  price: 286.00,
+},
+{
+  id: "Bomber jacket with padded lining - silk",
+  name: "Bomber jacket with padded lining - silk",
+  colors: [
+    { name: "orher", value: "#ff8c00", imageIndex: 0 },
+    { name: "blue", value: "#1565c0", imageIndex: 0 },
+    { name: "red", value: "#cc0000", imageIndex: 0 },
+    { name: "green", value: "#228b22", imageIndex: 0 },
+    { name: "black", value: "#000000", imageIndex: 0 }
+  ],
+  sizes: ["s", "m", "l", "xl"],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/0D5lk-JGQtuFihFGWPzllw_SA2634TL-sv_Ocher-MH02_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/0D5lk-JGQtuFihFGWPzllw_SA2634TL-sv_Ocher-MH02_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/rCGGLTPhQgmBJbublV_Pkg_SA2634TL-sv_Ocher-MH02_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/F7Su3-xHTIG1RnFBALn0Mw_SA2634TL-sv_Ocher-MH02_3.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/Kc5B6mjnRsGE-SFooM7mUQ_SA2634TL-sv_Ocher-MH02_4.450x600.w.jpg"],
+  desc: "",
+  price: 370.50,
+},
+
 ]
     
   
@@ -715,6 +905,21 @@ body {
         if (url) window.location.href = url;
       });
 
+      /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+  var myDropdown = document.getElementById("myDropdown");
+    if (myDropdown.classList.contains('show')) {
+      myDropdown.classList.remove('show');
+    }
+  }
+}
       // Rebuild on load and when side-menu might change
       window.addEventListener('load', buildMobileMenu);
       // Also rebuild on resize in case links change or for SPA behavior
