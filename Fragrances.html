@@ -61,9 +61,9 @@
     .side-menu  {position: sticky; top: 0; left: 0; right: 0; display: flex; flex-direction: row;  align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Montserrat', sans-serif; } 
     .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
     .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent;  transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
-    .side-menu a:hover, .side-menu a.active { background: hsl(49, 100%, 96%); color: #ffd700; border-bottom-color: #ffd700; }
+    .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
 
-    body {
+        body {
   font-family: 'Inconsolata', sans-serif;
   margin: 0;
 }
@@ -353,7 +353,7 @@
 
 
 body {
-            background-image: url("https://i.pinimg.com/736x/1e/98/02/1e98021c6c36a0b13da60c161eba01e0.jpg");
+            background-image: url("https://i.pinimg.com/1200x/32/bf/aa/32bfaac0a09290ccdc25dec1664ffc6c.jpg");
             background-repeat: no-repeat; /* Prevents the image from tiling */
             background-size: cover;      /* Makes the image cover the entire screen */
             background-attachment: fixed; /* Keeps the background in place when scrolling */
@@ -366,15 +366,14 @@ body {
 </body>
 <h1> SHOP BMO </h1>
 
-  <body style="background-image: url('https://i.pinimg.com/736x/1e/98/02/1e98021c6c36a0b13da60c161eba01e0.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+  <body style="background-image: url('https://i.pinimg.com/736x/14/92/86/1492864af1f05736cadeef3d9020145f.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
 </div>
 <button onclick="toggleCart()" class="lux-btn" style="position: right: 1rem; top: 1rem;">
     🛒 Cart (<span id="cart-count">0</span>)
   </button>
 </div>
 
-  
-  <!-- Desktop Side Navigation Menu -->
+ <!-- Desktop Side Navigation Menu -->
   <nav class="side-menu" id="side-menu">
   <a href="shop.html">Shop</a>
   <div class="subnav">
@@ -382,23 +381,29 @@ body {
     <div class="subnav-content">
       <a href="michaelgabrie.html">Michael Gabriel</a>
    <a href = "Jewlery.html" >PURE YOU Jewlery</a>
-    <a href=" OOF-wear.html" class="active">OOF-WEAR</a>
+    <a href=" OOF-wear.html" >OOF-WEAR</a>
     <a href="27 Miles Malibu.html">27 MILES MALIBU</a>
     </div>
   </div> 
   <div class="subnav">
 <button class="subnavbtn">Accessories <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="michaelgabrie.html">Nicholas</a>
-      <a href="#team">Team</a>
-      <a href="#careers">Careers</a>
+      <a href="Jewlery.html">Jewelry</a>
+      <a href="Hats.html">Hats/Gloves</a>
+      <a href="Fragrances.html" >Fragrance</a>
+     <a href="Bags,Wallets.html" >Bags & Wallets</a>
+     <a href="Accesories.html" >All Accesories</a>
     </div>
     </div> 
 <div class="subnav">
 <button class="subnavbtn">Clothing <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
        <a href="MENS-PRODUCT.html">Men's</a>
-    <a href="WOMANS-PRODUCTS.html" >Women's</a>
+    <a href="WOMENS-PRODUCTS.html" >Women's</a>
+    <a href="sweaters.html" >Sweaters</a>
+    <a href="Coats.html"class="active" >Coats</a>
+    <a href="Pants.html" >Pants</a>
+    <a href="Clothe.html" >All Clothing</a>
     </div>
     </div>
      <a href="snacks.html">Snacks</a>
@@ -409,8 +414,6 @@ body {
     
 <div style="padding:0 16px">
   </nav>
-
-
   <!-- Mobile Navigation: dropdown/select + toggle button -->
   <!-- Mobile Navigation: dropdown/select + toggle button -->
 <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
@@ -449,165 +452,82 @@ body {
     // Populate product list and cart code (unchanged)
     // NOTE: The products array in the source may be large. For brevity in this file,
     // we keep the script block structure and assume the products array is present as before.
-    const products = [ 
- 
-{ id: "wanted-azzaro-edt", name: "Wanted by Azzaro EDT", sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/products/1199324_1024x1024.jpg?v=1599677146", images: ["https://www.aurafragrance.com/cdn/shop/products/1199324_1024x1024.jpg?v=1599677146","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_13_03a23028-e393-4ee5-94e0-619c3a2497a5.jpg?v=1749008936&width=1000","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_14_8923562b-3c45-4e48-8835-659351dfd35b.jpg?v=1749008950&width=1000","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_15_78f7b121-674d-47a5-b359-3e9c3d6bc769.jpg?v=1749008950&width=1000"], desc: "Bold and spicy with cardamom and lemon, anchored by warm tonka bean.", price: 55 },
-
-  { id: "most-wanted-intense-edt", name: "Most Wanted Intense EDT", sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/files/ruzfgcrpyp1h_1024x1024.jpg?v=1733081957", images: ["https://www.aurafragrance.com/cdn/shop/files/ruzfgcrpyp1h_1024x1024.jpg?v=1733081957","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_13_7ba0be79-d221-438d-875d-a69ed9931da7.jpg?v=1746640005&width=1000","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_14_202b4abc-4239-4663-8fa6-2395ecd66e1d.jpg?v=1746640328&width=1000","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_15_c0a93b81-db70-4ecd-a632-bea136962bc7.jpg?v=1746640328&width=1000"], desc: "Amber and toffee create a deep, addictive masculine signature.", price: 70 },
-
-  { id: "most-wanted-edp-intense", name: "Most Wanted EDP Intense ",  sizes: ["3.4oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.66826.2x.avif", images: ["https://fimgs.net/mdimg/perfume-thumbs/375x500.66826.2x.avif","https://www.perfume-empire.com/cdn/shop/files/the_most_wanted.jpg?v=1738562825&width=100","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_14_3e2f3f3b-E3b1-4d3e-8f6e-2f5f5e6e6e6e.jpg?v=1746639821&width=1000","https://www.perfume-empire.com/cdn/shop/files/Untitleddesign_15_5f4e5d5c-6b7a-4c8d-9e0f-1a2b3c4d5e6f.jpg?v=1746639821&width=1000"], desc: "Aromatic spices and rich woods blend for a magnetic allure.", price: 75 },
-  { id: "burberry-hero-edt-men", name: "Burberry Hero EDT for Men ",  sizes: ["3.4oz"], img: "https://assets.burberry.com/is/image/Burberryltd/31903DDC-3F05-4700-93E1-8C09D421C5F5?$BBY_V3_UNSHARP_SL_1$&wid=3000&hei=3000", desc: "Tobacco, leather, and cinnamon—dressed like a tailored London suit.", price: 70 },
-
-  { id: "burberry-hero-edp-men", name: "Burberry Hero EDP for Men ",  sizes: ["3.4oz"],img: "https://assets.burberry.com/is/image/Burberryltd/9CB5B4CF-55ED-43E8-BD76-70F39A9AD29E?$BBY_V3_SL_1$&wid=2100&hei=2100", images: ["https://assets.burberry.com/is/image/Burberryltd/9CB5B4CF-55ED-43E8-BD76-70F39A9AD29E?$BBY_V3_SL_1$&wid=2100&hei=2100","https://www.aurafragrance.com/cdn/shop/products/s-l1200--7_1024x1024.jpg?v=1699652793" ], desc: "Cedarwood and bergamot evoke a wild, earthy masculinity.", price: 85 },
-
-  { id: "burberry-london-edp-women", name: "Burberry London EDP for Women ", sizes: ["3.4oz"], img: "https://assets.burberry.com/is/image/Burberryltd/F9363128-2F01-40CB-A437-9D0D6FE54EC2?$BBY_V3_SL_1$&wid=2100&hei=2100", desc: "Pine and incense add soul and boldness to a rich, woodsy blend.", price: 65 },
-
-  { id: "coach-blue-edt", name: "Coach Blue EDT ",  sizes: ["3.4oz"],img: "https://i5.walmartimages.com/asr/3b9f9371-0799-4667-97ef-21c1e55a77ed.feaf99d22e10c92acfa76c5ca7feda10.jpeg", desc: " Top notes are Lime and Absinthe; middle notes are Ozonic notes and Black Pepper; base notes are Cedar and Amber.", price: 55 },
-
-  { id: "coach-green-edt", name: "Coach Green EDT ",  sizes: ["3.4oz"],img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.81391.2x.avif", desc: "a fresh and invigorating Aromatic Spicy fragrance for men", price: 55 },
-
-  { id: "coach-ny-edt-men", name: "Coach New York EDT for Men ",  sizes: ["3.3oz","2.0oz"], img: "https://m.media-amazon.com/images/I/71KZKKpklTL._SX522_.jpg", desc: "Zesty and bright with lime and ozone—a free-spirited burst.", price: 50 },
-
-
-  { id: "coach-love-edp-women", name: "Coach Love EDP for Women ",  sizes: ["3.3oz","2.0oz"],img: "https://www.aurafragrance.com/cdn/shop/files/796162ce-0ad3-4a38-a582-9255c53e89e5-569b7549eb65ba2de25112e7374cce56_1024x1024.jpg?v=1729585257", desc: "Nashi pear and suede blend for a modern, metropolitan scent.", price: 55 },
-
-  { id: "coach-floral-edp-women", name: "Coach Floral EDP for Women",  sizes: ["3.0oz","1.7oz"],
-img: "https://www.aurafragrance.com/cdn/shop/products/375x500.48115_1024x1024.jpg?v=1583109187", desc: "Pineapple sorbet and peony bring fresh, delicate charm.", price: 45 },
-  { id: "coach-floral-blush-edp-women", name: "Coach Floral Blush EDP for Women ", sizes: ["2.0oz"], img: "https://www.aurafragrance.com/cdn/shop/products/061e9d271dded13cceddf4b37fecd087ef01817c_1024x1024.jpg?v=1576636637", desc: "A clean and crisp fragrance kit—perfectly gift-ready.", price: 45 },
-
-  { id: "coach-green-men-set", name: "Coach Green Men Set",  sizes: ["gift set"],img: "https://i5.walmartimages.com/seo/Coach-Green-3-Piece-Gift-Set-3-3-OZ-Eau-De-Toilette-3-3-OZ-Shower-Gel-Mini-Perfume_32428624-7478-4c92-bc75-4c7a7660fd33.66b35d620479c9a12beb0de43cfb5f49.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF", desc: "The gift set includes a 100ml Eau de Toilette, a 100ml shower gel, and a 15ml travel-sized EDT", price: 85 },
-
-  { id: "dior-sauvage-edp", name: "Dior Sauvage EDP ",  sizes: ["2.0oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.48100.2x.avif", desc: "Bergamot and ambroxan create a rugged, magnetic trail.", price: 110 },
-
-  { id: "dior-homme-intense-edp", name: "Dior Homme Intense EDP ", sizes: ["3.3oz"], img: "https://www.lexormiami.com/cdn/shop/products/0321016_3348900838178_1000x.jpg?v=1750784827", desc: "Velvety iris and amber offer elegant masculine sensuality.", price: 140 },
-
-  { id: "the-one-edp-intense-men", name: "The One EDP Intense for Men ",  sizes: ["3.3oz"],img: "https://www.aurafragrance.com/cdn/shop/products/b04cf63e98d153a7e40d94a4efc844d0d3a5d984_1024x1024.jpg?v=1627941292", desc: "a fragrance that combines luminous warmth with deep, elegant accords, creating a striking and masculine scent", price: 65 },
-
-  { id: "the-one-edt-men", name: "The One EDT for Men ", sizes: ["3.3oz"], img: "https://dimg.dillards.com/is/image/DillardsZoom/mainProduct/dolce--gabbana-the-one-for-men-eau-de-parfum-spray/04698515_zi.jpg", desc: "Cardamom and leather make this fragrance rich and commanding.", price: 65 },
-
-   { id: "the-one-gold-edp-men", name: "The One Gold EDP for Men ", sizes: ["3.3oz","5.0oz"], img: "https://www.aurafragrance.com/cdn/shop/products/375x500-69000_1024x1024.jpg?v=1708341162", desc: "Golden apple and ginger blend with woody power.", price: 59 },
-  { id: "q-edp-women", name: "Q EDP for Women ",  sizes: ["3.3oz"],
-img: "https://www.aurafragrance.com/cdn/shop/products/s-l1600--2_41d4fdd7-e05e-49d2-a352-8b0b786d1248_1024x1024.png?v=1698875758", desc: "Sicilian lemon and cherry burst over a woody base—regal and bold.", price: 55 },
-
-  { id: "k-parfum-edp-men", name: "K Parfum EDP for Me n", sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/products/123_large.jpg?v=1599864617", desc: "Smoky spices and citrus notes for commanding style.", price: 80 },
-
-  { id: "light-blue-summer-vibes-edt-men", name: "Light Blue Summer Vibes EDT for Men", sizes: ["4.2oz"],
- img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.80377.2x.avif", desc: "Lemon and cypress for a breezy Mediterranean escape.", price: 50 },
-
-  { id: "light-blue-women-set", name: "Light Blue Women Set", sizes: ["Gift set"],
- img: "https://www.aurafragrance.com/cdn/shop/files/light-blue-classic-8057971185351_large.png?v=1746600607", desc: "Crisp apple and citron in a fresh, iconic gift-ready trio.", price: 85 },
-
-  { id: "the-one-edp-women", name: "The One EDP for Women ",  sizes: ["2.0oz","1.7oz"], img: "https://www.aurafragrance.com/cdn/shop/products/DGTHEONEW2.5_1024x1024.jpg?v=1497558036", desc: "An opening medley pairs bergamot with juicy peach, enlivening the senses and providing a tauntingly fresh and balmy start to your day.", price: 70 },
-
-  { id: "phantom-edt-men", name: "Phantom EDT for Men ", sizes: ["3.3oz"], img: "https://img.fragrancex.com/images/products/sku/large/pacp8j.webp", desc: "Lemon and lavender tech-fuse into upbeat masculinity.", price: 70 },
-
-  { id: "phantom-intense-edp-men", name: "Phantom Intense EDP for Men ", sizes: ["3.3oz"], img: "https://www.sobelia.com/62766-83005-thickbox/phantom-intense-paco-rabanne-eau-de-parfum-spray-100ml.jpg", desc: "Rum and patchouli deliver a rich, nighttime vibe.", price: 80 },
-
-  { id: "phantom-gift-set", name: "Phantom Gift Set",  sizes: ["Gift Set"], img: "https://www.aurafragrance.com/cdn/shop/files/Rabanne-Phantom-Eau-de-Toilette-100ml-Gift-Set_1024x1024.jpg?v=1736968235", desc: "Complete set of scent, deo, and travel spray in futuristic flair.", price: 110 },
-
-  { id: "acqua-di-gio-edt", name: "Acqua Di Gio EDT ",  sizes: ["3.4oz"],img: "https://fragrancemarket.com/cdn/shop/files/acquadigioedpmen.webp?v=1707919497&amp;width=1100", desc: "a fresh, aquatic fragrance for men, known for its Mediterranean-inspired scent profile", price: 110 },
-
-  { id: "stronger-with-you-only-edt", name: "Stronger With You Only EDT ", sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/products/s-l500_9e6e5a0f-1f6f-4cd7-8711-5f95f5f16649_1024x1024.png?v=1668030599", desc: "Bergamot and neroli bring clean aquatic vibrancy.", price: 80 }
-,
-  { id: "stronger-with-you-edt", name: "Stronger With You EDT ", sizes: ["3.4oz"], img: "https://m.media-amazon.com/images/I/41I095it8eL._SY445_SX342_QL70_FMwebp_.jpg", desc: "Chestnut and vanilla meet spicy cardamom in addictive warmth.", price: 80 },
-
-  { id: "because-its-you-edp", name: "Because It's You EDP ",  sizes: ["3.4oz"],img: "https://www.aurafragrance.com/cdn/shop/products/50c3f5c887dfa9c6258b22019304c1486be7b591_1024x1024.jpg?v=1575670025", desc: "Aromatic spices and soft woods create rich depth.", price: 75 },
-
-  { id: "stronger-with-you-intensely-edp", name: "Stronger With You Intensely EDP ",  sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/products/armani_stronger_with_you_1024x1024_46896c4d-b0ff-4ca2-9805-d26b9a7091ca_1024x1024.jpg?v=1615430762", desc: " Top notes are Pink Pepper, Juniper and Violet; middle notes are Toffee, Cinnamon, Lavender and Sage; base notes are Vanilla, Amber, Tonka Bean and Suede.", price: 70 },
-
-  { id: "acqua-di-gio-profondo-edp", name: "Acqua di Gio Profondo EDP",  sizes: [" 6.8"],img: "https://www.aurafragrance.com/cdn/shop/products/61PaVkU_UgL._SL1000_1024x1024.jpg?v=1605914331", desc: "Top notes are Marine notes and Green Mandarin; middle note is Mimosa; base notes are Patchouli and Labdanum.", price: 110 },
-
-  { id: "acqua-di-gio-profondo-parfum", name: "Acqua di Gio Profondo Parfum",  sizes: ["1.7oz","3.4oz"],
-img: "https://www.aurafragrance.com/cdn/shop/files/ACQUA_DI_GIO_PROFONDO__PARFUM_MEN_NIB_SEALED__57642_1024x1024.jpg?v=1737349488", desc: "deep aquatic marine intensity inspired by the mystery of the sea", price: 80 },
-
-
-  { id: "acqua-di-gio-edp-2022", name: "Acqua di Gio EDP (2022) ", sizes: ["3.4oz", "6.7oz"],
- img: "https://www.aurafragrance.com/cdn/shop/products/nm_4313259_100000_m_1024x1024.jpg?v=1659397523", desc: "Bold and oceanic with long-lasting richness.", price: 130 }
-,
-  { id: "eros-edt", name: "Eros EDT ",  sizes: ["3.4oz"],img: "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw12d7d83f/original/90_R740010-R100MLS_RNUL_22_Eros~EDT~100~ml-Accessories-Versace-online-store_1_1.jpg?sw=850&amp;q=85&amp;strip=true", desc: "a men's fragrance known for its fresh, woody, and oriental scent, inspired by the Greek God of love", price: 65 },
-
-
-  { id: "eros-flame-edt", name: "Eros Flame EDT ",  sizes: ["3.4oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.52180.2x.avif", desc: "Orange, pepper, and woods strike a fiery contrast.", price: 65 },
-
-  { id: "eros-energy-edt", name: "Eros Energy EDT ", sizes: ["3.4oz"],img: "https://www.aurafragrance.com/cdn/shop/files/1000051657_1024x1024.jpg?v=1741472074", desc: "Zesty and electric, made for thrill-seekers.", price: 105 },
-
-  { id: "eros-parfum-2021", name: "Eros Parfum (2021) ",sizes: ["3.4oz"], img: "https://www.aurafragrance.com/cdn/shop/products/versace-eros-parfum_2400x_20d590dd-6967-41d8-bc23-473b6ef7e1f0_1024x1024.png?v=1645641821", desc: "Refined strength with earthy vetiver and creamy woods.", price: 80 },
-
-  { id: "dylan-blue-edt", name: "Dylan Blue EDT ", sizes: ["3.4oz", "6.7oz"],
-img: "https://www.aurafragrance.com/cdn/shop/products/04781670_zi_1024x1024.jpg?v=1513101849", desc: " Top notes are Calabrian bergamot, Water Notes, Grapefruit and Fig Leaf; middle notes are Ambroxan, Black Pepper, Patchouli, Violet Leaf and Papyrus; base notes are Incense, Musk, Tonka Bean and Saffron.", price: 65 },
-
-
-  { id: "man-eau-fraiche-edt", name: "Man Eau Fraiche EDT ",sizes: ["3.4oz"],
- img: "https://www.aurafragrance.com/cdn/shop/products/eau-fraiche-versace-men_1024x1024.jpg?v=1497557984", desc: "Jasmine and lemon dance in a sweet and confident mix.", price: 55 },
-
-  { id: "eros-edt-women", name: "Eros EDT for Women ", sizes: ["3.4oz"],img: "https://cdn.fragrancenet.com/images/photos/900x900/289702.jpg", desc: "Top notes are Sicilian Lemon, Pomegranate and Calabrian bergamot; middle notes are Lemon Blossom, Jasmine Sambac, Jasmine and Peony; base notes are Musk, Ambroxan, Woodsy Notes and Sandalwood..", price: 70 },
-
-  { id: "pour-homme-gift-set", name: "Pour Homme Gift Set", sizes: ["Gift Set"],
-img: "https://m.media-amazon.com/images/I/71SPesqYVJL._SX679_.jpg", desc: "Cologne and gel for scent that travels well.", price: 70 },
-
-  { id: "dylan-blue-men-travel-set", name: "Dylan Blue Men Travel Set", sizes: ["Travel Set"], img: "https://cdn.fragrancenet.com/images/photos/900x900/294526.jpg", desc: "A versatile kit with scent and storage to match.", price: 70 },
-
-  { id: "pour-homme-set-toiletry-bag", name: "Pour Homme Set (Toiletry Bag)", sizes: ["Toiletry Bag"],
-img: "https://www.aurafragrance.com/cdn/shop/files/7411-d6ff7e42-1000_1_1024x1024.jpg?v=1713985041", desc: " ", price: 75 },
-
-  { id: "yellow-diamond-4pc-set", name: "Yellow Diamond 4pc Set",sizes: ["4pc Set"],
- img: "https://www.aurafragrance.com/cdn/shop/products/s-l500--7_1024x1024.jpg?v=1668738510", desc: "Elegant yet strong—marine florals with a luxe finish.", price: 80 },
-
-  { id: "dylan-blue-women-4pc-set", name: "Dylan Blue Women 4pc Set",sizes: ["4pc Set"],
- img: "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/23152346_fpx.tif?op_sharpen=1&wid=700&fit=fit,1&fmt=webp", desc: "Rich plum and musk with travel flair in every piece.", price: 85 },
-
-  { id: "dylan-blue-women-set-mini-bag", name: "Dylan Blue Women Set w/ Mini & Bag", sizes: ["Mini & Bag"], img: "https://www.aurafragrance.com/cdn/shop/files/versace-ladies-dylan-blue-gift-set-fragrances-8011003884971_1024x1024.jpg?v=1744147383", desc: "Rich plum and musk with travel flair in every piece.", price: 90 },
-
-  { id: "jazz-club-edt", name: "Jazz Club Maison Margiela for Men EDT ",sizes: ["3.3oz"],
- img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.20541.2x.avif", desc: "Top notes are Pink Pepper, Neroli and Lemon; middle notes are Rum, Clary Sage and Java vetiver oil; base notes are Tobacco Leaf, vanilla bean and Styrax.", price: 100 },
-
-  { id: "explorer-edp", name: "Explorer for Men EDP ", img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.52002.2x.avif", desc: "a unique woody-aromatic-leather concoction that combines essences of bergamot from Italy, vetiver from Haiti and patchouli from Indonesia.", price: 50 },
-
-  { id: "versace-pour-homme-edt", name: "Pour Homme for Men EDT ",sizes: ["3.4oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.2318.2x.avif", desc: "classic appeal of bergamot, sage, cedar wood, tonka bean and musk with distinguishing notes of geranium, blue hyacinth, neroli and bitter orange leaf.", price: 60 },
-
-  { id: "Spicebomb-extreme-edp", name: "Spicebomb Extreme for Men EDP ",sizes: ["3.4oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.30499.2x.avif", desc: "Lavender is mixed with caraway and black pepper, leaving a trail of hotness above masculine shades of tobacco and subtle, comfortable vanilla.", price:  90 },
-
-  { id: "Club-de-nuit-intense-edt", name: "Club de Nuit Intense for Men edt ",sizes: ["3.4oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.34696.2x.avif", desc: "Top notes are lemon, black currant, apple, bergamot and pineapple; middle notes are rose, jasmine and birch; base notes are vanilla, ambergris, musk and patchouli.", price: 50 },
-
-  { id: "Amber-oud-gold-edp", name: "Amber Oud Gold Edition EDP Unisex ",sizes: ["2.0oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.51816.2x.avif", desc: "Top notes are bergamot and green notes; middle notes are melon, pineapple, sweet notes and amber; base notes are woody notes, vanilla and musk.", price: 50 },
-
-  { id: "Hawas-edp", name: "Hawas for Men EDP",sizes: ["4.0oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46890.2x.avif", desc: "Top notes are Bergamot, Apple, Cinnamon and Lemon; middle notes are Watery Notes, Plum, Orange Blossom and Cardamon; base notes are Ambergris, Musk, Driftwood and Patchouli.", price: 40 },
-
-  { id: "Red-tobacco-edp", name: "Red Tobacco Mancera EDP Unisex", sizes: ["4.2oz"], img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46663.2x.avif", desc: "Top notes are saffron, cinnamon, incense, nutmeg, white pear, green apple and agarwood (oud); middle notes are patchouli and jasmine; base notes are tobacco, amber, guaiac wood, sandalwood, haitian vetiver, madagascar vanilla and white musk.", price: 60 },
-
-  { id: "Light-blue-men-edt", name: "Dolce & Gabbana Light Blue for Men EDT", sizes: ["4.2oz"],
-img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.1068.2x.avif", desc: "Top notes are sicilian mandarin, juniper, grapefruit and bergamot; middle notes are rosemary, brazilian rosewood and pepper; base notes are musk, oakmoss and incense.", price: 60 },
-
-  { id: "Mercedes-club-black-edt", name: "Mercedes-Benz Club Black for Men EDT ",sizes: ["3.4oz"],
- img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46797.2x.avif", desc: "Top note is Bergamot; middle notes are Incense and Jasmine; base notes are Vanilla, Benzoin, Ambroxan and Woodsy Notes.", price: 50 },
-
-  { id: "Hacivat-extrait-edp", name: "Nishane Hacivat Extrait de Parfum EDP Unisex ", sizes: ["3.4oz"],
-img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.44174.2x.avif", desc: "Top notes are Pineapple, Grapefruit and Bergamot; middle notes are Cedar, Patchouli and Jasmine; base notes are Oakmoss and Woody Notes.", price: 170 },
-
-  { id: "Luna-rossa-carbon-edt", name: "Prada Luna Rossa Carbon for Men EDT ", sizes: ["3.4oz"],
-img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.43402.2x.avif", desc: " Top notes are bergamot and pepper; middle notes are lavender, soil tincture, watery notes, metallic notes and coal; base notes are patchouli and ambroxan.", price: 100 },
-
-  { id: "Invictus-edt", name: "INVICTUS For Men by Paco Rabanne EDT ",sizes: ["3.4oz"],
- img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.18471.2x.avif", desc: "Top Notes: fresh grapefruit, mandarin oranges, and a marine accord. Heart Notes: aromatic bay leaf and Hedione jasmine. Base Notes: guaiac wood, patchouli, oak moss and ambergris.", price: 90 },
-
-  { id: "By-the-fireplace-edt", name: "By the Fireplace by Maison Margiela Unisex EDT ",sizes: ["3.4oz"],
- img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.31623.2x.avif", desc: "fuses the smoky scent of burning notes of guaiac wood, cashmeran and clove oil.", price: 90 },
-
-  { id: "Ani-extrait-edp", name: "Nishane Ani Extrait de Parfum Unisex EDP ",sizes: ["3.4oz"],
- img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.54785.2x.avif", desc: "Top notes are Cloves, Pink Pepper and Orange Blossom; middle notes are Chestnut, Guaiac Wood and Juniper; base notes are Vanilla, Peru Balsam and Cashmeran.", price: 170  },
-
-  { id: "Ysl-y-edp", name: "Y Eau de Parfum ",sizes: ["3.4oz"],
- img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.50757.2x.avif", desc: "Sophisticated notes of bergamot, ginger, and sage are sharpened by an apple accord.", price: 110 },
-
-  { id: "Legend-edp", name: "Mont blanc legend edp ",sizes: ["3.4oz"],
- img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.62583.2x.avif", desc: " Top notes are Bergamot and violet leaves; middle notes are Woodsy Notes, Jasmine and Magnolia; base notes are Oakmoss and Leather.", price: 60  },
-
-  { id: "elysium-parfum-edp", name: "Elysium Parfum Cologne Roja Parfums for Men EDP ", sizes: ["3.4oz"],
-img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46296.2x.avif", desc: "Top notes are Grapefruit, Lemon, Bergamot, Lime, Thyme, Galbanum and Artemisia; middle notes are Vetiver, Juniper Berries, Black Currant, Apple, Pink Pepper, Cedar, Cypriol Oil or Nagarmotha, Rose, Jasmine and Lily-of-the-Valley; base notes are Ambergris, Leather, Vanilla, Benzoin and Labdanum.", price: 180 },
-
-]
-    
-  
+    const products = [{ id: "1220 SEOUL HOODIE IN JERSEY", name: "1220 SEOUL HOODIE IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12200OOOJ4027A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12200OOOJ4027A_1b.450x600.w.jpg"], desc: "", price: 200  },
+{ id: "6700 KANSAI JEANS STRAIGHT FIT IN DENIM", name: "6700 KANSAI JEANS STRAIGHT FIT IN DENIM", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF67000OOOD3928A_1.450x600.w.jpg", images: [ "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF67000OOOD3928A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF67000OOOD3928A_2.450x600.w.jpg" ] , desc: "", price: 180 },
+{ id: "5800 ANTWERP BOXY JACKET IN WAXED COTTON", name: "5800 ANTWERP BOXY JACKET IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF58000OOWC3864A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF58000OOWC3864A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF58000OOWC3864A_2.450x600.w.jpg"], desc: "", price: 200 },
+{ id: "4500 YORK CROPPED JACKET IN PADDED WOOL", name: "4500 YORK CROPPED JACKET IN PADDED WOOL", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF45000OPWO0840A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF45000OPWO0840A_2b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF45000OPWO0840A_1.450x600.w.jpg"], desc: "", price: 260 },
+{ id: "4900 BRERA RAINCOAT IN MEMORY RE-NYLON", name: "4900 BRERA RAINCOAT IN MEMORY RE-NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF49000MERN1140B_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF49000MERN1140B_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF49000MERN1140B_2.450x600.w.jpg" ], desc: "", price: 260 },
+{ id: "1210 SEOUL JACKET IN JERSEY", name: "1210 SEOUL JACKET IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12100OOOJ4012A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12100OOOJ4012A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12100OOOJ4012A_2.450x600.w.jpg"], desc: "", price: 260 },
+{ id: "6000 KREUZBERG JACKET IN WAXED COTTON", name: "6000 KREUZBERG JACKET IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF60000OOWC0517A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF60000OOWC0517A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF60000OOWC0517A_2.450x600.w.jpg"], desc: "", price: 260 },
+{ id: "4800 BRERA TRENCH COAT IN MEMORY RE-NYLO", name: "4800 BRERA TRENCH COAT IN MEMORY RE-NYLO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF48000MERN3917B_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF48000MERN3917B_1b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF48000MERN3917B_1b.450x600.w.jpg"], desc: "", price: 260 },
+{ id: "4100 BASEL SHORT JACKET IN DUCHESSE COTT", name: "4100 BASEL SHORT JACKET IN DUCHESSE COTT", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF41000OODC0840A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF41000OODC0840A_1.450x600.w.jpg"," “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF41000OODC0840A_2.450x600.w.jpg"], desc: "", price: 260 },
+{ id: "4000 BASEL LONG JACKET IN DUCHESSE COTTO", name: "4000 BASEL LONG JACKET IN DUCHESSE COTTO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF40000OODC6000A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF40000OODC6000A_1b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF40000OODC6000A_2.450x600.w.jpg"], desc: "", price: 270 },
+{ id: "5900 ANTWERP COAT IN WAXED COTTON", name: "5900 ANTWERP COAT IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF59000OOWC0822A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF59000OOWC0822A_1b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF59000OOWC0822A_2b.450x600.w.jpg"], desc: "", price: 280 },
+{ id: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R", name: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_3.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_3.450x600.w.jpg","“https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_4b.450x600.w.jpg"], desc: "", price: 300 },
+{ id: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N", name: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51000MERN6010R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51000MERN6010R_1.450x600.w.jpg","“https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51000MERN6010R_2.450x600.w.jpg"], desc: "", price: 290 },
+{ id: "3300 HACKNEY FIELD JACKET IN DUCHESSE CO", name: "3300 HACKNEY FIELD JACKET IN DUCHESSE CO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF33000OODC1106A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF33000OODC1106A_1.450x600.w.jpg","“https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF33000OODC1106A_2.450x600.w.jpg"], desc: "", price: 290 },
+{ id: "5300 YORK COAT IN MEMORY RE-NYLON", name: "5300 YORK COAT IN MEMORY RE-NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF53000MERN1103R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF53000MERN1103R_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF53000MERN1103R_2.450x600.w.jpg"], desc: "", price: 300 },
+{ id: "2500 OSLO BOMBER IN NYLON BOMBER", name: "2500 OSLO BOMBER IN NYLON BOMBER", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF25000OONB0627A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF25000OONB0627A_1.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF25000OONB0627A_2b.450x600.w.jpg"], desc: "", price: 320 },
+{ id: "4100 BASEL SHORT JACKET IN DUCHESSE COTT2", name: "4100 BASEL SHORT JACKET IN DUCHESSE COTT", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/8.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/8.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/3.450x600.w.jpg" ], desc: "", price: 320 },
+{ id: "7900 SEOUL BOMBER ZIP UP IN LIGHT NYLON", name: "7900 SEOUL BOMBER ZIP UP IN LIGHT NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2025.11.21---OOF_JOOR_67_210526.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2025.11.21---OOF_JOOR_67_210526.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/2025.11.21---OOF_JOOR_67_210532.450x600.w.jpg", ], desc: "", price: 330 },
+{ id: "3900 YORK MAXI COAT IN DUCHESSE COTTON", name: "3900 YORK MAXI COAT IN DUCHESSE COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF39000OODC1210A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF39000OODC1210A_2b.450x600.w.jpg","https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF39000OODC1210A_1b.450x600.w.jpg", ], desc: "", price: 340 },
+{ id: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N2", name: "5100 TIVOLI HOODIE JACKET IN MEMORY RE-N", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51100MERN5260R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51100MERN5260R_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF51100MERN5260R_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/4.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/5.450x600.w.jpg"   ], desc: "", price: 350 },
+{ id: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R2", name: "5200 SEOUL REVERSIBLE JACKET IN MEMORY R", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF52100MERN1639R_2.450x600.w.jpg",   ], desc: "", price: 350 },
+{ id: "1000 SEOUL KAFTAN IN ECO-SHEARLING", name: "1000 SEOUL KAFTAN IN ECO-SHEARLING", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF10000OBOA4027A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF10000OBOA4027A_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF10000OBOA4027A_2.450x600.w.jpg",   ], desc: "", price: 350 },
+{ id: "5000 SOHO REVERSIBLE SHORT JACKET IN ME", name: "5000 SOHO REVERSIBLE SHORT JACKET IN ME", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF50000MERN1003R_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF50000MERN1003R_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF50000MERN1003R_4.450x600.w.jpg",   ], desc: "", price: 350 },
+{ id: "2400 SEOUL HOODIE IN NYLON BOMBER", name: "2400 SEOUL HOODIE IN NYLON BOMBER", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF24000OONB4012A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF24000OONB4012A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF24000OONB4012A_2.450x600.w.jpg",   ], desc: "", price: 350 },
+{ id: "6600 ANTWERP FIELD JACKET IN DENIM", name: "6600 ANTWERP FIELD JACKET IN DENIM", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF66000OOOD3928A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF66000OOOD3928A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF66000OOOD3928A_2b.450x600.w.jpg",   ], desc: "", price: 350 },
+{ id: "7900 SEOUL BOMBER ZIP UP IN LIGHT N", name: "7900 SEOUL BOMBER ZIP UP IN LIGHT N", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF79100OLNP6016C_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF79100OLNP6016C_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF79100OLNP6016C_2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/6%20(1).450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/7%20(1).450x600.w.jpg"  ], desc: "", price: 380 },
+{ id: "5400 SEOUL COCOON COAT IN ECO-SHEARLING", name: "5400 SEOUL COCOON COAT IN ECO-SHEARLING", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF54000OBOA1109A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF54000OBOA1109A_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF54000OBOA1109A_2b.450x600.w.jpg",   ], desc: "", price: 410 },
+{ id: "3200 YORK SHORT JACKET IN DUCHESSE COTTO", name: "3200 YORK SHORT JACKET IN DUCHESSE COTTO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF32000OODC1106A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF32000OODC1106A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF32000OODC1106A_2.450x600.w.jpg",   ], desc: "", price: 260 },
+{ id: "1240 HEATHROW HOODIE IN JERSEY", name: "1240 HEATHROW HOODIE IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12400OOOJ1725A_1bb.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12400OOOJ1725A_1bb.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262WOOF12400OOOJ1725A_1bb.450x600.w.jpg",   ], desc: "", price: 260 },
+{ id: "1230 TIVOLI HOODIE JACKET IN JERSEY", name: "1230 TIVOLI HOODIE JACKET IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12300OOOJ1725A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12300OOOJ1725A_2b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12300OOOJ1725A_1.450x600.w.jpg" ,   ], desc: "", price: 260 },
+{ id: "3200 YORK SHORT JACKET IN DUCHESSE COTTO", name: "3200 YORK SHORT JACKET IN DUCHESSE COTTO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF32000OODC1106A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF32000OODC1106A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF32000OODC1106A_2.450x600.w.jpg",   ], desc: "", price: 260 },
+{ id: "6400 YORK QUILTED COAT IN TWO LAYERS", name: "6400 YORK QUILTED COAT IN TWO LAYERS", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF64000OOTL1757A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF64000OOTL1757A_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF64000OOTL1757A_2b.450x600.w.jpg",   ], desc: "", price: 300 },
+{ id: "3100 OSLO BOMBER IN DUCHESSE COTTON", name: "3100 OSLO BOMBER IN DUCHESSE COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF31000OODC0840A_2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF31000OODC0840A_2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF31000OODC0840A_1.450x600.w.jpg",   ], desc: "", price: 300 },
+{ id: "6300 HEATHROW HOODED BOMBER IN TWO LAYER", name: "6300 HEATHROW HOODED BOMBER IN TWO LAYER", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF63000OOTL0840A_1b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF63000OOTL0840A_1b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF63000OOTL0840A_2.450x600.w.jpg",   ], desc: "", price: 300 },
+{ id: "3400 ANTWERP FIELD JACKET IN DUCHESSE CO", name: "3400 ANTWERP FIELD JACKET IN DUCHESSE CO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF34000OODC1210A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF34000OODC1210A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF34000OODC1210A_2.450x600.w.jpg",   ], desc: "", price: 300 },
+{ id: "4200 OSLO BOMBER IN PADDED WOOL", name: "4200 OSLO BOMBER IN PADDED WOOL", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF42000OPWO1757A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF42000OPWO1757A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF42000OPWO1757A_2.450x600.w.jpg",   ], desc: "", price: 300 },
+{ id: "5600 TROMSO COAT IN WAXED COTTON", name: "5600 TROMSO COAT IN WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF56000OOWC0517A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF56000OOWC0517A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF56000OOWC0517A_2b.450x600.w.jpg",   ], desc: "", price: 300 },
+{ id: "3500 YORK LONG COAT IN DUCHESSE COTTON", name: "3500 YORK LONG COAT IN DUCHESSE COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_2.450x600.w.jpg",   ], desc: "", price: 300 },
+{ id: "3000 OSLO ZIP POCKET BOMBER IN NYLON", name: "3000 OSLO ZIP POCKET BOMBER IN NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF30000OONB0627A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF30000OONB0627A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF30000OONB0627A_2.450x600.w.jpg",   ], desc: "", price: 360 },
+{ id: "84000 HEATHROW BOMBER IN LIGHT NYLON PAD", name: "84000 HEATHROW BOMBER IN LIGHT NYLON PAD", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF84000OLNP3901A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF84000OLNP3901A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF84000OLNP3901A_2.450x600.w.jpg",   ], desc: "", price: 360},
+{ id: "2100 OSLO DOUBLE ZIP BOMBER IN MEMORY RE", name: "2100 OSLO DOUBLE ZIP BOMBER IN MEMORY RE", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF21000MERN0827B_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF21000MERN0827B_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF21000MERN0827B_2b%20(1).450x600.w.jpg",   ], desc: "", price: 360},
+{ id: "3500 YORK LONG COAT IN DUCHESSE COTTON", name: "3500 YORK LONG COAT IN DUCHESSE COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF35000OODC4012A_2.450x600.w.jpg"  ], colors: [{name: "CARBON  ", value: "#4A4A4A", imageindex: 0},{name: "ANTIQUE MOSS ", value: "#D1CA73", imageindex: 1},{name: "MOLE   ", value: "#4A260D ", imageindex: 2},{name: "MOON ROCK   ", value: "#7A6900 ", imageindex: 3}, {name: "BLACK   ", value: "#000000 ", imageindex: 4}  ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "5700 ANTWERP UTILITY BOMBER IN WAXED COT", name: "5700 ANTWERP UTILITY BOMBER IN WAXED COT", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF57000OOWC1054A_1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF57000OOWC1054A_1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF57000OOWC1054A_2.450x600.w.jpg"  ], colors: [{name: "CADMIUM YELLOW  ", value: "#E8B90C ", imageindex: 0},{name: "DUSKY GREEN ", value: "#666045", imageindex: 1},{name: "MAZARINE BLUE   ", value: "#2186C2 ", imageindex: 2},{name: "BLACK   ", value: "#000000 ", imageindex: 3} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "1200 ANTWERP UTILITY BOMBER IN JERSEY", name: "1200 ANTWERP UTILITY BOMBER IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12000OOOJ1108A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12000OOOJ1108A_2b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12000OOOJ1108A_1.450x600.w.jpg"  ], colors: [{name: "SPRAY GREEN  ", value: "#ADA645 ", imageindex: 0},{name: "TAWNY PORT ", value: "#7A2412", imageindex: 1},{name: "CARBON   ", value: "#525252 ", imageindex: 2},{name: "MOONLIGHT BLUE  ", value: "#38477A ", imageindex: 3} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "OVERSHIRT WAXED COTTON", name: "OVERSHIRT WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM1300OOWC1317A_Bitter%20Chocolate-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM1300OOWC1317A_Bitter%20Chocolate-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM1300OOWC1317A_Bitter%20Chocolate-3.450x600.w.jpg"  ], colors: [{name: "Chipmunk  ", value: "#5b4332 ", imageindex: 0},{name: "Bitter Chocolate  ", value: "#351f1f ", imageindex: 1} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{ id: "BARRACUDA MEMORY", name: "BARRACUDA MEMORY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0200OOME0737A_Burnished%20Gold-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0200OOME0737A_Burnished%20Gold-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0200OOME0737A_Burnished%20Gold-3.450x600.w.jpg"  ], colors: [{name: "Total Eclipse  ", value: "#91a3b0 ", imageindex: 0},{name: "Bone white  ", value: "#ffffff ", imageindex: 1},{name: "Burnished Gold  ", value: "#dcf93711 ", imageindex: 0} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
+{
+  id: "Jacket without lining - silk",
+  name: "Jacket without lining - silk",
+  colors: [
+    { name: "blue", value: "#1565c0", imageIndex: 0 },
+    { name: "Grey(gradient)", value: "#9e9e9e", imageIndex: 0 }
+  ],
+  sizes: ["s", "m", "l", "xl"],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/REqy2wwzQXWhdiFqXjX-NA_SA2514-xs_Gradient-DA04_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/REqy2wwzQXWhdiFqXjX-NA_SA2514-xs_Gradient-DA04_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/-6ciW6n1RTmInPSt8NnP2w_SA2514-xs_Gradient-DA04_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/73Yj3hONSm-fJzSiS-ut0g_SA2514-xs_Gradient-DA04_3.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/HWiJZx4xTdyYp3RekK1LCw_SA2514-xs_Gradient-DA04_4.450x600.w.jpg"],
+  desc: "",
+  price: 286.00,
+},
+{
+  id: "Bomber jacket with padded lining - silk",
+  name: "Bomber jacket with padded lining - silk",
+  colors: [
+    { name: "orher", value: "#ff8c00", imageIndex: 0 },
+    { name: "blue", value: "#1565c0", imageIndex: 0 },
+    { name: "red", value: "#cc0000", imageIndex: 0 },
+    { name: "green", value: "#228b22", imageIndex: 0 },
+    { name: "black", value: "#000000", imageIndex: 0 }
+  ],
+  sizes: ["s", "m", "l", "xl"],
+  img: "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/0D5lk-JGQtuFihFGWPzllw_SA2634TL-sv_Ocher-MH02_1.450x600.w.jpg",
+  images: ["https://cdn.jooraccess.com/img/uploads/accounts/652170/images/0D5lk-JGQtuFihFGWPzllw_SA2634TL-sv_Ocher-MH02_1.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/rCGGLTPhQgmBJbublV_Pkg_SA2634TL-sv_Ocher-MH02_2.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/F7Su3-xHTIG1RnFBALn0Mw_SA2634TL-sv_Ocher-MH02_3.450x600.w.jpg", "https://cdn.jooraccess.com/img/uploads/accounts/652170/images/Kc5B6mjnRsGE-SFooM7mUQ_SA2634TL-sv_Ocher-MH02_4.450x600.w.jpg"],
+  desc: "",
+  price: 370.50,
+},
+];
   // ... rest of products array (kept as in original file)
     function isMen(product) {
       return (
@@ -779,21 +699,6 @@ img: "https://fimgs.net/mdimg/perfume-thumbs/375x500.46296.2x.avif", desc: "Top 
         if (url) window.location.href = url;
       });
 
-      /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(e) {
-  if (!e.target.matches('.dropbtn')) {
-  var myDropdown = document.getElementById("myDropdown");
-    if (myDropdown.classList.contains('show')) {
-      myDropdown.classList.remove('show');
-    }
-  }
-}
       // Rebuild on load and when side-menu might change
       window.addEventListener('load', buildMobileMenu);
       // Also rebuild on resize in case links change or for SPA behavior
