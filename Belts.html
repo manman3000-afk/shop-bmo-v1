@@ -2,37 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Shop BMO</title>
+  <title>Checkout | Shop BMO</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- Montserrat font for site, Cinzel font for SHOP BMO -->
+  <!-- Inconsolata for the site, Cinzel for the header -->
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cologne-css@1.0.0/dist/cologne.min.css">
  <style>
-    body {
-      background: #fff;
-      color: #222;
-      font-family: 'Inconsolata', sans-serif;
-      margin: 0;
-      padding: 0;
+    :root {
+      --gold: #000000;
+      --gold-dark: #b49c29;
+      --white: #fff;
     }
-    .banner-header {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* use space-between if you want logo left and title centered */
-  gap: 1rem;
-  padding: 1rem 1rem;
-  background: linear-gradient(90deg, #f9f9f9, #fff);
-  box-shadow: 0 4px 24px 0 #ffd70044;
-}
-
-/* logo image */
-.site-logo {
-  height: 56px;       /* tune this to taste */
-  width: auto;
-  display: block;
-}
-
-
+    body {
+      background: var(--white);
+      color: var(--gold);
+      font-family: 'Inconsolata', sans-serif;
+    }
 /* small screens: reduce logo size and stack if needed */
 @media (max-width: 600px) {
   .banner-header {
@@ -58,12 +43,12 @@
       font-weight: 400;
       font-family: 'Inconsolata', sans-serif;
     }
-    .side-menu  {position: sticky; top: 0; left: 0; right: 0; display: flex; flex-direction: row;  align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Montserrat', sans-serif; } 
+    .side-menu { position: sticky; top: 0;  left: 0; right: 0; display: flex; flex-direction: row; /* horizontal layout */ align-items: center; gap: 0.25rem; height: 60px; padding: 0 1rem; background: #f9f9f9; border-bottom: 2px solid #ffd70033; box-shadow: 0 4px 12px #ffd70011; z-index: 10; font-family: 'Inconsolata', sans-serif; }
     .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
-    .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent;  transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
-    .side-menu a:hover, .side-menu a.active { background: hsl(49, 100%, 96%); color: #ffd700; border-bottom-color: #ffd700; }
+    .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent; transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
+    .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
 
-    body {
+        body {
   font-family: 'Inconsolata', sans-serif;
   margin: 0;
 }
@@ -124,6 +109,7 @@
 .subnav:hover .subnav-content {
   display: block;
 }
+
     /* Mobile dropdown nav */
     .mobile-nav {
       display: none; /* hidden on desktop */
@@ -176,150 +162,240 @@
       gap: 0;
       margin-top: 2rem;
     }
-    .lux-product {
-      width: 300px;
-      height: 420px;
-      background: #fff;
-      border-radius: 0;
-      margin: 0;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 2px 8px #eee;
-      color: #222;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      box-sizing: border-box;
-      border: 1px solid #eee;
-      font-family: 'Inconsolata', sans-serif;
+    .lux-header {
+      background: linear-gradient(90deg, #f9f9f9, #fff);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      box-shadow: 0 4px 24px 0 #ffd70044;
     }
-    .lux-product:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 8px 32px #ffd70055;
-      text-decoration: none;
+    
+  
+    .checkout-container {
+      max-width: 490px;
+      margin: 2rem auto;
+      background: #f8f8f8;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #ffd70033;
+      padding: 2.5rem 2rem;
+      color: var(--gold);
+    }
+    h2, h3 {
+      color: var(--gold);
+      text-align: center;
+    }
+    .checkout-summary {
+      margin-bottom: 2rem;
+    }
+    .checkout-summary ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .checkout-summary li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+      border-bottom: 1px solid #ffd70022;
+      padding-bottom: 0.4rem;
+    }
+    .checkout-total {
+      margin: 1.5rem 0 1rem 0;
+      text-align: right;
+      font-size: 1.2rem;
+      font-weight: bold;
     }
     .lux-btn {
+      width: 100%;
+      margin-top: 1.6rem;
       background: linear-gradient(90deg, #ffd700, #bfa200);
       color: #111;
       border: none;
       border-radius: 25px;
-      padding: 0.6rem 1.2rem;
+      padding: 0.85rem 2rem;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1.1rem;
       transition: background 0.3s, box-shadow 0.3s;
       cursor: pointer;
       box-shadow: 0 2px 12px #ffd70055;
-      width: 90%;
-      margin: 0.5rem auto 0 auto;
-      display: block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-family: 'Inconsolata', sans-serif;
+      letter-spacing: 0.03em;
     }
-    .lux-product img {
-      width: 100%;
-      height: 260px;
-      object-fit: center;
-      border-radius: 0;
-      margin-bottom: 1rem;
-      background: #f9f9f9;
-      display: block;
-    }
-    .lux-product h3 {
-      margin: 1rem 0 0.5rem 0;
-      font-size: 1rem;
-      flex: 0 0 auto;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      width: 100%;
-      max-width: 100%;
-      display: block;
-      font-family: 'Inconsolata', sans-serif;
-    }
-    .lux-product .price {
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-      flex: 0 0 auto;
-      color: #bfa200;
-      font-family: 'Inconsolata', sans-serif;
-      font-size: 0.9rem; 
-    }
-    .lux-product .product-link-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 1;
-      cursor: pointer;
-    }
-    .lux-product > *:not(.product-link-overlay) {
-      z-index: 2;
-      position: relative;
-    }
-    .lux-product .lux-btn {
-      z-index: 3;
-      position: relative;
-      flex: 0 0 auto;
-    }
-    #cart-modal {
-      display:none;
-      position:fixed;
-      top:0;
-      right:0;
-      width:340px;
-      height:100%;
-      background:#f9f9f9;
-      color:#222;
-      box-shadow:-4px 0 32px #000a;
-      z-index:1000;
-      padding:2rem;
-      overflow-y:auto;
-      font-family: 'Inconsolata', sans-serif;
-    }
-    #cart-modal ul {
-      list-style:none;
-      padding:0;
-      margin:0;
-    }
-    #cart-modal h2 {
-      margin-top: 0;
-      font-family: 'Inconsolata', sans-serif;
-    }
-    #empty-cart-alert {
-      display:none;
-      background: #ffd700;
-      color: #111;
-      text-align: center;
-      padding: 1rem;
-      border-radius: 12px;
-      font-weight: bold;
-      margin: 1rem auto;
-      max-width: 420px;
-      box-shadow: 0 2px 12px #ffd70055;
-      font-family: 'Inconsolata', sans-serif;
-    }
-    .remove-btn {
-      margin-left:10px;
-      background:#ffd70022;
-      color:#bfa200;
-      border:none;
-      border-radius:6px;
-      cursor:pointer;
-      padding: 3px 10px;
-      font-family: 'Inconsolata', sans-serif;
-    }
-    .remove-btn:hover { background:#ffd70055; color:#111;}
-    .disabled-btn {
+    .lux-btn:disabled,
+    .lux-btn[disabled] {
       opacity: 0.6;
       cursor: not-allowed;
     }
-    .lux-product .lux-btn {
-      pointer-events: auto;
+    .success-message {
+      background: #ffd700;
+      color: #111;
+      padding: 1.2rem 1rem;
+      border-radius: 12px;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 2px 12px #ffd70055;
+      margin: 2rem auto 0 auto;
+      max-width: 420px;
+      display: none;
+    }
+    .back-link {
+      display: inline-block;
+      margin: 2rem auto 0 auto;
+      color: #ffd700bb;
+      text-align: center;
+      width: 100%;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .venmo-section {
+      background: #fffbe9;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px #ffd70022;
+      padding: 1.5rem 1rem;
+      margin-top: 1.7rem;
+      text-align: center;
+      display: none;
+      color: var(--gold);
+    }
+      .payment-button {
+            width: 100%;
+      margin-top: 1.6rem;
+      background: linear-gradient(90deg, #17cf21, #07ff51);
+      color: #111;
+      border: none;
+      border-radius: 25px;
+      padding: 0.85rem 2rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      letter-spacing: 0.03em;
+    }
+        }
+    .venmo-section img {
+      width: 180px;
+      height: 180px;
+      margin: 0.7rem 0;
+      border-radius: 14px;
+      background: #fff;
+      padding: 7px;
+      box-shadow: 0 1px 6px #0005;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .venmo-section p {
+      color: var(--gold-dark);
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+   
+    .venmo-link {
+      display:inline-block;
+      background:#3d95ce;
+      color:#fff;
+      font-weight:600;
+      border-radius:8px;
+      padding:0.6rem 1.4rem;
+      text-decoration:none;
+      margin-top:0.7rem;
+      transition:background 0.2s;
+      box-shadow: 0 2px 12px #3d95ce66;
+      font-size: 1.08rem;
+    }
+   
+    .venmo-link:hover {
+      background:#357cb8;
+    }
+   
+
+    .square-link {
+      display:inline-block;
+      background: linear-gradient(90deg,#2b2b2b,#444);
+      color:#fff;
+      font-weight:600;
+      border-radius:8px;
+      padding:0.6rem 1.4rem;
+      text-decoration:none;
+      margin-top:0.7rem;
+      transition:background 0.2s;
+      box-shadow: 0 2px 12px #44444466;
+      font-size: 1.08rem;
+      margin-left: 0.6rem;
+    }
+    .square-link:hover {
+      background: linear-gradient(90deg,#1b1b1b,#333);
     }
 
-    /* Responsive adjustments */
+    .checkout-form-section {
+      margin-bottom: 2.2rem;
+      background: #fffbe9;
+      padding: 1.5rem 1rem 1.2rem 1rem;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px #ffd70022;
+      color: var(--gold);
+    }
+    .checkout-form-section label {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .checkout-form-section input {
+      width: 100%;
+      border-radius: 7px;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1.2rem;
+      border: none;
+      background: #fff;
+      color: var(--gold);
+      border: 1px solid #ffd70044;
+      font-size: 1.05rem;
+    }
+    .checkout-form-section input:disabled {
+      opacity:.7;
+    }
+    .form-row {
+      display: flex;
+      gap: 0.7em;
+      align-items: flex-end;
+    }
+    .form-row .form-group {
+      flex: 1 1 0;
+    }
+    .form-group label {
+      margin-bottom: 0.2em;
+    }
+    .form-group input {
+      margin-bottom: 0;
+    }
+    .form-error {
+      color: #ff3e3e;
+      font-size: 0.97rem;
+      margin-bottom: 0.7rem;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .checkout-container { padding: 1rem; }
+      .venmo-section img { width:120px;height:120px;}
+      .form-row { flex-direction: column; gap: 0; }
+      .main-content { margin-left: 0; }
+      .side-menu {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding-top: 0;
+        border-right: none;
+        box-shadow: none;
+      }
+      .side-menu h2 {
+        display: none;
+      }
+    }
+ /* Responsive adjustments */
     @media (max-width: 800px) {
       /* Hide the desktop side menu on mobile and show the dropdown mobile nav */
       .side-menu {
@@ -339,43 +415,40 @@
         padding-right: 1rem;
       }
      /* fluid responsive grid for product cards */
-/* change .row to a grid and use two columns at mobile sizes */
-.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; /* centers the grid area inside the container / justify-items: center; / centers each card within its grid cell */ margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
+.row { display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; justify-content: center; margin-top: 2rem; padding: 0 1rem; box-sizing: border-box; }
 
 @media (max-width: 700px) {
   .row {
     grid-template-columns: repeat(2, 1fr); /* two columns */
     padding: 0 0.75rem;
   }
-  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; /* image will span card width but be centered if smaller */ }
+  .lux-product{ width: 100%; height: auto; object-fit: cover; margin: 0; }
 }
 
-
+@media (max-width: 420px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
 
 body {
-            background-image: url("https://i.pinimg.com/736x/1e/98/02/1e98021c6c36a0b13da60c161eba01e0.jpg");
-            background-repeat: no-repeat; /* Prevents the image from tiling */
-            background-size: cover;      /* Makes the image cover the entire screen */
-            background-attachment: fixed; /* Keeps the background in place when scrolling */
+            background-image: url("https://i.pinimg.com/1200x/b1/5b/c1/b15bc1de24d7b9ddad73b9764a7344f1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
         }
 .lux-product img  { width: 100%; text-align: center; }
-
-  
   </style>
 </head>
-</body>
-<h1> SHOP BMO </h1>
-
-  <body style="background-image: url('https://i.pinimg.com/1200x/fc/1c/1f/fc1c1fcaa6b9d7fdce9d85fb5949fe5d.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+<body>
+  <header class="lux-header">
+    <h1>SHOP BMO</h1>
+    <p>Checkout</p>
+     <body style="background-image: url('https://i.pinimg.com/1200x/b1/5b/c1/b15bc1de24d7b9ddad73b9764a7344f1.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
 </div>
-<button onclick="toggleCart()" class="lux-btn" style="position: right: 1rem; top: 1rem;">
-    🛒 Cart (<span id="cart-count">0</span>)
-  </button>
-</div>
+  </header>
 
-  
-  <!-- Desktop Side Navigation Menu -->
- <!-- Desktop Side Navigation Menu -->
+<!-- Desktop Side Navigation Menu -->
   <nav class="side-menu" id="side-menu">
   <a href="shop.html">Shop</a>
   <div class="subnav">
@@ -393,7 +466,7 @@ body {
       <a href="Jewlery.html">Jewelry</a>
       <a href="Hats.html">Hats/Gloves</a>
       <a href="Fragrances.html" >Fragrance</a>
-     <a href="Bags,Wallets.html"class="active" >Bags & Wallets</a>
+     <a href="Bags,Wallets.html" >Bags & Wallets</a>
      <a href="Accesories.html" >All Accesories</a>
     </div>
     </div> 
@@ -405,7 +478,7 @@ body {
     <a href="sweaters.html" >Sweaters</a>
     <a href=""Coats.html" >Coats</a>
     <a href="Pants.html" >Pants</a>
-    <a href="Clothe.html" >All Clothing</a>
+    <a href="Clothe.html" class="active">All Clothing</a>
     </div>
     </div>
      <a href="snacks.html">Snacks</a>
@@ -416,7 +489,6 @@ body {
     
 <div style="padding:0 16px">
   </nav>
-
   <!-- Mobile Navigation: dropdown/select + toggle button -->
   <!-- Mobile Navigation: dropdown/select + toggle button -->
 <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
@@ -431,317 +503,247 @@ body {
 </div>
 
 
+  <div class="checkout-container">
+    <h2>Order Summary</h2>
+    <div class="checkout-summary">
+      <ul id="checkout-items">
+        <!-- JS renders cart items here -->
+      </ul>
+      <div class="checkout-total">
+        Total: $<span id="checkout-total">0.00</span>
+      </div>
     </div>
-    <div id="empty-cart-alert">⚠️ Your cart is empty. Please add items before checking out.</div>
-    <!-- Featured Products -->
-    <section class="container">
-     
-      <div class="row" id="product-list"></div>
-    </section>
-    <footer style="text-align:center;padding:2rem 0;color:#ffd70088;">
-      © 2025 BMO.LLC.CO All rights reserved.
-    </footer>
-  </div>
-  <div id="cart-modal">
-    <h2>Your Cart</h2>
-    <ul id="cart-items"></ul>
-    <hr>
-    <b>Total: $<span id="cart-total">0.00</span></b>
-    <br><br>
-    <button id="checkout-btn" class="lux-btn" onclick="checkoutCart()">Checkout</button>
-    <button class="lux-btn" style="background:#333;color:#ffd700;margin-left:10px;" onclick="toggleCart()">Close</button>
-  </div>
-  <script>
-    // Populate product list and cart code (unchanged)
-    // NOTE: The products array in the source may be large. For brevity in this file,
-    // we keep the script block structure and assume the products array is present as before.
-    const products = [ 
- 
-  { id: "Leather-Belt-Kit", name: "Coach Leather Belt large", img: "https://product-images.therealreal.com/CCH76003_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
 
-  { id: "Leather-Belt-Kit-small", name: "Coach Leather Belt S", img: "https://product-images.therealreal.com/CCH76008_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
+    <!-- Single customer info form -->
+    <form class="checkout-form-section" id="customer-info-form" autocomplete="on" novalidate>
+      <h3 style="margin-top:-0.2rem;margin-bottom:1.1rem;">Your Info (required before payment)</h3>
+      <div class="form-error" id="customer-form-error" style="display:none"></div>
 
-  { id: "Leather-Belt-Kit-XXL", name: "Coach Leather Belt XXL", img: "https://product-images.therealreal.com/CCH76082_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
+      <label for="ci-email">Email Address</label>
+      <input type="email" id="ci-email" name="email" required placeholder="e.g. you@email.com" autocomplete="email">
 
-  { id: "Leather-Belt-Kit-bl", name: "Coach Leather Belt large", img: "https://product-images.therealreal.com/CCH76000_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
+      <label for="ci-name">Full Name</label>
+      <input type="text" id="ci-name" name="name" required placeholder="Your name" autocomplete="name">
 
-  { id: "Leather-Belt-Kit-tn", name: "Coach Leather Belt XL", img: "https://product-images.therealreal.com/CCH76117_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
+      <label for="ci-address">Street Address</label>
+      <input type="text" id="ci-address" name="address" required placeholder="123 Main St, Apt 4B" autocomplete="street-address">
 
-  { id: "Leather-Belt-Kit-bb", name: "Coach Leather Belt large", img: "https://product-images.therealreal.com/CCH76126_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Leather Gunmetal Hardware Peg-In-Hole Closure", price: 65 },
-
-  { id: "dior-belt", name: "Cristian Dior leather belt", img: "https://product-images.therealreal.com/CHR466189_1_enlarged.jpg?width=1500", desc: "Christian Dior Waist Belt Black Leather Silver-Tone Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-tn-b", name: "Coach belt M", img:"https://product-images.therealreal.com/CCH75493_1_enlarged.jpg?width=1500", desc: "Coach Belt Neutrals Gunmetal Hardware Buckle Closure", price: 65  },
-
-  { id: "coach-belt-bl-L", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75502_1_enlarged.jpg?width=1500", desc: "Coach Belt Neutrals Gunmetal Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-m-2", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75504_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-L-2", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75507_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-L-3", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75510_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-br", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75511_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-M-3", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75514_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-xl", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75525_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-M-4", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75525_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-M-5", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75529_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-xl-3", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75533_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal peg in hole closure", price: 65 },
-
-  { id: "coach-belt-bl-M-6", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75534_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-L-4", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75540_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-L-5", name: "coach belt L", img: "https://product-images.therealreal.com/CCH75542_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-Xl-4", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75547_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-Xl-5", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75547_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  peg in hole Closure", price: 65 },
-
-  { id: "coach-belt-bl-M-6", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75549_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  peg in hole Closure", price: 65 },
-
-  { id: "coach-belt-bl-M-7", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75555_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  peg in hole Closure", price: 65 },
-
-  { id: "coach-belt-bl-S", name: "coach belt S", img: "https://product-images.therealreal.com/CCH75558_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-M-8", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75569_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-S-2", name: "coach belt S", img: "https://product-images.therealreal.com/CCH75577_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  peg in hole Closure", price: 65 },
-
-  { id: "coach-belt-bl-L-6", name: "coach belt l", img: "https://product-images.therealreal.com/CCH75578_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-M-9", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75582_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-M-10", name: "coach belt M", img: "https://product-images.therealreal.com/CCH75584_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  peg in hole Closure", price: 65 },
-
-  { id: "coach-belt-bl-xl-6", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75595_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-S-3", name: "coach belt S", img: "https://product-images.therealreal.com/CCH75596_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-s-4", name: "coach belt S", img: "https://product-images.therealreal.com/CCH75600_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "coach-belt-bl-XL-7", name: "coach belt XL", img: "https://product-images.therealreal.com/CCH75601_1_enlarged.jpg?width=1500", desc: "Coach Belt Black Gunmetal  Hardware Buckle Closure", price: 65 },
-
-  { id: "Heron-belt", name: "Heron Preston 4XL", img: "https://product-images.therealreal.com/WHEOP26956_1_enlarged.jpg?width=1500", desc: "Heron Preston Orange Sliver tone Hardware Clasp Closure includes dust bag", price: 75 },
-
-  { id: "lucchese-belt", name: "Lucchese belt XL", img: "https://product-images.therealreal.com/LCC25875_1_enlarged.jpg?width=1500", desc: "Lucchese belt burgundy leather silver tone hardware buckle closure", price: 75 },
-
-  { id: "Emporio-Armani-Waist-Belt", name: "Emporio Armani Waist Belt", img: "https://product-images.therealreal.com/EMP61377_1_enlarged.jpg?width=1500", desc: "Emporio Armani Waist Belt black leather silver hardware silver tone hardware", price: 85 },
-
-  { id: "Salvatore-Ferragamo-belt", name: "Salvatore Ferragamo M", img: "https://product-images.therealreal.com/SAL399162_1_enlarged.jpg?width=1500", desc: "Salvatore Ferragamo white leather silver hardware buckle closure", price: 90 },
-
-  { id: "Salvatore-Ferragamo-belt-bl", name: "Salvatore Ferragamo M", img: "https://product-images.therealreal.com/SAL399974_1_enlarged.jpg?width=1500", desc: "Salvatore Ferragamo black leather gold hardware peg in hole closure", price: 90 },
-
-  { id: "gucci-belt", name: "Gucci Belt S", img: "https://product-images.therealreal.com/GUC1812271_1_enlarged.jpg?width=1500", desc: "Gucci belt black leather silver tone hardware peg in hole closure", price: 95 },
-
-  { id: "Salvatore-Ferragamo-belt-bl", name: "Salvatore Ferragamo M", img: "https://product-images.therealreal.com/SAL405162_1_enlarged.jpg?width=1500", desc: "Salvatore Ferragamo black leather gold hardware peg in hole closure", price: 95 },
-
-  { id: "Christian Louboutin-", name: "Christian Louboutin belt XXL", img: "https://product-images.therealreal.com/CHT413934_1_enlarged.jpg?width=1500", desc: "Christian Louboutin Belt Green Tonal  Hardware clasp Closure", price: 95 },
-
-  { id: "Christian Louboutin-2", name: "Christian Louboutin belt XL", img: "https://product-images.therealreal.com/CHT413934_1_enlarged.jpg?width=1500", desc: "Christian Louboutin Belt Green Tonal  Hardware clasp Closure", price: 95 },
-
-  { id: "D&G-belt", name: "D&G belt S", img: "https://product-images.therealreal.com/WDG101243_1_enlarged.jpg?width=1500", desc: "D&G Belt Black Gunmetal  peg in hole Closure", price: 95 },
-
-]
-    
-  
-  // ... rest of products array (kept as in original file)
-    function isMen(product) {
-      return (
-        /for Men|Men\b|masculine|Homme|Men's|male|gentleman|pour homme/i.test(product.name) ||
-        /for men|aromatic spicy fragrance for men|masculine|for Him/i.test(product.desc)
-      );
-    }
-    function isWomen(product) {
-      return (
-        /for Women|Women\b|feminine|Her|ladies|pour femme|Women's|girl/i.test(product.name) ||
-        /for women|feminine|for Her|female/i.test(product.desc)
-      );
-    }
-    function isUnisex(product) {
-      return (
-        /Unisex/i.test(product.name) ||
-        /Unisex/i.test(product.desc) ||
-        (
-          !isMen(product) && !isWomen(product)
-        )
-      );
-    }
-
-    // Categorized arrays
-    const mensFragrances = products.filter(p => isMen(p) && !isWomen(p));
-    const womensFragrances = products.filter(p => isWomen(p) && !isMen(p));
-    const unisexFragrances = products.filter(p => isUnisex(p));
-
-    function renderProducts(prodArray) {
-      document.getElementById('product-list').innerHTML = prodArray.map(p => `
-        <div class="lux-product">
-          <a class="product-link-overlay" href="product.html?id=${encodeURIComponent(p.id)}" title="View ${p.name}"></a>
-          <img src="${p.img}" alt="${p.name}">
-          <h3 title="${p.name}">${p.name}</h3>
-          <div class="price">$${p.price}</div>
-          <button class="lux-btn" onclick="event.stopPropagation(); addToCart('${p.name}', ${p.price})">Add to Cart</button>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ci-city">City</label>
+          <input type="text" id="ci-city" name="city" required placeholder="City" autocomplete="address-level2">
         </div>
-      `).join('');
-    }
+        <div class="form-group">
+          <label for="ci-state">State</label>
+          <input type="text" id="ci-state" name="state" required placeholder="State" maxlength="2" autocomplete="address-level1">
+        </div>
+        <div class="form-group">
+          <label for="ci-zip">ZIP Code</label>
+          <input type="text" id="ci-zip" name="zip" required placeholder="ZIP" maxlength="10" autocomplete="postal-code">
+        </div>
+      </div>
 
-    renderProducts(products);
+      <!-- Two buttons: both validate & submit customer info; paymentType decides which primary link to highlight -->
+      <div style="display:flex; gap:0.6rem; align-items:center;">
+        <button type="button" class="lux-btn" id="continue-venmo">Continue to Venmo Payment</button>
+        <button type="button" class="lux-btn" id="continue-square" style="background:linear-gradient(90deg,#2b2b2b,#444); box-shadow:0 2px 12px #44444466;">Continue to Card Payment</button>
+        <button class="payment-button" id="cashapp-button">Pay with Cash App</button>
+        </div>
+    </form>
+    <!-- END customer info form -->
 
+    <div class="venmo-section" id="venmo-section" aria-hidden="true">
+      <h3 style="margin-bottom:0.7rem;">Pay with Venmo or Square</h3>
+      <img id="venmo-qr" src="" alt="Venmo QR Code">
+      <p>Scan QR with your Venmo app<br>or tap the button below to pay.</p>
+      <div style="display:flex; justify-content:center; gap:0.6rem; align-items:center; flex-wrap:wrap;">
+        <a id="venmo-link" href="#" target="_blank" class="venmo-link" rel="noopener">Pay with Venmo</a>
+        <a id="square-link" href="#" target="_blank" class="square-link" rel="noopener">Pay with Square</a>
+      </div>
+
+      <div style="margin-top:0.9rem;">
+        <img id="square-qr" src="" alt="Square QR Code" style="width:140px;height:140px;border-radius:12px;margin:0.6rem auto;display:inline-block;">
+      </div>
+
+      <p id="venmo-message" style="font-size:.97rem;margin-top:.8rem;color:#ffd700bb;"></p>
+      <p id="square-message" style="font-size:.97rem;margin-top:.2rem;color:#ffd700bb;"></p>
+      <p style="color:#ffd70099;font-size:.93rem;">After payment, Save the total amount for next stage if using card payment. screenshot/record your payment and send to @shopbmo on ig or shopping4bmo@gmail.com for future discount.</p>
+    </div>
+
+    <div class="success-message" id="success-message"></div>
+    <div class="back-link" onclick="window.location='shop.html'">← Back to Shop</div>
+  </div>
+
+  <footer style="text-align:center;padding:2rem 0;color:#ffd70088;">
+    © 2025 BMO.LLC.CO All rights reserved.
+  </footer>
+
+  <script>
+    // VENMO CONSTANTS -- CHANGE TO YOUR VENMO INFO:
+    const VENMO_USERNAME = "manmandoit";
+    const VENMO_NAME = "BMO Shop";
+    // Square link provided by user:
+    const SQUARE_LINK = "https://square.link/u/Vwdc9KER";
+    // Formspree endpoint (change to your own Formspree form endpoint):
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdkzdgyy";
+
+    // Load cart from localStorage
     let cart = [];
     try {
       cart = JSON.parse(localStorage.getItem('cart')) || [];
       if (!Array.isArray(cart)) cart = [];
-    } catch (e) {
-      cart = [];
-    }
-    function addToCart(name, price) {
-      let item = cart.find(i => i.name === name);
-      if (item) {
-        item.qty += 1;
-      } else {
-        cart.push({ name, price, qty: 1 });
-      }
-      saveCart();
-      updateCartDisplay();
-      showAddMessage(name);
-      hideEmptyCartAlert();
-    }
-    function updateCartDisplay() {
-      document.getElementById('cart-count').textContent = cart.reduce((sum, i) => sum + i.qty, 0);
-      let itemsHtml = cart.map((item, idx) =>
-        `<li>
-          ${item.name} x${item.qty} - $${(item.price * item.qty).toFixed(2)}
-          <button class="remove-btn" onclick="removeFromCart(${idx})">Remove</button>
-        </li>`
-      ).join('');
-      document.getElementById('cart-items').innerHTML = itemsHtml || "<li>Your cart is empty.</li>";
-      document.getElementById('cart-total').textContent = cart.reduce((sum, i) => sum + i.price * i.qty, 0).toFixed(2);
-      const checkoutBtn = document.getElementById('checkout-btn');
-      if (cart.length === 0) {
-        checkoutBtn.classList.add('disabled-btn');
-        checkoutBtn.disabled = true;
-        showEmptyCartAlert();
-      } else {
-        checkoutBtn.classList.remove('disabled-btn');
-        checkoutBtn.disabled = false;
-        hideEmptyCartAlert();
-      }
-    }
-    function removeFromCart(idx) {
-      cart[idx].qty -= 1;
-      if (cart[idx].qty <= 0) cart.splice(idx, 1);
-      saveCart();
-      updateCartDisplay();
-    }
-    function toggleCart() {
-      let modal = document.getElementById('cart-modal');
-      if (modal.style.display === "none" || modal.style.display === "") {
-        modal.style.display = "block";
-        updateCartDisplay();
-      } else {
-        modal.style.display = "none";
-      }
-    }
-    function checkoutCart() {
-      if (cart.length === 0) {
-        showEmptyCartAlert();
+    } catch (e) { cart = []; }
+
+    function renderCheckoutCart() {
+      const ul = document.getElementById('checkout-items');
+      if (!cart.length) {
+        ul.innerHTML = '<li>Your cart is empty. <a href="index.html" style="color:#ffd700;text-decoration:underline;">Shop now</a></li>';
+        document.getElementById('checkout-total').textContent = '0.00';
+        document.getElementById('customer-info-form').style.display = "none";
         return;
       }
-      saveCart();
-      window.location.href = "checkout.html";
+      let html = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        html += `<li>
+          <span>${item.name} x${item.qty}</span>
+          <span>$${(item.price * item.qty).toFixed(2)}</span>
+        </li>`;
+      });
+      ul.innerHTML = html;
+      document.getElementById('checkout-total').textContent = total.toFixed(2);
+      document.getElementById('customer-info-form').style.display = "block";
     }
-    function showAddMessage(product) {
-      let msg = document.createElement("div");
-      msg.textContent = `${product} added to cart!`;
-      msg.style.position = "fixed";
-      msg.style.bottom = "40px";
-      msg.style.right = "40px";
-      msg.style.background = "#ffd700";
-      msg.style.color = "#111";
-      msg.style.padding = "1rem 2rem";
-      msg.style.borderRadius = "12px";
-      msg.style.boxShadow = "0 4px 16px #0005";
-      msg.style.zIndex = "2000";
-      document.body.appendChild(msg);
-      setTimeout(() => msg.remove(), 1300);
-    }
-    function saveCart() {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
-    function showEmptyCartAlert() {
-      document.getElementById('empty-cart-alert').style.display = "block";
-    }
-    function hideEmptyCartAlert() {
-      document.getElementById('empty-cart-alert').style.display = "none";
-    }
-    updateCartDisplay();
 
-    /* --- Dynamic mobile dropdown navigation logic --- */
-    (function () {
-      const sideMenu = document.getElementById('side-menu');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const toggleBtn = document.getElementById('mobile-menu-toggle');
-      const mobileNav = document.getElementById('mobile-nav');
+    function getVenmoPayUrl(amount, note) {
+      return `https://venmo.com/?txn=pay&recipients=${encodeURIComponent(VENMO_USERNAME)}&amount=${encodeURIComponent(amount)}&note=${encodeURIComponent(note)}`;
+    }
 
-      // Build mobile select options from the side-menu links
-      function buildMobileMenu() {
-        // Clear existing options except the first
-        while (mobileMenu.options.length > 1) mobileMenu.remove(1);
-        if (!sideMenu) return;
-        const links = Array.from(sideMenu.querySelectorAll('a'));
-        links.forEach(a => {
-          const opt = document.createElement('option');
-          opt.value = a.getAttribute('href') || '#';
-          opt.textContent = a.textContent.trim();
-          // mark current page
-          if (a.classList.contains('active')) opt.selected = true;
-          mobileMenu.appendChild(opt);
-        });
+    function getVenmoQrUrl() {
+      return `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent('https://venmo.com/u/' + VENMO_USERNAME)}`;
+    }
+
+    // Square helpers
+    function getSquarePayUrl() {
+      return SQUARE_LINK;
+    }
+    function getSquareQrUrl() {
+      return `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(SQUARE_LINK)}`;
+    }
+
+    function showPaymentSection(preferred) {
+      // preferred: 'venmo' | 'square' | undefined
+      const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+      const note = "Shopped with BMO";
+      const venmoSection = document.getElementById('venmo-section');
+
+      document.getElementById('venmo-qr').src = getVenmoQrUrl();
+      document.getElementById('venmo-link').href = getVenmoPayUrl(total.toFixed(2), note);
+      document.getElementById('venmo-message').textContent = `Venmo Username: @${VENMO_USERNAME}`;
+
+      document.getElementById('square-link').href = getSquarePayUrl();
+      document.getElementById('square-qr').src = getSquareQrUrl();
+      document.getElementById('square-message').textContent = `Square quick-pay link copy total for next page`;
+
+      venmoSection.style.display = 'block';
+      venmoSection.setAttribute('aria-hidden', 'false');
+
+      // Optionally open the preferred link in a new tab (commented out for safety)
+      // if (preferred === 'venmo') window.open(document.getElementById('venmo-link').href, '_blank', 'noopener');
+      // if (preferred === 'square') window.open(document.getElementById('square-link').href, '_blank', 'noopener');
+
+      setTimeout(() => {
+        venmoSection.scrollIntoView({behavior: "smooth"});
+      }, 80);
+    }
+
+    // Validate customer form returns object or null
+    function validateCustomerForm() {
+      const email = document.getElementById('ci-email').value.trim();
+      const name = document.getElementById('ci-name').value.trim();
+      const address = document.getElementById('ci-address').value.trim();
+      const city = document.getElementById('ci-city').value.trim();
+      const state = document.getElementById('ci-state').value.trim();
+      const zip = document.getElementById('ci-zip').value.trim();
+      const errorDiv = document.getElementById('customer-form-error');
+      errorDiv.style.display = "none";
+      errorDiv.textContent = "";
+
+      if (!email || !name || !address || !city || !state || !zip) {
+        errorDiv.textContent = "Please fill out all fields.";
+        errorDiv.style.display = "block";
+        return null;
       }
-
-      // Toggle button behavior: focus/expand mobile menu
-      toggleBtn.addEventListener('click', () => {
-        const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-        toggleBtn.setAttribute('aria-expanded', String(!expanded));
-        if (!expanded) {
-          mobileMenu.focus();
-        } else {
-          toggleBtn.blur();
-        }
-      });
-
-      // When selecting from dropdown, navigate
-      mobileMenu.addEventListener('change', (e) => {
-        const url = e.target.value;
-        if (url) window.location.href = url;
-      });
-
-      /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(e) {
-  if (!e.target.matches('.dropbtn')) {
-  var myDropdown = document.getElementById("myDropdown");
-    if (myDropdown.classList.contains('show')) {
-      myDropdown.classList.remove('show');
+      return { email, name, address, city, state, zip };
     }
-  }
-}
-      // Rebuild on load and when side-menu might change
-      window.addEventListener('load', buildMobileMenu);
-      // Also rebuild on resize in case links change or for SPA behavior
-      window.addEventListener('resize', buildMobileMenu);
-    })();
-    
+
+    async function submitCustomerInfoAndShow(paymentPref) {
+      // paymentPref: 'venmo' or 'square' or undefined
+      const data = validateCustomerForm();
+      if (!data) return;
+
+      const btnVenmo = document.getElementById('continue-venmo');
+      const btnSquare = document.getElementById('continue-square');
+
+      // disable both during submit
+      btnVenmo.disabled = true;
+      btnSquare.disabled = true;
+      const prevVenmoText = btnVenmo.textContent;
+      const prevSquareText = btnSquare.textContent;
+      if (paymentPref === 'venmo') btnVenmo.textContent = 'Submitting...';
+      else btnSquare.textContent = 'Submitting...';
+
+      try {
+        const response = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        if (!response.ok) throw new Error("Formspree submission failed.");
+        // success: hide form and show payment options
+        document.getElementById('customer-info-form').style.display = 'none';
+        showPaymentSection(paymentPref);
+      } catch (err) {
+        const errorDiv = document.getElementById('customer-form-error');
+        errorDiv.textContent = "There was an error submitting your info. Please try again.";
+        errorDiv.style.display = "block";
+        btnVenmo.disabled = false;
+        btnSquare.disabled = false;
+        btnVenmo.textContent = prevVenmoText;
+        btnSquare.textContent = prevSquareText;
+      }
+    }
+ const CASHAPP_LINK = 'https://cash.app/$manman3000';
+
+        function initializeCashApp() {
+            const cashAppButton = document.getElementById('cashapp-button');
+            cashAppButton.onclick = function() {
+                // Handle Cash App payment
+                window.open(CASHAPP_LINK, '_blank');
+            };
+
+            // Load Cash App QR code
+            loadCashAppQRCode();
+        }
+
+        function loadCashAppQRCode() {
+            const qrCodeDiv = document.getElementById('cashapp-qr');
+            qrCodeDiv.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?data=' + encodeURIComponent(CASHAPP_LINK) + '&size=150x150" alt="Cash App QR Code">';
+        }
+
+        // Initialize payment options on page load.
+        window.onload = initializeCashApp;
+    // Wire up button clicks
+    document.getElementById('continue-venmo').addEventListener('click', () => {
+      submitCustomerInfoAndShow('venmo');
+    });
+    document.getElementById('continue-square').addEventListener('click', () => {
+      submitCustomerInfoAndShow('square');
+    });
+
+    renderCheckoutCart();
   </script>
 </body>
 </html>
+
