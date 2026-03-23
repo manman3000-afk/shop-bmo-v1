@@ -48,6 +48,68 @@
     .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent; transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
     .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
 
+        body {
+  font-family: 'Inconsolata', sans-serif;
+  margin: 0;
+}
+    .navbar {
+  overflow: hidden;
+  background-color: #333; 
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size:1.1rem;  
+  border: none;
+  outline: none;
+  color: #bfa200;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: hsl(49, 100%, 96%);
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: hsl(49, 100%, 96%);
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: #bfa200;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+
     /* Mobile dropdown nav */
     .mobile-nav {
       display: none; /* hidden on desktop */
@@ -195,6 +257,22 @@
       display: none;
       color: var(--gold);
     }
+      .payment-button {
+            width: 100%;
+      margin-top: 1.6rem;
+      background: linear-gradient(90deg, #17cf21, #07ff51);
+      color: #111;
+      border: none;
+      border-radius: 25px;
+      padding: 0.85rem 2rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #ffd70055;
+      letter-spacing: 0.03em;
+    }
+        }
     .venmo-section img {
       width: 180px;
       height: 180px;
@@ -207,11 +285,13 @@
       margin-left: auto;
       margin-right: auto;
     }
+    
     .venmo-section p {
       color: var(--gold-dark);
       margin-bottom: 0.5rem;
       font-size: 1.05rem;
     }
+   
     .venmo-link {
       display:inline-block;
       background:#3d95ce;
@@ -225,9 +305,11 @@
       box-shadow: 0 2px 12px #3d95ce66;
       font-size: 1.08rem;
     }
+   
     .venmo-link:hover {
       background:#357cb8;
     }
+   
 
     .square-link {
       display:inline-block;
@@ -366,21 +448,60 @@ body {
 </div>
   </header>
 
-  <!-- Side Navigation Menu -->
-  <nav class="side-menu">
-    <a href="shop.html" >Shop</a>
-   <a href="Accesories.html">Accesories</a> 
-    <a href="MENS-PRODUCT.html">Men's</a>
-    <a href="WOMENS-PRODUCTS.html">Women's</a>
-   <a href="Clothe.html"> Clothing</a>
-   <a href = "Jewlery.html">PURE YOU Jewlery</a>
-    <a href="OOF-wear.html">OOF-WEAR</a>
+<!-- Desktop Side Navigation Menu -->
+  <nav class="side-menu" id="side-menu">
+  <a href="shop.html">Shop</a>
+  <div class="subnav">
+    <button class="subnavbtn">Brands <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="michaelgabrie.html">Michael Gabriel</a>
+   <a href = "Jewlery.html" >PURE YOU Jewlery</a>
+    <a href=" OOF-wear.html" >OOF-WEAR</a>
     <a href="27 Miles Malibu.html">27 MILES MALIBU</a>
-    <a href="snacks.html">Snacks</a>
+    </div>
+  </div> 
+  <div class="subnav">
+<button class="subnavbtn">Accessories <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="Jewlery.html">Jewelry</a>
+      <a href="Hats.html">Hats/Gloves</a>
+      <a href="Fragrances.html" >Fragrance</a>
+     <a href="Bags,Wallets.html" >Bags & Wallets</a>
+     <a href="Accesories.html" >All Accesories</a>
+    </div>
+    </div> 
+<div class="subnav">
+<button class="subnavbtn">Clothing <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="MENS-PRODUCT.html">Men's</a>
+    <a href="WOMENS-PRODUCTS.html" >Women's</a>
+    <a href="sweaters.html" >Sweaters</a>
+    <a href=""Coats.html" >Coats</a>
+    <a href="Pants.html" >Pants</a>
+    <a href="Clothe.html" class="active">All Clothing</a>
+    </div>
+    </div>
+     <a href="snacks.html">Snacks</a>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
+    </div>
+    
+<div style="padding:0 16px">
   </nav>
+  <!-- Mobile Navigation: dropdown/select + toggle button -->
+  <!-- Mobile Navigation: dropdown/select + toggle button -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <div class="mobile-nav-bar">
+    <button id="mobile-menu-toggle" aria-expanded="false">
+      Menu ☰
+    </button>
+    <select id="mobile-menu" aria-label="Mobile navigation">
+      <option value="">Go to...</option>
+    </select>
+  </div>
+</div>
+
 
   <div class="checkout-container">
     <h2>Order Summary</h2>
@@ -426,7 +547,8 @@ body {
       <div style="display:flex; gap:0.6rem; align-items:center;">
         <button type="button" class="lux-btn" id="continue-venmo">Continue to Venmo Payment</button>
         <button type="button" class="lux-btn" id="continue-square" style="background:linear-gradient(90deg,#2b2b2b,#444); box-shadow:0 2px 12px #44444466;">Continue to Card Payment</button>
-      </div>
+        <button class="payment-button" id="cashapp-button">Pay with Cash App</button>
+        </div>
     </form>
     <!-- END customer info form -->
 
@@ -592,7 +714,26 @@ body {
         btnSquare.textContent = prevSquareText;
       }
     }
+ const CASHAPP_LINK = 'https://cash.app/$manman3000';
 
+        function initializeCashApp() {
+            const cashAppButton = document.getElementById('cashapp-button');
+            cashAppButton.onclick = function() {
+                // Handle Cash App payment
+                window.open(CASHAPP_LINK, '_blank');
+            };
+
+            // Load Cash App QR code
+            loadCashAppQRCode();
+        }
+
+        function loadCashAppQRCode() {
+            const qrCodeDiv = document.getElementById('cashapp-qr');
+            qrCodeDiv.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?data=' + encodeURIComponent(CASHAPP_LINK) + '&size=150x150" alt="Cash App QR Code">';
+        }
+
+        // Initialize payment options on page load.
+        window.onload = initializeCashApp;
     // Wire up button clicks
     document.getElementById('continue-venmo').addEventListener('click', () => {
       submitCustomerInfoAndShow('venmo');
@@ -605,5 +746,4 @@ body {
   </script>
 </body>
 </html>
-
 
