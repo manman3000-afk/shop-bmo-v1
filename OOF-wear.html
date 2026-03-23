@@ -62,7 +62,67 @@
     .side-menu h2 { margin: 0; margin-right: 1rem; font-size: 1rem; color: #bfa200; font-weight: 700; letter-spacing: 0.08em; }
     .side-menu a  { display: inline-block; width: auto; padding: 0.6rem 0.9rem; color: #bfa200; font-size: 1rem; text-decoration: none; font-weight: 600; border-left: none; border-bottom: 3px solid transparent;  transition: background 0.2s, border-color 0.2s, color 0.2s; margin-right: 0.25rem; }
     .side-menu a:hover, .side-menu a.active { background: #fffbe9; color: #ffd700; border-bottom-color: #ffd700; }
+   body {
+  font-family: 'Inconsolata', sans-serif;
+  margin: 0;
+}
+    .navbar {
+  overflow: hidden;
+  background-color: #333; 
+}
 
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size:1.1rem;  
+  border: none;
+  outline: none;
+  color: #bfa200;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: hsl(49, 100%, 96%);
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: hsl(49, 100%, 96%);
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: #bfa200;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
     /* Mobile dropdown nav */
     .mobile-nav {
       display: none; /* hidden on desktop */
@@ -312,21 +372,47 @@ body {
   </button>
 </div>
 
-  <!-- Desktop Side Navigation Menu -->
+  
+ <!-- Desktop Side Navigation Menu -->
   <nav class="side-menu" id="side-menu">
-
-   <a href="shop.html" >Shop</a>
-   <a href="Accesories.html">Accesories</a> 
-    <a href="MENS-PRODUCT.html">Men's</a>
-    <a href="WOMANS-PRODUCTS.html" >Women's</a>
-   <a href="Clothe.html" > Clothing</a>
+  <a href="shop.html">Shop</a>
+  <div class="subnav">
+    <button class="subnavbtn">Brands <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="michaelgabrie.html"class="active">Michael Gabriel</a>
    <a href = "Jewlery.html" >PURE YOU Jewlery</a>
-    <a href=" OOF-wear.html" class="active">OOF-WEAR</a>
+    <a href=" OOF-wear.html" >OOF-WEAR</a>
     <a href="27 Miles Malibu.html">27 MILES MALIBU</a>
-    <a href="snacks.html">Snacks</a>
+    </div>
+  </div> 
+  <div class="subnav">
+<button class="subnavbtn">Accessories <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="Jewlery.html">Jewelry</a>
+      <a href="Hats.html">Hats/Gloves</a>
+      <a href="Fragrances.html" >Fragrance</a>
+     <a href="Bags,Wallets.html" >Bags & Wallets</a>
+     <a href="Accesories.html" >All Accesories</a>
+    </div>
+    </div> 
+<div class="subnav">
+<button class="subnavbtn">Clothing <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="MENS-PRODUCT.html">Men's</a>
+    <a href="WOMANS-PRODUCTS.html" >Women's</a>
+    <a href="sweaters.html" >Sweaters</a>
+    <a href="coats.html" >Coats</a>
+    <a href="Pants.html" >Pants</a>
+    <a href="Clothe.html" >All Clothing</a>
+    </div>
+    </div>
+     <a href="snacks.html">Snacks</a>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
+    </div>
+    
+<div style="padding:0 16px">
   </nav>
 
 
@@ -342,7 +428,6 @@ body {
     </select>
   </div>
 </div>
-
 
     </div>
     <div id="empty-cart-alert">⚠️ Your cart is empty. Please add items before checking out.</div>
@@ -414,12 +499,12 @@ body {
 { id: "1200 ANTWERP UTILITY BOMBER IN JERSEY", name: "1200 ANTWERP UTILITY BOMBER IN JERSEY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12000OOOJ1108A_2b.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12000OOOJ1108A_2b.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/262MOOF12000OOOJ1108A_1.450x600.w.jpg"  ], colors: [{name: "SPRAY GREEN  ", value: "#ADA645 ", imageindex: 0},{name: "TAWNY PORT ", value: "#7A2412", imageindex: 1},{name: "CARBON   ", value: "#525252 ", imageindex: 2},{name: "MOONLIGHT BLUE  ", value: "#38477A ", imageindex: 3} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
 { id: "OVERSHIRT WAXED COTTON", name: "OVERSHIRT WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM1300OOWC1317A_Bitter%20Chocolate-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM1300OOWC1317A_Bitter%20Chocolate-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM1300OOWC1317A_Bitter%20Chocolate-3.450x600.w.jpg"  ], colors: [{name: "Chipmunk  ", value: "#5b4332 ", imageindex: 0},{name: "Bitter Chocolate  ", value: "#351f1f ", imageindex: 1} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
 { id: "BARRACUDA MEMORY", name: "BARRACUDA MEMORY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0200OOME0737A_Burnished%20Gold-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0200OOME0737A_Burnished%20Gold-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0200OOME0737A_Burnished%20Gold-3.450x600.w.jpg"  ], colors: [{name: "Total Eclipse  ", value: "#91a3b0 ", imageindex: 0},{name: "Bone white  ", value: "#ffffff ", imageindex: 1},{name: "Burnished Gold  ", value: "#dcf93711 ", imageindex: 0} ],sizes: ["S", "M", "L", "X-L", "XX-L"], desc: "", price: 260},
-{ id: "PANT TWO LAYERS", name: "PANT TWO LAYERS", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-2.450x600.w.jpg"  ], desc: "", price: 300},
-{ id: "PANT COTTON TECH", name: "PANT COTTON TECH", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-4.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-2.450x600.w.jpg " ], desc: "", price: 300},
+{ id: "pants TWO LAYERS", name: "pants TWO LAYERS", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-2.450x600.w.jpg"  ], desc: "", price: 300},
+{ id: "pants COTTON TECH", name: "pants COTTON TECH", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-4.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF13000OOTL4203A_Vapor%20Blue-2.450x600.w.jpg " ], desc: "", price: 300},
 { id: "HOODIE MEMORY", name: "HOODIE MEMORY", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF90000OOCT1306A_Oxford%20Tan-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF08000OOME1316A_Dusty%20Pink-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF08000OOME1316A_Dusty%20Pink-2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261WOOF08000OOME1316A_Dusty%20Pink-3.450x600.w.jpg " ], desc: "", price: 300},
-{ id: "PANT WAXED COTTON", name: "PANT WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-4.450x600.w.jpg " ], desc: "", price: 260},
-{ id: "PANT COTONE SMERIGLIATO", name: "PANT COTONE SMERIGLIATO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-4.450x600.w.jpg" ], desc: "", price: 260},
-{ id: "PUFFER PANT SHINY NYLON", name: "PUFFER PANT SHINY NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-3.450x600.w.jpg"  ], desc: "", price: 260},
+{ id: "pants WAXED COTTON", name: "pants WAXED COTTON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM5800OOWC0516A_Dark%20Olive-4.450x600.w.jpg " ], desc: "", price: 260},
+{ id: "pants COTONE SMERIGLIATO", name: "pants COTONE SMERIGLIATO", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-2.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-2.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-3.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM0900OOCS0105A_Bone%20White-4.450x600.w.jpg" ], desc: "", price: 260},
+{ id: "PUFFER pants SHINY NYLON", name: "PUFFER pants SHINY NYLON", img: "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-1.450x600.w.jpg", images: ["https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-1.450x600.w.jpg" , "https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-2.450x600.w.jpg, “https://cdn.jooraccess.com/img/uploads/accounts/1204021/images/261MOOFM6100OOSN4010A_Total%20Eclipse-3.450x600.w.jpg"  ], desc: "", price: 260},
 
 
 
