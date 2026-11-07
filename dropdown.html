@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop Dropdown Example</title>
+  <style>
+    /* Basic navbar styling */
+    .navbar {
+      background: #222;
+      padding: 10px;
+      display: flex;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 20px;
+      padding: 10px 15px;
+      position: relative;
+    }
+    /* Dropdown container */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    /* Dropdown content (hidden by default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      top: 100%;
+      left: 0;
+    }
+    .dropdown-content a {
+      color: #222;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #eee;
+    }
+    /* Show dropdown on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* Highlight Shop tab when dropdown open */
+    .dropdown:hover > a {
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <div class="dropdown">
+      <a href="/shop">Shop</a>
+      <div class="dropdown-content">
+        <a href="/shop/shoes">Shoes</a>
+        <a href="/shop/bags">Bags</a>
+        <a href="/shop/accessories">Accessories</a>
+        <!-- Add more categories as needed -->
+      </div>
+    </div>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </nav>
+</body>
+</html>
